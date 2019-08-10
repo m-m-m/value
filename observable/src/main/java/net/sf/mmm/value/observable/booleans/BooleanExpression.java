@@ -4,7 +4,6 @@ package net.sf.mmm.value.observable.booleans;
 
 import net.sf.mmm.value.observable.Expression;
 import net.sf.mmm.value.observable.ObservableValue;
-import net.sf.mmm.value.observable.impl.BooleanHelper;
 
 /**
  * {@link Expression} for {@link Boolean} {@link #getValue() values}.
@@ -18,7 +17,7 @@ public interface BooleanExpression extends ObservableBooleanValue, Expression<Bo
    */
   default BooleanExpression not() {
 
-    return new BooleanBinding(() -> BooleanHelper.not(getValue()), this);
+    return BooleanBinding.not(this);
   }
 
   /**
