@@ -5,7 +5,7 @@ package net.sf.mmm.value.observable.numbers;
 import net.sf.mmm.value.observable.ObservableValue;
 
 /**
- * {@link ObservableValue} containing a {@link Number numeric} {@link #getValue() value}.
+ * {@link ObservableValue} with {@link Number} {@link #getValue() value}.
  *
  * @param <N> type of the observable {@link #getValue() value}.
  * @since 1.0.0

@@ -72,6 +72,15 @@ public abstract class AbstractObservableValue<V>
   }
 
   /**
+   * @param observable the {@link AbstractObservableValue} where to invoke {@link #fireEvent()} (if prevented due to
+   *        visibility issues).
+   */
+  protected void fireEvent(AbstractObservableValue<V> observable) {
+
+    observable.fireEvent();
+  }
+
+  /**
    * Invalidates this observable in case it's value is computed.
    */
   protected void invalidate() {

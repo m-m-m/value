@@ -5,7 +5,7 @@ package net.sf.mmm.value.observable.numbers.floats;
 import net.sf.mmm.value.observable.numbers.WritableNumberValue;
 
 /**
- * {@link net.sf.mmm.value.WritableValue} containing a {@link Integer} {@link #getValue() value}.
+ * {@link WritableNumberValue} with {@link Float} {@link #getValue() value}.
  *
  * @since 1.0.0
  */

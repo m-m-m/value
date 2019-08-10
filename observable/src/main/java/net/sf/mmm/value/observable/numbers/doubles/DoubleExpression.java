@@ -16,7 +16,7 @@ import net.sf.mmm.value.observable.numbers.longs.ObservableLongValue;
 import net.sf.mmm.value.observable.numbers.shorts.ObservableShortValue;
 
 /**
- * {@link NumberExpression} for {@link Double}.
+ * {@link NumberExpression} with {@link Double} {@link #getValue() value}.
  *
  * @since 1.0.0
  */

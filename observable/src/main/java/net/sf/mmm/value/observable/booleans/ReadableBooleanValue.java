@@ -3,10 +3,9 @@
 package net.sf.mmm.value.observable.booleans;
 
 import net.sf.mmm.value.ReadableTypedValue;
-import net.sf.mmm.value.observable.ObservableValue;
 
 /**
- * {@link ObservableValue} for {@link Boolean} {@link #getValue() value}.
+ * {@link ReadableTypedValue} with {@link Boolean} {@link #getValue() value}.
  *
  * @since 1.0.0
  */

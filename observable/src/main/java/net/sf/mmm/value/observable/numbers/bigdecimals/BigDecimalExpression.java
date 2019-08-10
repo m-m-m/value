@@ -14,7 +14,7 @@ import net.sf.mmm.value.observable.numbers.longs.ObservableLongValue;
 import net.sf.mmm.value.observable.numbers.shorts.ObservableShortValue;
 
 /**
- * {@link NumberExpression} for {@link BigDecimal}.
+ * {@link NumberExpression} with {@link BigDecimal} {@link #getValue() value}.
  *
  * @since 1.0.0
  */

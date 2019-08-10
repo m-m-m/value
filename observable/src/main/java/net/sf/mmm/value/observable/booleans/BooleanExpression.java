@@ -6,7 +6,7 @@ import net.sf.mmm.value.observable.Expression;
 import net.sf.mmm.value.observable.ObservableValue;
 
 /**
- * {@link Expression} for {@link Boolean} {@link #getValue() values}.
+ * {@link Expression} with {@link Boolean} {@link #getValue() value}.
  *
  * @since 1.0.0
  */

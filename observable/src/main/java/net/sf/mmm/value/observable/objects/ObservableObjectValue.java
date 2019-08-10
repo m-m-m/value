@@ -5,8 +5,7 @@ package net.sf.mmm.value.observable.objects;
 import net.sf.mmm.value.observable.ObservableValue;
 
 /**
- * {@link ObservableValue} for generic objects that do not have their own customer {@link ObservableValue} interface in
- * this library.
+ * {@link ObservableValue} for any {@link Object} {@link #getValue() value} that has no primitive type.
  *
  * @param <V> is the generic type of the {@link #getValue() value}.
  * @since 1.0.0

@@ -5,7 +5,7 @@ package net.sf.mmm.value.observable.numbers.longs;
 import net.sf.mmm.value.observable.numbers.ReadableNumberValue;
 
 /**
- * {@link net.sf.mmm.value.ReadableValue} containing a {@link Long} {@link #getValue() value}.
+ * {@link ReadableNumberValue} with {@link Long} {@link #getValue() value}.
  *
  * @since 1.0.0
  */

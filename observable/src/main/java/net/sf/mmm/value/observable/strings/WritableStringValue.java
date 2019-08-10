@@ -5,11 +5,12 @@ package net.sf.mmm.value.observable.strings;
 import net.sf.mmm.value.WritableValue;
 
 /**
- * @author hohwille
+ * {@link WritableValue} with {@link String} {@link #getValue() value}.
  *
+ * @since 1.0.0
  */
 public interface WritableStringValue extends WritableValue<String>, ReadableStringValue {
-
+ 
   /**
    * @param value the value to set.
    * @see #get()

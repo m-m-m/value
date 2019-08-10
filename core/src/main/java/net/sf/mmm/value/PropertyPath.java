@@ -7,7 +7,6 @@ package net.sf.mmm.value;
  *
  * @param <V> the generic type of the property value identified by this path.
  *
- * @author hohwille
  * @since 1.0.0
  */
 public interface PropertyPath<V> extends ReadableValue<V> {

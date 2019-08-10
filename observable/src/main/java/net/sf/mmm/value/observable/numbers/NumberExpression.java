@@ -20,7 +20,7 @@ import net.sf.mmm.value.observable.numbers.longs.ObservableLongValue;
 import net.sf.mmm.value.observable.numbers.shorts.ObservableShortValue;
 
 /**
- * {@link ComparableExpression} for {@link Number}.
+ * {@link ComparableExpression} with {@link Number} {@link #getValue() value}.
  *
  * @param <N> type of the observable {@link #getValue() value}.
  * @since 1.0.0

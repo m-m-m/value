@@ -5,7 +5,7 @@ package net.sf.mmm.value.observable.numbers.bytes;
 import net.sf.mmm.value.observable.numbers.WritableNumberValue;
 
 /**
- * {@link net.sf.mmm.value.WritableValue} containing a {@link Integer} {@link #getValue() value}.
+ * {@link WritableNumberValue} with {@link Byte} {@link #getValue() value}.
  *
  * @since 1.0.0
  */

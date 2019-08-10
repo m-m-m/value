@@ -8,7 +8,7 @@ import net.sf.mmm.value.observable.numbers.NumberBinding;
 import net.sf.mmm.value.observable.numbers.NumberExpression;
 
 /**
- * {@link net.sf.mmm.value.observable.Binding} for a {@link Long} {@link #getValue() value}.
+ * {@link NumberBinding} with {@link Long} {@link #getValue() value}.
  *
  * @since 1.0.0
  */

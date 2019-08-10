@@ -5,8 +5,7 @@ package net.sf.mmm.value.observable.booleans;
 import net.sf.mmm.value.WritableValue;
 
 /**
- * @author hohwille
- *
+ * {@link WritableValue} with {@link Boolean} {@link #getValue() value}.
  */
 public interface WritableBooleanValue extends WritableValue<Boolean>, ReadableBooleanValue {
 

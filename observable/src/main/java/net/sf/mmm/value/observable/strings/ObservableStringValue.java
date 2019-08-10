@@ -5,7 +5,7 @@ package net.sf.mmm.value.observable.strings;
 import net.sf.mmm.value.observable.ObservableValue;
 
 /**
- * {@link ObservableValue} for {@link String} {@link #getValue() value}.
+ * {@link ObservableValue} with {@link String} {@link #getValue() value}.
  *
  * @since 1.0.0
  */

@@ -5,7 +5,7 @@ package net.sf.mmm.value.observable.numbers.shorts;
 import net.sf.mmm.value.observable.numbers.ObservableNumberValue;
 
 /**
- * {@link net.sf.mmm.value.observable.ObservableValue} containing a {@link Short} {@link #getValue() value}.
+ * {@link ObservableNumberValue} with {@link Short} {@link #getValue() value}.
  *
  * @since 1.0.0
  */

@@ -5,7 +5,7 @@ package net.sf.mmm.value.observable.numbers.doubles;
 import net.sf.mmm.value.observable.numbers.ReadableNumberValue;
 
 /**
- * {@link net.sf.mmm.value.ReadableValue} containing a {@link Double} {@link #getValue() value}.
+ * {@link ReadableNumberValue} with {@link Double} {@link #getValue() value}.
  *
  * @since 1.0.0
  */

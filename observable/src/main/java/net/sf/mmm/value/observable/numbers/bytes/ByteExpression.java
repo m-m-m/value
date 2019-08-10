@@ -23,7 +23,7 @@ import net.sf.mmm.value.observable.numbers.shorts.ShortBinding;
 import net.sf.mmm.value.observable.numbers.shorts.ShortExpression;
 
 /**
- * {@link NumberExpression} for {@link Byte}.
+ * {@link NumberExpression} with {@link Byte} {@link #getValue() value}.
  *
  * @since 1.0.0
  */

@@ -7,7 +7,7 @@ import net.sf.mmm.value.observable.ObservableValue;
 import net.sf.mmm.value.observable.booleans.BooleanBinding;
 
 /**
- * {@link Expression} for {@link Comparable} {@link #getValue() values}.
+ * {@link Expression} with {@link Comparable} {@link #getValue() value}.
  *
  * @param <V> is the generic type of the {@link #getValue() value}.
  * @since 1.0.0

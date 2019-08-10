@@ -2,11 +2,10 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package net.sf.mmm.value.observable.numbers;
 
-import net.sf.mmm.value.ReadableValue;
 import net.sf.mmm.value.WritableValue;
 
 /**
- * {@link ReadableValue} containing a {@link Number numeric} {@link #getValue() value}.
+ * {@link WritableValue} with {@link Number} {@link #getValue() value}.
  *
  * @param <N> type of the observable {@link #getValue() value}.
  * @since 1.0.0

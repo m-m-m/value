@@ -5,7 +5,7 @@ package net.sf.mmm.value.observable.numbers.longs;
 import net.sf.mmm.value.observable.numbers.WritableNumberValue;
 
 /**
- * {@link net.sf.mmm.value.WritableValue} containing a {@link Long} {@link #getValue() value}.
+ * {@link WritableNumberValue} with {@link Long} {@link #getValue() value}.
  *
  * @since 1.0.0
  */

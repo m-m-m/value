@@ -11,7 +11,7 @@ import net.sf.mmm.value.observable.numbers.NumberBinding;
 import net.sf.mmm.value.observable.numbers.NumberExpression;
 
 /**
- * {@link net.sf.mmm.value.observable.Binding} for a {@link BigDecimal} {@link #getValue() value}.
+ * {@link net.sf.mmm.value.observable.Binding} with {@link BigDecimal} {@link #getValue() value}.
  *
  * @since 1.0.0
  */

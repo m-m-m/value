@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import net.sf.mmm.value.observable.numbers.ReadableNumberValue;
 
 /**
- * {@link net.sf.mmm.value.ReadableValue} containing a {@link BigDecimal} {@link #getValue() value}.
+ * {@link ReadableNumberValue} with {@link BigDecimal} {@link #getValue() value}.
  *
  * @since 1.0.0
  */

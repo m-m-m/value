@@ -6,7 +6,7 @@ import net.sf.mmm.value.observable.Binding;
 import net.sf.mmm.value.observable.ObservableValue;
 
 /**
- * {@link net.sf.mmm.value.observable.Binding} for a {@link String} {@link #getValue() value}.
+ * {@link Binding} with {@link String} {@link #getValue() value}.
  *
  * @since 1.0.0
  */
