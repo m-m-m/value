@@ -31,7 +31,7 @@ public interface ObservableEvent<V> {
   /**
    * @return {@code true} if the old value is available, {@code false} otherwise. For advanced performance the old value
    *         is not available for dynamically computed {@link ObservableValue}s by default. It is guaranteed to be
-   *         available if at least one of the {@link ObservableValue#addListener(net.sf.mmm.event.api.EventListener)
+   *         available if at least one of the {@link ObservableValue#addListener(net.sf.mmm.event.EventListener)
    *         registered} {@link ObservableEventListener}s has called {@link #getValue()} on the previous
    *         {@link ObservableEvent} forcing an eager evaluation.
    */

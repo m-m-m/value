@@ -22,4 +22,20 @@ public abstract interface ReadableValue<V> {
    */
   V getValueSafe();
 
+  /**
+   * Null-safe access to {@link #getValue()}.
+   *
+   * @param <T> type of the {@link #getValue() value}
+   * @param value the {@link ReadableValue} to unwrap.
+   * @return the {@link #getValue() value} of the {@link ReadableValue}. Will be {@code null} if the given
+   *         {@link ReadableValue} is {@code null} or its {@link #getValue() value} is {@code null}.
+   */
+  static <T> T unwrap(ReadableValue<T> value) {
+
+    if (value == null) {
+      return null;
+    }
+    return value.getValue();
+  }
+
 }

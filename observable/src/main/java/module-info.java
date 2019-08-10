@@ -12,6 +12,8 @@ module net.sf.mmm.value.observable {
 
   exports net.sf.mmm.value.observable.booleans;
 
+  exports net.sf.mmm.value.observable.comparables;
+
   exports net.sf.mmm.value.observable.numbers;
 
   exports net.sf.mmm.value.observable.numbers.bigdecimals;
