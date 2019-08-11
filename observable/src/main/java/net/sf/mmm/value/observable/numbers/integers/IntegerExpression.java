@@ -115,4 +115,88 @@ public interface IntegerExpression extends ObservableIntegerValue, NumberExpress
     return IntegerBinding.add(this, constant);
   }
 
+  @Override
+  default BigIntegerExpression subtract(ObservableBigIntegerValue other) {
+
+    return BigIntegerBinding.subtract(this, other);
+  }
+
+  @Override
+  default DoubleExpression subtract(ObservableDoubleValue other) {
+
+    return DoubleBinding.subtract(this, other);
+  }
+
+  @Override
+  default FloatExpression subtract(ObservableFloatValue other) {
+
+    return FloatBinding.subtract(this, other);
+  }
+
+  @Override
+  default LongExpression subtract(ObservableLongValue other) {
+
+    return LongBinding.subtract(this, other);
+  }
+
+  @Override
+  default IntegerExpression subtract(ObservableIntegerValue other) {
+
+    return IntegerBinding.subtract(this, other);
+  }
+
+  @Override
+  default IntegerExpression subtract(ObservableShortValue other) {
+
+    return IntegerBinding.subtract(this, other);
+  }
+
+  @Override
+  default IntegerExpression subtract(ObservableByteValue other) {
+
+    return IntegerBinding.subtract(this, other);
+  }
+
+  @Override
+  default BigIntegerExpression subtract(BigInteger constant) {
+
+    return BigIntegerBinding.subtract(this, constant);
+  }
+
+  @Override
+  default DoubleExpression subtract(double constant) {
+
+    return DoubleBinding.subtract(this, constant);
+  }
+
+  @Override
+  default FloatExpression subtract(float constant) {
+
+    return FloatBinding.subtract(this, constant);
+  }
+
+  @Override
+  default LongExpression subtract(long constant) {
+
+    return LongBinding.subtract(this, constant);
+  }
+
+  @Override
+  default IntegerExpression subtract(int constant) {
+
+    return IntegerBinding.subtract(this, constant);
+  }
+
+  @Override
+  default IntegerExpression subtract(short constant) {
+
+    return IntegerBinding.subtract(this, constant);
+  }
+
+  @Override
+  default IntegerExpression subtract(byte constant) {
+
+    return IntegerBinding.subtract(this, constant);
+  }
+
 }

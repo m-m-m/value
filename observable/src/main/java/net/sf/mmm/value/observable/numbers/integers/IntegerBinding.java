@@ -99,9 +99,62 @@ public class IntegerBinding extends NumberBinding<Integer> implements IntegerExp
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
-  public static IntegerExpression sum(ObservableValue<? extends Number>... observables) {
+  public static IntegerExpression addAll(ObservableValue<? extends Number>... observables) {
 
     return new IntegerBinding(() -> plusAll(observables), observables);
+  }
+
+  /**
+   * @param expression the {@link IntegerExpression}.
+   * @param other the {@link ObservableValue} to subtract.
+   * @return a new {@link IntegerExpression} holding the difference of the {@link #getValue() value}s of the first and
+   *         the second given {@link ObservableValue}s.
+   * @see #subtract(ObservableIntegerValue)
+   */
+  public static IntegerExpression subtract(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return cast(expression);
+    }
+    return new IntegerBinding(() -> minus(expression, other), expression, other);
+  }
+
+  /**
+   * @param expression the {@link IntegerExpression}.
+   * @param constant the constant {@link Number} to subtract.
+   * @return a new {@link IntegerExpression} holding the difference of the {@link #getValue() value} from the given
+   *         {@link IntegerExpression} with the given {@code constant}.
+   * @see #subtract(ObservableIntegerValue)
+   */
+  public static IntegerExpression subtract(NumberExpression<?> expression, Number constant) {
+
+    if (constant == null) {
+      return cast(expression);
+    }
+    return subtract(expression, constant.intValue());
+  }
+
+  /**
+   * @param expression the {@link IntegerExpression}.
+   * @param constant the constant {@code int} to subtract.
+   * @return a new {@link IntegerExpression} holding the difference of the {@link #getValue() value} from the given
+   *         {@link IntegerExpression} with the given {@code constant}.
+   * @see #subtract(ObservableIntegerValue)
+   */
+  public static IntegerExpression subtract(NumberExpression<?> expression, int constant) {
+
+    return new IntegerBinding(() -> minus(constant, expression.getValue()), expression);
+  }
+
+  /**
+   * @param observables the {@link ObservableValue}s to subtract.
+   * @return a new {@link IntegerExpression} holding the difference of the {@link #getValue() value}s from the given
+   *         {@link ObservableValue}s.
+   */
+  @SafeVarargs
+  public static IntegerExpression subtractAll(ObservableValue<? extends Number>... observables) {
+
+    return new IntegerBinding(() -> minusAll(observables), observables);
   }
 
   private static Integer to(Number value) {
@@ -161,6 +214,48 @@ public class IntegerBinding extends NumberBinding<Integer> implements IntegerExp
 
     if (v2 != null) {
       v1 = v1 + v2.intValue();
+    }
+    return Integer.valueOf(v1);
+  }
+
+  @SafeVarargs
+  private static Integer minusAll(ReadableValue<? extends Number>... observables) {
+
+    int difference = 0;
+    for (ReadableValue<? extends Number> observable : observables) {
+      if (observable != null) {
+        Number value = observable.getValue();
+        if (value != null) {
+          difference = difference - value.intValue();
+        }
+      }
+    }
+    return Integer.valueOf(difference);
+  }
+
+  private static Integer minus(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
+
+    return minus(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+  }
+
+  private static Integer minus(Number v1, Number v2) {
+
+    if ((v1 == null) && (v2 == null)) {
+      return null;
+    }
+    if (v1 == null) {
+      return to(v2);
+    }
+    if (v2 == null) {
+      return to(v1);
+    }
+    return Integer.valueOf(v1.intValue() - v2.intValue());
+  }
+
+  private static Integer minus(int v1, Number v2) {
+
+    if (v2 != null) {
+      v1 = v1 - v2.intValue();
     }
     return Integer.valueOf(v1);
   }

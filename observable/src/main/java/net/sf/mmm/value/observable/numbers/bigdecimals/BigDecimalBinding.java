@@ -103,9 +103,63 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
-  public static BigDecimalExpression sum(ObservableValue<? extends Number>... observables) {
+  public static BigDecimalExpression addAll(ObservableValue<? extends Number>... observables) {
 
     return new BigDecimalBinding(() -> plusAll(observables), observables);
+  }
+
+  /**
+   * @param expression the {@link BigDecimalExpression}.
+   * @param other the {@link ObservableValue} to subtract.
+   * @return a new {@link BigDecimalExpression} holding the difference of the {@link #getValue() value}s of the first
+   *         and the second given {@link ObservableValue}s.
+   * @see #subtract(ObservableBigDecimalValue)
+   */
+  public static BigDecimalExpression subtract(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return cast(expression);
+    }
+    return new BigDecimalBinding(() -> minusAll(expression, other), expression, other);
+  }
+
+  /**
+   * @param expression the {@link NumberExpression}.
+   * @param constant the constant {@link Number} to subtract.
+   * @return a new {@link BigDecimalExpression} holding the difference of the {@link #getValue() value} from the given
+   *         {@link BigDecimalExpression} with the given {@code constant}.
+   * @see #subtract(ObservableBigDecimalValue)
+   */
+  public static BigDecimalExpression subtract(NumberExpression<?> expression, Number constant) {
+
+    return subtract(expression, to(constant));
+  }
+
+  /**
+   * @param expression the {@link BigDecimalExpression}.
+   * @param constant the constant {@code BigDecimal} to subtract.
+   * @return a new {@link BigDecimalExpression} holding the difference of the {@link #getValue() value} from the given
+   *         {@link BigDecimalExpression} with the given {@code constant}.
+   * @see #subtract(ObservableBigDecimalValue)
+   */
+  public static BigDecimalExpression subtract(NumberExpression<?> expression, BigDecimal constant) {
+
+    if (constant == null) {
+      return cast(expression);
+    }
+    Objects.requireNonNull(expression, "expression");
+    return new BigDecimalBinding(() -> minus(constant, expression.getValue()), expression);
+  }
+
+  /**
+   * @param observables the {@link ObservableValue}s to subtract.
+   * @return a new {@link BigDecimalExpression} holding the difference of the {@link #getValue() value}s from the given
+   *         {@link ObservableValue}s.
+   */
+  @SafeVarargs
+  public static BigDecimalExpression subtractAll(ObservableValue<? extends Number>... observables) {
+
+    return new BigDecimalBinding(() -> minusAll(observables), observables);
   }
 
   private static BigDecimal to(Number value) {
@@ -162,6 +216,38 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
       return v1;
     }
     return v1.add(to(v2));
+  }
+
+  @SafeVarargs
+  private static BigDecimal minusAll(ReadableValue<? extends Number>... observables) {
+
+    BigDecimal difference = null;
+    for (ReadableValue<? extends Number> observable : observables) {
+      if (observable != null) {
+        Number value = observable.getValue();
+        if (value != null) {
+          if (difference == null) {
+            difference = BigDecimal.ZERO;
+          }
+          difference = difference.subtract(to(value));
+        }
+      }
+    }
+    return difference;
+  }
+
+  private static BigDecimal minus(BigDecimal v1, Number v2) {
+
+    if ((v1 == null) && (v2 == null)) {
+      return null;
+    }
+    if (v1 == null) {
+      return to(v2);
+    }
+    if (v2 == null) {
+      return v1;
+    }
+    return v1.subtract(to(v2));
   }
 
 }

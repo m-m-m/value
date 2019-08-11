@@ -99,9 +99,62 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
-  public static ByteExpression sum(ObservableValue<? extends Number>... observables) {
+  public static ByteExpression addAll(ObservableValue<? extends Number>... observables) {
 
     return new ByteBinding(() -> plusAll(observables), observables);
+  }
+
+  /**
+   * @param expression the {@link ByteExpression}.
+   * @param other the {@link ObservableValue} to subtract.
+   * @return a new {@link ByteExpression} holding the difference of the {@link #getValue() value}s of the first and the
+   *         second given {@link ObservableValue}s.
+   * @see #subtract(ObservableByteValue)
+   */
+  public static ByteExpression subtract(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return cast(expression);
+    }
+    return new ByteBinding(() -> minus(expression, other), expression, other);
+  }
+
+  /**
+   * @param expression the {@link ByteExpression}.
+   * @param constant the constant {@link Number} to subtract.
+   * @return a new {@link ByteExpression} holding the difference of the {@link #getValue() value} from the given
+   *         {@link ByteExpression} with the given {@code constant}.
+   * @see #subtract(ObservableByteValue)
+   */
+  public static ByteExpression subtract(NumberExpression<?> expression, Number constant) {
+
+    if (constant == null) {
+      return cast(expression);
+    }
+    return subtract(expression, constant.byteValue());
+  }
+
+  /**
+   * @param expression the {@link ByteExpression}.
+   * @param constant the constant {@code byte} to subtract.
+   * @return a new {@link ByteExpression} holding the difference of the {@link #getValue() value} from the given
+   *         {@link ByteExpression} with the given {@code constant}.
+   * @see #subtract(ObservableByteValue)
+   */
+  public static ByteExpression subtract(NumberExpression<?> expression, byte constant) {
+
+    return new ByteBinding(() -> minus(constant, expression.getValue()), expression);
+  }
+
+  /**
+   * @param observables the {@link ObservableValue}s to subtract.
+   * @return a new {@link ByteExpression} holding the difference of the {@link #getValue() value}s from the given
+   *         {@link ObservableValue}s.
+   */
+  @SafeVarargs
+  public static ByteExpression subtractAll(ObservableValue<? extends Number>... observables) {
+
+    return new ByteBinding(() -> minusAll(observables), observables);
   }
 
   private static Byte to(Number value) {
@@ -159,6 +212,48 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
 
     if (v2 != null) {
       v1 = (byte) (v1 + v2.byteValue());
+    }
+    return Byte.valueOf(v1);
+  }
+
+  @SafeVarargs
+  private static Byte minusAll(ReadableValue<? extends Number>... observables) {
+
+    byte difference = 0;
+    for (ReadableValue<? extends Number> observable : observables) {
+      if (observable != null) {
+        Number value = observable.getValue();
+        if (value != null) {
+          difference = (byte) (difference - value.byteValue());
+        }
+      }
+    }
+    return Byte.valueOf(difference);
+  }
+
+  private static Byte minus(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
+
+    return minus(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+  }
+
+  private static Byte minus(Number v1, Number v2) {
+
+    if ((v1 == null) && (v2 == null)) {
+      return null;
+    }
+    if (v1 == null) {
+      return to(v2);
+    }
+    if (v2 == null) {
+      return to(v1);
+    }
+    return Byte.valueOf((byte) (v1.byteValue() - v2.byteValue()));
+  }
+
+  private static Byte minus(byte v1, Number v2) {
+
+    if (v2 != null) {
+      v1 = (byte) (v1 - v2.byteValue());
     }
     return Byte.valueOf(v1);
   }

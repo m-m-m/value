@@ -99,9 +99,62 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
-  public static LongExpression sum(ObservableValue<? extends Number>... observables) {
+  public static LongExpression addAll(ObservableValue<? extends Number>... observables) {
 
     return new LongBinding(() -> plusAll(observables), observables);
+  }
+
+  /**
+   * @param expression the {@link LongExpression}.
+   * @param other the {@link ObservableValue} to subtract.
+   * @return a new {@link LongExpression} holding the difference of the {@link #getValue() value}s of the first and the
+   *         second given {@link ObservableValue}s.
+   * @see #subtract(ObservableLongValue)
+   */
+  public static LongExpression subtract(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return cast(expression);
+    }
+    return new LongBinding(() -> minus(expression, other), expression, other);
+  }
+
+  /**
+   * @param expression the {@link LongExpression}.
+   * @param constant the constant {@link Number} to subtract.
+   * @return a new {@link LongExpression} holding the difference of the {@link #getValue() value} from the given
+   *         {@link LongExpression} with the given {@code constant}.
+   * @see #subtract(ObservableLongValue)
+   */
+  public static LongExpression subtract(NumberExpression<?> expression, Number constant) {
+
+    if (constant == null) {
+      return cast(expression);
+    }
+    return subtract(expression, constant.longValue());
+  }
+
+  /**
+   * @param expression the {@link LongExpression}.
+   * @param constant the constant {@code long} to subtract.
+   * @return a new {@link LongExpression} holding the difference of the {@link #getValue() value} from the given
+   *         {@link LongExpression} with the given {@code constant}.
+   * @see #subtract(ObservableLongValue)
+   */
+  public static LongExpression subtract(NumberExpression<?> expression, long constant) {
+
+    return new LongBinding(() -> minus(constant, expression.getValue()), expression);
+  }
+
+  /**
+   * @param observables the {@link ObservableValue}s to subtract.
+   * @return a new {@link LongExpression} holding the difference of the {@link #getValue() value}s from the given
+   *         {@link ObservableValue}s.
+   */
+  @SafeVarargs
+  public static LongExpression subtractAll(ObservableValue<? extends Number>... observables) {
+
+    return new LongBinding(() -> minusAll(observables), observables);
   }
 
   private static Long to(Number value) {
@@ -161,6 +214,48 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
 
     if (v2 != null) {
       v1 = v1 + v2.longValue();
+    }
+    return Long.valueOf(v1);
+  }
+
+  @SafeVarargs
+  private static Long minusAll(ReadableValue<? extends Number>... observables) {
+
+    long difference = 0;
+    for (ReadableValue<? extends Number> observable : observables) {
+      if (observable != null) {
+        Number value = observable.getValue();
+        if (value != null) {
+          difference = difference - value.longValue();
+        }
+      }
+    }
+    return Long.valueOf(difference);
+  }
+
+  private static Long minus(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
+
+    return minus(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+  }
+
+  private static Long minus(Number v1, Number v2) {
+
+    if ((v1 == null) && (v2 == null)) {
+      return null;
+    }
+    if (v1 == null) {
+      return to(v2);
+    }
+    if (v2 == null) {
+      return to(v1);
+    }
+    return Long.valueOf(v1.longValue() - v2.longValue());
+  }
+
+  private static Long minus(long v1, Number v2) {
+
+    if (v2 != null) {
+      v1 = v1 - v2.longValue();
     }
     return Long.valueOf(v1);
   }

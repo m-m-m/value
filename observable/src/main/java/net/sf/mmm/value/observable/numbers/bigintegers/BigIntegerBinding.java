@@ -104,9 +104,63 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
-  public static BigIntegerExpression sum(ObservableValue<? extends Number>... observables) {
+  public static BigIntegerExpression addAll(ObservableValue<? extends Number>... observables) {
 
     return new BigIntegerBinding(() -> plusAll(observables), observables);
+  }
+
+  /**
+   * @param expression the {@link NumberExpression}.
+   * @param other the {@link ObservableValue} to subtract.
+   * @return a new {@link BigIntegerExpression} holding the difference of the {@link #getValue() value}s of the first
+   *         and the second given {@link ObservableValue}s.
+   * @see #subtract(ObservableBigIntegerValue)
+   */
+  public static BigIntegerExpression subtract(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return cast(expression);
+    }
+    return new BigIntegerBinding(() -> minus(expression, other), expression, other);
+  }
+
+  /**
+   * @param expression the {@link NumberExpression}.
+   * @param constant the constant {@link Number} to subtract.
+   * @return a new {@link BigIntegerExpression} holding the difference of the {@link #getValue() value} from the given
+   *         {@link BigIntegerExpression} with the given {@code constant}.
+   * @see #subtract(ObservableBigIntegerValue)
+   */
+  public static BigIntegerExpression subtract(NumberExpression<?> expression, Number constant) {
+
+    return subtract(expression, to(constant));
+  }
+
+  /**
+   * @param expression the {@link NumberExpression}.
+   * @param constant the constant {@code BigInteger} to subtract.
+   * @return a new {@link BigIntegerExpression} holding the difference of the {@link #getValue() value} from the given
+   *         {@link BigIntegerExpression} with the given {@code constant}.
+   * @see #subtract(ObservableBigIntegerValue)
+   */
+  public static BigIntegerExpression subtract(NumberExpression<?> expression, BigInteger constant) {
+
+    if (constant == null) {
+      return cast(expression);
+    }
+    Objects.requireNonNull(expression, "expression");
+    return new BigIntegerBinding(() -> minus(constant, expression.getValue()), expression);
+  }
+
+  /**
+   * @param observables the {@link ObservableValue}s to subtract.
+   * @return a new {@link BigIntegerExpression} holding the difference of the {@link #getValue() value}s from the given
+   *         {@link ObservableValue}s.
+   */
+  @SafeVarargs
+  public static BigIntegerExpression subtractAll(ObservableValue<? extends Number>... observables) {
+
+    return new BigIntegerBinding(() -> minusAll(observables), observables);
   }
 
   private static BigInteger to(Number value) {
@@ -166,6 +220,43 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
       return v1;
     }
     return v1.add(to(v2));
+  }
+
+  @SafeVarargs
+  private static BigInteger minusAll(ReadableValue<? extends Number>... observables) {
+
+    BigInteger sum = null;
+    for (ReadableValue<? extends Number> observable : observables) {
+      if (observable != null) {
+        Number value = observable.getValue();
+        if (value != null) {
+          if (sum == null) {
+            sum = BigInteger.ZERO;
+          }
+          sum = sum.subtract(to(value));
+        }
+      }
+    }
+    return sum;
+  }
+
+  private static BigInteger minus(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
+
+    return minus(to(ReadableValue.unwrap(v1)), ReadableValue.unwrap(v2));
+  }
+
+  private static BigInteger minus(BigInteger v1, Number v2) {
+
+    if ((v1 == null) && (v2 == null)) {
+      return null;
+    }
+    if (v1 == null) {
+      return to(v2);
+    }
+    if (v2 == null) {
+      return v1;
+    }
+    return v1.subtract(to(v2));
   }
 
 }

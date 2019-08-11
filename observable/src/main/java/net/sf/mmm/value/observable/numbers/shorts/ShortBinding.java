@@ -99,9 +99,62 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
-  public static ShortExpression sum(ObservableValue<? extends Number>... observables) {
+  public static ShortExpression addAll(ObservableValue<? extends Number>... observables) {
 
     return new ShortBinding(() -> plusAll(observables), observables);
+  }
+
+  /**
+   * @param expression the {@link ShortExpression}.
+   * @param other the {@link ObservableValue} to subtract.
+   * @return a new {@link ShortExpression} holding the difference of the {@link #getValue() value}s of the first and the
+   *         second given {@link ObservableValue}s.
+   * @see #subtract(ObservableShortValue)
+   */
+  public static ShortExpression subtract(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return cast(expression);
+    }
+    return new ShortBinding(() -> minus(expression, other), expression, other);
+  }
+
+  /**
+   * @param expression the {@link ShortExpression}.
+   * @param constant the constant {@link Number} to subtract.
+   * @return a new {@link ShortExpression} holding the difference of the {@link #getValue() value} from the given
+   *         {@link ShortExpression} with the given {@code constant}.
+   * @see #subtract(ObservableShortValue)
+   */
+  public static ShortExpression subtract(NumberExpression<?> expression, Number constant) {
+
+    if (constant == null) {
+      return cast(expression);
+    }
+    return subtract(expression, constant.shortValue());
+  }
+
+  /**
+   * @param expression the {@link ShortExpression}.
+   * @param constant the constant {@code short} to subtract.
+   * @return a new {@link ShortExpression} holding the difference of the {@link #getValue() value} from the given
+   *         {@link ShortExpression} with the given {@code constant}.
+   * @see #subtract(ObservableShortValue)
+   */
+  public static ShortExpression subtract(NumberExpression<?> expression, short constant) {
+
+    return new ShortBinding(() -> minus(constant, expression.getValue()), expression);
+  }
+
+  /**
+   * @param observables the {@link ObservableValue}s to subtract.
+   * @return a new {@link ShortExpression} holding the difference of the {@link #getValue() value}s from the given
+   *         {@link ObservableValue}s.
+   */
+  @SafeVarargs
+  public static ShortExpression subtractAll(ObservableValue<? extends Number>... observables) {
+
+    return new ShortBinding(() -> minusAll(observables), observables);
   }
 
   private static Short to(Number value) {
@@ -159,6 +212,48 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
 
     if (v2 != null) {
       v1 = (short) (v1 + v2.shortValue());
+    }
+    return Short.valueOf(v1);
+  }
+
+  @SafeVarargs
+  private static Short minusAll(ReadableValue<? extends Number>... observables) {
+
+    short difference = 0;
+    for (ReadableValue<? extends Number> observable : observables) {
+      if (observable != null) {
+        Number value = observable.getValue();
+        if (value != null) {
+          difference = (short) (difference - value.shortValue());
+        }
+      }
+    }
+    return Short.valueOf(difference);
+  }
+
+  private static Short minus(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
+
+    return minus(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+  }
+
+  private static Short minus(Number v1, Number v2) {
+
+    if ((v1 == null) && (v2 == null)) {
+      return null;
+    }
+    if (v1 == null) {
+      return to(v2);
+    }
+    if (v2 == null) {
+      return to(v1);
+    }
+    return Short.valueOf((short) (v1.shortValue() - v2.shortValue()));
+  }
+
+  private static Short minus(short v1, Number v2) {
+
+    if (v2 != null) {
+      v1 = (short) (v1 - v2.shortValue());
     }
     return Short.valueOf(v1);
   }

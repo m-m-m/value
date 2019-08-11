@@ -122,4 +122,100 @@ public interface BigDecimalExpression extends ObservableBigDecimalValue, NumberE
     return add((double) constant);
   }
 
+  @Override
+  default BigDecimalExpression subtract(ObservableValue<? extends Number> other) {
+
+    return BigDecimalBinding.subtract(this, other);
+  }
+
+  @Override
+  default BigDecimalExpression subtract(ObservableBigIntegerValue other) {
+
+    return BigDecimalBinding.subtract(this, other);
+  }
+
+  @Override
+  default BigDecimalExpression subtract(ObservableDoubleValue other) {
+
+    return BigDecimalBinding.subtract(this, other);
+  }
+
+  @Override
+  default BigDecimalExpression subtract(ObservableFloatValue other) {
+
+    return BigDecimalBinding.subtract(this, other);
+  }
+
+  @Override
+  default BigDecimalExpression subtract(ObservableLongValue other) {
+
+    return BigDecimalBinding.subtract(this, other);
+  }
+
+  @Override
+  default BigDecimalExpression subtract(ObservableIntegerValue other) {
+
+    return BigDecimalBinding.subtract(this, other);
+  }
+
+  @Override
+  default BigDecimalExpression subtract(ObservableShortValue other) {
+
+    return BigDecimalBinding.subtract(this, other);
+  }
+
+  @Override
+  default BigDecimalExpression subtract(ObservableByteValue other) {
+
+    return BigDecimalBinding.subtract(this, other);
+  }
+
+  @Override
+  default BigDecimalExpression subtract(Number constant) {
+
+    return BigDecimalBinding.subtract(this, constant);
+  }
+
+  @Override
+  default BigDecimalExpression subtract(BigInteger constant) {
+
+    return subtract(new BigDecimal(constant));
+  }
+
+  @Override
+  default BigDecimalExpression subtract(double constant) {
+
+    return subtract(BigDecimal.valueOf(constant));
+  }
+
+  @Override
+  default BigDecimalExpression subtract(float constant) {
+
+    return subtract((double) constant);
+  }
+
+  @Override
+  default BigDecimalExpression subtract(long constant) {
+
+    return subtract((double) constant);
+  }
+
+  @Override
+  default BigDecimalExpression subtract(int constant) {
+
+    return subtract((double) constant);
+  }
+
+  @Override
+  default BigDecimalExpression subtract(short constant) {
+
+    return subtract((double) constant);
+  }
+
+  @Override
+  default BigDecimalExpression subtract(byte constant) {
+
+    return subtract((double) constant);
+  }
+
 }

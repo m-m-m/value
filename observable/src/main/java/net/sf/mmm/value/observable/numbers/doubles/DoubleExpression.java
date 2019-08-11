@@ -139,6 +139,118 @@ public interface DoubleExpression extends ObservableDoubleValue, NumberExpressio
 
     return add((double) constant);
   }
+
+  @Override
+  default NumberExpression<?> subtract(ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return this;
+    } else if (other instanceof ObservableBigDecimalValue) {
+      return subtract((ObservableBigDecimalValue) other);
+    } else if (other instanceof ObservableBigIntegerValue) {
+      return subtract((ObservableBigIntegerValue) other);
+    } else {
+      return DoubleBinding.subtract(this, other);
+    }
+  }
+
+  @Override
+  default BigIntegerExpression subtract(ObservableBigIntegerValue other) {
+
+    return BigIntegerBinding.subtract(this, other);
+  }
+
+  @Override
+  default DoubleExpression subtract(ObservableDoubleValue other) {
+
+    return DoubleBinding.subtract(this, other);
+  }
+
+  @Override
+  default DoubleExpression subtract(ObservableFloatValue other) {
+
+    return DoubleBinding.subtract(this, other);
+  }
+
+  @Override
+  default DoubleExpression subtract(ObservableLongValue other) {
+
+    return DoubleBinding.subtract(this, other);
+  }
+
+  @Override
+  default DoubleExpression subtract(ObservableIntegerValue other) {
+
+    return DoubleBinding.subtract(this, other);
+  }
+
+  @Override
+  default DoubleExpression subtract(ObservableShortValue other) {
+
+    return DoubleBinding.subtract(this, other);
+  }
+
+  @Override
+  default DoubleExpression subtract(ObservableByteValue other) {
+
+    return DoubleBinding.subtract(this, other);
+  }
+
+  @Override
+  default NumberExpression<?> subtract(Number constant) {
+
+    if (constant == null) {
+      return this;
+    } else if (constant instanceof BigDecimal) {
+      return subtract((BigDecimal) constant);
+    } else if (constant instanceof BigInteger) {
+      return subtract((BigInteger) constant);
+    } else {
+      return subtract(constant.doubleValue());
+    }
+  }
+
+  @Override
+  default BigIntegerExpression subtract(BigInteger constant) {
+
+    return BigIntegerBinding.subtract(this, constant);
+  }
+
+  @Override
+  default DoubleExpression subtract(double constant) {
+
+    return DoubleBinding.subtract(this, constant);
+  }
+
+  @Override
+  default DoubleExpression subtract(float constant) {
+
+    return subtract((double) constant);
+  }
+
+  @Override
+  default DoubleExpression subtract(long constant) {
+
+    return subtract((double) constant);
+  }
+
+  @Override
+  default DoubleExpression subtract(int constant) {
+
+    return subtract((double) constant);
+  }
+
+  @Override
+  default DoubleExpression subtract(short constant) {
+
+    return subtract((double) constant);
+  }
+
+  @Override
+  default DoubleExpression subtract(byte constant) {
+
+    return subtract((double) constant);
+  }
   //
   // default DoubleBinding add(float other) {
   //

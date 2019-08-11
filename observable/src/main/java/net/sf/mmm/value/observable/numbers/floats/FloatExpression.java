@@ -111,4 +111,88 @@ public interface FloatExpression extends ObservableFloatValue, NumberExpression<
     return FloatBinding.add(this, constant);
   }
 
+  @Override
+  default BigIntegerExpression subtract(ObservableBigIntegerValue other) {
+
+    return BigIntegerBinding.subtract(this, other);
+  }
+
+  @Override
+  default DoubleExpression subtract(ObservableDoubleValue other) {
+
+    return DoubleBinding.subtract(this, other);
+  }
+
+  @Override
+  default FloatExpression subtract(ObservableFloatValue other) {
+
+    return FloatBinding.subtract(this, other);
+  }
+
+  @Override
+  default FloatExpression subtract(ObservableLongValue other) {
+
+    return FloatBinding.subtract(this, other);
+  }
+
+  @Override
+  default FloatExpression subtract(ObservableIntegerValue other) {
+
+    return FloatBinding.subtract(this, other);
+  }
+
+  @Override
+  default FloatExpression subtract(ObservableShortValue other) {
+
+    return FloatBinding.subtract(this, other);
+  }
+
+  @Override
+  default FloatExpression subtract(ObservableByteValue other) {
+
+    return FloatBinding.subtract(this, other);
+  }
+
+  @Override
+  default BigIntegerExpression subtract(BigInteger constant) {
+
+    return BigIntegerBinding.subtract(this, constant);
+  }
+
+  @Override
+  default DoubleExpression subtract(double constant) {
+
+    return DoubleBinding.subtract(this, constant);
+  }
+
+  @Override
+  default FloatExpression subtract(float constant) {
+
+    return FloatBinding.subtract(this, constant);
+  }
+
+  @Override
+  default FloatExpression subtract(long constant) {
+
+    return FloatBinding.subtract(this, constant);
+  }
+
+  @Override
+  default FloatExpression subtract(int constant) {
+
+    return FloatBinding.subtract(this, constant);
+  }
+
+  @Override
+  default FloatExpression subtract(short constant) {
+
+    return FloatBinding.subtract(this, constant);
+  }
+
+  @Override
+  default FloatExpression subtract(byte constant) {
+
+    return FloatBinding.subtract(this, constant);
+  }
+
 }

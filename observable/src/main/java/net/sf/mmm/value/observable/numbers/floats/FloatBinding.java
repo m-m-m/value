@@ -99,9 +99,62 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
-  public static FloatExpression sum(ObservableValue<? extends Number>... observables) {
+  public static FloatExpression addAll(ObservableValue<? extends Number>... observables) {
 
     return new FloatBinding(() -> plusAll(observables), observables);
+  }
+
+  /**
+   * @param expression the {@link FloatExpression}.
+   * @param other the {@link ObservableValue} to subtract.
+   * @return a new {@link FloatExpression} holding the difference of the {@link #getValue() value}s of the first and the
+   *         second given {@link ObservableValue}s.
+   * @see #subtract(ObservableFloatValue)
+   */
+  public static FloatExpression subtract(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return cast(expression);
+    }
+    return new FloatBinding(() -> minus(expression, other), expression, other);
+  }
+
+  /**
+   * @param expression the {@link FloatExpression}.
+   * @param constant the constant {@link Number} to subtract.
+   * @return a new {@link FloatExpression} holding the difference of the {@link #getValue() value} from the given
+   *         {@link FloatExpression} with the given {@code constant}.
+   * @see #subtract(ObservableFloatValue)
+   */
+  public static FloatExpression subtract(NumberExpression<?> expression, Number constant) {
+
+    if (constant == null) {
+      return cast(expression);
+    }
+    return subtract(expression, constant.floatValue());
+  }
+
+  /**
+   * @param expression the {@link FloatExpression}.
+   * @param constant the constant {@code float} to subtract.
+   * @return a new {@link FloatExpression} holding the difference of the {@link #getValue() value} from the given
+   *         {@link FloatExpression} with the given {@code constant}.
+   * @see #subtract(ObservableFloatValue)
+   */
+  public static FloatExpression subtract(NumberExpression<?> expression, float constant) {
+
+    return new FloatBinding(() -> minus(constant, expression.getValue()), expression);
+  }
+
+  /**
+   * @param observables the {@link ObservableValue}s to subtract.
+   * @return a new {@link FloatExpression} holding the difference of the {@link #getValue() value}s from the given
+   *         {@link ObservableValue}s.
+   */
+  @SafeVarargs
+  public static FloatExpression subtractAll(ObservableValue<? extends Number>... observables) {
+
+    return new FloatBinding(() -> minusAll(observables), observables);
   }
 
   private static Float to(Number value) {
@@ -161,6 +214,48 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
 
     if (v2 != null) {
       return v1 = v1 + v2.floatValue();
+    }
+    return Float.valueOf(v1);
+  }
+
+  @SafeVarargs
+  private static Float minusAll(ReadableValue<? extends Number>... observables) {
+
+    float difference = 0;
+    for (ReadableValue<? extends Number> observable : observables) {
+      if (observable != null) {
+        Number value = observable.getValue();
+        if (value != null) {
+          difference = difference - value.floatValue();
+        }
+      }
+    }
+    return Float.valueOf(difference);
+  }
+
+  private static Float minus(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
+
+    return minus(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+  }
+
+  private static Float minus(Number v1, Number v2) {
+
+    if ((v1 == null) && (v2 == null)) {
+      return null;
+    }
+    if (v1 == null) {
+      return to(v2);
+    }
+    if (v2 == null) {
+      return to(v1);
+    }
+    return Float.valueOf(v1.floatValue() - v2.floatValue());
+  }
+
+  private static Float minus(float v1, Number v2) {
+
+    if (v2 != null) {
+      return v1 = v1 - v2.floatValue();
     }
     return Float.valueOf(v1);
   }

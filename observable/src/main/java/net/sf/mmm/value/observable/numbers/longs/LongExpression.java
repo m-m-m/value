@@ -113,6 +113,90 @@ public interface LongExpression extends ObservableLongValue, NumberExpression<Lo
     return LongBinding.add(this, constant);
   }
 
+  @Override
+  default BigIntegerExpression subtract(ObservableBigIntegerValue other) {
+
+    return BigIntegerBinding.subtract(this, other);
+  }
+
+  @Override
+  default DoubleExpression subtract(ObservableDoubleValue other) {
+
+    return DoubleBinding.subtract(this, other);
+  }
+
+  @Override
+  default FloatExpression subtract(ObservableFloatValue other) {
+
+    return FloatBinding.subtract(this, other);
+  }
+
+  @Override
+  default LongExpression subtract(ObservableLongValue other) {
+
+    return LongBinding.subtract(this, other);
+  }
+
+  @Override
+  default LongExpression subtract(ObservableIntegerValue other) {
+
+    return LongBinding.subtract(this, other);
+  }
+
+  @Override
+  default LongExpression subtract(ObservableShortValue other) {
+
+    return LongBinding.subtract(this, other);
+  }
+
+  @Override
+  default LongExpression subtract(ObservableByteValue other) {
+
+    return LongBinding.subtract(this, other);
+  }
+
+  @Override
+  default BigIntegerExpression subtract(BigInteger constant) {
+
+    return BigIntegerBinding.subtract(this, constant);
+  }
+
+  @Override
+  default DoubleExpression subtract(double constant) {
+
+    return DoubleBinding.subtract(this, constant);
+  }
+
+  @Override
+  default FloatExpression subtract(float constant) {
+
+    return FloatBinding.subtract(this, constant);
+  }
+
+  @Override
+  default LongExpression subtract(long constant) {
+
+    return LongBinding.subtract(this, constant);
+  }
+
+  @Override
+  default LongExpression subtract(int constant) {
+
+    return LongBinding.subtract(this, constant);
+  }
+
+  @Override
+  default LongExpression subtract(short constant) {
+
+    return LongBinding.subtract(this, constant);
+  }
+
+  @Override
+  default LongExpression subtract(byte constant) {
+
+    return LongBinding.subtract(this, constant);
+  }
+
   //
   // default FloatBinding subtract(float other) {
   //

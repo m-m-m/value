@@ -134,4 +134,112 @@ public interface BigIntegerExpression extends ObservableBigIntegerValue, NumberE
 
     return add(BigInteger.valueOf(constant));
   }
+
+  @Override
+  default NumberExpression<?> subtract(ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return this;
+    } else if (other instanceof ObservableBigDecimalValue) {
+      return BigDecimalBinding.subtract(this, other);
+    } else {
+      return BigIntegerBinding.subtract(this, other);
+    }
+  }
+
+  @Override
+  default BigIntegerExpression subtract(ObservableBigIntegerValue other) {
+
+    return BigIntegerBinding.subtract(this, other);
+  }
+
+  @Override
+  default BigIntegerExpression subtract(ObservableDoubleValue other) {
+
+    return BigIntegerBinding.subtract(this, other);
+  }
+
+  @Override
+  default BigIntegerExpression subtract(ObservableFloatValue other) {
+
+    return BigIntegerBinding.subtract(this, other);
+  }
+
+  @Override
+  default BigIntegerExpression subtract(ObservableLongValue other) {
+
+    return BigIntegerBinding.subtract(this, other);
+  }
+
+  @Override
+  default BigIntegerExpression subtract(ObservableIntegerValue other) {
+
+    return BigIntegerBinding.subtract(this, other);
+  }
+
+  @Override
+  default BigIntegerExpression subtract(ObservableShortValue other) {
+
+    return BigIntegerBinding.subtract(this, other);
+  }
+
+  @Override
+  default BigIntegerExpression subtract(ObservableByteValue other) {
+
+    return BigIntegerBinding.subtract(this, other);
+  }
+
+  @Override
+  default NumberExpression<?> subtract(Number constant) {
+
+    if (constant == null) {
+      return this;
+    } else if (constant instanceof BigDecimal) {
+      return subtract((BigDecimal) constant);
+    } else {
+      return BigIntegerBinding.subtract(this, constant);
+    }
+  }
+
+  @Override
+  default BigIntegerExpression subtract(BigInteger constant) {
+
+    return BigIntegerBinding.subtract(this, constant);
+  }
+
+  @Override
+  default BigIntegerExpression subtract(double constant) {
+
+    return subtract((long) constant);
+  }
+
+  @Override
+  default BigIntegerExpression subtract(float constant) {
+
+    return subtract((long) constant);
+  }
+
+  @Override
+  default BigIntegerExpression subtract(long constant) {
+
+    return subtract(BigInteger.valueOf(constant));
+  }
+
+  @Override
+  default BigIntegerExpression subtract(int constant) {
+
+    return subtract(BigInteger.valueOf(constant));
+  }
+
+  @Override
+  default BigIntegerExpression subtract(short constant) {
+
+    return subtract(BigInteger.valueOf(constant));
+  }
+
+  @Override
+  default BigIntegerExpression subtract(byte constant) {
+
+    return subtract(BigInteger.valueOf(constant));
+  }
 }

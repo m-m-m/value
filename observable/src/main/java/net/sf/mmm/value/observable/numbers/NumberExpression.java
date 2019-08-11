@@ -209,6 +209,181 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
    */
   NumberExpression<?> add(byte constant);
 
+  /**
+   * @param other the {@link ObservableValue} holding the {@link Number} to subtract.
+   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableValue}.
+   */
+  default NumberExpression<?> subtract(ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return this;
+    } else if (other instanceof ObservableBigDecimalValue) {
+      return subtract((ObservableBigDecimalValue) other);
+    } else if (other instanceof ObservableBigIntegerValue) {
+      return subtract((ObservableBigIntegerValue) other);
+    } else if (other instanceof ObservableDoubleValue) {
+      return subtract((ObservableDoubleValue) other);
+    } else if (other instanceof ObservableFloatValue) {
+      return subtract((ObservableFloatValue) other);
+    } else if (other instanceof ObservableLongValue) {
+      return subtract((ObservableLongValue) other);
+    } else if (other instanceof ObservableIntegerValue) {
+      return subtract((ObservableIntegerValue) other);
+    } else if (other instanceof ObservableShortValue) {
+      return subtract((ObservableShortValue) other);
+    } else if (other instanceof ObservableByteValue) {
+      return subtract((ObservableShortValue) other);
+    } else {
+      return DoubleBinding.subtract(this, other);
+    }
+  }
+
+  /**
+   * @param other the {@link ObservableBigDecimalValue} holding the {@link Number} to subtract.
+   * @return a new {@link BigDecimalExpression} holding the difference of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableBigDecimalValue}.
+   */
+  default BigDecimalExpression subtract(ObservableBigDecimalValue other) {
+
+    return BigDecimalBinding.subtract(this, other);
+  }
+
+  /**
+   * @param other the {@link ObservableBigIntegerValue} holding the {@link Number} to subtract.
+   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableBigIntegerValue}.
+   */
+  NumberExpression<?> subtract(ObservableBigIntegerValue other);
+
+  /**
+   * @param other the {@link ObservableDoubleValue} holding the {@link Number} to subtract.
+   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableDoubleValue}.
+   */
+  NumberExpression<?> subtract(ObservableDoubleValue other);
+
+  /**
+   * @param other the {@link ObservableFloatValue} holding the {@link Number} to subtract.
+   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableFloatValue}.
+   */
+  NumberExpression<?> subtract(ObservableFloatValue other);
+
+  /**
+   * @param other the {@link ObservableLongValue} holding the {@link Number} to subtract.
+   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableLongValue}.
+   */
+  NumberExpression<?> subtract(ObservableLongValue other);
+
+  /**
+   * @param other the {@link ObservableIntegerValue} holding the {@link Number} to subtract.
+   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableIntegerValue}.
+   */
+  NumberExpression<?> subtract(ObservableIntegerValue other);
+
+  /**
+   * @param other the {@link ObservableShortValue} holding the {@link Number} to subtract.
+   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableShortValue}.
+   */
+  NumberExpression<?> subtract(ObservableShortValue other);
+
+  /**
+   * @param other the {@link ObservableByteValue} holding the {@link Number} to subtract.
+   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableByteValue}.
+   */
+  NumberExpression<?> subtract(ObservableByteValue other);
+
+  /**
+   * @param constant the constant {@link Number} to subtract.
+   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the given
+   *         {@code constant}.
+   */
+  default NumberExpression<?> subtract(Number constant) {
+
+    if (constant == null) {
+      return this;
+    } else if (constant instanceof BigDecimal) {
+      return subtract((BigDecimal) constant);
+    } else if (constant instanceof BigInteger) {
+      return subtract((BigInteger) constant);
+    } else if (constant instanceof Double) {
+      return subtract(constant.doubleValue());
+    } else if (constant instanceof Float) {
+      return subtract(constant.floatValue());
+    } else if (constant instanceof Long) {
+      return subtract(constant.longValue());
+    } else if (constant instanceof Short) {
+      return subtract(constant.shortValue());
+    } else if (constant instanceof Byte) {
+      return subtract(constant.byteValue());
+    } else {
+      return subtract(constant.doubleValue());
+    }
+  }
+
+  /**
+   * @param constant the constant {@link BigDecimal} to subtract.
+   * @return a new {@link BigDecimalExpression} holding the difference of this {@link #getValue() value} with the given
+   *         {@code constant}.
+   */
+  default BigDecimalExpression subtract(BigDecimal constant) {
+
+    return BigDecimalBinding.subtract(this, constant);
+  }
+
+  /**
+   * @param constant the constant {@link BigInteger} to subtract.
+   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the given
+   *         {@code constant}.
+   */
+  NumberExpression<?> subtract(BigInteger constant);
+
+  /**
+   * @param constant the constant {@code double} to subtract.
+   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the given
+   *         {@code constant}.
+   */
+  NumberExpression<?> subtract(double constant);
+
+  /**
+   * @param constant the constant {@code float} to subtract.
+   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the given
+   *         {@code constant}.
+   */
+  NumberExpression<?> subtract(float constant);
+
+  /**
+   * @param constant the constant {@code long} to subtract.
+   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the given
+   *         {@code constant}.
+   */
+  NumberExpression<?> subtract(long constant);
+
+  /**
+   * @param constant the constant {@code int} to subtract.
+   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the given
+   *         {@code constant}.
+   */
+  NumberExpression<?> subtract(int constant);
+
+  /**
+   * @param constant the constant {@code short} to subtract.
+   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the given
+   *         {@code constant}.
+   */
+  NumberExpression<?> subtract(short constant);
+
+  /**
+   * @param constant the constant {@code byte} to subtract.
+   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the given
+   *         {@code constant}.
+   */
+  NumberExpression<?> subtract(byte constant);
   //
   // default NumberBinding subtract(ObservableNumberValue other) {
   //
