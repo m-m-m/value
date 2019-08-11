@@ -157,6 +157,59 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
     return new FloatBinding(() -> minusAll(observables), observables);
   }
 
+  /**
+   * @param expression the {@link FloatExpression}.
+   * @param other the {@link ObservableValue} to multiply.
+   * @return a new {@link FloatExpression} holding the product of the {@link #getValue() value}s of the first and the
+   *         second given {@link ObservableValue}s.
+   * @see #multiply(ObservableFloatValue)
+   */
+  public static FloatExpression multiply(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return cast(expression);
+    }
+    return new FloatBinding(() -> mul(expression, other), expression, other);
+  }
+
+  /**
+   * @param expression the {@link FloatExpression}.
+   * @param constant the constant {@link Number} to multiply.
+   * @return a new {@link FloatExpression} holding the product of the {@link #getValue() value} from the given
+   *         {@link FloatExpression} multiplied with the given {@code constant}.
+   * @see #multiply(ObservableFloatValue)
+   */
+  public static FloatExpression multiply(NumberExpression<?> expression, Number constant) {
+
+    if (constant == null) {
+      return cast(expression);
+    }
+    return multiply(expression, constant.floatValue());
+  }
+
+  /**
+   * @param expression the {@link FloatExpression}.
+   * @param constant the constant {@code float} to multiply.
+   * @return a new {@link FloatExpression} holding the product of the {@link #getValue() value} from the given
+   *         {@link FloatExpression} multiplied with the given {@code constant}.
+   * @see #multiply(ObservableFloatValue)
+   */
+  public static FloatExpression multiply(NumberExpression<?> expression, float constant) {
+
+    return new FloatBinding(() -> mul(constant, expression.getValue()), expression);
+  }
+
+  /**
+   * @param observables the {@link ObservableValue}s to multiply.
+   * @return a new {@link FloatExpression} holding the product of the {@link #getValue() value}s from the given
+   *         {@link ObservableValue}s.
+   */
+  @SafeVarargs
+  public static FloatExpression multiplyAll(ObservableValue<? extends Number>... observables) {
+
+    return new FloatBinding(() -> mulAll(observables), observables);
+  }
+
   private static Float to(Number value) {
 
     if (value == null) {
@@ -256,6 +309,48 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
 
     if (v2 != null) {
       return v1 = v1 - v2.floatValue();
+    }
+    return Float.valueOf(v1);
+  }
+
+  @SafeVarargs
+  private static Float mulAll(ReadableValue<? extends Number>... observables) {
+
+    float product = 0;
+    for (ReadableValue<? extends Number> observable : observables) {
+      if (observable != null) {
+        Number value = observable.getValue();
+        if (value != null) {
+          product = product * value.floatValue();
+        }
+      }
+    }
+    return Float.valueOf(product);
+  }
+
+  private static Float mul(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
+
+    return mul(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+  }
+
+  private static Float mul(Number v1, Number v2) {
+
+    if ((v1 == null) && (v2 == null)) {
+      return null;
+    }
+    if (v1 == null) {
+      return to(v2);
+    }
+    if (v2 == null) {
+      return to(v1);
+    }
+    return Float.valueOf(v1.floatValue() * v2.floatValue());
+  }
+
+  private static Float mul(float v1, Number v2) {
+
+    if (v2 != null) {
+      return v1 = v1 * v2.floatValue();
     }
     return Float.valueOf(v1);
   }

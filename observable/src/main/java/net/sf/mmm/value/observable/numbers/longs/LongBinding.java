@@ -157,6 +157,59 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
     return new LongBinding(() -> minusAll(observables), observables);
   }
 
+  /**
+   * @param expression the {@link LongExpression}.
+   * @param other the {@link ObservableValue} to multiply.
+   * @return a new {@link LongExpression} holding the product of the {@link #getValue() value}s of the first and the
+   *         second given {@link ObservableValue}s.
+   * @see #multiply(ObservableLongValue)
+   */
+  public static LongExpression multiply(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return cast(expression);
+    }
+    return new LongBinding(() -> mul(expression, other), expression, other);
+  }
+
+  /**
+   * @param expression the {@link LongExpression}.
+   * @param constant the constant {@link Number} to multiply.
+   * @return a new {@link LongExpression} holding the product of the {@link #getValue() value} from the given
+   *         {@link LongExpression} multiplied with the given {@code constant}.
+   * @see #multiply(ObservableLongValue)
+   */
+  public static LongExpression multiply(NumberExpression<?> expression, Number constant) {
+
+    if (constant == null) {
+      return cast(expression);
+    }
+    return multiply(expression, constant.longValue());
+  }
+
+  /**
+   * @param expression the {@link LongExpression}.
+   * @param constant the constant {@code long} to multiply.
+   * @return a new {@link LongExpression} holding the product of the {@link #getValue() value} from the given
+   *         {@link LongExpression} multiplied with the given {@code constant}.
+   * @see #multiply(ObservableLongValue)
+   */
+  public static LongExpression multiply(NumberExpression<?> expression, long constant) {
+
+    return new LongBinding(() -> mul(constant, expression.getValue()), expression);
+  }
+
+  /**
+   * @param observables the {@link ObservableValue}s to multiply.
+   * @return a new {@link LongExpression} holding the product of the {@link #getValue() value}s from the given
+   *         {@link ObservableValue}s.
+   */
+  @SafeVarargs
+  public static LongExpression multiplyAll(ObservableValue<? extends Number>... observables) {
+
+    return new LongBinding(() -> mulAll(observables), observables);
+  }
+
   private static Long to(Number value) {
 
     if (value == null) {
@@ -256,6 +309,48 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
 
     if (v2 != null) {
       v1 = v1 - v2.longValue();
+    }
+    return Long.valueOf(v1);
+  }
+
+  @SafeVarargs
+  private static Long mulAll(ReadableValue<? extends Number>... observables) {
+
+    long product = 1;
+    for (ReadableValue<? extends Number> observable : observables) {
+      if (observable != null) {
+        Number value = observable.getValue();
+        if (value != null) {
+          product = product * value.longValue();
+        }
+      }
+    }
+    return Long.valueOf(product);
+  }
+
+  private static Long mul(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
+
+    return mul(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+  }
+
+  private static Long mul(Number v1, Number v2) {
+
+    if ((v1 == null) && (v2 == null)) {
+      return null;
+    }
+    if (v1 == null) {
+      return to(v2);
+    }
+    if (v2 == null) {
+      return to(v1);
+    }
+    return Long.valueOf(v1.longValue() * v2.longValue());
+  }
+
+  private static Long mul(long v1, Number v2) {
+
+    if (v2 != null) {
+      v1 = v1 * v2.longValue();
     }
     return Long.valueOf(v1);
   }

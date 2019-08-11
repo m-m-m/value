@@ -199,4 +199,88 @@ public interface IntegerExpression extends ObservableIntegerValue, NumberExpress
     return IntegerBinding.subtract(this, constant);
   }
 
+  @Override
+  default BigIntegerExpression multiply(ObservableBigIntegerValue other) {
+
+    return BigIntegerBinding.multiply(this, other);
+  }
+
+  @Override
+  default DoubleExpression multiply(ObservableDoubleValue other) {
+
+    return DoubleBinding.multiply(this, other);
+  }
+
+  @Override
+  default FloatExpression multiply(ObservableFloatValue other) {
+
+    return FloatBinding.multiply(this, other);
+  }
+
+  @Override
+  default LongExpression multiply(ObservableLongValue other) {
+
+    return LongBinding.multiply(this, other);
+  }
+
+  @Override
+  default IntegerExpression multiply(ObservableIntegerValue other) {
+
+    return IntegerBinding.multiply(this, other);
+  }
+
+  @Override
+  default IntegerExpression multiply(ObservableShortValue other) {
+
+    return IntegerBinding.multiply(this, other);
+  }
+
+  @Override
+  default IntegerExpression multiply(ObservableByteValue other) {
+
+    return IntegerBinding.multiply(this, other);
+  }
+
+  @Override
+  default BigIntegerExpression multiply(BigInteger constant) {
+
+    return BigIntegerBinding.multiply(this, constant);
+  }
+
+  @Override
+  default DoubleExpression multiply(double constant) {
+
+    return DoubleBinding.multiply(this, constant);
+  }
+
+  @Override
+  default FloatExpression multiply(float constant) {
+
+    return FloatBinding.multiply(this, constant);
+  }
+
+  @Override
+  default LongExpression multiply(long constant) {
+
+    return LongBinding.multiply(this, constant);
+  }
+
+  @Override
+  default IntegerExpression multiply(int constant) {
+
+    return IntegerBinding.multiply(this, constant);
+  }
+
+  @Override
+  default IntegerExpression multiply(short constant) {
+
+    return IntegerBinding.multiply(this, constant);
+  }
+
+  @Override
+  default IntegerExpression multiply(byte constant) {
+
+    return IntegerBinding.multiply(this, constant);
+  }
+
 }

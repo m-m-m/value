@@ -157,6 +157,59 @@ public class IntegerBinding extends NumberBinding<Integer> implements IntegerExp
     return new IntegerBinding(() -> minusAll(observables), observables);
   }
 
+  /**
+   * @param expression the {@link IntegerExpression}.
+   * @param other the {@link ObservableValue} to multiply.
+   * @return a new {@link IntegerExpression} holding the product of the {@link #getValue() value}s of the first and the
+   *         second given {@link ObservableValue}s.
+   * @see #multiply(ObservableIntegerValue)
+   */
+  public static IntegerExpression multiply(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return cast(expression);
+    }
+    return new IntegerBinding(() -> mul(expression, other), expression, other);
+  }
+
+  /**
+   * @param expression the {@link IntegerExpression}.
+   * @param constant the constant {@link Number} to multiply.
+   * @return a new {@link IntegerExpression} holding the product of the {@link #getValue() value} from the given
+   *         {@link IntegerExpression} multiplied with the given {@code constant}.
+   * @see #multiply(ObservableIntegerValue)
+   */
+  public static IntegerExpression multiply(NumberExpression<?> expression, Number constant) {
+
+    if (constant == null) {
+      return cast(expression);
+    }
+    return multiply(expression, constant.intValue());
+  }
+
+  /**
+   * @param expression the {@link IntegerExpression}.
+   * @param constant the constant {@code int} to multiply.
+   * @return a new {@link IntegerExpression} holding the product of the {@link #getValue() value} from the given
+   *         {@link IntegerExpression} multiplied with the given {@code constant}.
+   * @see #multiply(ObservableIntegerValue)
+   */
+  public static IntegerExpression multiply(NumberExpression<?> expression, int constant) {
+
+    return new IntegerBinding(() -> mul(constant, expression.getValue()), expression);
+  }
+
+  /**
+   * @param observables the {@link ObservableValue}s to multiply.
+   * @return a new {@link IntegerExpression} holding the product of the {@link #getValue() value}s from the given
+   *         {@link ObservableValue}s.
+   */
+  @SafeVarargs
+  public static IntegerExpression multiplyAll(ObservableValue<? extends Number>... observables) {
+
+    return new IntegerBinding(() -> mulAll(observables), observables);
+  }
+
   private static Integer to(Number value) {
 
     if (value == null) {
@@ -256,6 +309,48 @@ public class IntegerBinding extends NumberBinding<Integer> implements IntegerExp
 
     if (v2 != null) {
       v1 = v1 - v2.intValue();
+    }
+    return Integer.valueOf(v1);
+  }
+
+  @SafeVarargs
+  private static Integer mulAll(ReadableValue<? extends Number>... observables) {
+
+    int product = 1;
+    for (ReadableValue<? extends Number> observable : observables) {
+      if (observable != null) {
+        Number value = observable.getValue();
+        if (value != null) {
+          product = product * value.intValue();
+        }
+      }
+    }
+    return Integer.valueOf(product);
+  }
+
+  private static Integer mul(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
+
+    return mul(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+  }
+
+  private static Integer mul(Number v1, Number v2) {
+
+    if ((v1 == null) && (v2 == null)) {
+      return null;
+    }
+    if (v1 == null) {
+      return to(v2);
+    }
+    if (v2 == null) {
+      return to(v1);
+    }
+    return Integer.valueOf(v1.intValue() * v2.intValue());
+  }
+
+  private static Integer mul(int v1, Number v2) {
+
+    if (v2 != null) {
+      v1 = v1 * v2.intValue();
     }
     return Integer.valueOf(v1);
   }

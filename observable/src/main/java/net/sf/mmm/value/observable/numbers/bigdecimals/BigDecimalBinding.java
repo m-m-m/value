@@ -162,6 +162,60 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
     return new BigDecimalBinding(() -> minusAll(observables), observables);
   }
 
+  /**
+   * @param expression the {@link BigDecimalExpression}.
+   * @param other the {@link ObservableValue} to multiply.
+   * @return a new {@link BigDecimalExpression} holding the product of the {@link #getValue() value}s of the first and
+   *         the second given {@link ObservableValue}s.
+   * @see #multiply(ObservableBigDecimalValue)
+   */
+  public static BigDecimalExpression multiply(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return cast(expression);
+    }
+    return new BigDecimalBinding(() -> mulAll(expression, other), expression, other);
+  }
+
+  /**
+   * @param expression the {@link NumberExpression}.
+   * @param constant the constant {@link Number} to multiply.
+   * @return a new {@link BigDecimalExpression} holding the product of the {@link #getValue() value} from the given
+   *         {@link BigDecimalExpression} multiplied with the given {@code constant}.
+   * @see #multiply(ObservableBigDecimalValue)
+   */
+  public static BigDecimalExpression multiply(NumberExpression<?> expression, Number constant) {
+
+    return multiply(expression, to(constant));
+  }
+
+  /**
+   * @param expression the {@link BigDecimalExpression}.
+   * @param constant the constant {@code BigDecimal} to multiply.
+   * @return a new {@link BigDecimalExpression} holding the product of the {@link #getValue() value} from the given
+   *         {@link BigDecimalExpression} multiplied with the given {@code constant}.
+   * @see #multiply(ObservableBigDecimalValue)
+   */
+  public static BigDecimalExpression multiply(NumberExpression<?> expression, BigDecimal constant) {
+
+    if (constant == null) {
+      return cast(expression);
+    }
+    Objects.requireNonNull(expression, "expression");
+    return new BigDecimalBinding(() -> mul(constant, expression.getValue()), expression);
+  }
+
+  /**
+   * @param observables the {@link ObservableValue}s to multiply.
+   * @return a new {@link BigDecimalExpression} holding the product of the {@link #getValue() value}s from the given
+   *         {@link ObservableValue}s.
+   */
+  @SafeVarargs
+  public static BigDecimalExpression multiplyAll(ObservableValue<? extends Number>... observables) {
+
+    return new BigDecimalBinding(() -> mulAll(observables), observables);
+  }
+
   private static BigDecimal to(Number value) {
 
     if (value == null) {
@@ -248,6 +302,38 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
       return v1;
     }
     return v1.subtract(to(v2));
+  }
+
+  @SafeVarargs
+  private static BigDecimal mulAll(ReadableValue<? extends Number>... observables) {
+
+    BigDecimal product = null;
+    for (ReadableValue<? extends Number> observable : observables) {
+      if (observable != null) {
+        Number value = observable.getValue();
+        if (value != null) {
+          if (product == null) {
+            product = BigDecimal.ONE;
+          }
+          product = product.multiply(to(value));
+        }
+      }
+    }
+    return product;
+  }
+
+  private static BigDecimal mul(BigDecimal v1, Number v2) {
+
+    if ((v1 == null) && (v2 == null)) {
+      return null;
+    }
+    if (v1 == null) {
+      return to(v2);
+    }
+    if (v2 == null) {
+      return v1;
+    }
+    return v1.multiply(to(v2));
   }
 
 }

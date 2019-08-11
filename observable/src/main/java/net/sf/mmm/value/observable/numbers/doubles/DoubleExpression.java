@@ -251,56 +251,119 @@ public interface DoubleExpression extends ObservableDoubleValue, NumberExpressio
 
     return subtract((double) constant);
   }
-  //
-  // default DoubleBinding add(float other) {
-  //
-  // return (DoubleBinding) Bindings.add(this, other);
-  // }
-  //
-  // default DoubleBinding add(long other) {
-  //
-  // return (DoubleBinding) Bindings.add(this, other);
-  // }
-  //
-  // default DoubleBinding add(int other) {
-  //
-  // return (DoubleBinding) Bindings.add(this, other);
-  // }
-  //
-  // default DoubleBinding subtract(float other) {
-  //
-  // return (DoubleBinding) Bindings.subtract(this, other);
-  // }
-  //
-  // default DoubleBinding subtract(long other) {
-  //
-  // return (DoubleBinding) Bindings.subtract(this, other);
-  // }
-  //
-  // default DoubleBinding subtract(int other) {
-  //
-  // return (DoubleBinding) Bindings.subtract(this, other);
-  // }
-  //
-  // default DoubleBinding multiply(float other) {
-  //
-  // return (DoubleBinding) Bindings.multiply(this, other);
-  // }
-  //
-  // default DoubleBinding multiply(long other) {
-  //
-  // return (DoubleBinding) Bindings.multiply(this, other);
-  // }
-  //
-  // default DoubleBinding multiply(int other) {
-  //
-  // return (DoubleBinding) Bindings.multiply(this, other);
-  // }
-  //
-  // default DoubleBinding divide(float other) {
-  //
-  // return (DoubleBinding) Bindings.divide(this, other);
-  // }
+
+  @Override
+  default NumberExpression<?> multiply(ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return this;
+    } else if (other instanceof ObservableBigDecimalValue) {
+      return multiply((ObservableBigDecimalValue) other);
+    } else if (other instanceof ObservableBigIntegerValue) {
+      return multiply((ObservableBigIntegerValue) other);
+    } else {
+      return DoubleBinding.multiply(this, other);
+    }
+  }
+
+  @Override
+  default BigIntegerExpression multiply(ObservableBigIntegerValue other) {
+
+    return BigIntegerBinding.multiply(this, other);
+  }
+
+  @Override
+  default DoubleExpression multiply(ObservableDoubleValue other) {
+
+    return DoubleBinding.multiply(this, other);
+  }
+
+  @Override
+  default DoubleExpression multiply(ObservableFloatValue other) {
+
+    return DoubleBinding.multiply(this, other);
+  }
+
+  @Override
+  default DoubleExpression multiply(ObservableLongValue other) {
+
+    return DoubleBinding.multiply(this, other);
+  }
+
+  @Override
+  default DoubleExpression multiply(ObservableIntegerValue other) {
+
+    return DoubleBinding.multiply(this, other);
+  }
+
+  @Override
+  default DoubleExpression multiply(ObservableShortValue other) {
+
+    return DoubleBinding.multiply(this, other);
+  }
+
+  @Override
+  default DoubleExpression multiply(ObservableByteValue other) {
+
+    return DoubleBinding.multiply(this, other);
+  }
+
+  @Override
+  default NumberExpression<?> multiply(Number constant) {
+
+    if (constant == null) {
+      return this;
+    } else if (constant instanceof BigDecimal) {
+      return multiply((BigDecimal) constant);
+    } else if (constant instanceof BigInteger) {
+      return multiply((BigInteger) constant);
+    } else {
+      return multiply(constant.doubleValue());
+    }
+  }
+
+  @Override
+  default BigIntegerExpression multiply(BigInteger constant) {
+
+    return BigIntegerBinding.multiply(this, constant);
+  }
+
+  @Override
+  default DoubleExpression multiply(double constant) {
+
+    return DoubleBinding.multiply(this, constant);
+  }
+
+  @Override
+  default DoubleExpression multiply(float constant) {
+
+    return multiply((double) constant);
+  }
+
+  @Override
+  default DoubleExpression multiply(long constant) {
+
+    return multiply((double) constant);
+  }
+
+  @Override
+  default DoubleExpression multiply(int constant) {
+
+    return multiply((double) constant);
+  }
+
+  @Override
+  default DoubleExpression multiply(short constant) {
+
+    return multiply((double) constant);
+  }
+
+  @Override
+  default DoubleExpression multiply(byte constant) {
+
+    return multiply((double) constant);
+  }
+
   //
   // default DoubleBinding divide(long other) {
   //

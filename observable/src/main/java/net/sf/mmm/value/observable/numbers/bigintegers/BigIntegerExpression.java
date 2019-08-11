@@ -242,4 +242,112 @@ public interface BigIntegerExpression extends ObservableBigIntegerValue, NumberE
 
     return subtract(BigInteger.valueOf(constant));
   }
+
+  @Override
+  default NumberExpression<?> multiply(ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return this;
+    } else if (other instanceof ObservableBigDecimalValue) {
+      return BigDecimalBinding.multiply(this, other);
+    } else {
+      return BigIntegerBinding.multiply(this, other);
+    }
+  }
+
+  @Override
+  default BigIntegerExpression multiply(ObservableBigIntegerValue other) {
+
+    return BigIntegerBinding.multiply(this, other);
+  }
+
+  @Override
+  default BigIntegerExpression multiply(ObservableDoubleValue other) {
+
+    return BigIntegerBinding.multiply(this, other);
+  }
+
+  @Override
+  default BigIntegerExpression multiply(ObservableFloatValue other) {
+
+    return BigIntegerBinding.multiply(this, other);
+  }
+
+  @Override
+  default BigIntegerExpression multiply(ObservableLongValue other) {
+
+    return BigIntegerBinding.multiply(this, other);
+  }
+
+  @Override
+  default BigIntegerExpression multiply(ObservableIntegerValue other) {
+
+    return BigIntegerBinding.multiply(this, other);
+  }
+
+  @Override
+  default BigIntegerExpression multiply(ObservableShortValue other) {
+
+    return BigIntegerBinding.multiply(this, other);
+  }
+
+  @Override
+  default BigIntegerExpression multiply(ObservableByteValue other) {
+
+    return BigIntegerBinding.multiply(this, other);
+  }
+
+  @Override
+  default NumberExpression<?> multiply(Number constant) {
+
+    if (constant == null) {
+      return this;
+    } else if (constant instanceof BigDecimal) {
+      return multiply((BigDecimal) constant);
+    } else {
+      return BigIntegerBinding.multiply(this, constant);
+    }
+  }
+
+  @Override
+  default BigIntegerExpression multiply(BigInteger constant) {
+
+    return BigIntegerBinding.multiply(this, constant);
+  }
+
+  @Override
+  default BigIntegerExpression multiply(double constant) {
+
+    return multiply((long) constant);
+  }
+
+  @Override
+  default BigIntegerExpression multiply(float constant) {
+
+    return multiply((long) constant);
+  }
+
+  @Override
+  default BigIntegerExpression multiply(long constant) {
+
+    return multiply(BigInteger.valueOf(constant));
+  }
+
+  @Override
+  default BigIntegerExpression multiply(int constant) {
+
+    return multiply(BigInteger.valueOf(constant));
+  }
+
+  @Override
+  default BigIntegerExpression multiply(short constant) {
+
+    return multiply(BigInteger.valueOf(constant));
+  }
+
+  @Override
+  default BigIntegerExpression multiply(byte constant) {
+
+    return multiply(BigInteger.valueOf(constant));
+  }
 }

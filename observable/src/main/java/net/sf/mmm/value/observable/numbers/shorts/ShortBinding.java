@@ -157,6 +157,59 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
     return new ShortBinding(() -> minusAll(observables), observables);
   }
 
+  /**
+   * @param expression the {@link ShortExpression}.
+   * @param other the {@link ObservableValue} to multiply.
+   * @return a new {@link ShortExpression} holding the product of the {@link #getValue() value}s of the first and the
+   *         second given {@link ObservableValue}s.
+   * @see #multiply(ObservableShortValue)
+   */
+  public static ShortExpression multiply(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return cast(expression);
+    }
+    return new ShortBinding(() -> mul(expression, other), expression, other);
+  }
+
+  /**
+   * @param expression the {@link ShortExpression}.
+   * @param constant the constant {@link Number} to multiply.
+   * @return a new {@link ShortExpression} holding the product of the {@link #getValue() value} from the given
+   *         {@link ShortExpression} multiplied with the given {@code constant}.
+   * @see #multiply(ObservableShortValue)
+   */
+  public static ShortExpression multiply(NumberExpression<?> expression, Number constant) {
+
+    if (constant == null) {
+      return cast(expression);
+    }
+    return multiply(expression, constant.shortValue());
+  }
+
+  /**
+   * @param expression the {@link ShortExpression}.
+   * @param constant the constant {@code short} to multiply.
+   * @return a new {@link ShortExpression} holding the product of the {@link #getValue() value} from the given
+   *         {@link ShortExpression} multiplied with the given {@code constant}.
+   * @see #multiply(ObservableShortValue)
+   */
+  public static ShortExpression multiply(NumberExpression<?> expression, short constant) {
+
+    return new ShortBinding(() -> mul(constant, expression.getValue()), expression);
+  }
+
+  /**
+   * @param observables the {@link ObservableValue}s to multiply.
+   * @return a new {@link ShortExpression} holding the product of the {@link #getValue() value}s from the given
+   *         {@link ObservableValue}s.
+   */
+  @SafeVarargs
+  public static ShortExpression multiplyAll(ObservableValue<? extends Number>... observables) {
+
+    return new ShortBinding(() -> mulAll(observables), observables);
+  }
+
   private static Short to(Number value) {
 
     if (value == null) {
@@ -254,6 +307,48 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
 
     if (v2 != null) {
       v1 = (short) (v1 - v2.shortValue());
+    }
+    return Short.valueOf(v1);
+  }
+
+  @SafeVarargs
+  private static Short mulAll(ReadableValue<? extends Number>... observables) {
+
+    short product = 1;
+    for (ReadableValue<? extends Number> observable : observables) {
+      if (observable != null) {
+        Number value = observable.getValue();
+        if (value != null) {
+          product = (short) (product * value.shortValue());
+        }
+      }
+    }
+    return Short.valueOf(product);
+  }
+
+  private static Short mul(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
+
+    return mul(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+  }
+
+  private static Short mul(Number v1, Number v2) {
+
+    if ((v1 == null) && (v2 == null)) {
+      return null;
+    }
+    if (v1 == null) {
+      return to(v2);
+    }
+    if (v2 == null) {
+      return to(v1);
+    }
+    return Short.valueOf((short) (v1.shortValue() * v2.shortValue()));
+  }
+
+  private static Short mul(short v1, Number v2) {
+
+    if (v2 != null) {
+      v1 = (short) (v1 * v2.shortValue());
     }
     return Short.valueOf(v1);
   }

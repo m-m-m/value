@@ -384,57 +384,183 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
    *         {@code constant}.
    */
   NumberExpression<?> subtract(byte constant);
-  //
-  // default NumberBinding subtract(ObservableNumberValue other) {
-  //
-  // return Bindings.subtract(this, other);
-  // }
-  //
-  // default DoubleBinding subtract(double other) {
-  //
-  // return Bindings.subtract(this, other);
-  // }
-  //
-  // default NumberBinding subtract(float other) {
-  //
-  // return Bindings.subtract(this, other);
-  // }
-  //
-  // default NumberBinding subtract(long other) {
-  //
-  // return Bindings.subtract(this, other);
-  // }
-  //
-  // default NumberBinding subtract(int other) {
-  //
-  // return Bindings.subtract(this, other);
-  // }
-  //
-  // default NumberBinding multiply(ObservableNumberValue other) {
-  //
-  // return Bindings.multiply(this, other);
-  // }
-  //
-  // default DoubleBinding multiply(double other) {
-  //
-  // return Bindings.multiply(this, other);
-  // }
-  //
-  // default NumberBinding multiply(float other) {
-  //
-  // return Bindings.multiply(this, other);
-  // }
-  //
-  // default NumberBinding multiply(long other) {
-  //
-  // return Bindings.multiply(this, other);
-  // }
-  //
-  // default NumberBinding multiply(int other) {
-  //
-  // return Bindings.multiply(this, other);
-  // }
-  //
+
+  /**
+   * @param other the {@link ObservableValue} holding the {@link Number} to multiply.
+   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableValue}.
+   */
+  default NumberExpression<?> multiply(ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return this;
+    } else if (other instanceof ObservableBigDecimalValue) {
+      return multiply((ObservableBigDecimalValue) other);
+    } else if (other instanceof ObservableBigIntegerValue) {
+      return multiply((ObservableBigIntegerValue) other);
+    } else if (other instanceof ObservableDoubleValue) {
+      return multiply((ObservableDoubleValue) other);
+    } else if (other instanceof ObservableFloatValue) {
+      return multiply((ObservableFloatValue) other);
+    } else if (other instanceof ObservableLongValue) {
+      return multiply((ObservableLongValue) other);
+    } else if (other instanceof ObservableIntegerValue) {
+      return multiply((ObservableIntegerValue) other);
+    } else if (other instanceof ObservableShortValue) {
+      return multiply((ObservableShortValue) other);
+    } else if (other instanceof ObservableByteValue) {
+      return multiply((ObservableShortValue) other);
+    } else {
+      return DoubleBinding.multiply(this, other);
+    }
+  }
+
+  /**
+   * @param other the {@link ObservableBigDecimalValue} holding the {@link Number} to multiply.
+   * @return a new {@link BigDecimalExpression} holding the product of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableBigDecimalValue}.
+   */
+  default BigDecimalExpression multiply(ObservableBigDecimalValue other) {
+
+    return BigDecimalBinding.multiply(this, other);
+  }
+
+  /**
+   * @param other the {@link ObservableBigIntegerValue} holding the {@link Number} to multiply.
+   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableBigIntegerValue}.
+   */
+  NumberExpression<?> multiply(ObservableBigIntegerValue other);
+
+  /**
+   * @param other the {@link ObservableDoubleValue} holding the {@link Number} to multiply.
+   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableDoubleValue}.
+   */
+  NumberExpression<?> multiply(ObservableDoubleValue other);
+
+  /**
+   * @param other the {@link ObservableFloatValue} holding the {@link Number} to multiply.
+   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableFloatValue}.
+   */
+  NumberExpression<?> multiply(ObservableFloatValue other);
+
+  /**
+   * @param other the {@link ObservableLongValue} holding the {@link Number} to multiply.
+   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableLongValue}.
+   */
+  NumberExpression<?> multiply(ObservableLongValue other);
+
+  /**
+   * @param other the {@link ObservableIntegerValue} holding the {@link Number} to multiply.
+   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableIntegerValue}.
+   */
+  NumberExpression<?> multiply(ObservableIntegerValue other);
+
+  /**
+   * @param other the {@link ObservableShortValue} holding the {@link Number} to multiply.
+   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableShortValue}.
+   */
+  NumberExpression<?> multiply(ObservableShortValue other);
+
+  /**
+   * @param other the {@link ObservableByteValue} holding the {@link Number} to multiply.
+   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableByteValue}.
+   */
+  NumberExpression<?> multiply(ObservableByteValue other);
+
+  /**
+   * @param constant the constant {@link Number} to multiply.
+   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} multiplied with the
+   *         given {@code constant}.
+   */
+  default NumberExpression<?> multiply(Number constant) {
+
+    if (constant == null) {
+      return this;
+    } else if (constant instanceof BigDecimal) {
+      return multiply((BigDecimal) constant);
+    } else if (constant instanceof BigInteger) {
+      return multiply((BigInteger) constant);
+    } else if (constant instanceof Double) {
+      return multiply(constant.doubleValue());
+    } else if (constant instanceof Float) {
+      return multiply(constant.floatValue());
+    } else if (constant instanceof Long) {
+      return multiply(constant.longValue());
+    } else if (constant instanceof Short) {
+      return multiply(constant.shortValue());
+    } else if (constant instanceof Byte) {
+      return multiply(constant.byteValue());
+    } else {
+      return multiply(constant.doubleValue());
+    }
+  }
+
+  /**
+   * @param constant the constant {@link BigDecimal} to multiply.
+   * @return a new {@link BigDecimalExpression} holding the product of this {@link #getValue() value} multiplied with
+   *         the given {@code constant}.
+   */
+  default BigDecimalExpression multiply(BigDecimal constant) {
+
+    return BigDecimalBinding.multiply(this, constant);
+  }
+
+  /**
+   * @param constant the constant {@link BigInteger} to multiply.
+   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} multiplied with the
+   *         given {@code constant}.
+   */
+  NumberExpression<?> multiply(BigInteger constant);
+
+  /**
+   * @param constant the constant {@code double} to multiply.
+   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} multiplied with the
+   *         given {@code constant}.
+   */
+  NumberExpression<?> multiply(double constant);
+
+  /**
+   * @param constant the constant {@code float} to multiply.
+   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} multiplied with the
+   *         given {@code constant}.
+   */
+  NumberExpression<?> multiply(float constant);
+
+  /**
+   * @param constant the constant {@code long} to multiply.
+   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} multiplied with the
+   *         given {@code constant}.
+   */
+  NumberExpression<?> multiply(long constant);
+
+  /**
+   * @param constant the constant {@code int} to multiply.
+   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} multiplied with the
+   *         given {@code constant}.
+   */
+  NumberExpression<?> multiply(int constant);
+
+  /**
+   * @param constant the constant {@code short} to multiply.
+   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} multiplied with the
+   *         given {@code constant}.
+   */
+  NumberExpression<?> multiply(short constant);
+
+  /**
+   * @param constant the constant {@code byte} to multiply.
+   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} multiplied with the
+   *         given {@code constant}.
+   */
+  NumberExpression<?> multiply(byte constant);
+
   // default NumberBinding divide(ObservableNumberValue other) {
   //
   // return Bindings.divide(this, other);

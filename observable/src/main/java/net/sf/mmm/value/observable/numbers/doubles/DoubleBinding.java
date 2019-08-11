@@ -157,6 +157,59 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
     return new DoubleBinding(() -> minusAll(observables), observables);
   }
 
+  /**
+   * @param expression the {@link DoubleExpression}.
+   * @param other the {@link ObservableValue} to multiply.
+   * @return a new {@link DoubleExpression} holding the product of the {@link #getValue() value}s of the first and the
+   *         second given {@link ObservableValue}s.
+   * @see #multiply(ObservableDoubleValue)
+   */
+  public static DoubleExpression multiply(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return cast(expression);
+    }
+    return new DoubleBinding(() -> mul(expression, other), expression, other);
+  }
+
+  /**
+   * @param expression the {@link DoubleExpression}.
+   * @param constant the constant {@link Number} to multiply.
+   * @return a new {@link DoubleExpression} holding the product of the {@link #getValue() value} from the given
+   *         {@link DoubleExpression} multiplied with the given {@code constant}.
+   * @see #multiply(ObservableDoubleValue)
+   */
+  public static DoubleExpression multiply(NumberExpression<?> expression, Number constant) {
+
+    if (constant == null) {
+      return cast(expression);
+    }
+    return multiply(expression, constant.doubleValue());
+  }
+
+  /**
+   * @param expression the {@link DoubleExpression}.
+   * @param constant the constant {@code double} to multiply.
+   * @return a new {@link DoubleExpression} holding the product of the {@link #getValue() value} from the given
+   *         {@link DoubleExpression} multiplied with the given {@code constant}.
+   * @see #multiply(ObservableDoubleValue)
+   */
+  public static DoubleExpression multiply(NumberExpression<?> expression, double constant) {
+
+    return new DoubleBinding(() -> mul(constant, expression.getValue()), expression);
+  }
+
+  /**
+   * @param observables the {@link ObservableValue}s to multiply.
+   * @return a new {@link DoubleExpression} holding the product of the {@link #getValue() value}s from the given
+   *         {@link ObservableValue}s.
+   */
+  @SafeVarargs
+  public static DoubleExpression multiplyAll(ObservableValue<? extends Number>... observables) {
+
+    return new DoubleBinding(() -> mulAll(observables), observables);
+  }
+
   private static Double to(Number value) {
 
     if (value == null) {
@@ -259,4 +312,47 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
     }
     return Double.valueOf(v1);
   }
+
+  @SafeVarargs
+  private static Double mulAll(ReadableValue<? extends Number>... observables) {
+
+    double product = 0;
+    for (ReadableValue<? extends Number> observable : observables) {
+      if (observable != null) {
+        Number value = observable.getValue();
+        if (value != null) {
+          product = product * value.doubleValue();
+        }
+      }
+    }
+    return Double.valueOf(product);
+  }
+
+  private static Double mul(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
+
+    return mul(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+  }
+
+  private static Double mul(Number v1, Number v2) {
+
+    if ((v1 == null) && (v2 == null)) {
+      return null;
+    }
+    if (v1 == null) {
+      return to(v2);
+    }
+    if (v2 == null) {
+      return to(v1);
+    }
+    return Double.valueOf(v1.doubleValue() * v2.doubleValue());
+  }
+
+  private static Double mul(double v1, Number v2) {
+
+    if (v2 != null) {
+      return v1 = v1 * v2.doubleValue();
+    }
+    return Double.valueOf(v1);
+  }
+
 }

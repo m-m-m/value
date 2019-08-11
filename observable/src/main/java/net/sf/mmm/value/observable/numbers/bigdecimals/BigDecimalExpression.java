@@ -218,4 +218,100 @@ public interface BigDecimalExpression extends ObservableBigDecimalValue, NumberE
     return subtract((double) constant);
   }
 
+  @Override
+  default BigDecimalExpression multiply(ObservableValue<? extends Number> other) {
+
+    return BigDecimalBinding.multiply(this, other);
+  }
+
+  @Override
+  default BigDecimalExpression multiply(ObservableBigIntegerValue other) {
+
+    return BigDecimalBinding.multiply(this, other);
+  }
+
+  @Override
+  default BigDecimalExpression multiply(ObservableDoubleValue other) {
+
+    return BigDecimalBinding.multiply(this, other);
+  }
+
+  @Override
+  default BigDecimalExpression multiply(ObservableFloatValue other) {
+
+    return BigDecimalBinding.multiply(this, other);
+  }
+
+  @Override
+  default BigDecimalExpression multiply(ObservableLongValue other) {
+
+    return BigDecimalBinding.multiply(this, other);
+  }
+
+  @Override
+  default BigDecimalExpression multiply(ObservableIntegerValue other) {
+
+    return BigDecimalBinding.multiply(this, other);
+  }
+
+  @Override
+  default BigDecimalExpression multiply(ObservableShortValue other) {
+
+    return BigDecimalBinding.multiply(this, other);
+  }
+
+  @Override
+  default BigDecimalExpression multiply(ObservableByteValue other) {
+
+    return BigDecimalBinding.multiply(this, other);
+  }
+
+  @Override
+  default BigDecimalExpression multiply(Number constant) {
+
+    return BigDecimalBinding.multiply(this, constant);
+  }
+
+  @Override
+  default BigDecimalExpression multiply(BigInteger constant) {
+
+    return multiply(new BigDecimal(constant));
+  }
+
+  @Override
+  default BigDecimalExpression multiply(double constant) {
+
+    return multiply(BigDecimal.valueOf(constant));
+  }
+
+  @Override
+  default BigDecimalExpression multiply(float constant) {
+
+    return multiply((double) constant);
+  }
+
+  @Override
+  default BigDecimalExpression multiply(long constant) {
+
+    return multiply((double) constant);
+  }
+
+  @Override
+  default BigDecimalExpression multiply(int constant) {
+
+    return multiply((double) constant);
+  }
+
+  @Override
+  default BigDecimalExpression multiply(short constant) {
+
+    return multiply((double) constant);
+  }
+
+  @Override
+  default BigDecimalExpression multiply(byte constant) {
+
+    return multiply((double) constant);
+  }
+
 }

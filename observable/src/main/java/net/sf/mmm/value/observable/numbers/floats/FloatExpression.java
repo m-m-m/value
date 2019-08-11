@@ -195,4 +195,88 @@ public interface FloatExpression extends ObservableFloatValue, NumberExpression<
     return FloatBinding.subtract(this, constant);
   }
 
+  @Override
+  default BigIntegerExpression multiply(ObservableBigIntegerValue other) {
+
+    return BigIntegerBinding.multiply(this, other);
+  }
+
+  @Override
+  default DoubleExpression multiply(ObservableDoubleValue other) {
+
+    return DoubleBinding.multiply(this, other);
+  }
+
+  @Override
+  default FloatExpression multiply(ObservableFloatValue other) {
+
+    return FloatBinding.multiply(this, other);
+  }
+
+  @Override
+  default FloatExpression multiply(ObservableLongValue other) {
+
+    return FloatBinding.multiply(this, other);
+  }
+
+  @Override
+  default FloatExpression multiply(ObservableIntegerValue other) {
+
+    return FloatBinding.multiply(this, other);
+  }
+
+  @Override
+  default FloatExpression multiply(ObservableShortValue other) {
+
+    return FloatBinding.multiply(this, other);
+  }
+
+  @Override
+  default FloatExpression multiply(ObservableByteValue other) {
+
+    return FloatBinding.multiply(this, other);
+  }
+
+  @Override
+  default BigIntegerExpression multiply(BigInteger constant) {
+
+    return BigIntegerBinding.multiply(this, constant);
+  }
+
+  @Override
+  default DoubleExpression multiply(double constant) {
+
+    return DoubleBinding.multiply(this, constant);
+  }
+
+  @Override
+  default FloatExpression multiply(float constant) {
+
+    return FloatBinding.multiply(this, constant);
+  }
+
+  @Override
+  default FloatExpression multiply(long constant) {
+
+    return FloatBinding.multiply(this, constant);
+  }
+
+  @Override
+  default FloatExpression multiply(int constant) {
+
+    return FloatBinding.multiply(this, constant);
+  }
+
+  @Override
+  default FloatExpression multiply(short constant) {
+
+    return FloatBinding.multiply(this, constant);
+  }
+
+  @Override
+  default FloatExpression multiply(byte constant) {
+
+    return FloatBinding.multiply(this, constant);
+  }
+
 }

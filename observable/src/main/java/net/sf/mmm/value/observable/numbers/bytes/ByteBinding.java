@@ -157,6 +157,59 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
     return new ByteBinding(() -> minusAll(observables), observables);
   }
 
+  /**
+   * @param expression the {@link ByteExpression}.
+   * @param other the {@link ObservableValue} to multiply.
+   * @return a new {@link ByteExpression} holding the product of the {@link #getValue() value}s of the first and the
+   *         second given {@link ObservableValue}s.
+   * @see #multiply(ObservableByteValue)
+   */
+  public static ByteExpression multiply(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return cast(expression);
+    }
+    return new ByteBinding(() -> mul(expression, other), expression, other);
+  }
+
+  /**
+   * @param expression the {@link ByteExpression}.
+   * @param constant the constant {@link Number} to multiply.
+   * @return a new {@link ByteExpression} holding the product of the {@link #getValue() value} from the given
+   *         {@link ByteExpression} multiplied with the given {@code constant}.
+   * @see #multiply(ObservableByteValue)
+   */
+  public static ByteExpression multiply(NumberExpression<?> expression, Number constant) {
+
+    if (constant == null) {
+      return cast(expression);
+    }
+    return multiply(expression, constant.byteValue());
+  }
+
+  /**
+   * @param expression the {@link ByteExpression}.
+   * @param constant the constant {@code byte} to multiply.
+   * @return a new {@link ByteExpression} holding the product of the {@link #getValue() value} from the given
+   *         {@link ByteExpression} multiplied with the given {@code constant}.
+   * @see #multiply(ObservableByteValue)
+   */
+  public static ByteExpression multiply(NumberExpression<?> expression, byte constant) {
+
+    return new ByteBinding(() -> mul(constant, expression.getValue()), expression);
+  }
+
+  /**
+   * @param observables the {@link ObservableValue}s to multiply.
+   * @return a new {@link ByteExpression} holding the product of the {@link #getValue() value}s from the given
+   *         {@link ObservableValue}s.
+   */
+  @SafeVarargs
+  public static ByteExpression multiplyAll(ObservableValue<? extends Number>... observables) {
+
+    return new ByteBinding(() -> mulAll(observables), observables);
+  }
+
   private static Byte to(Number value) {
 
     if (value == null) {
@@ -254,6 +307,48 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
 
     if (v2 != null) {
       v1 = (byte) (v1 - v2.byteValue());
+    }
+    return Byte.valueOf(v1);
+  }
+
+  @SafeVarargs
+  private static Byte mulAll(ReadableValue<? extends Number>... observables) {
+
+    byte product = 1;
+    for (ReadableValue<? extends Number> observable : observables) {
+      if (observable != null) {
+        Number value = observable.getValue();
+        if (value != null) {
+          product = (byte) (product * value.byteValue());
+        }
+      }
+    }
+    return Byte.valueOf(product);
+  }
+
+  private static Byte mul(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
+
+    return mul(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+  }
+
+  private static Byte mul(Number v1, Number v2) {
+
+    if ((v1 == null) && (v2 == null)) {
+      return null;
+    }
+    if (v1 == null) {
+      return to(v2);
+    }
+    if (v2 == null) {
+      return to(v1);
+    }
+    return Byte.valueOf((byte) (v1.byteValue() * v2.byteValue()));
+  }
+
+  private static Byte mul(byte v1, Number v2) {
+
+    if (v2 != null) {
+      v1 = (byte) (v1 * v2.byteValue());
     }
     return Byte.valueOf(v1);
   }

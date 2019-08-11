@@ -197,37 +197,90 @@ public interface LongExpression extends ObservableLongValue, NumberExpression<Lo
     return LongBinding.subtract(this, constant);
   }
 
-  //
-  // default FloatBinding subtract(float other) {
-  //
-  // return (FloatBinding) Bindings.subtract(this, other);
-  // }
-  //
-  // default LongBinding subtract(long other) {
-  //
-  // return (LongBinding) Bindings.subtract(this, other);
-  // }
-  //
-  // default LongBinding subtract(int other) {
-  //
-  // return (LongBinding) Bindings.subtract(this, other);
-  // }
-  //
-  // default FloatBinding multiply(float other) {
-  //
-  // return (FloatBinding) Bindings.multiply(this, other);
-  // }
-  //
-  // default LongBinding multiply(long other) {
-  //
-  // return (LongBinding) Bindings.multiply(this, other);
-  // }
-  //
-  // default LongBinding multiply(int other) {
-  //
-  // return (LongBinding) Bindings.multiply(this, other);
-  // }
-  //
+  @Override
+  default BigIntegerExpression multiply(ObservableBigIntegerValue other) {
+
+    return BigIntegerBinding.multiply(this, other);
+  }
+
+  @Override
+  default DoubleExpression multiply(ObservableDoubleValue other) {
+
+    return DoubleBinding.multiply(this, other);
+  }
+
+  @Override
+  default FloatExpression multiply(ObservableFloatValue other) {
+
+    return FloatBinding.multiply(this, other);
+  }
+
+  @Override
+  default LongExpression multiply(ObservableLongValue other) {
+
+    return LongBinding.multiply(this, other);
+  }
+
+  @Override
+  default LongExpression multiply(ObservableIntegerValue other) {
+
+    return LongBinding.multiply(this, other);
+  }
+
+  @Override
+  default LongExpression multiply(ObservableShortValue other) {
+
+    return LongBinding.multiply(this, other);
+  }
+
+  @Override
+  default LongExpression multiply(ObservableByteValue other) {
+
+    return LongBinding.multiply(this, other);
+  }
+
+  @Override
+  default BigIntegerExpression multiply(BigInteger constant) {
+
+    return BigIntegerBinding.multiply(this, constant);
+  }
+
+  @Override
+  default DoubleExpression multiply(double constant) {
+
+    return DoubleBinding.multiply(this, constant);
+  }
+
+  @Override
+  default FloatExpression multiply(float constant) {
+
+    return FloatBinding.multiply(this, constant);
+  }
+
+  @Override
+  default LongExpression multiply(long constant) {
+
+    return LongBinding.multiply(this, constant);
+  }
+
+  @Override
+  default LongExpression multiply(int constant) {
+
+    return LongBinding.multiply(this, constant);
+  }
+
+  @Override
+  default LongExpression multiply(short constant) {
+
+    return LongBinding.multiply(this, constant);
+  }
+
+  @Override
+  default LongExpression multiply(byte constant) {
+
+    return LongBinding.multiply(this, constant);
+  }
+
   // default FloatBinding divide(float other) {
   //
   // return (FloatBinding) Bindings.divide(this, other);
