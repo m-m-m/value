@@ -43,10 +43,11 @@ public class ObservableEventImpl<V> implements ObservableEvent<V> {
   @Override
   public V getValue() {
 
-    if (this.value == null) {
-
+    if (!this.valueUpdated) {
+      this.value = this.observable.getValue();
+      this.valueUpdated = true;
     }
-    return null;
+    return this.value;
   }
 
   @Override
