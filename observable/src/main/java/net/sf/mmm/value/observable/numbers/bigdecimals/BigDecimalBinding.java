@@ -216,10 +216,64 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
     return new BigDecimalBinding(() -> mulAll(observables), observables);
   }
 
+  /**
+   * @param expression the {@link BigDecimalExpression}.
+   * @param other the {@link ObservableValue} to divide.
+   * @return a new {@link BigDecimalExpression} holding the quotient of the {@link #getValue() value}s of the first and
+   *         the second given {@link ObservableValue}s.
+   * @see #divide(ObservableBigDecimalValue)
+   */
+  public static BigDecimalExpression divide(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return cast(expression);
+    }
+    return new BigDecimalBinding(() -> divAll(expression, other), expression, other);
+  }
+
+  /**
+   * @param expression the {@link NumberExpression}.
+   * @param constant the constant {@link Number} to divide.
+   * @return a new {@link BigDecimalExpression} holding the quotient of the {@link #getValue() value} from the given
+   *         {@link BigDecimalExpression} divided by the given {@code constant}.
+   * @see #divide(ObservableBigDecimalValue)
+   */
+  public static BigDecimalExpression divide(NumberExpression<?> expression, Number constant) {
+
+    return divide(expression, to(constant));
+  }
+
+  /**
+   * @param expression the {@link BigDecimalExpression}.
+   * @param constant the constant {@code BigDecimal} to divide.
+   * @return a new {@link BigDecimalExpression} holding the quotient of the {@link #getValue() value} from the given
+   *         {@link BigDecimalExpression} divided by the given {@code constant}.
+   * @see #divide(ObservableBigDecimalValue)
+   */
+  public static BigDecimalExpression divide(NumberExpression<?> expression, BigDecimal constant) {
+
+    if (constant == null) {
+      return cast(expression);
+    }
+    Objects.requireNonNull(expression, "expression");
+    return new BigDecimalBinding(() -> div(constant, expression.getValue()), expression);
+  }
+
+  /**
+   * @param observables the {@link ObservableValue}s to divide.
+   * @return a new {@link BigDecimalExpression} holding the quotient of the {@link #getValue() value}s from the given
+   *         {@link ObservableValue}s.
+   */
+  @SafeVarargs
+  public static BigDecimalExpression divideAll(ObservableValue<? extends Number>... observables) {
+
+    return new BigDecimalBinding(() -> divAll(observables), observables);
+  }
+
   private static BigDecimal to(Number value) {
 
     if (value == null) {
-      return null;
+      return BigDecimal.ZERO;
     } else if (value instanceof BigDecimal) {
       return (BigDecimal) value;
     } else if (value instanceof BigInteger) {
@@ -242,16 +296,12 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
   @SafeVarargs
   private static BigDecimal plusAll(ReadableValue<? extends Number>... observables) {
 
-    BigDecimal sum = null;
+    BigDecimal sum = BigDecimal.ZERO;
     for (ReadableValue<? extends Number> observable : observables) {
       if (observable != null) {
         Number value = observable.getValue();
         if (value != null) {
-          if (sum == null) {
-            sum = to(value);
-          } else {
-            sum = sum.add(to(value));
-          }
+          sum = sum.add(to(value));
         }
       }
     }
@@ -260,13 +310,9 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
 
   private static BigDecimal plus(BigDecimal v1, Number v2) {
 
-    if ((v1 == null) && (v2 == null)) {
-      return null;
-    }
     if (v1 == null) {
       return to(v2);
-    }
-    if (v2 == null) {
+    } else if (v2 == null) {
       return v1;
     }
     return v1.add(to(v2));
@@ -277,28 +323,26 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
 
     BigDecimal difference = null;
     for (ReadableValue<? extends Number> observable : observables) {
-      if (observable != null) {
+      if (difference == null) {
+        difference = to(ReadableValue.unwrap(observable));
+      } else if (observable != null) {
         Number value = observable.getValue();
         if (value != null) {
-          if (difference == null) {
-            difference = BigDecimal.ZERO;
-          }
           difference = difference.subtract(to(value));
         }
       }
+    }
+    if (difference == null) {
+      difference = BigDecimal.ZERO;
     }
     return difference;
   }
 
   private static BigDecimal minus(BigDecimal v1, Number v2) {
 
-    if ((v1 == null) && (v2 == null)) {
-      return null;
-    }
     if (v1 == null) {
-      return to(v2);
-    }
-    if (v2 == null) {
+      return to(v2).negate();
+    } else if (v2 == null) {
       return v1;
     }
     return v1.subtract(to(v2));
@@ -309,31 +353,63 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
 
     BigDecimal product = null;
     for (ReadableValue<? extends Number> observable : observables) {
-      if (observable != null) {
-        Number value = observable.getValue();
-        if (value != null) {
-          if (product == null) {
-            product = BigDecimal.ONE;
-          }
-          product = product.multiply(to(value));
-        }
+      if (observable == null) {
+        return BigDecimal.ZERO;
       }
+      Number value = observable.getValue();
+      if (value == null) {
+        return BigDecimal.ZERO;
+      }
+      if (product == null) {
+        product = to(value);
+      } else {
+        product = product.multiply(to(value));
+      }
+    }
+    if (product == null) {
+      product = BigDecimal.ONE;
     }
     return product;
   }
 
   private static BigDecimal mul(BigDecimal v1, Number v2) {
 
-    if ((v1 == null) && (v2 == null)) {
-      return null;
-    }
-    if (v1 == null) {
-      return to(v2);
-    }
-    if (v2 == null) {
-      return v1;
+    if ((v1 == null) || (v2 == null)) {
+      return BigDecimal.ZERO;
     }
     return v1.multiply(to(v2));
+  }
+
+  @SafeVarargs
+  private static BigDecimal divAll(ReadableValue<? extends Number>... observables) {
+
+    BigDecimal quotient = null;
+    for (ReadableValue<? extends Number> observable : observables) {
+      BigDecimal arg = BigDecimal.ZERO;
+      if (observable != null) {
+        Number value = observable.getValue();
+        if (value != null) {
+          arg = to(value);
+        }
+      }
+      if (quotient == null) {
+        quotient = arg;
+      } else {
+        quotient = quotient.divide(arg);
+      }
+    }
+    if (quotient == null) {
+      quotient = BigDecimal.ONE;
+    }
+    return quotient;
+  }
+
+  private static BigDecimal div(BigDecimal v1, Number v2) {
+
+    if (v1 == null) {
+      v1 = BigDecimal.ZERO;
+    }
+    return v1.divide(to(v2));
   }
 
 }

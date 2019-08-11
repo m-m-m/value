@@ -287,4 +287,88 @@ public interface ByteExpression extends ObservableByteValue, NumberExpression<By
     return ByteBinding.multiply(this, constant);
   }
 
+  @Override
+  default BigIntegerExpression divide(ObservableBigIntegerValue other) {
+
+    return BigIntegerBinding.divide(this, other);
+  }
+
+  @Override
+  default DoubleExpression divide(ObservableDoubleValue other) {
+
+    return DoubleBinding.divide(this, other);
+  }
+
+  @Override
+  default FloatExpression divide(ObservableFloatValue other) {
+
+    return FloatBinding.divide(this, other);
+  }
+
+  @Override
+  default LongExpression divide(ObservableLongValue other) {
+
+    return LongBinding.divide(this, other);
+  }
+
+  @Override
+  default IntegerExpression divide(ObservableIntegerValue other) {
+
+    return IntegerBinding.divide(this, other);
+  }
+
+  @Override
+  default ShortExpression divide(ObservableShortValue other) {
+
+    return ShortBinding.divide(this, other);
+  }
+
+  @Override
+  default ByteExpression divide(ObservableByteValue other) {
+
+    return ByteBinding.divide(this, other);
+  }
+
+  @Override
+  default BigIntegerExpression divide(BigInteger constant) {
+
+    return BigIntegerBinding.divide(this, constant);
+  }
+
+  @Override
+  default DoubleExpression divide(double constant) {
+
+    return DoubleBinding.divide(this, constant);
+  }
+
+  @Override
+  default FloatExpression divide(float constant) {
+
+    return FloatBinding.divide(this, constant);
+  }
+
+  @Override
+  default LongExpression divide(long constant) {
+
+    return LongBinding.divide(this, constant);
+  }
+
+  @Override
+  default IntegerExpression divide(int constant) {
+
+    return IntegerBinding.divide(this, constant);
+  }
+
+  @Override
+  default ShortExpression divide(short constant) {
+
+    return ShortBinding.divide(this, constant);
+  }
+
+  @Override
+  default ByteExpression divide(byte constant) {
+
+    return ByteBinding.divide(this, constant);
+  }
+
 }

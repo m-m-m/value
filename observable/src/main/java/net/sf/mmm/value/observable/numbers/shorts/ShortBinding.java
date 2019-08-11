@@ -14,6 +14,8 @@ import net.sf.mmm.value.observable.numbers.NumberExpression;
  */
 public class ShortBinding extends NumberBinding<Short> implements ShortExpression {
 
+  private static final Short ZERO = Short.valueOf((short) 0);
+
   /**
    * The constructor.
    *
@@ -210,10 +212,63 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
     return new ShortBinding(() -> mulAll(observables), observables);
   }
 
+  /**
+   * @param expression the {@link ShortExpression}.
+   * @param other the {@link ObservableValue} to divide.
+   * @return a new {@link ShortExpression} holding the quotient of the {@link #getValue() value}s of the first and the
+   *         second given {@link ObservableValue}s.
+   * @see #divide(ObservableShortValue)
+   */
+  public static ShortExpression divide(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return cast(expression);
+    }
+    return new ShortBinding(() -> div(expression, other), expression, other);
+  }
+
+  /**
+   * @param expression the {@link ShortExpression}.
+   * @param constant the constant {@link Number} to divide.
+   * @return a new {@link ShortExpression} holding the quotient of the {@link #getValue() value} from the given
+   *         {@link ShortExpression} divided by the given {@code constant}.
+   * @see #divide(ObservableShortValue)
+   */
+  public static ShortExpression divide(NumberExpression<?> expression, Number constant) {
+
+    if (constant == null) {
+      return cast(expression);
+    }
+    return divide(expression, constant.shortValue());
+  }
+
+  /**
+   * @param expression the {@link ShortExpression}.
+   * @param constant the constant {@code short} to divide.
+   * @return a new {@link ShortExpression} holding the quotient of the {@link #getValue() value} from the given
+   *         {@link ShortExpression} divided by the given {@code constant}.
+   * @see #divide(ObservableShortValue)
+   */
+  public static ShortExpression divide(NumberExpression<?> expression, short constant) {
+
+    return new ShortBinding(() -> div(constant, expression.getValue()), expression);
+  }
+
+  /**
+   * @param observables the {@link ObservableValue}s to divide.
+   * @return a new {@link ShortExpression} holding the quotient of the {@link #getValue() value}s from the given
+   *         {@link ObservableValue}s.
+   */
+  @SafeVarargs
+  public static ShortExpression divideAll(ObservableValue<? extends Number>... observables) {
+
+    return new ShortBinding(() -> divAll(observables), observables);
+  }
+
   private static Short to(Number value) {
 
     if (value == null) {
-      return null;
+      return ZERO;
     } else {
       return Short.valueOf(value.shortValue());
     }
@@ -249,13 +304,9 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
 
   private static Short plus(Number v1, Number v2) {
 
-    if ((v1 == null) && (v2 == null)) {
-      return null;
-    }
     if (v1 == null) {
       return to(v2);
-    }
-    if (v2 == null) {
+    } else if (v2 == null) {
       return to(v1);
     }
     return Short.valueOf((short) (v1.shortValue() + v2.shortValue()));
@@ -273,13 +324,19 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
   private static Short minusAll(ReadableValue<? extends Number>... observables) {
 
     short difference = 0;
+    boolean first = true;
     for (ReadableValue<? extends Number> observable : observables) {
       if (observable != null) {
         Number value = observable.getValue();
         if (value != null) {
-          difference = (short) (difference - value.shortValue());
+          if (first) {
+            difference = value.shortValue();
+          } else {
+            difference = (short) (difference - value.shortValue());
+          }
         }
       }
+      first = false;
     }
     return Short.valueOf(difference);
   }
@@ -291,13 +348,12 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
 
   private static Short minus(Number v1, Number v2) {
 
-    if ((v1 == null) && (v2 == null)) {
-      return null;
-    }
     if (v1 == null) {
-      return to(v2);
-    }
-    if (v2 == null) {
+      if (v2 == null) {
+        return ZERO;
+      }
+      return Short.valueOf((short) -v2.shortValue());
+    } else if (v2 == null) {
       return to(v1);
     }
     return Short.valueOf((short) (v1.shortValue() - v2.shortValue()));
@@ -316,12 +372,14 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
 
     short product = 1;
     for (ReadableValue<? extends Number> observable : observables) {
-      if (observable != null) {
-        Number value = observable.getValue();
-        if (value != null) {
-          product = (short) (product * value.shortValue());
-        }
+      if (observable == null) {
+        return ZERO;
       }
+      Number value = observable.getValue();
+      if (value == null) {
+        return ZERO;
+      }
+      product = (short) (product * value.shortValue());
     }
     return Short.valueOf(product);
   }
@@ -333,24 +391,65 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
 
   private static Short mul(Number v1, Number v2) {
 
-    if ((v1 == null) && (v2 == null)) {
-      return null;
-    }
-    if (v1 == null) {
-      return to(v2);
-    }
-    if (v2 == null) {
-      return to(v1);
+    if ((v1 == null) || (v2 == null)) {
+      return ZERO;
     }
     return Short.valueOf((short) (v1.shortValue() * v2.shortValue()));
   }
 
   private static Short mul(short v1, Number v2) {
 
-    if (v2 != null) {
-      v1 = (short) (v1 * v2.shortValue());
+    if (v2 == null) {
+      return ZERO;
     }
-    return Short.valueOf(v1);
+    return Short.valueOf((short) (v1 * v2.shortValue()));
+  }
+
+  @SafeVarargs
+  private static Short divAll(ReadableValue<? extends Number>... observables) {
+
+    short quotient = 1;
+    boolean first = true;
+    for (ReadableValue<? extends Number> observable : observables) {
+      if (observable != null) {
+        Number value = observable.getValue();
+        if (value != null) {
+          if (first) {
+            quotient = value.shortValue();
+          } else {
+            quotient = (short) (quotient / value.shortValue());
+          }
+        }
+      }
+      first = false;
+    }
+    return Short.valueOf(quotient);
+  }
+
+  private static Short div(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
+
+    return div(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+  }
+
+  private static Short div(Number v1, Number v2) {
+
+    if (v1 == null) {
+      return ZERO;
+    }
+    short s2 = 0;
+    if (v2 != null) {
+      return s2 = v2.shortValue();
+    }
+    return Short.valueOf((short) (v1.shortValue() / s2));
+  }
+
+  private static Short div(short v1, Number v2) {
+
+    short s2 = 0;
+    if (v2 != null) {
+      return s2 = v2.shortValue();
+    }
+    return Short.valueOf((short) (v1 / s2));
   }
 
 }

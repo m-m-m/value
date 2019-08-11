@@ -314,4 +314,100 @@ public interface BigDecimalExpression extends ObservableBigDecimalValue, NumberE
     return multiply((double) constant);
   }
 
+  @Override
+  default BigDecimalExpression divide(ObservableValue<? extends Number> other) {
+
+    return BigDecimalBinding.divide(this, other);
+  }
+
+  @Override
+  default BigDecimalExpression divide(ObservableBigIntegerValue other) {
+
+    return BigDecimalBinding.divide(this, other);
+  }
+
+  @Override
+  default BigDecimalExpression divide(ObservableDoubleValue other) {
+
+    return BigDecimalBinding.divide(this, other);
+  }
+
+  @Override
+  default BigDecimalExpression divide(ObservableFloatValue other) {
+
+    return BigDecimalBinding.divide(this, other);
+  }
+
+  @Override
+  default BigDecimalExpression divide(ObservableLongValue other) {
+
+    return BigDecimalBinding.divide(this, other);
+  }
+
+  @Override
+  default BigDecimalExpression divide(ObservableIntegerValue other) {
+
+    return BigDecimalBinding.divide(this, other);
+  }
+
+  @Override
+  default BigDecimalExpression divide(ObservableShortValue other) {
+
+    return BigDecimalBinding.divide(this, other);
+  }
+
+  @Override
+  default BigDecimalExpression divide(ObservableByteValue other) {
+
+    return BigDecimalBinding.divide(this, other);
+  }
+
+  @Override
+  default BigDecimalExpression divide(Number constant) {
+
+    return BigDecimalBinding.divide(this, constant);
+  }
+
+  @Override
+  default BigDecimalExpression divide(BigInteger constant) {
+
+    return divide(new BigDecimal(constant));
+  }
+
+  @Override
+  default BigDecimalExpression divide(double constant) {
+
+    return divide(BigDecimal.valueOf(constant));
+  }
+
+  @Override
+  default BigDecimalExpression divide(float constant) {
+
+    return divide((double) constant);
+  }
+
+  @Override
+  default BigDecimalExpression divide(long constant) {
+
+    return divide((double) constant);
+  }
+
+  @Override
+  default BigDecimalExpression divide(int constant) {
+
+    return divide((double) constant);
+  }
+
+  @Override
+  default BigDecimalExpression divide(short constant) {
+
+    return divide((double) constant);
+  }
+
+  @Override
+  default BigDecimalExpression divide(byte constant) {
+
+    return divide((double) constant);
+  }
+
 }

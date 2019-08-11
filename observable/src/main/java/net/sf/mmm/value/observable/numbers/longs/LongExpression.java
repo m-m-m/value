@@ -281,19 +281,88 @@ public interface LongExpression extends ObservableLongValue, NumberExpression<Lo
     return LongBinding.multiply(this, constant);
   }
 
-  // default FloatBinding divide(float other) {
-  //
-  // return (FloatBinding) Bindings.divide(this, other);
-  // }
-  //
-  // default LongBinding divide(long other) {
-  //
-  // return (LongBinding) Bindings.divide(this, other);
-  // }
-  //
-  // default LongBinding divide(int other) {
-  //
-  // return (LongBinding) Bindings.divide(this, other);
-  // }
+  @Override
+  default BigIntegerExpression divide(ObservableBigIntegerValue other) {
+
+    return BigIntegerBinding.divide(this, other);
+  }
+
+  @Override
+  default DoubleExpression divide(ObservableDoubleValue other) {
+
+    return DoubleBinding.divide(this, other);
+  }
+
+  @Override
+  default FloatExpression divide(ObservableFloatValue other) {
+
+    return FloatBinding.divide(this, other);
+  }
+
+  @Override
+  default LongExpression divide(ObservableLongValue other) {
+
+    return LongBinding.divide(this, other);
+  }
+
+  @Override
+  default LongExpression divide(ObservableIntegerValue other) {
+
+    return LongBinding.divide(this, other);
+  }
+
+  @Override
+  default LongExpression divide(ObservableShortValue other) {
+
+    return LongBinding.divide(this, other);
+  }
+
+  @Override
+  default LongExpression divide(ObservableByteValue other) {
+
+    return LongBinding.divide(this, other);
+  }
+
+  @Override
+  default BigIntegerExpression divide(BigInteger constant) {
+
+    return BigIntegerBinding.divide(this, constant);
+  }
+
+  @Override
+  default DoubleExpression divide(double constant) {
+
+    return DoubleBinding.divide(this, constant);
+  }
+
+  @Override
+  default FloatExpression divide(float constant) {
+
+    return FloatBinding.divide(this, constant);
+  }
+
+  @Override
+  default LongExpression divide(long constant) {
+
+    return LongBinding.divide(this, constant);
+  }
+
+  @Override
+  default LongExpression divide(int constant) {
+
+    return LongBinding.divide(this, constant);
+  }
+
+  @Override
+  default LongExpression divide(short constant) {
+
+    return LongBinding.divide(this, constant);
+  }
+
+  @Override
+  default LongExpression divide(byte constant) {
+
+    return LongBinding.divide(this, constant);
+  }
 
 }

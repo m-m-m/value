@@ -14,6 +14,8 @@ import net.sf.mmm.value.observable.numbers.NumberExpression;
  */
 public class DoubleBinding extends NumberBinding<Double> implements DoubleExpression {
 
+  private static final Double ZERO = Double.valueOf(0);
+
   /**
    * The constructor.
    *
@@ -210,10 +212,63 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
     return new DoubleBinding(() -> mulAll(observables), observables);
   }
 
+  /**
+   * @param expression the {@link DoubleExpression}.
+   * @param other the {@link ObservableValue} to divide.
+   * @return a new {@link DoubleExpression} holding the quotient of the {@link #getValue() value}s of the first and the
+   *         second given {@link ObservableValue}s.
+   * @see #divide(ObservableDoubleValue)
+   */
+  public static DoubleExpression divide(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return cast(expression);
+    }
+    return new DoubleBinding(() -> div(expression, other), expression, other);
+  }
+
+  /**
+   * @param expression the {@link DoubleExpression}.
+   * @param constant the constant {@link Number} to divide.
+   * @return a new {@link DoubleExpression} holding the quotient of the {@link #getValue() value} from the given
+   *         {@link DoubleExpression} divided by the given {@code constant}.
+   * @see #divide(ObservableDoubleValue)
+   */
+  public static DoubleExpression divide(NumberExpression<?> expression, Number constant) {
+
+    if (constant == null) {
+      return cast(expression);
+    }
+    return divide(expression, constant.doubleValue());
+  }
+
+  /**
+   * @param expression the {@link DoubleExpression}.
+   * @param constant the constant {@code double} to divide.
+   * @return a new {@link DoubleExpression} holding the quotient of the {@link #getValue() value} from the given
+   *         {@link DoubleExpression} divided by the given {@code constant}.
+   * @see #divide(ObservableDoubleValue)
+   */
+  public static DoubleExpression divide(NumberExpression<?> expression, double constant) {
+
+    return new DoubleBinding(() -> div(constant, expression.getValue()), expression);
+  }
+
+  /**
+   * @param observables the {@link ObservableValue}s to divide.
+   * @return a new {@link DoubleExpression} holding the quotient of the {@link #getValue() value}s from the given
+   *         {@link ObservableValue}s.
+   */
+  @SafeVarargs
+  public static DoubleExpression divideAll(ObservableValue<? extends Number>... observables) {
+
+    return new DoubleBinding(() -> divAll(observables), observables);
+  }
+
   private static Double to(Number value) {
 
     if (value == null) {
-      return null;
+      return ZERO;
     } else if (value instanceof Double) {
       return (Double) value;
     } else {
@@ -251,13 +306,9 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
 
   private static Double plus(Number v1, Number v2) {
 
-    if ((v1 == null) && (v2 == null)) {
-      return null;
-    }
     if (v1 == null) {
       return to(v2);
-    }
-    if (v2 == null) {
+    } else if (v2 == null) {
       return to(v1);
     }
     return Double.valueOf(v1.doubleValue() + v2.doubleValue());
@@ -275,13 +326,19 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
   private static Double minusAll(ReadableValue<? extends Number>... observables) {
 
     double difference = 0;
+    boolean first = true;
     for (ReadableValue<? extends Number> observable : observables) {
       if (observable != null) {
         Number value = observable.getValue();
         if (value != null) {
-          difference = difference - value.doubleValue();
+          if (first) {
+            difference = value.doubleValue();
+          } else {
+            difference = difference - value.doubleValue();
+          }
         }
       }
+      first = false;
     }
     return Double.valueOf(difference);
   }
@@ -293,13 +350,13 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
 
   private static Double minus(Number v1, Number v2) {
 
-    if ((v1 == null) && (v2 == null)) {
-      return null;
-    }
     if (v1 == null) {
-      return to(v2);
-    }
-    if (v2 == null) {
+      if (v2 == null) {
+        return ZERO;
+      } else {
+        return Double.valueOf(-v2.doubleValue());
+      }
+    } else if (v2 == null) {
       return to(v1);
     }
     return Double.valueOf(v1.doubleValue() - v2.doubleValue());
@@ -316,14 +373,16 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
   @SafeVarargs
   private static Double mulAll(ReadableValue<? extends Number>... observables) {
 
-    double product = 0;
+    double product = 1;
     for (ReadableValue<? extends Number> observable : observables) {
-      if (observable != null) {
-        Number value = observable.getValue();
-        if (value != null) {
-          product = product * value.doubleValue();
-        }
+      if (observable == null) {
+        return ZERO;
       }
+      Number value = observable.getValue();
+      if (value == null) {
+        return ZERO;
+      }
+      product = product * value.doubleValue();
     }
     return Double.valueOf(product);
   }
@@ -335,24 +394,65 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
 
   private static Double mul(Number v1, Number v2) {
 
-    if ((v1 == null) && (v2 == null)) {
-      return null;
-    }
-    if (v1 == null) {
-      return to(v2);
-    }
-    if (v2 == null) {
-      return to(v1);
+    if ((v1 == null) || (v2 == null)) {
+      return ZERO;
     }
     return Double.valueOf(v1.doubleValue() * v2.doubleValue());
   }
 
   private static Double mul(double v1, Number v2) {
 
-    if (v2 != null) {
-      return v1 = v1 * v2.doubleValue();
+    if (v2 == null) {
+      return ZERO;
     }
-    return Double.valueOf(v1);
+    return Double.valueOf(v1 * v2.doubleValue());
+  }
+
+  @SafeVarargs
+  private static Double divAll(ReadableValue<? extends Number>... observables) {
+
+    double quotient = 1;
+    boolean first = true;
+    for (ReadableValue<? extends Number> observable : observables) {
+      if (observable != null) {
+        Number value = observable.getValue();
+        if (value != null) {
+          if (first) {
+            quotient = value.doubleValue();
+          } else {
+            quotient = quotient / value.doubleValue();
+          }
+        }
+      }
+      first = false;
+    }
+    return Double.valueOf(quotient);
+  }
+
+  private static Double div(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
+
+    return div(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+  }
+
+  private static Double div(Number v1, Number v2) {
+
+    if (v1 == null) {
+      return ZERO;
+    }
+    double d2 = 0;
+    if (v2 != null) {
+      d2 = v2.doubleValue();
+    }
+    return Double.valueOf(v1.doubleValue() / d2);
+  }
+
+  private static Double div(double v1, Number v2) {
+
+    double d2 = 0;
+    if (v2 != null) {
+      d2 = v2.doubleValue();
+    }
+    return Double.valueOf(v1 / d2);
   }
 
 }

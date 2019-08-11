@@ -364,15 +364,116 @@ public interface DoubleExpression extends ObservableDoubleValue, NumberExpressio
     return multiply((double) constant);
   }
 
-  //
-  // default DoubleBinding divide(long other) {
-  //
-  // return (DoubleBinding) Bindings.divide(this, other);
-  // }
-  //
-  // default DoubleBinding divide(int other) {
-  //
-  // return (DoubleBinding) Bindings.divide(this, other);
-  // }
+  @Override
+  default NumberExpression<?> divide(ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return this;
+    } else if (other instanceof ObservableBigDecimalValue) {
+      return divide((ObservableBigDecimalValue) other);
+    } else if (other instanceof ObservableBigIntegerValue) {
+      return divide((ObservableBigIntegerValue) other);
+    } else {
+      return DoubleBinding.divide(this, other);
+    }
+  }
+
+  @Override
+  default BigIntegerExpression divide(ObservableBigIntegerValue other) {
+
+    return BigIntegerBinding.divide(this, other);
+  }
+
+  @Override
+  default DoubleExpression divide(ObservableDoubleValue other) {
+
+    return DoubleBinding.divide(this, other);
+  }
+
+  @Override
+  default DoubleExpression divide(ObservableFloatValue other) {
+
+    return DoubleBinding.divide(this, other);
+  }
+
+  @Override
+  default DoubleExpression divide(ObservableLongValue other) {
+
+    return DoubleBinding.divide(this, other);
+  }
+
+  @Override
+  default DoubleExpression divide(ObservableIntegerValue other) {
+
+    return DoubleBinding.divide(this, other);
+  }
+
+  @Override
+  default DoubleExpression divide(ObservableShortValue other) {
+
+    return DoubleBinding.divide(this, other);
+  }
+
+  @Override
+  default DoubleExpression divide(ObservableByteValue other) {
+
+    return DoubleBinding.divide(this, other);
+  }
+
+  @Override
+  default NumberExpression<?> divide(Number constant) {
+
+    if (constant == null) {
+      return this;
+    } else if (constant instanceof BigDecimal) {
+      return divide((BigDecimal) constant);
+    } else if (constant instanceof BigInteger) {
+      return divide((BigInteger) constant);
+    } else {
+      return divide(constant.doubleValue());
+    }
+  }
+
+  @Override
+  default BigIntegerExpression divide(BigInteger constant) {
+
+    return BigIntegerBinding.divide(this, constant);
+  }
+
+  @Override
+  default DoubleExpression divide(double constant) {
+
+    return DoubleBinding.divide(this, constant);
+  }
+
+  @Override
+  default DoubleExpression divide(float constant) {
+
+    return divide((double) constant);
+  }
+
+  @Override
+  default DoubleExpression divide(long constant) {
+
+    return divide((double) constant);
+  }
+
+  @Override
+  default DoubleExpression divide(int constant) {
+
+    return divide((double) constant);
+  }
+
+  @Override
+  default DoubleExpression divide(short constant) {
+
+    return divide((double) constant);
+  }
+
+  @Override
+  default DoubleExpression divide(byte constant) {
+
+    return divide((double) constant);
+  }
 
 }

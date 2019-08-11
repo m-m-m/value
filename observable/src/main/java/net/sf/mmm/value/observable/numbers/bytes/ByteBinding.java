@@ -14,6 +14,8 @@ import net.sf.mmm.value.observable.numbers.NumberExpression;
  */
 public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
 
+  private static final Byte ZERO = Byte.valueOf((byte) 0);
+
   /**
    * The constructor.
    *
@@ -210,10 +212,63 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
     return new ByteBinding(() -> mulAll(observables), observables);
   }
 
+  /**
+   * @param expression the {@link ByteExpression}.
+   * @param other the {@link ObservableValue} to divide.
+   * @return a new {@link ByteExpression} holding the quotient of the {@link #getValue() value}s of the first and the
+   *         second given {@link ObservableValue}s.
+   * @see #divide(ObservableByteValue)
+   */
+  public static ByteExpression divide(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return cast(expression);
+    }
+    return new ByteBinding(() -> div(expression, other), expression, other);
+  }
+
+  /**
+   * @param expression the {@link ByteExpression}.
+   * @param constant the constant {@link Number} to divide.
+   * @return a new {@link ByteExpression} holding the quotient of the {@link #getValue() value} from the given
+   *         {@link ByteExpression} divided by the given {@code constant}.
+   * @see #divide(ObservableByteValue)
+   */
+  public static ByteExpression divide(NumberExpression<?> expression, Number constant) {
+
+    if (constant == null) {
+      return cast(expression);
+    }
+    return divide(expression, constant.byteValue());
+  }
+
+  /**
+   * @param expression the {@link ByteExpression}.
+   * @param constant the constant {@code byte} to divide.
+   * @return a new {@link ByteExpression} holding the quotient of the {@link #getValue() value} from the given
+   *         {@link ByteExpression} divided by the given {@code constant}.
+   * @see #divide(ObservableByteValue)
+   */
+  public static ByteExpression divide(NumberExpression<?> expression, byte constant) {
+
+    return new ByteBinding(() -> div(constant, expression.getValue()), expression);
+  }
+
+  /**
+   * @param observables the {@link ObservableValue}s to divide.
+   * @return a new {@link ByteExpression} holding the quotient of the {@link #getValue() value}s from the given
+   *         {@link ObservableValue}s.
+   */
+  @SafeVarargs
+  public static ByteExpression divideAll(ObservableValue<? extends Number>... observables) {
+
+    return new ByteBinding(() -> divAll(observables), observables);
+  }
+
   private static Byte to(Number value) {
 
     if (value == null) {
-      return null;
+      return ZERO;
     } else {
       return Byte.valueOf(value.byteValue());
     }
@@ -249,13 +304,9 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
 
   private static Byte plus(Number v1, Number v2) {
 
-    if ((v1 == null) && (v2 == null)) {
-      return null;
-    }
     if (v1 == null) {
       return to(v2);
-    }
-    if (v2 == null) {
+    } else if (v2 == null) {
       return to(v1);
     }
     return Byte.valueOf((byte) (v1.byteValue() + v2.byteValue()));
@@ -273,13 +324,19 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
   private static Byte minusAll(ReadableValue<? extends Number>... observables) {
 
     byte difference = 0;
+    boolean first = true;
     for (ReadableValue<? extends Number> observable : observables) {
       if (observable != null) {
         Number value = observable.getValue();
         if (value != null) {
-          difference = (byte) (difference - value.byteValue());
+          if (first) {
+            difference = value.byteValue();
+          } else {
+            difference = (byte) (difference - value.byteValue());
+          }
         }
       }
+      first = false;
     }
     return Byte.valueOf(difference);
   }
@@ -291,13 +348,13 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
 
   private static Byte minus(Number v1, Number v2) {
 
-    if ((v1 == null) && (v2 == null)) {
-      return null;
-    }
     if (v1 == null) {
-      return to(v2);
-    }
-    if (v2 == null) {
+      if (v2 == null) {
+        return ZERO;
+      } else {
+        return Byte.valueOf((byte) -v2.byteValue());
+      }
+    } else if (v2 == null) {
       return to(v1);
     }
     return Byte.valueOf((byte) (v1.byteValue() - v2.byteValue()));
@@ -316,12 +373,14 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
 
     byte product = 1;
     for (ReadableValue<? extends Number> observable : observables) {
-      if (observable != null) {
-        Number value = observable.getValue();
-        if (value != null) {
-          product = (byte) (product * value.byteValue());
-        }
+      if (observable == null) {
+        return ZERO;
       }
+      Number value = observable.getValue();
+      if (value == null) {
+        return ZERO;
+      }
+      product = (byte) (product * value.byteValue());
     }
     return Byte.valueOf(product);
   }
@@ -333,24 +392,65 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
 
   private static Byte mul(Number v1, Number v2) {
 
-    if ((v1 == null) && (v2 == null)) {
-      return null;
-    }
-    if (v1 == null) {
-      return to(v2);
-    }
-    if (v2 == null) {
-      return to(v1);
+    if ((v1 == null) || (v2 == null)) {
+      return ZERO;
     }
     return Byte.valueOf((byte) (v1.byteValue() * v2.byteValue()));
   }
 
   private static Byte mul(byte v1, Number v2) {
 
-    if (v2 != null) {
-      v1 = (byte) (v1 * v2.byteValue());
+    if (v2 == null) {
+      return ZERO;
     }
-    return Byte.valueOf(v1);
+    return Byte.valueOf((byte) (v1 * v2.byteValue()));
+  }
+
+  @SafeVarargs
+  private static Byte divAll(ReadableValue<? extends Number>... observables) {
+
+    byte quotient = 1;
+    boolean first = true;
+    for (ReadableValue<? extends Number> observable : observables) {
+      if (observable != null) {
+        Number value = observable.getValue();
+        if (value != null) {
+          if (first) {
+            quotient = value.byteValue();
+          } else {
+            quotient = (byte) (quotient / value.byteValue());
+          }
+        }
+      }
+      first = false;
+    }
+    return Byte.valueOf(quotient);
+  }
+
+  private static Byte div(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
+
+    return div(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+  }
+
+  private static Byte div(Number v1, Number v2) {
+
+    if (v1 == null) {
+      return ZERO;
+    }
+    byte b2 = 0;
+    if (v2 != null) {
+      b2 = v2.byteValue();
+    }
+    return Byte.valueOf((byte) (v1.byteValue() / b2));
+  }
+
+  private static Byte div(byte v1, Number v2) {
+
+    byte b2 = 0;
+    if (v2 != null) {
+      b2 = v2.byteValue();
+    }
+    return Byte.valueOf((byte) (v1 / b2));
   }
 
 }

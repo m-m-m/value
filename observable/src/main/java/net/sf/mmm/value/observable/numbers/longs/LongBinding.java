@@ -14,6 +14,8 @@ import net.sf.mmm.value.observable.numbers.NumberExpression;
  */
 public class LongBinding extends NumberBinding<Long> implements LongExpression {
 
+  private static final Long ZERO = Long.valueOf(0);
+
   /**
    * The constructor.
    *
@@ -210,10 +212,63 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
     return new LongBinding(() -> mulAll(observables), observables);
   }
 
+  /**
+   * @param expression the {@link LongExpression}.
+   * @param other the {@link ObservableValue} to divide.
+   * @return a new {@link LongExpression} holding the quotient of the {@link #getValue() value}s of the first and the
+   *         second given {@link ObservableValue}s.
+   * @see #divide(ObservableLongValue)
+   */
+  public static LongExpression divide(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return cast(expression);
+    }
+    return new LongBinding(() -> div(expression, other), expression, other);
+  }
+
+  /**
+   * @param expression the {@link LongExpression}.
+   * @param constant the constant {@link Number} to divide.
+   * @return a new {@link LongExpression} holding the quotient of the {@link #getValue() value} from the given
+   *         {@link LongExpression} divided by the given {@code constant}.
+   * @see #divide(ObservableLongValue)
+   */
+  public static LongExpression divide(NumberExpression<?> expression, Number constant) {
+
+    if (constant == null) {
+      return cast(expression);
+    }
+    return divide(expression, constant.longValue());
+  }
+
+  /**
+   * @param expression the {@link LongExpression}.
+   * @param constant the constant {@code long} to divide.
+   * @return a new {@link LongExpression} holding the quotient of the {@link #getValue() value} from the given
+   *         {@link LongExpression} divided by the given {@code constant}.
+   * @see #divide(ObservableLongValue)
+   */
+  public static LongExpression divide(NumberExpression<?> expression, long constant) {
+
+    return new LongBinding(() -> div(constant, expression.getValue()), expression);
+  }
+
+  /**
+   * @param observables the {@link ObservableValue}s to divide.
+   * @return a new {@link LongExpression} holding the quotient of the {@link #getValue() value}s from the given
+   *         {@link ObservableValue}s.
+   */
+  @SafeVarargs
+  public static LongExpression divideAll(ObservableValue<? extends Number>... observables) {
+
+    return new LongBinding(() -> divAll(observables), observables);
+  }
+
   private static Long to(Number value) {
 
     if (value == null) {
-      return null;
+      return ZERO;
     } else if (value instanceof Long) {
       return (Long) value;
     } else {
@@ -251,13 +306,9 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
 
   private static Long plus(Number v1, Number v2) {
 
-    if ((v1 == null) && (v2 == null)) {
-      return null;
-    }
     if (v1 == null) {
       return to(v2);
-    }
-    if (v2 == null) {
+    } else if (v2 == null) {
       return to(v1);
     }
     return Long.valueOf(v1.longValue() + v2.longValue());
@@ -275,13 +326,19 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
   private static Long minusAll(ReadableValue<? extends Number>... observables) {
 
     long difference = 0;
+    boolean first = true;
     for (ReadableValue<? extends Number> observable : observables) {
       if (observable != null) {
         Number value = observable.getValue();
         if (value != null) {
-          difference = difference - value.longValue();
+          if (first) {
+            difference = value.longValue();
+          } else {
+            difference = difference - value.longValue();
+          }
         }
       }
+      first = false;
     }
     return Long.valueOf(difference);
   }
@@ -293,13 +350,12 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
 
   private static Long minus(Number v1, Number v2) {
 
-    if ((v1 == null) && (v2 == null)) {
-      return null;
-    }
     if (v1 == null) {
-      return to(v2);
-    }
-    if (v2 == null) {
+      if (v2 == null) {
+        return ZERO;
+      }
+      return Long.valueOf(-v2.longValue());
+    } else if (v2 == null) {
       return to(v1);
     }
     return Long.valueOf(v1.longValue() - v2.longValue());
@@ -318,12 +374,14 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
 
     long product = 1;
     for (ReadableValue<? extends Number> observable : observables) {
-      if (observable != null) {
-        Number value = observable.getValue();
-        if (value != null) {
-          product = product * value.longValue();
-        }
+      if (observable == null) {
+        return ZERO;
       }
+      Number value = observable.getValue();
+      if (value == null) {
+        return ZERO;
+      }
+      product = product * value.longValue();
     }
     return Long.valueOf(product);
   }
@@ -335,24 +393,65 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
 
   private static Long mul(Number v1, Number v2) {
 
-    if ((v1 == null) && (v2 == null)) {
-      return null;
-    }
-    if (v1 == null) {
-      return to(v2);
-    }
-    if (v2 == null) {
-      return to(v1);
+    if ((v1 == null) || (v2 == null)) {
+      return ZERO;
     }
     return Long.valueOf(v1.longValue() * v2.longValue());
   }
 
   private static Long mul(long v1, Number v2) {
 
-    if (v2 != null) {
-      v1 = v1 * v2.longValue();
+    if (v2 == null) {
+      return ZERO;
     }
-    return Long.valueOf(v1);
+    return Long.valueOf(v1 * v2.longValue());
+  }
+
+  @SafeVarargs
+  private static Long divAll(ReadableValue<? extends Number>... observables) {
+
+    long quotient = 1;
+    boolean first = true;
+    for (ReadableValue<? extends Number> observable : observables) {
+      if (observable != null) {
+        Number value = observable.getValue();
+        if (value != null) {
+          if (first) {
+            quotient = value.longValue();
+          } else {
+            quotient = quotient / value.longValue();
+          }
+        }
+      }
+      first = false;
+    }
+    return Long.valueOf(quotient);
+  }
+
+  private static Long div(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
+
+    return div(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+  }
+
+  private static Long div(Number v1, Number v2) {
+
+    if (v1 == null) {
+      return ZERO;
+    }
+    long l2 = 0;
+    if (v2 != null) {
+      l2 = v2.longValue();
+    }
+    return Long.valueOf(v1.longValue() / l2);
+  }
+
+  private static Long div(long v1, Number v2) {
+
+    long l2 = 0;
+    if (v2 != null) {
+      l2 = v2.longValue();
+    }
+    return Long.valueOf(v1 / l2);
   }
 
 }

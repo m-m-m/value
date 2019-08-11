@@ -14,6 +14,8 @@ import net.sf.mmm.value.observable.numbers.NumberExpression;
  */
 public class FloatBinding extends NumberBinding<Float> implements FloatExpression {
 
+  private static final Float ZERO = Float.valueOf(0);
+
   /**
    * The constructor.
    *
@@ -210,10 +212,63 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
     return new FloatBinding(() -> mulAll(observables), observables);
   }
 
+  /**
+   * @param expression the {@link FloatExpression}.
+   * @param other the {@link ObservableValue} to divide.
+   * @return a new {@link FloatExpression} holding the quotient of the {@link #getValue() value}s of the first and the
+   *         second given {@link ObservableValue}s.
+   * @see #divide(ObservableFloatValue)
+   */
+  public static FloatExpression divide(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return cast(expression);
+    }
+    return new FloatBinding(() -> div(expression, other), expression, other);
+  }
+
+  /**
+   * @param expression the {@link FloatExpression}.
+   * @param constant the constant {@link Number} to divide.
+   * @return a new {@link FloatExpression} holding the quotient of the {@link #getValue() value} from the given
+   *         {@link FloatExpression} divided by the given {@code constant}.
+   * @see #divide(ObservableFloatValue)
+   */
+  public static FloatExpression divide(NumberExpression<?> expression, Number constant) {
+
+    if (constant == null) {
+      return cast(expression);
+    }
+    return divide(expression, constant.floatValue());
+  }
+
+  /**
+   * @param expression the {@link FloatExpression}.
+   * @param constant the constant {@code float} to divide.
+   * @return a new {@link FloatExpression} holding the quotient of the {@link #getValue() value} from the given
+   *         {@link FloatExpression} divided by the given {@code constant}.
+   * @see #divide(ObservableFloatValue)
+   */
+  public static FloatExpression divide(NumberExpression<?> expression, float constant) {
+
+    return new FloatBinding(() -> div(constant, expression.getValue()), expression);
+  }
+
+  /**
+   * @param observables the {@link ObservableValue}s to divide.
+   * @return a new {@link FloatExpression} holding the quotient of the {@link #getValue() value}s from the given
+   *         {@link ObservableValue}s.
+   */
+  @SafeVarargs
+  public static FloatExpression divideAll(ObservableValue<? extends Number>... observables) {
+
+    return new FloatBinding(() -> divAll(observables), observables);
+  }
+
   private static Float to(Number value) {
 
     if (value == null) {
-      return null;
+      return ZERO;
     } else if (value instanceof Float) {
       return (Float) value;
     } else {
@@ -251,13 +306,9 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
 
   private static Float plus(Number v1, Number v2) {
 
-    if ((v1 == null) && (v2 == null)) {
-      return null;
-    }
     if (v1 == null) {
       return to(v2);
-    }
-    if (v2 == null) {
+    } else if (v2 == null) {
       return to(v1);
     }
     return Float.valueOf(v1.floatValue() + v2.floatValue());
@@ -275,13 +326,19 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
   private static Float minusAll(ReadableValue<? extends Number>... observables) {
 
     float difference = 0;
+    boolean first = true;
     for (ReadableValue<? extends Number> observable : observables) {
       if (observable != null) {
         Number value = observable.getValue();
         if (value != null) {
-          difference = difference - value.floatValue();
+          if (first) {
+            difference = value.floatValue();
+          } else {
+            difference = difference - value.floatValue();
+          }
         }
       }
+      first = false;
     }
     return Float.valueOf(difference);
   }
@@ -293,13 +350,12 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
 
   private static Float minus(Number v1, Number v2) {
 
-    if ((v1 == null) && (v2 == null)) {
-      return null;
-    }
     if (v1 == null) {
-      return to(v2);
-    }
-    if (v2 == null) {
+      if (v2 == null) {
+        return ZERO;
+      }
+      return Float.valueOf(-v2.floatValue());
+    } else if (v2 == null) {
       return to(v1);
     }
     return Float.valueOf(v1.floatValue() - v2.floatValue());
@@ -316,14 +372,16 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
   @SafeVarargs
   private static Float mulAll(ReadableValue<? extends Number>... observables) {
 
-    float product = 0;
+    float product = 1;
     for (ReadableValue<? extends Number> observable : observables) {
-      if (observable != null) {
-        Number value = observable.getValue();
-        if (value != null) {
-          product = product * value.floatValue();
-        }
+      if (observable == null) {
+        return ZERO;
       }
+      Number value = observable.getValue();
+      if (value == null) {
+        return ZERO;
+      }
+      product = product * value.floatValue();
     }
     return Float.valueOf(product);
   }
@@ -335,24 +393,65 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
 
   private static Float mul(Number v1, Number v2) {
 
-    if ((v1 == null) && (v2 == null)) {
-      return null;
-    }
-    if (v1 == null) {
-      return to(v2);
-    }
-    if (v2 == null) {
-      return to(v1);
+    if ((v1 == null) || (v2 == null)) {
+      return ZERO;
     }
     return Float.valueOf(v1.floatValue() * v2.floatValue());
   }
 
   private static Float mul(float v1, Number v2) {
 
-    if (v2 != null) {
-      return v1 = v1 * v2.floatValue();
+    if (v2 == null) {
+      return ZERO;
     }
-    return Float.valueOf(v1);
+    return Float.valueOf(v1 * v2.floatValue());
+  }
+
+  @SafeVarargs
+  private static Float divAll(ReadableValue<? extends Number>... observables) {
+
+    float quotient = 1;
+    boolean first = true;
+    for (ReadableValue<? extends Number> observable : observables) {
+      if (observable != null) {
+        Number value = observable.getValue();
+        if (value != null) {
+          if (first) {
+            quotient = value.floatValue();
+          } else {
+            quotient = quotient / value.floatValue();
+          }
+        }
+      }
+      first = false;
+    }
+    return Float.valueOf(quotient);
+  }
+
+  private static Float div(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
+
+    return div(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+  }
+
+  private static Float div(Number v1, Number v2) {
+
+    if (v1 == null) {
+      return ZERO;
+    }
+    float f2 = 0;
+    if (v2 != null) {
+      f2 = v2.floatValue();
+    }
+    return Float.valueOf(v1.floatValue() / f2);
+  }
+
+  private static Float div(float v1, Number v2) {
+
+    float f2 = 0;
+    if (v2 != null) {
+      f2 = v2.floatValue();
+    }
+    return Float.valueOf(v1 / f2);
   }
 
 }

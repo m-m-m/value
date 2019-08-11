@@ -561,226 +561,180 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
    */
   NumberExpression<?> multiply(byte constant);
 
-  // default NumberBinding divide(ObservableNumberValue other) {
-  //
-  // return Bindings.divide(this, other);
-  // }
-  //
-  // default DoubleBinding divide(double other) {
-  //
-  // return Bindings.divide(this, other);
-  // }
-  //
-  // default NumberBinding divide(float other) {
-  //
-  // return Bindings.divide(this, other);
-  // }
-  //
-  // default NumberBinding divide(long other) {
-  //
-  // return Bindings.divide(this, other);
-  // }
-  //
-  // default NumberBinding divide(int other) {
-  //
-  // return Bindings.divide(this, other);
-  // }
-  //
-  // default BooleanBinding isEqualTo(ObservableNumberValue other) {
-  //
-  // return Bindings.equal(this, other);
-  // }
-  //
-  // default BooleanBinding isEqualTo(ObservableNumberValue other, double epsilon) {
-  //
-  // return Bindings.equal(this, other);
-  // }
-  //
-  // default BooleanBinding isEqualTo(double other, double epsilon) {
-  //
-  // return Bindings.equal(this, other, epsilon);
-  // }
-  //
-  // default BooleanBinding isEqualTo(float other, double epsilon) {
-  //
-  // return Bindings.equal(this, other, epsilon);
-  // }
-  //
-  // default BooleanBinding isEqualTo(long other) {
-  //
-  // return Bindings.equal(this, other);
-  // }
-  //
-  // default BooleanBinding isEqualTo(long other, double epsilon) {
-  //
-  // return Bindings.equal(this, other, epsilon);
-  // }
-  //
-  // default BooleanBinding isEqualTo(int other) {
-  //
-  // return Bindings.equal(this, other);
-  // }
-  //
-  // default BooleanBinding isEqualTo(int other, double epsilon) {
-  //
-  // return Bindings.equal(this, other, epsilon);
-  // }
-  //
-  // default BooleanBinding isNotEqualTo(ObservableNumberValue other) {
-  //
-  // return Bindings.notEqual(this, other);
-  // }
-  //
-  // default BooleanBinding isNotEqualTo(ObservableNumberValue other, double epsilon) {
-  //
-  // return Bindings.notEqual(this, other, epsilon);
-  // }
-  //
-  // default BooleanBinding isNotEqualTo(double other, double epsilon) {
-  //
-  // return Bindings.notEqual(this, other, epsilon);
-  // }
-  //
-  // default BooleanBinding isNotEqualTo(float other, double epsilon) {
-  //
-  // return Bindings.notEqual(this, other, epsilon);
-  // }
-  //
-  // default BooleanBinding isNotEqualTo(long other) {
-  //
-  // return Bindings.notEqual(this, other);
-  // }
-  //
-  // default BooleanBinding isNotEqualTo(long other, double epsilon) {
-  //
-  // return Bindings.notEqual(this, other, epsilon);
-  // }
-  //
-  // default BooleanBinding isNotEqualTo(int other) {
-  //
-  // return Bindings.notEqual(this, other);
-  // }
-  //
-  // default BooleanBinding isNotEqualTo(int other, double epsilon) {
-  //
-  // return Bindings.notEqual(this, other, epsilon);
-  // }
-  //
-  // default BooleanBinding greaterThan(ObservableNumberValue other) {
-  //
-  // return Bindings.greaterThan(this, other);
-  // }
-  //
-  // default BooleanBinding greaterThan(double other) {
-  //
-  // return Bindings.greaterThan(this, other);
-  // }
-  //
-  // default BooleanBinding greaterThan(float other) {
-  //
-  // return Bindings.greaterThan(this, other);
-  // }
-  //
-  // default BooleanBinding greaterThan(long other) {
-  //
-  // return Bindings.greaterThan(this, other);
-  // }
-  //
-  // default BooleanBinding greaterThan(int other) {
-  //
-  // return Bindings.greaterThan(this, other);
-  // }
-  //
-  // default BooleanBinding lessThan(ObservableNumberValue other) {
-  //
-  // return Bindings.lessThan(this, other);
-  // }
-  //
-  // default BooleanBinding lessThan(double other) {
-  //
-  // return Bindings.lessThan(this, other);
-  // }
-  //
-  // default BooleanBinding lessThan(float other) {
-  //
-  // return Bindings.lessThan(this, other);
-  // }
-  //
-  // default BooleanBinding lessThan(long other) {
-  //
-  // return Bindings.lessThan(this, other);
-  // }
-  //
-  // default BooleanBinding lessThan(int other) {
-  //
-  // return Bindings.lessThan(this, other);
-  // }
-  //
-  // default BooleanBinding greaterThanOrEqualTo(ObservableNumberValue other) {
-  //
-  // return Bindings.greaterThanOrEqual(this, other);
-  // }
-  //
-  // default BooleanBinding greaterThanOrEqualTo(double other) {
-  //
-  // return Bindings.greaterThanOrEqual(this, other);
-  // }
-  //
-  // default BooleanBinding greaterThanOrEqualTo(float other) {
-  //
-  // return Bindings.greaterThanOrEqual(this, other);
-  // }
-  //
-  // default BooleanBinding greaterThanOrEqualTo(long other) {
-  //
-  // return Bindings.greaterThanOrEqual(this, other);
-  // }
-  //
-  // default BooleanBinding greaterThanOrEqualTo(int other) {
-  //
-  // return Bindings.greaterThanOrEqual(this, other);
-  // }
-  //
-  // default BooleanBinding lessThanOrEqualTo(ObservableNumberValue other) {
-  //
-  // return Bindings.lessThanOrEqual(this, other);
-  // }
-  //
-  // default BooleanBinding lessThanOrEqualTo(double other) {
-  //
-  // return Bindings.lessThanOrEqual(this, other);
-  // }
-  //
-  // default BooleanBinding lessThanOrEqualTo(float other) {
-  //
-  // return Bindings.lessThanOrEqual(this, other);
-  // }
-  //
-  // default BooleanBinding lessThanOrEqualTo(long other) {
-  //
-  // return Bindings.lessThanOrEqual(this, other);
-  // }
-  //
-  // default BooleanBinding lessThanOrEqualTo(int other) {
-  //
-  // return Bindings.lessThanOrEqual(this, other);
-  // }
-  //
-  // @SuppressWarnings("restriction")
-  //
-  // default StringBinding asString() {
-  //
-  // return (StringBinding) com.sun.javafx.binding.StringFormatter.convert(this);
-  // }
-  //
-  // default StringBinding asString(String format) {
-  //
-  // return (StringBinding) Bindings.format(format, this);
-  // }
-  //
-  // default StringBinding asString(Locale locale, String format) {
-  //
-  // return (StringBinding) Bindings.format(locale, format, this);
-  // }
+  /**
+   * @param other the {@link ObservableValue} holding the {@link Number} to divide.
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableValue}.
+   */
+  default NumberExpression<?> divide(ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return this;
+    } else if (other instanceof ObservableBigDecimalValue) {
+      return divide((ObservableBigDecimalValue) other);
+    } else if (other instanceof ObservableBigIntegerValue) {
+      return divide((ObservableBigIntegerValue) other);
+    } else if (other instanceof ObservableDoubleValue) {
+      return divide((ObservableDoubleValue) other);
+    } else if (other instanceof ObservableFloatValue) {
+      return divide((ObservableFloatValue) other);
+    } else if (other instanceof ObservableLongValue) {
+      return divide((ObservableLongValue) other);
+    } else if (other instanceof ObservableIntegerValue) {
+      return divide((ObservableIntegerValue) other);
+    } else if (other instanceof ObservableShortValue) {
+      return divide((ObservableShortValue) other);
+    } else if (other instanceof ObservableByteValue) {
+      return divide((ObservableShortValue) other);
+    } else {
+      return DoubleBinding.divide(this, other);
+    }
+  }
+
+  /**
+   * @param other the {@link ObservableBigDecimalValue} holding the {@link Number} to divide.
+   * @return a new {@link BigDecimalExpression} holding the quotient of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableBigDecimalValue}.
+   */
+  default BigDecimalExpression divide(ObservableBigDecimalValue other) {
+
+    return BigDecimalBinding.divide(this, other);
+  }
+
+  /**
+   * @param other the {@link ObservableBigIntegerValue} holding the {@link Number} to divide.
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableBigIntegerValue}.
+   */
+  NumberExpression<?> divide(ObservableBigIntegerValue other);
+
+  /**
+   * @param other the {@link ObservableDoubleValue} holding the {@link Number} to divide.
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableDoubleValue}.
+   */
+  NumberExpression<?> divide(ObservableDoubleValue other);
+
+  /**
+   * @param other the {@link ObservableFloatValue} holding the {@link Number} to divide.
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableFloatValue}.
+   */
+  NumberExpression<?> divide(ObservableFloatValue other);
+
+  /**
+   * @param other the {@link ObservableLongValue} holding the {@link Number} to divide.
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableLongValue}.
+   */
+  NumberExpression<?> divide(ObservableLongValue other);
+
+  /**
+   * @param other the {@link ObservableIntegerValue} holding the {@link Number} to divide.
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableIntegerValue}.
+   */
+  NumberExpression<?> divide(ObservableIntegerValue other);
+
+  /**
+   * @param other the {@link ObservableShortValue} holding the {@link Number} to divide.
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableShortValue}.
+   */
+  NumberExpression<?> divide(ObservableShortValue other);
+
+  /**
+   * @param other the {@link ObservableByteValue} holding the {@link Number} to divide.
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} with the
+   *         {@link #getValue() value} of the given {@link ObservableByteValue}.
+   */
+  NumberExpression<?> divide(ObservableByteValue other);
+
+  /**
+   * @param constant the constant {@link Number} to divide.
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} divided by the given
+   *         {@code constant}.
+   */
+  default NumberExpression<?> divide(Number constant) {
+
+    if (constant == null) {
+      return this;
+    } else if (constant instanceof BigDecimal) {
+      return divide((BigDecimal) constant);
+    } else if (constant instanceof BigInteger) {
+      return divide((BigInteger) constant);
+    } else if (constant instanceof Double) {
+      return divide(constant.doubleValue());
+    } else if (constant instanceof Float) {
+      return divide(constant.floatValue());
+    } else if (constant instanceof Long) {
+      return divide(constant.longValue());
+    } else if (constant instanceof Short) {
+      return divide(constant.shortValue());
+    } else if (constant instanceof Byte) {
+      return divide(constant.byteValue());
+    } else {
+      return divide(constant.doubleValue());
+    }
+  }
+
+  /**
+   * @param constant the constant {@link BigDecimal} to divide.
+   * @return a new {@link BigDecimalExpression} holding the quotient of this {@link #getValue() value} divided by the
+   *         given {@code constant}.
+   */
+  default BigDecimalExpression divide(BigDecimal constant) {
+
+    return BigDecimalBinding.divide(this, constant);
+  }
+
+  /**
+   * @param constant the constant {@link BigInteger} to divide.
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} divided by the given
+   *         {@code constant}.
+   */
+  NumberExpression<?> divide(BigInteger constant);
+
+  /**
+   * @param constant the constant {@code double} to divide.
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} divided by the given
+   *         {@code constant}.
+   */
+  NumberExpression<?> divide(double constant);
+
+  /**
+   * @param constant the constant {@code float} to divide.
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} divided by the given
+   *         {@code constant}.
+   */
+  NumberExpression<?> divide(float constant);
+
+  /**
+   * @param constant the constant {@code long} to divide.
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} divided by the given
+   *         {@code constant}.
+   */
+  NumberExpression<?> divide(long constant);
+
+  /**
+   * @param constant the constant {@code int} to divide.
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} divided by the given
+   *         {@code constant}.
+   */
+  NumberExpression<?> divide(int constant);
+
+  /**
+   * @param constant the constant {@code short} to divide.
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} divided by the given
+   *         {@code constant}.
+   */
+  NumberExpression<?> divide(short constant);
+
+  /**
+   * @param constant the constant {@code byte} to divide.
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} divided by the given
+   *         {@code constant}.
+   */
+  NumberExpression<?> divide(byte constant);
 
 }

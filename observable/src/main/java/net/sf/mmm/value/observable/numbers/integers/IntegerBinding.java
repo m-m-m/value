@@ -14,6 +14,8 @@ import net.sf.mmm.value.observable.numbers.NumberExpression;
  */
 public class IntegerBinding extends NumberBinding<Integer> implements IntegerExpression {
 
+  private static final Integer ZERO = Integer.valueOf(0);
+
   /**
    * The constructor.
    *
@@ -210,10 +212,63 @@ public class IntegerBinding extends NumberBinding<Integer> implements IntegerExp
     return new IntegerBinding(() -> mulAll(observables), observables);
   }
 
+  /**
+   * @param expression the {@link IntegerExpression}.
+   * @param other the {@link ObservableValue} to divide.
+   * @return a new {@link IntegerExpression} holding the quotient of the {@link #getValue() value}s of the first and the
+   *         second given {@link ObservableValue}s.
+   * @see #divide(ObservableIntegerValue)
+   */
+  public static IntegerExpression divide(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
+
+    if (other == null) {
+      return cast(expression);
+    }
+    return new IntegerBinding(() -> div(expression, other), expression, other);
+  }
+
+  /**
+   * @param expression the {@link IntegerExpression}.
+   * @param constant the constant {@link Number} to divide.
+   * @return a new {@link IntegerExpression} holding the quotient of the {@link #getValue() value} from the given
+   *         {@link IntegerExpression} divided by the given {@code constant}.
+   * @see #divide(ObservableIntegerValue)
+   */
+  public static IntegerExpression divide(NumberExpression<?> expression, Number constant) {
+
+    if (constant == null) {
+      return cast(expression);
+    }
+    return divide(expression, constant.intValue());
+  }
+
+  /**
+   * @param expression the {@link IntegerExpression}.
+   * @param constant the constant {@code int} to divide.
+   * @return a new {@link IntegerExpression} holding the quotient of the {@link #getValue() value} from the given
+   *         {@link IntegerExpression} divided by the given {@code constant}.
+   * @see #divide(ObservableIntegerValue)
+   */
+  public static IntegerExpression divide(NumberExpression<?> expression, int constant) {
+
+    return new IntegerBinding(() -> div(constant, expression.getValue()), expression);
+  }
+
+  /**
+   * @param observables the {@link ObservableValue}s to divide.
+   * @return a new {@link IntegerExpression} holding the quotient of the {@link #getValue() value}s from the given
+   *         {@link ObservableValue}s.
+   */
+  @SafeVarargs
+  public static IntegerExpression divideAll(ObservableValue<? extends Number>... observables) {
+
+    return new IntegerBinding(() -> divAll(observables), observables);
+  }
+
   private static Integer to(Number value) {
 
     if (value == null) {
-      return null;
+      return ZERO;
     } else if (value instanceof Integer) {
       return (Integer) value;
     } else {
@@ -251,13 +306,9 @@ public class IntegerBinding extends NumberBinding<Integer> implements IntegerExp
 
   private static Integer plus(Number v1, Number v2) {
 
-    if ((v1 == null) && (v2 == null)) {
-      return null;
-    }
     if (v1 == null) {
       return to(v2);
-    }
-    if (v2 == null) {
+    } else if (v2 == null) {
       return to(v1);
     }
     return Integer.valueOf(v1.intValue() + v2.intValue());
@@ -275,13 +326,19 @@ public class IntegerBinding extends NumberBinding<Integer> implements IntegerExp
   private static Integer minusAll(ReadableValue<? extends Number>... observables) {
 
     int difference = 0;
+    boolean first = true;
     for (ReadableValue<? extends Number> observable : observables) {
       if (observable != null) {
         Number value = observable.getValue();
         if (value != null) {
-          difference = difference - value.intValue();
+          if (first) {
+            difference = value.intValue();
+          } else {
+            difference = difference - value.intValue();
+          }
         }
       }
+      first = false;
     }
     return Integer.valueOf(difference);
   }
@@ -293,13 +350,12 @@ public class IntegerBinding extends NumberBinding<Integer> implements IntegerExp
 
   private static Integer minus(Number v1, Number v2) {
 
-    if ((v1 == null) && (v2 == null)) {
-      return null;
-    }
     if (v1 == null) {
-      return to(v2);
-    }
-    if (v2 == null) {
+      if (v2 == null) {
+        return ZERO;
+      }
+      return Integer.valueOf(-v2.intValue());
+    } else if (v2 == null) {
       return to(v1);
     }
     return Integer.valueOf(v1.intValue() - v2.intValue());
@@ -318,12 +374,14 @@ public class IntegerBinding extends NumberBinding<Integer> implements IntegerExp
 
     int product = 1;
     for (ReadableValue<? extends Number> observable : observables) {
-      if (observable != null) {
-        Number value = observable.getValue();
-        if (value != null) {
-          product = product * value.intValue();
-        }
+      if (observable == null) {
+        return ZERO;
       }
+      Number value = observable.getValue();
+      if (value == null) {
+        return ZERO;
+      }
+      product = product * value.intValue();
     }
     return Integer.valueOf(product);
   }
@@ -335,24 +393,65 @@ public class IntegerBinding extends NumberBinding<Integer> implements IntegerExp
 
   private static Integer mul(Number v1, Number v2) {
 
-    if ((v1 == null) && (v2 == null)) {
-      return null;
-    }
-    if (v1 == null) {
-      return to(v2);
-    }
-    if (v2 == null) {
-      return to(v1);
+    if ((v1 == null) || (v2 == null)) {
+      return ZERO;
     }
     return Integer.valueOf(v1.intValue() * v2.intValue());
   }
 
   private static Integer mul(int v1, Number v2) {
 
-    if (v2 != null) {
-      v1 = v1 * v2.intValue();
+    if (v2 == null) {
+      return ZERO;
     }
-    return Integer.valueOf(v1);
+    return Integer.valueOf(v1 * v2.intValue());
+  }
+
+  @SafeVarargs
+  private static Integer divAll(ReadableValue<? extends Number>... observables) {
+
+    int quotient = 1;
+    boolean first = true;
+    for (ReadableValue<? extends Number> observable : observables) {
+      if (observable != null) {
+        Number value = observable.getValue();
+        if (value != null) {
+          if (first) {
+            quotient = value.intValue();
+          } else {
+            quotient = quotient / value.intValue();
+          }
+        }
+      }
+      first = false;
+    }
+    return Integer.valueOf(quotient);
+  }
+
+  private static Integer div(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
+
+    return div(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+  }
+
+  private static Integer div(Number v1, Number v2) {
+
+    if (v1 == null) {
+      return ZERO;
+    }
+    int i2 = 0;
+    if (v2 != null) {
+      i2 = v2.intValue();
+    }
+    return Integer.valueOf(v1.intValue() / i2);
+  }
+
+  private static Integer div(int v1, Number v2) {
+
+    int i2 = 0;
+    if (v2 != null) {
+      i2 = v2.intValue();
+    }
+    return Integer.valueOf(v1 / i2);
   }
 
 }
