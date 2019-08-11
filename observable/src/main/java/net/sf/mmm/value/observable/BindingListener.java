@@ -16,7 +16,7 @@ public class BindingListener implements ObservableEventListener<Object> {
   /**
    * The constructor.
    *
-   * @param value the property to {@link WritableProperty#bind(ObservableValue) bind}.
+   * @param value the property to {@link WritableObservableValue#bind(ObservableValue) bind}.
    */
   public BindingListener(AbstractObservableValue<?> value) {
 

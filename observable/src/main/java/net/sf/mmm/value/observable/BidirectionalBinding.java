@@ -101,7 +101,7 @@ public class BidirectionalBinding<V> implements ObservableEventListener<V> {
   }
 
   /**
-   * @see WritableProperty#unbindBidirectional(WritableProperty)
+   * @see WritableObservableValue#unbindBidirectional(WritableObservableValue)
    */
   public void unbind() {
 
@@ -130,7 +130,7 @@ public class BidirectionalBinding<V> implements ObservableEventListener<V> {
    * @param property2 the second {@link WritableObservableValue} to bind.
    *
    * @return the {@link BidirectionalBinding}.
-   * @see WritableProperty#bindBidirectional(WritableProperty)
+   * @see WritableObservableValue#bindBidirectional(WritableObservableValue)
    */
   public static <V> BidirectionalBinding<V> bind(WritableObservableValue<V> property1,
       WritableObservableValue<V> property2) {
@@ -147,7 +147,7 @@ public class BidirectionalBinding<V> implements ObservableEventListener<V> {
    * @param <V> type of observed {@link ObservableValue#getValue() value}.
    * @param property1 the first {@link WritableObservableValue} to unbind.
    * @param property2 the second {@link WritableObservableValue} to unbind.
-   * @see WritableProperty#unbindBidirectional(WritableObservableValue)
+   * @see WritableObservableValue#unbindBidirectional(WritableObservableValue)
    */
   public static <V> void unbind(WritableObservableValue<V> property1, WritableObservableValue<V> property2) {
 

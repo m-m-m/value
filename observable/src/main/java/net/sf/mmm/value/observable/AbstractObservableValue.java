@@ -88,4 +88,25 @@ public abstract class AbstractObservableValue<V>
     fireEvent();
   }
 
+  @Override
+  public final String toString() {
+
+    StringBuilder sb = new StringBuilder();
+    sb.append(getClass().getSimpleName());
+    sb.append('[');
+    toString(sb);
+    sb.append(']');
+    return sb.toString();
+  }
+
+  /**
+   * @param sb the {@link StringBuilder} where to append the details of this property for
+   *        {@link #toString()}-Representation.
+   */
+  protected void toString(StringBuilder sb) {
+
+    sb.append("value=");
+    sb.append(getValue());
+  }
+
 }

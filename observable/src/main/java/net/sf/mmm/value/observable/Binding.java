@@ -113,19 +113,14 @@ public abstract class Binding<V> extends AbstractObservableValue<V> implements E
     return this.valid;
   }
 
-  /**
-   * Returns a string representation of this {@code BooleanBinding} object.
-   *
-   * @return a string representation of this {@code BooleanBinding} object.
-   */
   @Override
-  public String toString() {
+  protected void toString(StringBuilder sb) {
 
-    Object currentValue = "invalid";
     if (this.valid) {
-      currentValue = this.value;
+      super.toString(sb);
+    } else {
+      sb.append("invalid");
     }
-    return getClass().getSimpleName() + " [" + currentValue + "]";
   }
 
 }
