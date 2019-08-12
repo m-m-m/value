@@ -3,25 +3,16 @@
 package net.sf.mmm.value.observable.containers.maps;
 
 import java.util.Map;
-import java.util.Set;
 
-import net.sf.mmm.value.observable.containers.ReadableContainerValue;
-import net.sf.mmm.value.observable.containers.collections.ReadableCollectionValue;
+import net.sf.mmm.value.observable.containers.WritableContainerValue;
 
 /**
- * {@link ReadableCollectionValue} for {@link Set} {@link #getValue() value}s.
+ * {@link WritableContainerValue} for {@link Map} {@link #getValue() value}s.
  *
  * @param <K> type of the {@link Map#containsKey(Object) keys}.
  * @param <E> type of the {@link Map#containsValue(Object) values}.
  * @since 1.0.0
  */
-public interface WritableMapValue<K, E> extends ReadableContainerValue<Map<K, E>, E> {
-
-  @SuppressWarnings({ "unchecked", "rawtypes" })
-  @Override
-  default Class<Map<K, E>> getValueClass() {
-
-    return (Class) Map.class;
-  }
+public interface WritableMapValue<K, E> extends WritableContainerValue<Map<K, E>, E>, ReadableMapValue<K, E> {
 
 }

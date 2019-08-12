@@ -14,6 +14,16 @@ module net.sf.mmm.value.observable {
 
   exports net.sf.mmm.value.observable.comparables;
 
+  exports net.sf.mmm.value.observable.containers;
+
+  exports net.sf.mmm.value.observable.containers.collections;
+
+  exports net.sf.mmm.value.observable.containers.lists;
+
+  exports net.sf.mmm.value.observable.containers.maps;
+
+  exports net.sf.mmm.value.observable.containers.sets;
+
   exports net.sf.mmm.value.observable.numbers;
 
   exports net.sf.mmm.value.observable.numbers.bigdecimals;

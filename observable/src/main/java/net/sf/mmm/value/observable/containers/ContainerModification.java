@@ -3,12 +3,20 @@ package net.sf.mmm.value.observable.containers;
 import net.sf.mmm.event.ChangeType;
 
 /**
- * Event that signals the change of a container (e.g. {@link java.util.Collection} or {@link java.util.Map}).
+ * {@link net.sf.mmm.value.observable.ObservableEvent#getModification() Modification} signals the change of a container
+ * (e.g. {@link java.util.Collection} or {@link java.util.Map}).
  *
+ * @param <C> type of the {@link #getContainer() container}.
  * @param <E> type of the {@link #getElement(int) elements}.
  * @since 1.0.0
+ * @see net.sf.mmm.value.observable.ObservableEvent#getModification()
  */
-public interface ContainerChangeEvent<E> {
+public interface ContainerModification<C, E> {
+
+  /**
+   * @return the container that changed.
+   */
+  C getContainer();
 
   /**
    * @return the {@link ChangeType} as one of {@link ChangeType#ADD}, {@link ChangeType#UPDATE}, or

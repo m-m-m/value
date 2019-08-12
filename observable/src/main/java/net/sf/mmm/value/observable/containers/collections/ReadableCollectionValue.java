@@ -7,12 +7,12 @@ import java.util.Collection;
 import net.sf.mmm.value.observable.containers.ReadableContainerValue;
 
 /**
- * {@link ReadableContainerValue} for {@link java.util.Collection} {@link #getValue() values}.
+ * {@link ReadableContainerValue} for {@link java.util.Collection} {@link #getValue() value}s.
  *
+ * @param <C> type of the {@link Collection} {@link #getValue() value}.
  * @param <E> type of the {@link Collection#contains(Object) elements}.
- * @param <C> type of the {@link Collection}.
  * @since 1.0.0
  */
-public interface ReadableCollectionValue<E, C extends Collection<E>> extends ReadableContainerValue<C> {
+public interface ReadableCollectionValue<C extends Collection<E>, E> extends ReadableContainerValue<C, E> {
 
 }

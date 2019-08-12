@@ -3,13 +3,11 @@
 package net.sf.mmm.value.observable.containers.maps;
 
 import java.util.Map;
-import java.util.Set;
 
 import net.sf.mmm.value.observable.containers.ReadableContainerValue;
-import net.sf.mmm.value.observable.containers.collections.ReadableCollectionValue;
 
 /**
- * {@link ReadableCollectionValue} for {@link Set} {@link #getValue() value}s.
+ * {@link ReadableContainerValue} for {@link Map} {@link #getValue() value}s.
  *
  * @param <K> type of the {@link Map#containsKey(Object) keys}.
  * @param <E> type of the {@link Map#containsValue(Object) values}.

@@ -12,7 +12,7 @@ import net.sf.mmm.value.observable.containers.collections.ReadableCollectionValu
  * @param <E> type of the {@link Set#contains(Object) elements}.
  * @since 1.0.0
  */
-public interface ReadableSetValue<E> extends ReadableCollectionValue<E, Set<E>> {
+public interface ReadableSetValue<E> extends ReadableCollectionValue<Set<E>, E> {
 
   @SuppressWarnings({ "unchecked", "rawtypes" })
   @Override

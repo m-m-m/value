@@ -4,14 +4,15 @@ package net.sf.mmm.value.observable.containers.sets;
 
 import java.util.Set;
 
-import net.sf.mmm.value.observable.containers.ContainerChangeEvent;
+import net.sf.mmm.value.observable.containers.ContainerModification;
 
 /**
- * {@link ContainerChangeEvent} for {@link Set}s.
+ * {@link ContainerModification} for {@link Set}s.
  *
  * @param <E> type of the {@link #getElement(int) elements}.
  * @since 1.0.0
+ * @see net.sf.mmm.value.observable.ObservableEvent#getModification()
  */
-public interface SetChangeEvent<E> extends ContainerChangeEvent<Set<E>, E> {
+public interface SetModification<E> extends ContainerModification<Set<E>, E> {
 
 }

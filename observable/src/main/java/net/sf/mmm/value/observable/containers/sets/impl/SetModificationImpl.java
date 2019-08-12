@@ -6,17 +6,16 @@ import java.util.List;
 import java.util.Set;
 
 import net.sf.mmm.event.ChangeType;
-import net.sf.mmm.value.observable.containers.collections.impl.CollectionChangeEventImpl;
-import net.sf.mmm.value.observable.containers.lists.ListChangeEvent;
-import net.sf.mmm.value.observable.containers.sets.SetChangeEvent;
+import net.sf.mmm.value.observable.containers.collections.impl.CollectionModificationImpl;
+import net.sf.mmm.value.observable.containers.sets.SetModification;
 
 /**
- * Implementation of {@link ListChangeEvent}.
+ * Implementation of {@link SetModification}.
  *
  * @param <E> type of the {@link #getElement(int) elements}.
  * @since 1.0.0
  */
-public class SetChangeEventImpl<E> extends CollectionChangeEventImpl<Set<E>, E> implements SetChangeEvent<E> {
+public class SetModificationImpl<E> extends CollectionModificationImpl<Set<E>, E> implements SetModification<E> {
 
   private final Set<E> container;
 
@@ -27,7 +26,7 @@ public class SetChangeEventImpl<E> extends CollectionChangeEventImpl<Set<E>, E> 
    * @param type the {@link ChangeType}.
    * @param elements the {@link #getElement(int) changed elements}.
    */
-  public SetChangeEventImpl(Set<E> container, ChangeType type, E[] elements) {
+  public SetModificationImpl(Set<E> container, ChangeType type, E[] elements) {
 
     super(type, elements);
     this.container = container;

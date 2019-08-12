@@ -12,7 +12,7 @@ import net.sf.mmm.value.observable.containers.collections.ReadableCollectionValu
  * @param <E> type of the {@link List#contains(Object) elements}.
  * @since 1.0.0
  */
-public interface ReadableListValue<E> extends ReadableCollectionValue<E, List<E>> {
+public interface ReadableListValue<E> extends ReadableCollectionValue<List<E>, E> {
 
   @SuppressWarnings({ "unchecked", "rawtypes" })
   @Override

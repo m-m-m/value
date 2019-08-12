@@ -2,20 +2,20 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package net.sf.mmm.value.observable.containers.maps;
 
-import java.util.List;
 import java.util.Map;
 
 import net.sf.mmm.event.ChangeType;
-import net.sf.mmm.value.observable.containers.ContainerChangeEvent;
+import net.sf.mmm.value.observable.containers.ContainerModification;
 
 /**
- * {@link ContainerChangeEvent} for {@link List}s.
+ * {@link ContainerModification} for {@link Map}s.
  *
  * @param <K> type of the {@link Map#containsKey(Object) keys}.
  * @param <E> type of the {@link #getElement(int) elements}.
  * @since 1.0.0
+ * @see net.sf.mmm.value.observable.ObservableEvent#getModification()
  */
-public interface MapChangeEvent<K, E> extends ContainerChangeEvent<Map<K, E>, E> {
+public interface MapModification<K, E> extends ContainerModification<Map<K, E>, E> {
 
   /**
    * @param index the index of the changed {@link java.util.Map#containsKey(Object) key} in the range from {@code 0} to

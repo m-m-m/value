@@ -3,12 +3,12 @@ package net.sf.mmm.value.observable.containers;
 import net.sf.mmm.value.observable.ObservableValue;
 
 /**
- * {@link ObservableValue} for container {@link #getValue() values}
+ * {@link ObservableValue} for container {@link #getValue() value}s.
  *
- * @param <V> the type of the container.
+ * @param <C> type of the container {@link #getValue() value}.
  * @param <E> the type of the elements in the container.
  * @since 1.0.0
  */
-public interface ObservableContainerValue<V, E> extends ObservableValue<V>, ReadableContainerValue<V> {
+public interface ObservableContainerValue<C, E> extends ObservableValue<C>, ReadableContainerValue<C, E> {
 
 }
