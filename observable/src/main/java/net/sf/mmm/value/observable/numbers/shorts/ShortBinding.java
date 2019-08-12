@@ -92,7 +92,7 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
    */
   public static ShortExpression add(NumberExpression<?> expression, short constant) {
 
-    return new ShortBinding(() -> plus(constant, expression.getValue()), expression);
+    return new ShortBinding(() -> plus(expression.getValue(), constant), expression);
   }
 
   /**
@@ -145,7 +145,7 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
    */
   public static ShortExpression subtract(NumberExpression<?> expression, short constant) {
 
-    return new ShortBinding(() -> minus(constant, expression.getValue()), expression);
+    return new ShortBinding(() -> minus(expression.getValue(), constant), expression);
   }
 
   /**
@@ -198,7 +198,7 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
    */
   public static ShortExpression multiply(NumberExpression<?> expression, short constant) {
 
-    return new ShortBinding(() -> mul(constant, expression.getValue()), expression);
+    return new ShortBinding(() -> mul(expression.getValue(), constant), expression);
   }
 
   /**
@@ -251,7 +251,7 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
    */
   public static ShortExpression divide(NumberExpression<?> expression, short constant) {
 
-    return new ShortBinding(() -> div(constant, expression.getValue()), expression);
+    return new ShortBinding(() -> div(expression.getValue(), constant), expression);
   }
 
   /**
@@ -312,12 +312,12 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
     return Short.valueOf((short) (v1.shortValue() + v2.shortValue()));
   }
 
-  private static Short plus(short v1, Number v2) {
+  private static Short plus(Number v1, short v2) {
 
-    if (v2 != null) {
-      v1 = (short) (v1 + v2.shortValue());
+    if (v1 != null) {
+      v2 = (short) (v1.shortValue() + v2);
     }
-    return Short.valueOf(v1);
+    return Short.valueOf(v2);
   }
 
   @SafeVarargs
@@ -359,12 +359,13 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
     return Short.valueOf((short) (v1.shortValue() - v2.shortValue()));
   }
 
-  private static Short minus(short v1, Number v2) {
+  private static Short minus(Number v1, short v2) {
 
-    if (v2 != null) {
-      v1 = (short) (v1 - v2.shortValue());
+    short s1 = 0;
+    if (v1 != null) {
+      s1 = v1.shortValue();
     }
-    return Short.valueOf(v1);
+    return Short.valueOf((short) (s1 - v2));
   }
 
   @SafeVarargs
@@ -397,12 +398,12 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
     return Short.valueOf((short) (v1.shortValue() * v2.shortValue()));
   }
 
-  private static Short mul(short v1, Number v2) {
+  private static Short mul(Number v1, short v2) {
 
-    if (v2 == null) {
+    if (v1 == null) {
       return ZERO;
     }
-    return Short.valueOf((short) (v1 * v2.shortValue()));
+    return Short.valueOf((short) (v1.shortValue() * v2));
   }
 
   @SafeVarargs
@@ -438,18 +439,17 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
     }
     short s2 = 0;
     if (v2 != null) {
-      return s2 = v2.shortValue();
+      s2 = v2.shortValue();
     }
     return Short.valueOf((short) (v1.shortValue() / s2));
   }
 
-  private static Short div(short v1, Number v2) {
+  private static Short div(Number v1, short v2) {
 
-    short s2 = 0;
-    if (v2 != null) {
-      return s2 = v2.shortValue();
+    if (v1 == null) {
+      return ZERO;
     }
-    return Short.valueOf((short) (v1 / s2));
+    return Short.valueOf((short) (v1.shortValue() / v2));
   }
 
 }

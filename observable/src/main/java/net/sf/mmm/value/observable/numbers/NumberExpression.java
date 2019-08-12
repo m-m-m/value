@@ -57,7 +57,7 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
     } else if (other instanceof ObservableShortValue) {
       return add((ObservableShortValue) other);
     } else if (other instanceof ObservableByteValue) {
-      return add((ObservableShortValue) other);
+      return add((ObservableByteValue) other);
     } else {
       return DoubleBinding.add(this, other);
     }
@@ -141,6 +141,8 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
       return add(constant.floatValue());
     } else if (constant instanceof Long) {
       return add(constant.longValue());
+    } else if (constant instanceof Integer) {
+      return add(constant.intValue());
     } else if (constant instanceof Short) {
       return add(constant.shortValue());
     } else if (constant instanceof Byte) {
@@ -233,7 +235,7 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
     } else if (other instanceof ObservableShortValue) {
       return subtract((ObservableShortValue) other);
     } else if (other instanceof ObservableByteValue) {
-      return subtract((ObservableShortValue) other);
+      return subtract((ObservableByteValue) other);
     } else {
       return DoubleBinding.subtract(this, other);
     }
@@ -317,6 +319,8 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
       return subtract(constant.floatValue());
     } else if (constant instanceof Long) {
       return subtract(constant.longValue());
+    } else if (constant instanceof Integer) {
+      return subtract(constant.intValue());
     } else if (constant instanceof Short) {
       return subtract(constant.shortValue());
     } else if (constant instanceof Byte) {
@@ -409,7 +413,7 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
     } else if (other instanceof ObservableShortValue) {
       return multiply((ObservableShortValue) other);
     } else if (other instanceof ObservableByteValue) {
-      return multiply((ObservableShortValue) other);
+      return multiply((ObservableByteValue) other);
     } else {
       return DoubleBinding.multiply(this, other);
     }
@@ -493,6 +497,8 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
       return multiply(constant.floatValue());
     } else if (constant instanceof Long) {
       return multiply(constant.longValue());
+    } else if (constant instanceof Integer) {
+      return multiply(constant.intValue());
     } else if (constant instanceof Short) {
       return multiply(constant.shortValue());
     } else if (constant instanceof Byte) {
@@ -669,6 +675,8 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
       return divide(constant.floatValue());
     } else if (constant instanceof Long) {
       return divide(constant.longValue());
+    } else if (constant instanceof Integer) {
+      return divide(constant.intValue());
     } else if (constant instanceof Short) {
       return divide(constant.shortValue());
     } else if (constant instanceof Byte) {

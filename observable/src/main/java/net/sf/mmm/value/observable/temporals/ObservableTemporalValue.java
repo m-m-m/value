@@ -9,7 +9,7 @@ import net.sf.mmm.value.observable.objects.ObservableObjectValue;
 /**
  * {@link net.sf.mmm.value.observable.ObservableValue} containing a {@link Temporal} {@link #getValue() value}.
  *
- * @param <V> is the generic type of the {@link #getValue() value}.
+ * @param <V> type of the {@link #getValue() value}.
  * @since 1.0.0
  */
 public interface ObservableTemporalValue<V extends Temporal>

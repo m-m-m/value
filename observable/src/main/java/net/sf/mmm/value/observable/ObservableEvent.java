@@ -38,41 +38,26 @@ public interface ObservableEvent<V> {
   boolean hasOldValue();
 
   /**
+   * @param <M> type of the modification.
+   * @return the modification in case of a {@link #isModification() value change}, {@code null} otherwise.
+   * @see net.sf.mmm.value.observable.containers.lists.ListModification
+   * @see net.sf.mmm.value.observable.containers.maps.MapModification
+   * @see net.sf.mmm.value.observable.containers.sets.SetModification
+   */
+  <M> M getModification();
+
+  /**
    * @return {@code true} if the {@link #getValue() value} object instance itself has been modified. Most
    *         {@link ObservableValue}s contain immutable value types (such as {@link String}, {@link Boolean},
    *         {@link Integer}, {@link java.math.BigDecimal}, {@link java.time.Instant}, etc.). However, values like e.g.
    *         {@link java.util.Collection} are mutable and may support notifying {@link #getModification()
-   *         modifications}.
+   *         modifications}. Otherwise, if {@code false} the {@link #getObservable() observable} itself was modified and
+   *         its {@link #getValue() value} has changed (or was invalidated and needs to be recalculated).
+   * @see #getModification()
    */
-  default boolean isChangedValue() {
+  default boolean isModification() {
 
     return (getModification() != null);
-  }
-
-  /**
-   * @return {@code true} if the {@link #getObservable() observable} itself has changed. That is its
-   *         {@link ObservableValue#getValue() value} has been {@link net.sf.mmm.value.WritableValue#setValue(Object)
-   *         set} to a new instance or its value has been invalidated and needs to be recalculated, {@code false}
-   *         otherwise (if the {@link #isChangedValue() value instance itself was modified}).
-   */
-  default boolean isChangedObservable() {
-
-    return (getModification() == null);
-  }
-
-  /**
-   * @return the modification in case of a {@link #isChangedValue() value change}, {@code null} otherwise.
-   */
-  Object getModification();
-
-  /**
-   * @param <M> type of the {@link #getModification() modification}.
-   * @param type the {@link Class} reflecting the {@link #getModification() modification}.
-   * @return the {@link #getModification() modification} casted to the given type.
-   */
-  default <M> M getModification(Class<M> type) {
-
-    return type.cast(getModification());
   }
 
 }

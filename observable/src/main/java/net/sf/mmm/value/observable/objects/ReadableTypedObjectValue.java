@@ -7,7 +7,7 @@ import net.sf.mmm.value.ReadableTypedValue;
 /**
  * {@link ReadableObjectValue} that is also a {@link ReadableTypedValue}.
  *
- * @param <V> is the generic type of the {@link #getValue() value}.
+ * @param <V> type of the {@link #getValue() value}.
  * @since 1.0.0
  */
 public interface ReadableTypedObjectValue<V> extends ReadableTypedValue<V>, ReadableObjectValue<V> {

@@ -6,6 +6,7 @@ import java.math.BigInteger;
 import net.sf.mmm.value.observable.ObservableValue;
 import net.sf.mmm.value.observable.numbers.NumberExpression;
 import net.sf.mmm.value.observable.numbers.bigdecimals.BigDecimalBinding;
+import net.sf.mmm.value.observable.numbers.bigdecimals.BigDecimalExpression;
 import net.sf.mmm.value.observable.numbers.bigdecimals.ObservableBigDecimalValue;
 import net.sf.mmm.value.observable.numbers.bytes.ObservableByteValue;
 import net.sf.mmm.value.observable.numbers.doubles.ObservableDoubleValue;
@@ -46,15 +47,15 @@ public interface BigIntegerExpression extends ObservableBigIntegerValue, NumberE
   }
 
   @Override
-  default BigIntegerExpression add(ObservableDoubleValue other) {
+  default BigDecimalExpression add(ObservableDoubleValue other) {
 
-    return BigIntegerBinding.add(this, other);
+    return BigDecimalBinding.add(this, other);
   }
 
   @Override
-  default BigIntegerExpression add(ObservableFloatValue other) {
+  default BigDecimalExpression add(ObservableFloatValue other) {
 
-    return BigIntegerBinding.add(this, other);
+    return BigDecimalBinding.add(this, other);
   }
 
   @Override
@@ -100,15 +101,15 @@ public interface BigIntegerExpression extends ObservableBigIntegerValue, NumberE
   }
 
   @Override
-  default BigIntegerExpression add(double constant) {
+  default BigDecimalExpression add(double constant) {
 
-    return add((long) constant);
+    return BigDecimalBinding.add(this, BigDecimal.valueOf(constant));
   }
 
   @Override
-  default BigIntegerExpression add(float constant) {
+  default BigDecimalExpression add(float constant) {
 
-    return add((long) constant);
+    return add((double) constant);
   }
 
   @Override
@@ -154,15 +155,15 @@ public interface BigIntegerExpression extends ObservableBigIntegerValue, NumberE
   }
 
   @Override
-  default BigIntegerExpression subtract(ObservableDoubleValue other) {
+  default BigDecimalExpression subtract(ObservableDoubleValue other) {
 
-    return BigIntegerBinding.subtract(this, other);
+    return BigDecimalBinding.subtract(this, other);
   }
 
   @Override
-  default BigIntegerExpression subtract(ObservableFloatValue other) {
+  default BigDecimalExpression subtract(ObservableFloatValue other) {
 
-    return BigIntegerBinding.subtract(this, other);
+    return BigDecimalBinding.subtract(this, other);
   }
 
   @Override
@@ -208,15 +209,15 @@ public interface BigIntegerExpression extends ObservableBigIntegerValue, NumberE
   }
 
   @Override
-  default BigIntegerExpression subtract(double constant) {
+  default BigDecimalExpression subtract(double constant) {
 
-    return subtract((long) constant);
+    return BigDecimalBinding.subtract(this, BigDecimal.valueOf(constant));
   }
 
   @Override
-  default BigIntegerExpression subtract(float constant) {
+  default BigDecimalExpression subtract(float constant) {
 
-    return subtract((long) constant);
+    return subtract((double) constant);
   }
 
   @Override
@@ -262,15 +263,15 @@ public interface BigIntegerExpression extends ObservableBigIntegerValue, NumberE
   }
 
   @Override
-  default BigIntegerExpression multiply(ObservableDoubleValue other) {
+  default BigDecimalExpression multiply(ObservableDoubleValue other) {
 
-    return BigIntegerBinding.multiply(this, other);
+    return BigDecimalBinding.multiply(this, other);
   }
 
   @Override
-  default BigIntegerExpression multiply(ObservableFloatValue other) {
+  default BigDecimalExpression multiply(ObservableFloatValue other) {
 
-    return BigIntegerBinding.multiply(this, other);
+    return BigDecimalBinding.multiply(this, other);
   }
 
   @Override
@@ -316,15 +317,15 @@ public interface BigIntegerExpression extends ObservableBigIntegerValue, NumberE
   }
 
   @Override
-  default BigIntegerExpression multiply(double constant) {
+  default BigDecimalExpression multiply(double constant) {
 
-    return multiply((long) constant);
+    return BigDecimalBinding.multiply(this, BigDecimal.valueOf(constant));
   }
 
   @Override
-  default BigIntegerExpression multiply(float constant) {
+  default BigDecimalExpression multiply(float constant) {
 
-    return multiply((long) constant);
+    return multiply((double) constant);
   }
 
   @Override
@@ -370,15 +371,15 @@ public interface BigIntegerExpression extends ObservableBigIntegerValue, NumberE
   }
 
   @Override
-  default BigIntegerExpression divide(ObservableDoubleValue other) {
+  default BigDecimalExpression divide(ObservableDoubleValue other) {
 
-    return BigIntegerBinding.divide(this, other);
+    return BigDecimalBinding.divide(this, other);
   }
 
   @Override
-  default BigIntegerExpression divide(ObservableFloatValue other) {
+  default BigDecimalExpression divide(ObservableFloatValue other) {
 
-    return BigIntegerBinding.divide(this, other);
+    return BigDecimalBinding.divide(this, other);
   }
 
   @Override
@@ -424,15 +425,15 @@ public interface BigIntegerExpression extends ObservableBigIntegerValue, NumberE
   }
 
   @Override
-  default BigIntegerExpression divide(double constant) {
+  default BigDecimalExpression divide(double constant) {
 
-    return divide((long) constant);
+    return BigDecimalBinding.divide(this, BigDecimal.valueOf(constant));
   }
 
   @Override
-  default BigIntegerExpression divide(float constant) {
+  default BigDecimalExpression divide(float constant) {
 
-    return divide((long) constant);
+    return divide((double) constant);
   }
 
   @Override

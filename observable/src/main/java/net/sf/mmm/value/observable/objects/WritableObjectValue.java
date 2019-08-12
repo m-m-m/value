@@ -7,7 +7,7 @@ import net.sf.mmm.value.WritableValue;
 /**
  * {@link WritableValue} for {@link Object} {@link #getValue() value} that has no primitive type.
  *
- * @param <V> is the generic type of the {@link #getValue() value}.
+ * @param <V> type of the {@link #getValue() value}.
  * @since 1.0.0
  */
 public interface WritableObjectValue<V> extends ReadableObjectValue<V>, WritableValue<V> {

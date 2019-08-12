@@ -89,7 +89,9 @@ public abstract class Binding<V> extends AbstractObservableValue<V> implements E
       return this.expression.get();
     }
     if (!this.valid) {
-      this.value = this.expression.get();
+      if (this.expression != null) {
+        this.value = this.expression.get();
+      }
       this.valid = true;
     }
     return this.value;

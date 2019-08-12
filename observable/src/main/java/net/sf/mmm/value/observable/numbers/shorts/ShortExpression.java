@@ -6,8 +6,6 @@ import net.sf.mmm.value.observable.numbers.NumberExpression;
 import net.sf.mmm.value.observable.numbers.bigintegers.BigIntegerBinding;
 import net.sf.mmm.value.observable.numbers.bigintegers.BigIntegerExpression;
 import net.sf.mmm.value.observable.numbers.bigintegers.ObservableBigIntegerValue;
-import net.sf.mmm.value.observable.numbers.bytes.ByteBinding;
-import net.sf.mmm.value.observable.numbers.bytes.ByteExpression;
 import net.sf.mmm.value.observable.numbers.bytes.ObservableByteValue;
 import net.sf.mmm.value.observable.numbers.doubles.DoubleBinding;
 import net.sf.mmm.value.observable.numbers.doubles.DoubleExpression;
@@ -114,9 +112,9 @@ public interface ShortExpression extends ObservableShortValue, NumberExpression<
   }
 
   @Override
-  default ByteExpression add(byte constant) {
+  default ShortExpression add(byte constant) {
 
-    return ByteBinding.add(this, constant);
+    return ShortBinding.add(this, constant);
   }
 
   @Override
@@ -198,9 +196,9 @@ public interface ShortExpression extends ObservableShortValue, NumberExpression<
   }
 
   @Override
-  default ByteExpression subtract(byte constant) {
+  default ShortExpression subtract(byte constant) {
 
-    return ByteBinding.subtract(this, constant);
+    return ShortBinding.subtract(this, constant);
   }
 
   @Override
@@ -282,9 +280,9 @@ public interface ShortExpression extends ObservableShortValue, NumberExpression<
   }
 
   @Override
-  default ByteExpression multiply(byte constant) {
+  default ShortExpression multiply(byte constant) {
 
-    return ByteBinding.multiply(this, constant);
+    return ShortBinding.multiply(this, constant);
   }
 
   @Override
@@ -366,9 +364,9 @@ public interface ShortExpression extends ObservableShortValue, NumberExpression<
   }
 
   @Override
-  default ByteExpression divide(byte constant) {
+  default ShortExpression divide(byte constant) {
 
-    return ByteBinding.divide(this, constant);
+    return ShortBinding.divide(this, constant);
   }
 
 }

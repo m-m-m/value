@@ -14,6 +14,25 @@ public class BigDecimalExpressionMock extends AbstractWritableObservableValue<Bi
 
   private BigDecimal value;
 
+  /**
+   * The constructor.
+   */
+  public BigDecimalExpressionMock() {
+
+    super();
+  }
+
+  /**
+   * The constructor.
+   *
+   * @param value the initial {@link #getValue() value}.
+   */
+  public BigDecimalExpressionMock(BigDecimal value) {
+
+    super();
+    this.value = value;
+  }
+
   @Override
   protected BigDecimal doGetValue() {
 

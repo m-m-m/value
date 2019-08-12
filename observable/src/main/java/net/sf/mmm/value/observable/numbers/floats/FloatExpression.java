@@ -3,8 +3,8 @@ package net.sf.mmm.value.observable.numbers.floats;
 import java.math.BigInteger;
 
 import net.sf.mmm.value.observable.numbers.NumberExpression;
-import net.sf.mmm.value.observable.numbers.bigintegers.BigIntegerBinding;
-import net.sf.mmm.value.observable.numbers.bigintegers.BigIntegerExpression;
+import net.sf.mmm.value.observable.numbers.bigdecimals.BigDecimalBinding;
+import net.sf.mmm.value.observable.numbers.bigdecimals.BigDecimalExpression;
 import net.sf.mmm.value.observable.numbers.bigintegers.ObservableBigIntegerValue;
 import net.sf.mmm.value.observable.numbers.bytes.ObservableByteValue;
 import net.sf.mmm.value.observable.numbers.doubles.DoubleBinding;
@@ -28,9 +28,9 @@ public interface FloatExpression extends ObservableFloatValue, NumberExpression<
   }
 
   @Override
-  default BigIntegerExpression add(ObservableBigIntegerValue other) {
+  default BigDecimalExpression add(ObservableBigIntegerValue other) {
 
-    return BigIntegerBinding.add(this, other);
+    return BigDecimalBinding.add(this, other);
   }
 
   @Override
@@ -70,9 +70,9 @@ public interface FloatExpression extends ObservableFloatValue, NumberExpression<
   }
 
   @Override
-  default BigIntegerExpression add(BigInteger constant) {
+  default BigDecimalExpression add(BigInteger constant) {
 
-    return BigIntegerBinding.add(this, constant);
+    return BigDecimalBinding.add(this, constant);
   }
 
   @Override
@@ -112,9 +112,9 @@ public interface FloatExpression extends ObservableFloatValue, NumberExpression<
   }
 
   @Override
-  default BigIntegerExpression subtract(ObservableBigIntegerValue other) {
+  default BigDecimalExpression subtract(ObservableBigIntegerValue other) {
 
-    return BigIntegerBinding.subtract(this, other);
+    return BigDecimalBinding.subtract(this, other);
   }
 
   @Override
@@ -154,9 +154,9 @@ public interface FloatExpression extends ObservableFloatValue, NumberExpression<
   }
 
   @Override
-  default BigIntegerExpression subtract(BigInteger constant) {
+  default BigDecimalExpression subtract(BigInteger constant) {
 
-    return BigIntegerBinding.subtract(this, constant);
+    return BigDecimalBinding.subtract(this, constant);
   }
 
   @Override
@@ -196,9 +196,9 @@ public interface FloatExpression extends ObservableFloatValue, NumberExpression<
   }
 
   @Override
-  default BigIntegerExpression multiply(ObservableBigIntegerValue other) {
+  default BigDecimalExpression multiply(ObservableBigIntegerValue other) {
 
-    return BigIntegerBinding.multiply(this, other);
+    return BigDecimalBinding.multiply(this, other);
   }
 
   @Override
@@ -238,9 +238,9 @@ public interface FloatExpression extends ObservableFloatValue, NumberExpression<
   }
 
   @Override
-  default BigIntegerExpression multiply(BigInteger constant) {
+  default BigDecimalExpression multiply(BigInteger constant) {
 
-    return BigIntegerBinding.multiply(this, constant);
+    return BigDecimalBinding.multiply(this, constant);
   }
 
   @Override
@@ -280,9 +280,9 @@ public interface FloatExpression extends ObservableFloatValue, NumberExpression<
   }
 
   @Override
-  default BigIntegerExpression divide(ObservableBigIntegerValue other) {
+  default BigDecimalExpression divide(ObservableBigIntegerValue other) {
 
-    return BigIntegerBinding.divide(this, other);
+    return BigDecimalBinding.divide(this, other);
   }
 
   @Override
@@ -322,9 +322,9 @@ public interface FloatExpression extends ObservableFloatValue, NumberExpression<
   }
 
   @Override
-  default BigIntegerExpression divide(BigInteger constant) {
+  default BigDecimalExpression divide(BigInteger constant) {
 
-    return BigIntegerBinding.divide(this, constant);
+    return BigDecimalBinding.divide(this, constant);
   }
 
   @Override

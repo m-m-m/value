@@ -7,7 +7,7 @@ import net.sf.mmm.value.observable.ObservableValue;
 /**
  * {@link ObservableValue} for any {@link Object} {@link #getValue() value} that has no primitive type.
  *
- * @param <V> is the generic type of the {@link #getValue() value}.
+ * @param <V> type of the {@link #getValue() value}.
  * @since 1.0.0
  */
 public interface ObservableObjectValue<V> extends ObservableValue<V>, ReadableObjectValue<V> {

@@ -11,7 +11,7 @@ import net.sf.mmm.value.observable.comparables.ComparableExpression;
 /**
  * {@link ComparableExpression} for date {@link #getValue() values} (e.g. {@link Instant} or {@link LocalDateTime}).
  *
- * @param <V> is the generic type of the {@link #getValue() value}.
+ * @param <V> type of the {@link #getValue() value}.
  * @since 1.0.0
  */
 public interface DateExpression<V extends Comparable<? super V>> extends ComparableExpression<V> {

@@ -13,7 +13,7 @@ import net.sf.mmm.event.AbstractEventSource;
 public abstract class AbstractObservableValue<V>
     extends AbstractEventSource<ObservableEvent<V>, ObservableEventListener<V>> implements ObservableValue<V> {
 
-  private final ObservableEventImpl<V> observableChangeEvent;
+  private ObservableEventImpl<V> observableChangeEvent;
 
   /**
    * The constructor.
@@ -21,7 +21,6 @@ public abstract class AbstractObservableValue<V>
   public AbstractObservableValue() {
 
     super();
-    this.observableChangeEvent = new ObservableEventImpl<>(this);
   }
 
   /**
@@ -33,6 +32,9 @@ public abstract class AbstractObservableValue<V>
 
     if (!hasListeners()) {
       return;
+    }
+    if (this.observableChangeEvent == null) {
+      this.observableChangeEvent = new ObservableEventImpl<>(this);
     }
     ObservableEventImpl<V> event = this.observableChangeEvent.start();
     fireEvent(event);
@@ -49,6 +51,9 @@ public abstract class AbstractObservableValue<V>
 
     if (!hasListeners()) {
       return;
+    }
+    if (this.observableChangeEvent == null) {
+      this.observableChangeEvent = new ObservableEventImpl<>(this);
     }
     ObservableEventImpl<V> event = this.observableChangeEvent.start(oldValue);
     fireEvent(event);

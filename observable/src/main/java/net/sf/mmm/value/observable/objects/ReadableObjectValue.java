@@ -7,7 +7,7 @@ import net.sf.mmm.value.ReadableValue;
 /**
  * {@link ReadableValue} for {@link Object} {@link #getValue() value} that has no primitive type.
  *
- * @param <V> is the generic type of the {@link #getValue() value}.
+ * @param <V> type of the {@link #getValue() value}.
  * @since 1.0.0
  */
 public interface ReadableObjectValue<V> extends ReadableValue<V> {

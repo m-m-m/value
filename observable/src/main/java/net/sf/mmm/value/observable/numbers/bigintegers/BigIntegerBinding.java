@@ -95,7 +95,7 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
       return cast(expression);
     }
     Objects.requireNonNull(expression, "expression");
-    return new BigIntegerBinding(() -> plus(constant, expression.getValue()), expression);
+    return new BigIntegerBinding(() -> plus(expression.getValue(), constant), expression);
   }
 
   /**
@@ -149,7 +149,7 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
       return cast(expression);
     }
     Objects.requireNonNull(expression, "expression");
-    return new BigIntegerBinding(() -> minus(constant, expression.getValue()), expression);
+    return new BigIntegerBinding(() -> minus(expression.getValue(), constant), expression);
   }
 
   /**
@@ -203,7 +203,7 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
       return cast(expression);
     }
     Objects.requireNonNull(expression, "expression");
-    return new BigIntegerBinding(() -> mul(constant, expression.getValue()), expression);
+    return new BigIntegerBinding(() -> mul(expression.getValue(), constant), expression);
   }
 
   /**
@@ -257,7 +257,7 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
       return cast(expression);
     }
     Objects.requireNonNull(expression, "expression");
-    return new BigIntegerBinding(() -> div(constant, expression.getValue()), expression);
+    return new BigIntegerBinding(() -> div(expression.getValue(), constant), expression);
   }
 
   /**
@@ -314,17 +314,17 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
 
   private static BigInteger plus(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
 
-    return plus(to(ReadableValue.unwrap(v1)), ReadableValue.unwrap(v2));
+    return plus(ReadableValue.unwrap(v2), to(ReadableValue.unwrap(v1)));
   }
 
-  private static BigInteger plus(BigInteger v1, Number v2) {
+  private static BigInteger plus(Number v1, BigInteger v2) {
 
-    if (v1 == null) {
-      return to(v2);
-    } else if (v2 == null) {
-      return v1;
+    if (v2 == null) {
+      return to(v1);
+    } else if (v1 == null) {
+      return v2;
     }
-    return v1.add(to(v2));
+    return to(v1).add(v2);
   }
 
   @SafeVarargs
@@ -349,17 +349,17 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
 
   private static BigInteger minus(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
 
-    return minus(to(ReadableValue.unwrap(v1)), ReadableValue.unwrap(v2));
+    return minus(ReadableValue.unwrap(v1), to(ReadableValue.unwrap(v2)));
   }
 
-  private static BigInteger minus(BigInteger v1, Number v2) {
+  private static BigInteger minus(Number v1, BigInteger v2) {
 
-    if (v1 == null) {
-      return to(v2).negate();
-    } else if (v2 == null) {
-      return v1;
+    if (v2 == null) {
+      return to(v1);
+    } else if (v1 == null) {
+      return v2.negate();
     }
-    return v1.subtract(to(v2));
+    return to(v1).subtract(v2);
   }
 
   @SafeVarargs
@@ -388,15 +388,15 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
 
   private static BigInteger mul(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
 
-    return mul(to(ReadableValue.unwrap(v1)), ReadableValue.unwrap(v2));
+    return mul(ReadableValue.unwrap(v2), to(ReadableValue.unwrap(v1)));
   }
 
-  private static BigInteger mul(BigInteger v1, Number v2) {
+  private static BigInteger mul(Number v1, BigInteger v2) {
 
-    if ((v1 == null) || (v2 == null)) {
+    if ((v2 == null) || (v1 == null)) {
       return BigInteger.ZERO;
     }
-    return v1.multiply(to(v2));
+    return to(v1).multiply(v2);
   }
 
   @SafeVarargs
@@ -425,15 +425,17 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
 
   private static BigInteger div(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
 
-    return div(to(ReadableValue.unwrap(v1)), ReadableValue.unwrap(v2));
+    return div(ReadableValue.unwrap(v1), to(ReadableValue.unwrap(v2)));
   }
 
-  private static BigInteger div(BigInteger v1, Number v2) {
+  private static BigInteger div(Number v1, BigInteger v2) {
 
     if (v1 == null) {
-      v1 = BigInteger.ZERO;
+      return BigInteger.ZERO;
+    } else if (v2 == null) {
+      v2 = BigInteger.ZERO;
     }
-    return v1.divide(to(v2));
+    return to(v1).divide(v2);
   }
 
 }

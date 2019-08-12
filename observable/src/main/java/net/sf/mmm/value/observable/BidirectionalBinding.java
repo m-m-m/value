@@ -32,7 +32,7 @@ public class BidirectionalBinding<V> implements ObservableEventListener<V> {
   @Override
   public void onEvent(ObservableEvent<V> event) {
 
-    if (!this.updating && event.isChangedObservable()) {
+    if (!this.updating && !event.isModification()) {
       ObservableValue<V> source = event.getObservable();
       WritableObservableValue<V> v1 = this.propertyRef1.get();
       WritableObservableValue<V> v2 = this.propertyRef2.get();

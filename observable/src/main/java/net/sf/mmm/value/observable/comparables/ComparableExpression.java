@@ -9,7 +9,7 @@ import net.sf.mmm.value.observable.booleans.BooleanBinding;
 /**
  * {@link Expression} with {@link Comparable} {@link #getValue() value}.
  *
- * @param <V> is the generic type of the {@link #getValue() value}.
+ * @param <V> type of the {@link #getValue() value}.
  * @since 1.0.0
  */
 public interface ComparableExpression<V extends Comparable<? super V>> extends Expression<V> {

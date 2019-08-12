@@ -92,7 +92,7 @@ public class IntegerBinding extends NumberBinding<Integer> implements IntegerExp
    */
   public static IntegerExpression add(NumberExpression<?> expression, int constant) {
 
-    return new IntegerBinding(() -> plus(constant, expression.getValue()), expression);
+    return new IntegerBinding(() -> plus(expression.getValue(), constant), expression);
   }
 
   /**
@@ -145,7 +145,7 @@ public class IntegerBinding extends NumberBinding<Integer> implements IntegerExp
    */
   public static IntegerExpression subtract(NumberExpression<?> expression, int constant) {
 
-    return new IntegerBinding(() -> minus(constant, expression.getValue()), expression);
+    return new IntegerBinding(() -> minus(expression.getValue(), constant), expression);
   }
 
   /**
@@ -198,7 +198,7 @@ public class IntegerBinding extends NumberBinding<Integer> implements IntegerExp
    */
   public static IntegerExpression multiply(NumberExpression<?> expression, int constant) {
 
-    return new IntegerBinding(() -> mul(constant, expression.getValue()), expression);
+    return new IntegerBinding(() -> mul(expression.getValue(), constant), expression);
   }
 
   /**
@@ -251,7 +251,7 @@ public class IntegerBinding extends NumberBinding<Integer> implements IntegerExp
    */
   public static IntegerExpression divide(NumberExpression<?> expression, int constant) {
 
-    return new IntegerBinding(() -> div(constant, expression.getValue()), expression);
+    return new IntegerBinding(() -> div(expression.getValue(), constant), expression);
   }
 
   /**
@@ -314,12 +314,12 @@ public class IntegerBinding extends NumberBinding<Integer> implements IntegerExp
     return Integer.valueOf(v1.intValue() + v2.intValue());
   }
 
-  private static Integer plus(int v1, Number v2) {
+  private static Integer plus(Number v1, int v2) {
 
-    if (v2 != null) {
-      v1 = v1 + v2.intValue();
+    if (v1 != null) {
+      v2 = v1.intValue() + v2;
     }
-    return Integer.valueOf(v1);
+    return Integer.valueOf(v2);
   }
 
   @SafeVarargs
@@ -361,12 +361,13 @@ public class IntegerBinding extends NumberBinding<Integer> implements IntegerExp
     return Integer.valueOf(v1.intValue() - v2.intValue());
   }
 
-  private static Integer minus(int v1, Number v2) {
+  private static Integer minus(Number v1, int v2) {
 
-    if (v2 != null) {
-      v1 = v1 - v2.intValue();
+    int i1 = 0;
+    if (v1 != null) {
+      i1 = v1.intValue();
     }
-    return Integer.valueOf(v1);
+    return Integer.valueOf(i1 - v2);
   }
 
   @SafeVarargs
@@ -399,12 +400,12 @@ public class IntegerBinding extends NumberBinding<Integer> implements IntegerExp
     return Integer.valueOf(v1.intValue() * v2.intValue());
   }
 
-  private static Integer mul(int v1, Number v2) {
+  private static Integer mul(Number v1, int v2) {
 
-    if (v2 == null) {
+    if (v1 == null) {
       return ZERO;
     }
-    return Integer.valueOf(v1 * v2.intValue());
+    return Integer.valueOf(v1.intValue() * v2);
   }
 
   @SafeVarargs
@@ -445,13 +446,12 @@ public class IntegerBinding extends NumberBinding<Integer> implements IntegerExp
     return Integer.valueOf(v1.intValue() / i2);
   }
 
-  private static Integer div(int v1, Number v2) {
+  private static Integer div(Number v1, int v2) {
 
-    int i2 = 0;
-    if (v2 != null) {
-      i2 = v2.intValue();
+    if (v1 == null) {
+      return ZERO;
     }
-    return Integer.valueOf(v1 / i2);
+    return Integer.valueOf(v1.intValue() / v2);
   }
 
 }

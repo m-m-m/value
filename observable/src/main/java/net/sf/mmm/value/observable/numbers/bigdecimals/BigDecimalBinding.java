@@ -94,7 +94,7 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
       return cast(expression);
     }
     Objects.requireNonNull(expression, "expression");
-    return new BigDecimalBinding(() -> plus(constant, expression.getValue()), expression);
+    return new BigDecimalBinding(() -> plus(expression.getValue(), constant), expression);
   }
 
   /**
@@ -148,7 +148,7 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
       return cast(expression);
     }
     Objects.requireNonNull(expression, "expression");
-    return new BigDecimalBinding(() -> minus(constant, expression.getValue()), expression);
+    return new BigDecimalBinding(() -> minus(expression.getValue(), constant), expression);
   }
 
   /**
@@ -202,7 +202,7 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
       return cast(expression);
     }
     Objects.requireNonNull(expression, "expression");
-    return new BigDecimalBinding(() -> mul(constant, expression.getValue()), expression);
+    return new BigDecimalBinding(() -> mul(expression.getValue(), constant), expression);
   }
 
   /**
@@ -256,7 +256,7 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
       return cast(expression);
     }
     Objects.requireNonNull(expression, "expression");
-    return new BigDecimalBinding(() -> div(constant, expression.getValue()), expression);
+    return new BigDecimalBinding(() -> div(expression.getValue(), constant), expression);
   }
 
   /**
@@ -308,14 +308,14 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
     return sum;
   }
 
-  private static BigDecimal plus(BigDecimal v1, Number v2) {
+  private static BigDecimal plus(Number v1, BigDecimal v2) {
 
-    if (v1 == null) {
-      return to(v2);
-    } else if (v2 == null) {
-      return v1;
+    if (v2 == null) {
+      return to(v1);
+    } else if (v1 == null) {
+      return v2;
     }
-    return v1.add(to(v2));
+    return to(v1).add(v2);
   }
 
   @SafeVarargs
@@ -338,14 +338,14 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
     return difference;
   }
 
-  private static BigDecimal minus(BigDecimal v1, Number v2) {
+  private static BigDecimal minus(Number v1, BigDecimal v2) {
 
-    if (v1 == null) {
-      return to(v2).negate();
-    } else if (v2 == null) {
-      return v1;
+    if (v2 == null) {
+      return to(v1);
+    } else if (v1 == null) {
+      return v2.negate();
     }
-    return v1.subtract(to(v2));
+    return to(v1).subtract(v2);
   }
 
   @SafeVarargs
@@ -372,12 +372,12 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
     return product;
   }
 
-  private static BigDecimal mul(BigDecimal v1, Number v2) {
+  private static BigDecimal mul(Number v1, BigDecimal v2) {
 
-    if ((v1 == null) || (v2 == null)) {
+    if ((v2 == null) || (v1 == null)) {
       return BigDecimal.ZERO;
     }
-    return v1.multiply(to(v2));
+    return to(v1).multiply(v2);
   }
 
   @SafeVarargs
@@ -404,12 +404,15 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
     return quotient;
   }
 
-  private static BigDecimal div(BigDecimal v1, Number v2) {
+  private static BigDecimal div(Number v1, BigDecimal v2) {
 
     if (v1 == null) {
-      v1 = BigDecimal.ZERO;
+      return BigDecimal.ZERO;
     }
-    return v1.divide(to(v2));
+    if (v2 == null) {
+      v2 = BigDecimal.ZERO;
+    }
+    return to(v1).divide(v2);
   }
 
 }

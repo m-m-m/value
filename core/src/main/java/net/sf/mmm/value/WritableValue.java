@@ -7,7 +7,7 @@ package net.sf.mmm.value;
  * {@link #setValue(Object) set}. In general this interface should not be implemented directly but one of its
  * sub-interfaces.
  *
- * @param <V> is the generic type of the {@link #getValue() value}.
+ * @param <V> type of the {@link #getValue() value}.
  * @since 1.0.0
  */
 public interface WritableValue<V> extends ReadableValue<V> {

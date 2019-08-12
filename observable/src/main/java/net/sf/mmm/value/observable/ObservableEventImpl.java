@@ -31,7 +31,8 @@ public class ObservableEventImpl<V> implements ObservableEvent<V> {
 
     super();
     this.observable = observable;
-    this.hasOldValue = true; // assuming null is the initial value...
+    this.oldValue = observable.getValue();
+    this.hasOldValue = true;
   }
 
   @Override
@@ -63,7 +64,7 @@ public class ObservableEventImpl<V> implements ObservableEvent<V> {
   }
 
   @Override
-  public final Object getModification() {
+  public final <M> M getModification() {
 
     return null;
   }

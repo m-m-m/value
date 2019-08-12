@@ -5,7 +5,7 @@ package net.sf.mmm.value;
 /**
  * {@link ReadableValue} knowing its {@link #getValueClass() value class}.
  *
- * @param <V> is the generic type of the {@link #getValue() value}.
+ * @param <V> type of the {@link #getValue() value}.
  * @since 1.0.0
  */
 public interface ReadableTypedValue<V> extends ReadableValue<V> {

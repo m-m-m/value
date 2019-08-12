@@ -92,7 +92,7 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
    */
   public static DoubleExpression add(NumberExpression<?> expression, double constant) {
 
-    return new DoubleBinding(() -> plus(constant, expression.getValue()), expression);
+    return new DoubleBinding(() -> plus(expression.getValue(), constant), expression);
   }
 
   /**
@@ -145,7 +145,7 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
    */
   public static DoubleExpression subtract(NumberExpression<?> expression, double constant) {
 
-    return new DoubleBinding(() -> minus(constant, expression.getValue()), expression);
+    return new DoubleBinding(() -> minus(expression.getValue(), constant), expression);
   }
 
   /**
@@ -198,7 +198,7 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
    */
   public static DoubleExpression multiply(NumberExpression<?> expression, double constant) {
 
-    return new DoubleBinding(() -> mul(constant, expression.getValue()), expression);
+    return new DoubleBinding(() -> mul(expression.getValue(), constant), expression);
   }
 
   /**
@@ -251,7 +251,7 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
    */
   public static DoubleExpression divide(NumberExpression<?> expression, double constant) {
 
-    return new DoubleBinding(() -> div(constant, expression.getValue()), expression);
+    return new DoubleBinding(() -> div(expression.getValue(), constant), expression);
   }
 
   /**
@@ -314,12 +314,12 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
     return Double.valueOf(v1.doubleValue() + v2.doubleValue());
   }
 
-  private static Double plus(double v1, Number v2) {
+  private static Double plus(Number v1, double v2) {
 
-    if (v2 != null) {
-      return v1 = v1 + v2.doubleValue();
+    if (v1 != null) {
+      return v2 = v2 + v1.doubleValue();
     }
-    return Double.valueOf(v1);
+    return Double.valueOf(v2);
   }
 
   @SafeVarargs
@@ -362,12 +362,13 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
     return Double.valueOf(v1.doubleValue() - v2.doubleValue());
   }
 
-  private static Double minus(double v1, Number v2) {
+  private static Double minus(Number v1, double v2) {
 
-    if (v2 != null) {
-      return v1 = v1 - v2.doubleValue();
+    double d1 = 0;
+    if (v1 != null) {
+      d1 = v1.doubleValue();
     }
-    return Double.valueOf(v1);
+    return Double.valueOf(d1 - v2);
   }
 
   @SafeVarargs
@@ -400,12 +401,12 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
     return Double.valueOf(v1.doubleValue() * v2.doubleValue());
   }
 
-  private static Double mul(double v1, Number v2) {
+  private static Double mul(Number v1, double v2) {
 
-    if (v2 == null) {
+    if (v1 == null) {
       return ZERO;
     }
-    return Double.valueOf(v1 * v2.doubleValue());
+    return Double.valueOf(v2 * v1.doubleValue());
   }
 
   @SafeVarargs
@@ -446,13 +447,12 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
     return Double.valueOf(v1.doubleValue() / d2);
   }
 
-  private static Double div(double v1, Number v2) {
+  private static Double div(Number v1, double v2) {
 
-    double d2 = 0;
-    if (v2 != null) {
-      d2 = v2.doubleValue();
+    if (v1 == null) {
+      return ZERO;
     }
-    return Double.valueOf(v1 / d2);
+    return Double.valueOf(v1.doubleValue() / v2);
   }
 
 }

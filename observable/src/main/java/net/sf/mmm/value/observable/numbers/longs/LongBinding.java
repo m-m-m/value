@@ -92,7 +92,7 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
    */
   public static LongExpression add(NumberExpression<?> expression, long constant) {
 
-    return new LongBinding(() -> plus(constant, expression.getValue()), expression);
+    return new LongBinding(() -> plus(expression.getValue(), constant), expression);
   }
 
   /**
@@ -145,7 +145,7 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
    */
   public static LongExpression subtract(NumberExpression<?> expression, long constant) {
 
-    return new LongBinding(() -> minus(constant, expression.getValue()), expression);
+    return new LongBinding(() -> minus(expression.getValue(), constant), expression);
   }
 
   /**
@@ -198,7 +198,7 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
    */
   public static LongExpression multiply(NumberExpression<?> expression, long constant) {
 
-    return new LongBinding(() -> mul(constant, expression.getValue()), expression);
+    return new LongBinding(() -> mul(expression.getValue(), constant), expression);
   }
 
   /**
@@ -251,7 +251,7 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
    */
   public static LongExpression divide(NumberExpression<?> expression, long constant) {
 
-    return new LongBinding(() -> div(constant, expression.getValue()), expression);
+    return new LongBinding(() -> div(expression.getValue(), constant), expression);
   }
 
   /**
@@ -314,12 +314,12 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
     return Long.valueOf(v1.longValue() + v2.longValue());
   }
 
-  private static Long plus(long v1, Number v2) {
+  private static Long plus(Number v1, long v2) {
 
-    if (v2 != null) {
-      v1 = v1 + v2.longValue();
+    if (v1 != null) {
+      v2 = v1.longValue() + v2;
     }
-    return Long.valueOf(v1);
+    return Long.valueOf(v2);
   }
 
   @SafeVarargs
@@ -361,12 +361,13 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
     return Long.valueOf(v1.longValue() - v2.longValue());
   }
 
-  private static Long minus(long v1, Number v2) {
+  private static Long minus(Number v1, long v2) {
 
-    if (v2 != null) {
-      v1 = v1 - v2.longValue();
+    long l1 = 0;
+    if (v1 != null) {
+      l1 = v1.longValue();
     }
-    return Long.valueOf(v1);
+    return Long.valueOf(l1 - v2);
   }
 
   @SafeVarargs
@@ -399,12 +400,12 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
     return Long.valueOf(v1.longValue() * v2.longValue());
   }
 
-  private static Long mul(long v1, Number v2) {
+  private static Long mul(Number v1, long v2) {
 
-    if (v2 == null) {
+    if (v1 == null) {
       return ZERO;
     }
-    return Long.valueOf(v1 * v2.longValue());
+    return Long.valueOf(v2 * v1.longValue());
   }
 
   @SafeVarargs
@@ -445,13 +446,12 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
     return Long.valueOf(v1.longValue() / l2);
   }
 
-  private static Long div(long v1, Number v2) {
+  private static Long div(Number v1, long v2) {
 
-    long l2 = 0;
-    if (v2 != null) {
-      l2 = v2.longValue();
+    if (v1 == null) {
+      return ZERO;
     }
-    return Long.valueOf(v1 / l2);
+    return Long.valueOf(v1.longValue() / v2);
   }
 
 }

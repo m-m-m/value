@@ -9,7 +9,7 @@ import net.sf.mmm.value.observable.objects.WritableObjectValue;
 /**
  * {@link net.sf.mmm.value.WritableValue} containing a {@link Temporal} {@link #getValue() value}.
  *
- * @param <V> is the generic type of the {@link #getValue() value}.
+ * @param <V> type of the {@link #getValue() value}.
  * @since 1.0.0
  */
 public interface WritableTemporalValue<V extends Temporal> extends ReadableTemporalValue<V>, WritableObjectValue<V> {

@@ -92,7 +92,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
    */
   public static FloatExpression add(NumberExpression<?> expression, float constant) {
 
-    return new FloatBinding(() -> plus(constant, expression.getValue()), expression);
+    return new FloatBinding(() -> plus(expression.getValue(), constant), expression);
   }
 
   /**
@@ -145,7 +145,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
    */
   public static FloatExpression subtract(NumberExpression<?> expression, float constant) {
 
-    return new FloatBinding(() -> minus(constant, expression.getValue()), expression);
+    return new FloatBinding(() -> minus(expression.getValue(), constant), expression);
   }
 
   /**
@@ -198,7 +198,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
    */
   public static FloatExpression multiply(NumberExpression<?> expression, float constant) {
 
-    return new FloatBinding(() -> mul(constant, expression.getValue()), expression);
+    return new FloatBinding(() -> mul(expression.getValue(), constant), expression);
   }
 
   /**
@@ -251,7 +251,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
    */
   public static FloatExpression divide(NumberExpression<?> expression, float constant) {
 
-    return new FloatBinding(() -> div(constant, expression.getValue()), expression);
+    return new FloatBinding(() -> div(expression.getValue(), constant), expression);
   }
 
   /**
@@ -314,12 +314,12 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
     return Float.valueOf(v1.floatValue() + v2.floatValue());
   }
 
-  private static Float plus(float v1, Number v2) {
+  private static Float plus(Number v1, float v2) {
 
-    if (v2 != null) {
-      return v1 = v1 + v2.floatValue();
+    if (v1 != null) {
+      return v2 = v2 + v1.floatValue();
     }
-    return Float.valueOf(v1);
+    return Float.valueOf(v2);
   }
 
   @SafeVarargs
@@ -361,12 +361,13 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
     return Float.valueOf(v1.floatValue() - v2.floatValue());
   }
 
-  private static Float minus(float v1, Number v2) {
+  private static Float minus(Number v1, float v2) {
 
-    if (v2 != null) {
-      return v1 = v1 - v2.floatValue();
+    float f1 = 0;
+    if (v1 != null) {
+      f1 = v1.floatValue();
     }
-    return Float.valueOf(v1);
+    return Float.valueOf(f1 - v2);
   }
 
   @SafeVarargs
@@ -399,12 +400,12 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
     return Float.valueOf(v1.floatValue() * v2.floatValue());
   }
 
-  private static Float mul(float v1, Number v2) {
+  private static Float mul(Number v1, float v2) {
 
-    if (v2 == null) {
+    if (v1 == null) {
       return ZERO;
     }
-    return Float.valueOf(v1 * v2.floatValue());
+    return Float.valueOf(v2 * v1.floatValue());
   }
 
   @SafeVarargs
@@ -445,13 +446,12 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
     return Float.valueOf(v1.floatValue() / f2);
   }
 
-  private static Float div(float v1, Number v2) {
+  private static Float div(Number v1, float v2) {
 
-    float f2 = 0;
-    if (v2 != null) {
-      f2 = v2.floatValue();
+    if (v1 == null) {
+      return ZERO;
     }
-    return Float.valueOf(v1 / f2);
+    return Float.valueOf(v1.floatValue() / v2);
   }
 
 }

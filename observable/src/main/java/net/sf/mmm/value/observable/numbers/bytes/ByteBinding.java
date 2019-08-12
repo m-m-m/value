@@ -92,7 +92,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
    */
   public static ByteExpression add(NumberExpression<?> expression, byte constant) {
 
-    return new ByteBinding(() -> plus(constant, expression.getValue()), expression);
+    return new ByteBinding(() -> plus(expression.getValue(), constant), expression);
   }
 
   /**
@@ -145,7 +145,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
    */
   public static ByteExpression subtract(NumberExpression<?> expression, byte constant) {
 
-    return new ByteBinding(() -> minus(constant, expression.getValue()), expression);
+    return new ByteBinding(() -> minus(expression.getValue(), constant), expression);
   }
 
   /**
@@ -198,7 +198,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
    */
   public static ByteExpression multiply(NumberExpression<?> expression, byte constant) {
 
-    return new ByteBinding(() -> mul(constant, expression.getValue()), expression);
+    return new ByteBinding(() -> mul(expression.getValue(), constant), expression);
   }
 
   /**
@@ -251,7 +251,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
    */
   public static ByteExpression divide(NumberExpression<?> expression, byte constant) {
 
-    return new ByteBinding(() -> div(constant, expression.getValue()), expression);
+    return new ByteBinding(() -> div(expression.getValue(), constant), expression);
   }
 
   /**
@@ -312,12 +312,12 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
     return Byte.valueOf((byte) (v1.byteValue() + v2.byteValue()));
   }
 
-  private static Byte plus(byte v1, Number v2) {
+  private static Byte plus(Number v1, byte v2) {
 
-    if (v2 != null) {
-      v1 = (byte) (v1 + v2.byteValue());
+    if (v1 != null) {
+      v2 = (byte) (v2 + v1.byteValue());
     }
-    return Byte.valueOf(v1);
+    return Byte.valueOf(v2);
   }
 
   @SafeVarargs
@@ -360,12 +360,13 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
     return Byte.valueOf((byte) (v1.byteValue() - v2.byteValue()));
   }
 
-  private static Byte minus(byte v1, Number v2) {
+  private static Byte minus(Number v1, byte v2) {
 
-    if (v2 != null) {
-      v1 = (byte) (v1 - v2.byteValue());
+    byte b1 = 0;
+    if (v1 != null) {
+      b1 = v1.byteValue();
     }
-    return Byte.valueOf(v1);
+    return Byte.valueOf((byte) (b1 - v2));
   }
 
   @SafeVarargs
@@ -398,12 +399,12 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
     return Byte.valueOf((byte) (v1.byteValue() * v2.byteValue()));
   }
 
-  private static Byte mul(byte v1, Number v2) {
+  private static Byte mul(Number v1, byte v2) {
 
-    if (v2 == null) {
+    if (v1 == null) {
       return ZERO;
     }
-    return Byte.valueOf((byte) (v1 * v2.byteValue()));
+    return Byte.valueOf((byte) (v2 * v1.byteValue()));
   }
 
   @SafeVarargs
@@ -444,13 +445,12 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
     return Byte.valueOf((byte) (v1.byteValue() / b2));
   }
 
-  private static Byte div(byte v1, Number v2) {
+  private static Byte div(Number v1, byte v2) {
 
-    byte b2 = 0;
-    if (v2 != null) {
-      b2 = v2.byteValue();
+    if (v1 == null) {
+      return ZERO;
     }
-    return Byte.valueOf((byte) (v1 / b2));
+    return Byte.valueOf((byte) (v1.byteValue() / v2));
   }
 
 }
