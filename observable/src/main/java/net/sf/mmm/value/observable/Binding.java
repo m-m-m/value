@@ -102,7 +102,7 @@ public abstract class Binding<V> extends AbstractObservableValue<V> implements E
 
     if (this.valid) {
       this.valid = false;
-      fireEventOldValue(this.value);
+      fireEventWithOldValue(this.value);
     }
   }
 

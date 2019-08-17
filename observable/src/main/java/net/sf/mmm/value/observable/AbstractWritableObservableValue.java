@@ -100,7 +100,7 @@ public abstract class AbstractWritableObservableValue<V> extends AbstractObserva
     V oldValue = doGetValue();
     if (!Objects.equals(oldValue, value)) {
       doSetValue(value);
-      fireEventOldValue(oldValue);
+      fireEventWithOldValue(oldValue);
     }
   }
 

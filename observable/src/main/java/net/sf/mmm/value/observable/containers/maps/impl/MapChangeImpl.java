@@ -5,22 +5,23 @@ package net.sf.mmm.value.observable.containers.maps.impl;
 import java.util.Map;
 
 import net.sf.mmm.event.ChangeType;
-import net.sf.mmm.value.observable.containers.impl.ContainerModificationImpl;
-import net.sf.mmm.value.observable.containers.lists.ListModification;
-import net.sf.mmm.value.observable.containers.maps.MapModification;
+import net.sf.mmm.value.observable.containers.impl.AbstractContainerChange;
+import net.sf.mmm.value.observable.containers.lists.ListChange;
+import net.sf.mmm.value.observable.containers.maps.MapChange;
 
 /**
- * Implementation of {@link ListModification}.
+ * Implementation of {@link ListChange}.
  *
  * @param <K> type of the {@link Map#containsKey(Object) keys}.
- * @param <E> type of the {@link #getElement(int) elements}.
+ * @param <V> type of the {@link Map#containsValue(Object) values}.
  * @since 1.0.0
  */
-public class MapModificationImpl<K, E> extends ContainerModificationImpl<Map<K, E>, E> implements MapModification<K, E> {
+public class MapChangeImpl<K, V> extends AbstractContainerChange<Map<K, V>, V>
+    implements MapChange<K, V> {
 
-  private final Map<K, E> container;
+  private final Map<K, V> container;
 
-  private final K[] keys;
+  private final Object[] keys;
 
   /**
    * The constructor.
@@ -29,7 +30,7 @@ public class MapModificationImpl<K, E> extends ContainerModificationImpl<Map<K, 
    * @param removedKeys the keys that have been removed from the {@link Map}.
    * @param removedElements the elements that have been removed for the {@link Map}.
    */
-  public MapModificationImpl(Map<K, E> container, K[] removedKeys, E[] removedElements) {
+  public MapChangeImpl(Map<K, V> container, Object[] removedKeys, Object[] removedElements) {
 
     super(ChangeType.REMOVE, removedElements);
     this.container = container;
@@ -43,7 +44,7 @@ public class MapModificationImpl<K, E> extends ContainerModificationImpl<Map<K, 
    * @param type the {@link ChangeType}.
    * @param keys the keys that have changed in the {@link Map}.
    */
-  public MapModificationImpl(Map<K, E> container, ChangeType type, K[] keys) {
+  public MapChangeImpl(Map<K, V> container, ChangeType type, Object[] keys) {
 
     super(type, keys.length);
     this.container = container;
@@ -51,19 +52,20 @@ public class MapModificationImpl<K, E> extends ContainerModificationImpl<Map<K, 
   }
 
   @Override
-  public Map<K, E> getContainer() {
+  public Map<K, V> getContainer() {
 
     return this.container;
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public K getKey(int index) {
 
-    return this.keys[index];
+    return (K) this.keys[index];
   }
 
   @Override
-  public E getElement(int index) {
+  public V getElement(int index) {
 
     if (this.elements == null) {
       return this.container.get(this.keys[index]);

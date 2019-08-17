@@ -79,7 +79,7 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
     assertThat(event.hasOldValue()).isTrue();
     assertThat(event.getOldValue()).isNull();
     assertThat(event.getValue()).isSameAs(zero);
-    assertThat(event.isModification()).isFalse();
+    assertThat(event.isChange()).isFalse();
     assertThat(expression.getValueSafe()).isSameAs(zero);
     assertThat(expression.doubleValue()).isZero();
     assertThat(expression.floatValue()).isZero();
@@ -95,7 +95,7 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
     assertThat(event.getOldValue()).isSameAs(zero);
     assertThat(event.hasOldValue()).isTrue();
     assertThat(event.getValue()).isSameAs(one);
-    assertThat(event.isModification()).isFalse();
+    assertThat(event.isChange()).isFalse();
   }
 
   private static void assertEquals(Number actual, Number expected) {
@@ -131,7 +131,7 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
     assertThat(event.hasOldValue()).isTrue();
     assertThat(event.getOldValue()).isSameAs(one);
     assertThat(event.getValue()).isSameAs(two);
-    assertThat(event.isModification()).isFalse();
+    assertThat(event.isChange()).isFalse();
     writable.setValue(three);
     assertThat(expression.getValue()).isSameAs(three);
     event = listener.getEvent();
@@ -140,7 +140,7 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
     assertThat(event.hasOldValue()).isTrue();
     assertThat(event.getOldValue()).isSameAs(two);
     assertThat(event.getValue()).isSameAs(three);
-    assertThat(event.isModification()).isFalse();
+    assertThat(event.isChange()).isFalse();
   }
 
   @Test

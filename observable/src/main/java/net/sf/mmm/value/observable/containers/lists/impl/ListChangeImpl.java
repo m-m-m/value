@@ -5,16 +5,16 @@ package net.sf.mmm.value.observable.containers.lists.impl;
 import java.util.List;
 
 import net.sf.mmm.event.ChangeType;
-import net.sf.mmm.value.observable.containers.collections.impl.CollectionModificationImpl;
-import net.sf.mmm.value.observable.containers.lists.ListModification;
+import net.sf.mmm.value.observable.containers.collections.impl.AbstractCollectionChange;
+import net.sf.mmm.value.observable.containers.lists.ListChange;
 
 /**
- * Implementation of {@link ListModification}.
+ * Implementation of {@link ListChange}.
  *
  * @param <E> type of the {@link #getElement(int) elements}.
  * @since 1.0.0
  */
-public class ListModificationImpl<E> extends CollectionModificationImpl<List<E>, E> implements ListModification<E> {
+public class ListChangeImpl<E> extends AbstractCollectionChange<List<E>, E> implements ListChange<E> {
 
   private final List<E> container;
 
@@ -27,7 +27,7 @@ public class ListModificationImpl<E> extends CollectionModificationImpl<List<E>,
    * @param from the {@link #getFrom() start index}.
    * @param removedElements the elements that have been removed for the {@link List}.
    */
-  public ListModificationImpl(List<E> container, int from, E[] removedElements) {
+  public ListChangeImpl(List<E> container, int from, Object[] removedElements) {
 
     super(ChangeType.REMOVE, removedElements);
     this.container = container;
@@ -42,7 +42,7 @@ public class ListModificationImpl<E> extends CollectionModificationImpl<List<E>,
    * @param from the {@link #getFrom() start index}.
    * @param count the {@link #getCount() number of changed elements}.
    */
-  public ListModificationImpl(List<E> container, ChangeType type, int from, int count) {
+  public ListChangeImpl(List<E> container, ChangeType type, int from, int count) {
 
     super(type, count);
     this.container = container;

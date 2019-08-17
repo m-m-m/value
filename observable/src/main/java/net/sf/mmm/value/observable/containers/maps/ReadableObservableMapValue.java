@@ -7,19 +7,19 @@ import java.util.Map;
 import net.sf.mmm.value.observable.containers.ReadableContainerValue;
 
 /**
- * {@link ReadableContainerValue} for {@link Map} {@link #getValue() value}s.
+ * {@link ReadableContainerValue} for {@link ObservableMap} {@link #getValue() value}s.
  *
  * @param <K> type of the {@link Map#containsKey(Object) keys}.
  * @param <V> type of the {@link Map#containsValue(Object) values}.
  * @since 1.0.0
  */
-public interface ReadableMapValue<K, V> extends ReadableContainerValue<Map<K, V>, V> {
+public interface ReadableObservableMapValue<K, V> extends ReadableContainerValue<ObservableMap<K, V>, V> {
 
   @SuppressWarnings({ "unchecked", "rawtypes" })
   @Override
-  default Class<Map<K, V>> getValueClass() {
+  default Class<ObservableMap<K, V>> getValueClass() {
 
-    return (Class) Map.class;
+    return (Class) ObservableMap.class;
   }
 
 }

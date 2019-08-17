@@ -12,6 +12,8 @@ public class ObservableEventImpl<V> implements ObservableEvent<V> {
 
   private final ObservableValue<V> observable;
 
+  private Object change;
+
   private V oldValue;
 
   private V value;
@@ -63,53 +65,70 @@ public class ObservableEventImpl<V> implements ObservableEvent<V> {
     return this.hasOldValue;
   }
 
+  @SuppressWarnings("unchecked")
   @Override
-  public final <M> M getModification() {
+  public final <M> M getChange() {
 
-    return null;
+    return (M) this.change;
   }
 
   /**
-   * Called after the last {@link ObservableEventListener} has received this event and before it is sent as a new event
-   * to the first {@link ObservableEventListener}.
+   * Needs to be called before this event is sent as a new event to the first {@link ObservableEventListener}.
    *
-   * @param theOldValue - see {@link #getOldValue()}.
+   * @param theOldValue the {@link #getOldValue() old value}.
    */
-  ObservableEventImpl<V> start(V theOldValue) {
+  ObservableEventImpl<V> startWithOldValue(V theOldValue) {
 
-    this.hasOldValue = true;
-    this.valueUpdated = false;
-    this.oldValue = theOldValue;
-
-    ObservableEventImpl<V> event = this;
-    if (this.locked) {
-      event = new ObservableEventImpl<>(this.observable);
-    }
-    event.locked = true;
-    event.hasOldValue = true;
-    event.valueUpdated = false;
-    event.oldValue = theOldValue;
-    return event;
-
+    return start(theOldValue, true, null);
   }
 
   /**
-   * Called after the last {@link ObservableEventListener} has received this event and before it is sent as a new event
-   * to the first {@link ObservableEventListener}.
+   * Needs to be called before this event is sent as a new event to the first {@link ObservableEventListener}.
    */
   ObservableEventImpl<V> start() {
 
+    return start(null, false, null);
+  }
+
+  /**
+   * Needs to be called before this event is sent as a new event to the first {@link ObservableEventListener}.
+   *
+   * @param valueChange the {@link #getChange() change}.
+   */
+  ObservableEventImpl<V> startWithChange(Object valueChange) {
+
+    return start(null, false, valueChange);
+  }
+
+  /**
+   * Needs to be called before this event is sent as a new event to the first {@link ObservableEventListener}.
+   *
+   * @param theOldValue the {@link #getOldValue() old value}.
+   * @param withOldValue - {@code true} if {@link #getOldValue() old value} is provided and known (even if it is
+   *        {@code null}), {@code false} otherwise.
+   * @param valueChange the {@link #getChange() change}.
+   */
+  private ObservableEventImpl<V> start(V theOldValue, boolean withOldValue, Object valueChange) {
+
     ObservableEventImpl<V> event = this;
     if (this.locked) {
       event = new ObservableEventImpl<>(this.observable);
     }
     event.locked = true;
-    event.hasOldValue = this.valueUpdated;
-    event.valueUpdated = false;
-    if (event.hasOldValue) {
-      event.oldValue = this.value;
+    if (withOldValue) {
+      event.hasOldValue = true;
+      event.oldValue = theOldValue;
     } else {
-      event.oldValue = null;
+      event.hasOldValue = this.valueUpdated;
+      if (event.hasOldValue) {
+        event.oldValue = this.value;
+      } else {
+        event.oldValue = null;
+      }
+    }
+    event.change = valueChange;
+    if (valueChange == null) {
+      event.valueUpdated = false;
     }
     return event;
   }

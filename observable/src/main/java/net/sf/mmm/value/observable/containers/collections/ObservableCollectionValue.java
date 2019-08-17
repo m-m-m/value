@@ -4,15 +4,16 @@ package net.sf.mmm.value.observable.containers.collections;
 
 import java.util.Collection;
 
-import net.sf.mmm.value.observable.containers.ReadableContainerValue;
+import net.sf.mmm.value.observable.ObservableValue;
 
 /**
- * {@link ReadableContainerValue} for {@link Collection} {@link #getValue() value}s.
+ * {@link ObservableValue} with {@link Collection} {@link #getValue() value}.
  *
  * @param <C> type of the {@link Collection} {@link #getValue() value}.
  * @param <E> type of the {@link Collection#contains(Object) elements}.
  * @since 1.0.0
  */
-public interface ReadableCollectionValue<C extends Collection<E>, E> extends ReadableContainerValue<C, E> {
+public interface ObservableCollectionValue<C extends Collection<E>, E>
+    extends ObservableValue<C>, ReadableCollectionValue<C, E> {
 
 }

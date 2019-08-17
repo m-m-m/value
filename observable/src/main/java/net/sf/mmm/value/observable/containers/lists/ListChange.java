@@ -4,16 +4,17 @@ package net.sf.mmm.value.observable.containers.lists;
 
 import java.util.List;
 
-import net.sf.mmm.value.observable.containers.ContainerModification;
+import net.sf.mmm.value.observable.containers.ContainerChange;
+import net.sf.mmm.value.observable.containers.collections.CollectionChange;
 
 /**
- * {@link ContainerModification} for {@link List}s.
+ * {@link ContainerChange} for {@link List}s.
  *
  * @param <E> type of the {@link #getElement(int) elements}.
  * @since 1.0.0
- * @see net.sf.mmm.value.observable.ObservableEvent#getModification()
+ * @see net.sf.mmm.value.observable.ObservableEvent#getChange()
  */
-public interface ListModification<E> extends ContainerModification<List<E>, E> {
+public interface ListChange<E> extends CollectionChange<List<E>, E> {
 
   /**
    * @return the {@link java.util.List#indexOf(Object) index} of the start position of this change, or {@code -1} for

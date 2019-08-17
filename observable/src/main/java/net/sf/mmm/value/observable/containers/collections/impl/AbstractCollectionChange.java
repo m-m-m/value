@@ -5,18 +5,18 @@ package net.sf.mmm.value.observable.containers.collections.impl;
 import java.util.Collection;
 
 import net.sf.mmm.event.ChangeType;
-import net.sf.mmm.value.observable.containers.collections.CollectionModification;
-import net.sf.mmm.value.observable.containers.impl.ContainerModificationImpl;
+import net.sf.mmm.value.observable.containers.collections.CollectionChange;
+import net.sf.mmm.value.observable.containers.impl.AbstractContainerChange;
 
 /**
- * Abstract base implementation of {@link CollectionModification}.
+ * Abstract base implementation of {@link CollectionChange}.
  *
  * @param <C> type of the {@link #getContainer() container}.
  * @param <E> type of the {@link #getElement(int) elements}.
  * @since 1.0.0
  */
-public abstract class CollectionModificationImpl<C extends Collection<E>, E> extends ContainerModificationImpl<C, E>
-    implements CollectionModification<C, E> {
+public abstract class AbstractCollectionChange<C extends Collection<E>, E> extends AbstractContainerChange<C, E>
+    implements CollectionChange<C, E> {
 
   /**
    * The constructor.
@@ -24,7 +24,7 @@ public abstract class CollectionModificationImpl<C extends Collection<E>, E> ext
    * @param type the {@link ChangeType}.
    * @param count the {@link #getCount() number of changed elements}.
    */
-  public CollectionModificationImpl(ChangeType type, int count) {
+  public AbstractCollectionChange(ChangeType type, int count) {
 
     super(type, count);
   }
@@ -35,7 +35,7 @@ public abstract class CollectionModificationImpl<C extends Collection<E>, E> ext
    * @param type the {@link ChangeType}.
    * @param elements the {@link #getElement(int) changed elements}.
    */
-  public CollectionModificationImpl(ChangeType type, E[] elements) {
+  public AbstractCollectionChange(ChangeType type, Object[] elements) {
 
     super(type, elements);
   }

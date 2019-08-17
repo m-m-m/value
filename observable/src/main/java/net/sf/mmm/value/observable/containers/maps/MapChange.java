@@ -5,17 +5,17 @@ package net.sf.mmm.value.observable.containers.maps;
 import java.util.Map;
 
 import net.sf.mmm.event.ChangeType;
-import net.sf.mmm.value.observable.containers.ContainerModification;
+import net.sf.mmm.value.observable.containers.ContainerChange;
 
 /**
- * {@link ContainerModification} for {@link Map}s.
+ * {@link ContainerChange} for {@link Map}s.
  *
  * @param <K> type of the {@link Map#containsKey(Object) keys}.
- * @param <E> type of the {@link #getElement(int) elements}.
+ * @param <V> type of the {@link Map#containsValue(Object) values}.
  * @since 1.0.0
- * @see net.sf.mmm.value.observable.ObservableEvent#getModification()
+ * @see net.sf.mmm.value.observable.ObservableEvent#getChange()
  */
-public interface MapModification<K, E> extends ContainerModification<Map<K, E>, E> {
+public interface MapChange<K, V> extends ContainerChange<Map<K, V>, V> {
 
   /**
    * @param index the index of the changed {@link java.util.Map#containsKey(Object) key} in the range from {@code 0} to

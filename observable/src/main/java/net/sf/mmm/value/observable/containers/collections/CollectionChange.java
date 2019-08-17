@@ -4,15 +4,15 @@ package net.sf.mmm.value.observable.containers.collections;
 
 import java.util.Collection;
 
-import net.sf.mmm.value.observable.containers.ContainerModification;
+import net.sf.mmm.value.observable.containers.ContainerChange;
 
 /**
- * {@link ContainerModification} for {@link Collection}s.
+ * {@link ContainerChange} for {@link Collection}s.
  *
  * @param <C> type of the {@link #getContainer() container}.
  * @param <E> type of the {@link #getElement(int) elements}.
  * @since 1.0.0
  */
-public interface CollectionModification<C extends Collection<E>, E> extends ContainerModification<C, E> {
+public interface CollectionChange<C extends Collection<E>, E> extends ContainerChange<C, E> {
 
 }

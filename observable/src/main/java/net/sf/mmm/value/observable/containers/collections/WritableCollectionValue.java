@@ -7,7 +7,7 @@ import java.util.Collection;
 import net.sf.mmm.value.observable.containers.WritableContainerValue;
 
 /**
- * {@link WritableContainerValue} for {@link java.util.Collection} {@link #getValue() value}s.
+ * {@link WritableContainerValue} for {@link Collection} {@link #getValue() value}s.
  *
  * @param <C> type of the {@link Collection} {@link #getValue() value}.
  * @param <E> type of the {@link Collection#contains(Object) elements}.

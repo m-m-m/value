@@ -2,6 +2,8 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package net.sf.mmm.value.observable;
 
+import java.util.Objects;
+
 import net.sf.mmm.event.AbstractEventSource;
 
 /**
@@ -15,12 +17,44 @@ public abstract class AbstractObservableValue<V>
 
   private ObservableEventImpl<V> observableChangeEvent;
 
+  private int changeAwareCount;
+
   /**
    * The constructor.
    */
   public AbstractObservableValue() {
 
     super();
+  }
+
+  @Override
+  public void addListener(ObservableEventListener<V> listener, boolean weak) {
+
+    if (listener.isChangeAware()) {
+      this.changeAwareCount++;
+    }
+    super.addListener(listener, weak);
+  }
+
+  @Override
+  public boolean removeListener(ObservableEventListener<V> listener) {
+
+    boolean removed = super.removeListener(listener);
+    if (removed && listener.isChangeAware()) {
+      this.changeAwareCount--;
+    }
+    return removed;
+  }
+
+  /**
+   * @return {@code true} if at least one {@link ObservableEventListener#isChangeAware() change aware}
+   *         {@link ObservableEventListener} is {@link #addListener(net.sf.mmm.event.EventListener) registered},
+   *         {@code false} otherwise (to avoid building the {@link ObservableEvent#getChange() modification} and
+   *         {@link #fireChange(Object) sending} for better performance).
+   */
+  protected boolean hasChangeAwareListeners() {
+
+    return (this.changeAwareCount > 0);
   }
 
   /**
@@ -42,12 +76,13 @@ public abstract class AbstractObservableValue<V>
   }
 
   /**
-   * Fires a default value change event.
+   * Fires a default value change event if the {@link ObservableEvent#getOldValue() old value} is known (currently
+   * available anyhow).
    *
-   * @param oldValue the {@link ObservableEvent#getOldValue() old value}.
+   * @param oldValue the {@link ObservableEvent#getOldValue() old value}. May be {@code null}.
    * @see #fireEvent(ObservableEvent)
    */
-  protected void fireEventOldValue(V oldValue) {
+  protected void fireEventWithOldValue(V oldValue) {
 
     if (!hasListeners()) {
       return;
@@ -55,7 +90,27 @@ public abstract class AbstractObservableValue<V>
     if (this.observableChangeEvent == null) {
       this.observableChangeEvent = new ObservableEventImpl<>(this);
     }
-    ObservableEventImpl<V> event = this.observableChangeEvent.start(oldValue);
+    ObservableEventImpl<V> event = this.observableChangeEvent.startWithOldValue(oldValue);
+    fireEvent(event);
+    event.end();
+  }
+
+  /**
+   * Fires a default {@link ObservableEvent#getChange() value change} event.
+   *
+   * @param change the {@link ObservableEvent#getChange() change}.
+   * @see #fireEvent(ObservableEvent)
+   */
+  protected void fireChange(Object change) {
+
+    Objects.requireNonNull(change, "change");
+    if (!hasListeners()) {
+      return;
+    }
+    if (this.observableChangeEvent == null) {
+      this.observableChangeEvent = new ObservableEventImpl<>(this);
+    }
+    ObservableEventImpl<V> event = this.observableChangeEvent.startWithChange(change);
     fireEvent(event);
     event.end();
   }

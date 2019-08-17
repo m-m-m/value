@@ -3,22 +3,22 @@
 package net.sf.mmm.value.observable.containers.impl;
 
 import net.sf.mmm.event.ChangeType;
-import net.sf.mmm.value.observable.containers.ContainerModification;
+import net.sf.mmm.value.observable.containers.ContainerChange;
 
 /**
- * Abstract base implementation of {@link ContainerModification}.
+ * Abstract base implementation of {@link ContainerChange}.
  *
  * @param <C> type of the {@link #getContainer() container}.
  * @param <E> type of {@link #getElement(int) elements}.
  * @since 1.0.0
  */
-public abstract class ContainerModificationImpl<C, E> implements ContainerModification<C, E> {
+public abstract class AbstractContainerChange<C, E> implements ContainerChange<C, E> {
 
   /** @see #getType() */
   protected final ChangeType type;
 
   /** @see #getElement(int) */
-  protected final E[] elements;
+  protected final Object[] elements;
 
   /** @see #getCount() */
   protected final int count;
@@ -29,7 +29,7 @@ public abstract class ContainerModificationImpl<C, E> implements ContainerModifi
    * @param type the {@link ChangeType}.
    * @param count the {@link #getCount() number of changed elements}.
    */
-  public ContainerModificationImpl(ChangeType type, int count) {
+  public AbstractContainerChange(ChangeType type, int count) {
 
     super();
     this.type = type;
@@ -43,7 +43,7 @@ public abstract class ContainerModificationImpl<C, E> implements ContainerModifi
    * @param type the {@link ChangeType}.
    * @param elements the {@link #getElement(int) changed elements}.
    */
-  public ContainerModificationImpl(ChangeType type, E[] elements) {
+  public AbstractContainerChange(ChangeType type, Object[] elements) {
 
     super();
     this.type = type;
@@ -57,10 +57,11 @@ public abstract class ContainerModificationImpl<C, E> implements ContainerModifi
     return this.type;
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public E getElement(int index) {
 
-    return this.elements[index];
+    return (E) this.elements[index];
   }
 
   @Override

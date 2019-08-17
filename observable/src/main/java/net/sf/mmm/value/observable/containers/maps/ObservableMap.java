@@ -4,15 +4,16 @@ package net.sf.mmm.value.observable.containers.maps;
 
 import java.util.Map;
 
-import net.sf.mmm.value.observable.containers.WritableContainerValue;
+import net.sf.mmm.value.observable.containers.ObservableContainer;
 
 /**
- * {@link WritableContainerValue} for {@link Map} {@link #getValue() value}s.
+ * {@link net.sf.mmm.value.observable.containers.ObservableContainer} that is a {@link Map}.
  *
  * @param <K> type of the {@link Map#containsKey(Object) keys}.
  * @param <V> type of the {@link Map#containsValue(Object) values}.
  * @since 1.0.0
  */
-public interface WritableMapValue<K, V> extends WritableContainerValue<Map<K, V>, V>, ReadableMapValue<K, V> {
+public interface ObservableMap<K, V>
+    extends ObservableContainer<V, MapChange<K, V>, MapChangeListener<K, V>>, Map<K, V> {
 
 }

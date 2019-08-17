@@ -38,26 +38,26 @@ public interface ObservableEvent<V> {
   boolean hasOldValue();
 
   /**
-   * @param <M> type of the modification.
-   * @return the modification in case of a {@link #isModification() value change}, {@code null} otherwise.
-   * @see net.sf.mmm.value.observable.containers.lists.ListModification
-   * @see net.sf.mmm.value.observable.containers.maps.MapModification
-   * @see net.sf.mmm.value.observable.containers.sets.SetModification
+   * @param <M> type of the change.
+   * @return the modification in case of a {@link #isChange() value change}, {@code null} otherwise.
+   * @see net.sf.mmm.value.observable.containers.lists.ListChange
+   * @see net.sf.mmm.value.observable.containers.maps.MapChange
+   * @see net.sf.mmm.value.observable.containers.sets.SetChange
    */
-  <M> M getModification();
+  <M> M getChange();
 
   /**
-   * @return {@code true} if the {@link #getValue() value} object instance itself has been modified. Most
+   * @return {@code true} if the {@link #getValue() value} object instance itself has changed. Most
    *         {@link ObservableValue}s contain immutable value types (such as {@link String}, {@link Boolean},
    *         {@link Integer}, {@link java.math.BigDecimal}, {@link java.time.Instant}, etc.). However, values like e.g.
-   *         {@link java.util.Collection} are mutable and may support notifying {@link #getModification()
-   *         modifications}. Otherwise, if {@code false} the {@link #getObservable() observable} itself was modified and
-   *         its {@link #getValue() value} has changed (or was invalidated and needs to be recalculated).
-   * @see #getModification()
+   *         {@link java.util.Collection} are mutable and may support notifying {@link #getChange() changes}. Otherwise,
+   *         if {@code false} the {@link #getObservable() observable} itself was modified and its {@link #getValue()
+   *         value} has changed (or was invalidated and needs to be recalculated).
+   * @see #getChange()
    */
-  default boolean isModification() {
+  default boolean isChange() {
 
-    return (getModification() != null);
+    return (getChange() != null);
   }
 
 }
