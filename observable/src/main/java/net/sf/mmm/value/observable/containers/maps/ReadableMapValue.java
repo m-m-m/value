@@ -22,4 +22,10 @@ public interface ReadableMapValue<K, V> extends ReadableContainerValue<Map<K, V>
     return (Class) Map.class;
   }
 
+  @Override
+  default int size() {
+
+    return getValueSafe().size();
+  }
+
 }

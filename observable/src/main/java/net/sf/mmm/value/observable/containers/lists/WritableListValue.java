@@ -2,6 +2,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package net.sf.mmm.value.observable.containers.lists;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.mmm.value.observable.containers.collections.WritableCollectionValue;
@@ -13,5 +14,16 @@ import net.sf.mmm.value.observable.containers.collections.WritableCollectionValu
  * @since 1.0.0
  */
 public interface WritableListValue<E> extends WritableCollectionValue<List<E>, E>, ReadableListValue<E> {
+
+  @Override
+  default List<E> getOrCreateValue() {
+
+    List<E> value = getValue();
+    if (value == null) {
+      value = new ArrayList<>();
+      setValue(value);
+    }
+    return value;
+  }
 
 }

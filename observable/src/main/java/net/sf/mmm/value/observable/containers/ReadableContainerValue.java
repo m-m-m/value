@@ -15,4 +15,17 @@ import net.sf.mmm.value.observable.objects.ReadableTypedObjectValue;
  */
 public interface ReadableContainerValue<C, E> extends ReadableTypedObjectValue<C> {
 
+  /**
+   * @return the {@link java.util.Collection#size() size} of the {@link #getValue() container}.
+   */
+  int size();
+
+  /**
+   * @return the {@link java.util.Collection#isEmpty() empty state} of the {@link #getValue() container}.
+   */
+  default boolean isEmpty() {
+
+    return size() == 0;
+  }
+
 }

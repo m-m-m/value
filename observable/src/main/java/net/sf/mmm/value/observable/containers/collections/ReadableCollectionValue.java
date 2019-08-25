@@ -15,4 +15,10 @@ import net.sf.mmm.value.observable.containers.ReadableContainerValue;
  */
 public interface ReadableCollectionValue<C extends Collection<E>, E> extends ReadableContainerValue<C, E> {
 
+  @Override
+  default int size() {
+
+    return getValueSafe().size();
+  }
+
 }

@@ -2,6 +2,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package net.sf.mmm.value.observable.containers.lists;
 
+import java.util.Collections;
 import java.util.List;
 
 import net.sf.mmm.value.observable.containers.collections.ReadableCollectionValue;
@@ -19,6 +20,16 @@ public interface ReadableListValue<E> extends ReadableCollectionValue<List<E>, E
   default Class<List<E>> getValueClass() {
 
     return (Class) List.class;
+  }
+
+  @Override
+  default List<E> getValueSafe() {
+
+    List<E> value = getValue();
+    if (value == null) {
+      value = Collections.emptyList();
+    }
+    return value;
   }
 
 }

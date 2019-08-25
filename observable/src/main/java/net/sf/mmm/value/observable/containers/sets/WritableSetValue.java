@@ -2,6 +2,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package net.sf.mmm.value.observable.containers.sets;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import net.sf.mmm.value.observable.containers.collections.WritableCollectionValue;
@@ -13,5 +14,16 @@ import net.sf.mmm.value.observable.containers.collections.WritableCollectionValu
  * @since 1.0.0
  */
 public interface WritableSetValue<E> extends WritableCollectionValue<Set<E>, E>, ReadableSetValue<E> {
+
+  @Override
+  default Set<E> getOrCreateValue() {
+
+    Set<E> value = getValue();
+    if (value == null) {
+      value = new HashSet<>();
+      setValue(value);
+    }
+    return value;
+  }
 
 }
