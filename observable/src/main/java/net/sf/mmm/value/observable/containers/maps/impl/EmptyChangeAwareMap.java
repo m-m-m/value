@@ -8,20 +8,19 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
-import java.util.function.Function;
 
 /**
- * Empty singleton implementation of {@link net.sf.mmm.value.observable.containers.maps.ObservableMap}.
+ * Empty singleton implementation of {@link net.sf.mmm.value.observable.containers.maps.ChangeAwareMap}.
  *
  * @param <K> type of the {@link java.util.Map#containsKey(Object) keys}.
  * @param <V> type of the {@link java.util.Map#containsValue(Object) values}.
  * @since 1.0.0
  */
-public class EmptyObservableMap<K, V> extends ReadOnlyObservableMap<K, V> {
+public class EmptyChangeAwareMap<K, V> extends ReadOnlyChangeAwareMap<K, V> {
 
   /** The singleton instance. */
   @SuppressWarnings("rawtypes")
-  public static EmptyObservableMap INSTANCE = new EmptyObservableMap<>();
+  public static EmptyChangeAwareMap INSTANCE = new EmptyChangeAwareMap<>();
 
   @Override
   public boolean isEmpty() {
@@ -87,54 +86,6 @@ public class EmptyObservableMap<K, V> extends ReadOnlyObservableMap<K, V> {
   public void replaceAll(BiFunction<? super K, ? super V, ? extends V> function) {
 
     Objects.requireNonNull(function);
-  }
-
-  @Override
-  public V putIfAbsent(K key, V value) {
-
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public boolean remove(Object key, Object value) {
-
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public boolean replace(K key, V oldValue, V newValue) {
-
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public V replace(K key, V value) {
-
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public V computeIfAbsent(K key, Function<? super K, ? extends V> mappingFunction) {
-
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public V computeIfPresent(K key, BiFunction<? super K, ? super V, ? extends V> remappingFunction) {
-
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public V compute(K key, BiFunction<? super K, ? super V, ? extends V> remappingFunction) {
-
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public V merge(K key, V value, BiFunction<? super V, ? super V, ? extends V> remappingFunction) {
-
-    throw new UnsupportedOperationException();
   }
 
 }

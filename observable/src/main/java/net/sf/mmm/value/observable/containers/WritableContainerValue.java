@@ -15,4 +15,10 @@ import net.sf.mmm.value.observable.objects.WritableObjectValue;
  */
 public interface WritableContainerValue<C, E> extends ReadableContainerValue<C, E>, WritableObjectValue<C> {
 
+  /**
+   * @return the current null-safe {@link #getValue() value}. Unlike {@link #getValueSafe()} this method will modify and
+   *         initialize the {@link #getValue() value} with an empty mutable container if it was {@code null}.
+   */
+  C getOrCreateValue();
+
 }

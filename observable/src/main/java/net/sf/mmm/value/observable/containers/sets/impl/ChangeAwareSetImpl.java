@@ -4,25 +4,44 @@ package net.sf.mmm.value.observable.containers.sets.impl;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
 /**
- * Regular implementation of {@link net.sf.mmm.value.observable.containers.lists.ObservableList}.
+ * Regular implementation of {@link net.sf.mmm.value.observable.containers.lists.ChangeAwareList}.
  *
  * @param <E> the type of the elements in the container.
  * @since 1.0.0
  */
-public class ObservableSetImpl<E> extends AbstractObservableSet<E> {
+public class ChangeAwareSetImpl<E> extends AbstractChangeAwareSet<E> {
 
   private final Set<E> set;
+
+  /**
+   * The constructor.
+   */
+  public ChangeAwareSetImpl() {
+
+    this(new HashSet<>());
+  }
+
+  /**
+   * The constructor.
+   *
+   * @param capacity the initial capacity.
+   */
+  public ChangeAwareSetImpl(int capacity) {
+
+    this(new HashSet<>(capacity));
+  }
 
   /**
    * The constructor.
    *
    * @param set the {@link Set} to adopt.
    */
-  public ObservableSetImpl(Set<E> set) {
+  public ChangeAwareSetImpl(Set<E> set) {
 
     super();
     this.set = set;
@@ -31,7 +50,7 @@ public class ObservableSetImpl<E> extends AbstractObservableSet<E> {
   @Override
   public Iterator<E> iterator() {
 
-    return new Itr<>(this.set.iterator());
+    return new Itr(this.set.iterator());
   }
 
   @Override
@@ -159,23 +178,12 @@ public class ObservableSetImpl<E> extends AbstractObservableSet<E> {
     fireRemove(oldElements);
   }
 
-  /**
-   * Implementation of {@link Iterator} that delegates to the {@link Iterator} of the underlying {@link Set} but send
-   * remove events.
-   *
-   * @param <E> the type of the elements.
-   */
-  private class Itr<E> implements Iterator<E> {
+  private class Itr implements Iterator<E> {
 
     private final Iterator<E> itr;
 
     private E lastElement;
 
-    /**
-     * The constructor.
-     *
-     * @param itr the {@link Iterator} to adopt.
-     */
     public Itr(Iterator<E> itr) {
 
       super();

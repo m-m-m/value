@@ -6,7 +6,7 @@ import net.sf.mmm.value.observable.comparables.ComparableExpression;
 import net.sf.mmm.value.observable.numbers.integers.IntegerBinding;
 
 /**
- * {@link ComparableExpression} with {@link String} {@link #getValue() values}.
+ * {@link ComparableExpression} with {@link String} {@link #getValue() value}.
  *
  * @since 1.0.0
  */

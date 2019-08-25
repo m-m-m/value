@@ -9,19 +9,19 @@ import java.util.List;
 import net.sf.mmm.value.observable.containers.lists.ListChange;
 
 /**
- * Regular implementation of {@link net.sf.mmm.value.observable.containers.lists.ObservableList}.
+ * Regular implementation of {@link net.sf.mmm.value.observable.containers.lists.ChangeAwareList}.
  *
  * @param <E> the type of the elements in the container.
  * @since 1.0.0
  */
-public class ObservableListImpl<E> extends AbstractObservableList<E> {
+public class ChangeAwareListImpl<E> extends AbstractChangeAwareList<E> {
 
   private final List<E> list;
 
   /**
    * The constructor.
    */
-  public ObservableListImpl() {
+  public ChangeAwareListImpl() {
 
     this(new ArrayList<>());
   }
@@ -31,7 +31,7 @@ public class ObservableListImpl<E> extends AbstractObservableList<E> {
    *
    * @param capacity the initial capacity.
    */
-  public ObservableListImpl(int capacity) {
+  public ChangeAwareListImpl(int capacity) {
 
     this(new ArrayList<>(capacity));
   }
@@ -41,7 +41,7 @@ public class ObservableListImpl<E> extends AbstractObservableList<E> {
    *
    * @param list the internal {@link List} to adopt.
    */
-  public ObservableListImpl(List<E> list) {
+  public ChangeAwareListImpl(List<E> list) {
 
     super();
     this.list = list;

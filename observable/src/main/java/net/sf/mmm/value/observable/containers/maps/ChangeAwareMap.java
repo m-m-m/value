@@ -4,16 +4,16 @@ package net.sf.mmm.value.observable.containers.maps;
 
 import java.util.Map;
 
-import net.sf.mmm.value.observable.containers.ObservableContainer;
+import net.sf.mmm.value.observable.containers.ChangeAwareContainer;
 
 /**
- * {@link net.sf.mmm.value.observable.containers.ObservableContainer} that is a {@link Map}.
+ * {@link net.sf.mmm.value.observable.containers.ChangeAwareContainer} that is a {@link Map}.
  *
  * @param <K> type of the {@link Map#containsKey(Object) keys}.
  * @param <V> type of the {@link Map#containsValue(Object) values}.
  * @since 1.0.0
  */
-public interface ObservableMap<K, V>
-    extends ObservableContainer<V, MapChange<K, V>, MapChangeListener<K, V>>, Map<K, V> {
+public interface ChangeAwareMap<K, V>
+    extends ChangeAwareContainer<V, MapChange<K, V>, MapChangeListener<K, V>>, Map<K, V> {
 
 }

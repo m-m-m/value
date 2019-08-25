@@ -1,39 +1,30 @@
 /* Copyright (c) The m-m-m Team, Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0 */
-package net.sf.mmm.value.observable.containers.lists.impl;
+package net.sf.mmm.value.observable.containers.sets.impl;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Objects;
 import java.util.Spliterator;
 import java.util.Spliterators;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
-import java.util.function.UnaryOperator;
 
-import net.sf.mmm.value.observable.containers.lists.ObservableList;
+import net.sf.mmm.value.observable.containers.sets.ChangeAwareSet;
 
 /**
- * Empty singleton implementation of {@link net.sf.mmm.value.observable.containers.lists.ObservableList}.
+ * Empty singleton implementation of {@link net.sf.mmm.value.observable.containers.sets.ChangeAwareSets}.
  *
  * @param <E> the type of the elements in the container.
  * @since 1.0.0
  */
-public class EmptyObservableList<E> extends ReadOnlyObservableList<E> {
+public class EmptyChangeAwareSet<E> extends ReadOnlyChangeAwareSet<E> {
 
   /** The singleton instance. */
   @SuppressWarnings("rawtypes")
-  public static final ObservableList INSTANCE = new EmptyObservableList<>();
-
-  @Override
-  public E get(int index) {
-
-    throw new IndexOutOfBoundsException("Index: " + index);
-  }
+  public static final ChangeAwareSet INSTANCE = new EmptyChangeAwareSet<>();
 
   @Override
   public int size() {
@@ -45,6 +36,11 @@ public class EmptyObservableList<E> extends ReadOnlyObservableList<E> {
   public boolean isEmpty() {
 
     return true;
+  }
+
+  @Override
+  public void clear() {
+
   }
 
   @Override
@@ -69,12 +65,6 @@ public class EmptyObservableList<E> extends ReadOnlyObservableList<E> {
   }
 
   @Override
-  public ListIterator<E> listIterator() {
-
-    return Collections.emptyListIterator();
-  }
-
-  @Override
   public boolean equals(Object o) {
 
     return (o instanceof List) && ((List<?>) o).isEmpty();
@@ -91,18 +81,6 @@ public class EmptyObservableList<E> extends ReadOnlyObservableList<E> {
 
     Objects.requireNonNull(filter);
     return false;
-  }
-
-  @Override
-  public void replaceAll(UnaryOperator<E> operator) {
-
-    Objects.requireNonNull(operator);
-  }
-
-  @Override
-  public void sort(Comparator<? super E> c) {
-
-    // nothing to sort
   }
 
   @Override

@@ -17,7 +17,7 @@ import net.sf.mmm.value.observable.ObservableEvent;
  * @param <L> type of the {@link EventListener}.
  * @since 1.0.0
  */
-public interface ObservableContainer<E, M extends ContainerChange<?, E>, L extends EventListener<M>>
+public interface ChangeAwareContainer<E, M extends ContainerChange<?, E>, L extends EventListener<M>>
     extends EventSource<M, L> {
 
 }

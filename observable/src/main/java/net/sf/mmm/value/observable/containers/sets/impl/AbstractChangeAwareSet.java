@@ -6,24 +6,24 @@ import java.util.AbstractSet;
 
 import net.sf.mmm.event.ChangeType;
 import net.sf.mmm.event.EventSourceAdapter;
-import net.sf.mmm.value.observable.containers.sets.ObservableSet;
+import net.sf.mmm.value.observable.containers.sets.ChangeAwareSet;
 import net.sf.mmm.value.observable.containers.sets.SetChange;
 import net.sf.mmm.value.observable.containers.sets.SetChangeListener;
 
 /**
- * Abstract base implementation of {@link ObservableSet}.
+ * Abstract base implementation of {@link ChangeAwareSet}.
  *
  * @param <E> the type of the elements in the container.
  * @since 1.0.0
  */
-public abstract class AbstractObservableSet<E> extends AbstractSet<E> implements ObservableSet<E> {
+public abstract class AbstractChangeAwareSet<E> extends AbstractSet<E> implements ChangeAwareSet<E> {
 
   private EventSourceAdapter<SetChange<E>, SetChangeListener<E>> eventAdapter;
 
   /**
    * The constructor.
    */
-  public AbstractObservableSet() {
+  public AbstractChangeAwareSet() {
 
     super();
     this.eventAdapter = EventSourceAdapter.empty();
@@ -38,8 +38,7 @@ public abstract class AbstractObservableSet<E> extends AbstractSet<E> implements
   @Override
   public boolean removeListener(SetChangeListener<E> listener) {
 
-    EventSourceAdapter<SetChange<E>, SetChangeListener<E>> adapter = this.eventAdapter
-        .removeListener(listener);
+    EventSourceAdapter<SetChange<E>, SetChangeListener<E>> adapter = this.eventAdapter.removeListener(listener);
     if (adapter == null) {
       return false;
     }
@@ -48,8 +47,8 @@ public abstract class AbstractObservableSet<E> extends AbstractSet<E> implements
   }
 
   /**
-   * @return {@code true} if at least one {@link SetChangeListener} is
-   *         {@link #addListener(SetChangeListener, boolean) registered}, {@code false} otherwise.
+   * @return {@code true} if at least one {@link SetChangeListener} is {@link #addListener(SetChangeListener, boolean)
+   *         registered}, {@code false} otherwise.
    */
   protected boolean hasListeners() {
 
@@ -68,6 +67,9 @@ public abstract class AbstractObservableSet<E> extends AbstractSet<E> implements
     this.eventAdapter.fireEvent(modification);
   }
 
+  /**
+   * @param elements the added elements.
+   */
   protected void fireAdd(Object... elements) {
 
     if (hasListeners()) {
@@ -77,6 +79,9 @@ public abstract class AbstractObservableSet<E> extends AbstractSet<E> implements
     this.eventAdapter.fireEvent(modification);
   }
 
+  /**
+   * @param elements the removed elements.
+   */
   protected void fireRemove(Object... elements) {
 
     if (hasListeners()) {

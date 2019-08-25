@@ -6,34 +6,29 @@ import java.util.AbstractMap;
 import java.util.Map;
 
 import net.sf.mmm.event.ChangeType;
-import net.sf.mmm.event.EventListener;
 import net.sf.mmm.event.EventSourceAdapter;
-import net.sf.mmm.value.observable.EventListenerWithChange;
+import net.sf.mmm.value.observable.containers.maps.ChangeAwareMap;
 import net.sf.mmm.value.observable.containers.maps.MapChange;
 import net.sf.mmm.value.observable.containers.maps.MapChangeListener;
-import net.sf.mmm.value.observable.containers.maps.ObservableMap;
 
 /**
- * Abstract base implementation of mutable {@link ObservableMap}.
+ * Abstract base implementation of mutable {@link ChangeAwareMap}.
  *
  * @param <K> type of the {@link Map#containsKey(Object) keys}.
  * @param <V> type of the {@link Map#containsValue(Object) values}.
  * @since 1.0.0
  */
-public abstract class AbstractObservableMap<K, V> extends AbstractMap<K, V> implements ObservableMap<K, V> {
+public abstract class AbstractChangeAwareMap<K, V> extends AbstractMap<K, V> implements ChangeAwareMap<K, V> {
 
   private EventSourceAdapter<MapChange<K, V>, MapChangeListener<K, V>> eventAdapter;
-
-  private boolean changeAware;
 
   /**
    * The constructor.
    */
-  public AbstractObservableMap() {
+  public AbstractChangeAwareMap() {
 
     super();
     this.eventAdapter = EventSourceAdapter.empty();
-    this.changeAware = false;
   }
 
   @Override
@@ -63,28 +58,11 @@ public abstract class AbstractObservableMap<K, V> extends AbstractMap<K, V> impl
   }
 
   /**
-   * @return {@code true} if modification events should be generated (at least one <b>active</b> or multiple listeners
-   *         registered), {@code false} otherwise.
+   * @return {@code true} if modification events should be generated, {@code false} otherwise.
    */
-  protected boolean isObserved() {
+  protected boolean isChangeAware() {
 
-    int listenerCount = this.eventAdapter.getListenerCount();
-    if (listenerCount == 0) {
-      return false;
-    }
-    if (listenerCount == 1) {
-      EventListener<? super MapChange<K, V>> listener = this.eventAdapter.getRawListener(0);
-      if (listener == null) {
-        return false;
-      }
-      if (listener instanceof EventListenerWithChange) {
-        // performance tweak - if there is only one listener available and that is
-        // change aware it can toggle change events
-        boolean changeAware = ((EventListenerWithChange<?>) listener).isChangeAware();
-      }
-    }
-    // TODO
-    return true;
+    return hasListeners();
   }
 
   /**
@@ -106,7 +84,7 @@ public abstract class AbstractObservableMap<K, V> extends AbstractMap<K, V> impl
    */
   protected void fireUpdate(Object... keys) {
 
-    if (!isObserved()) {
+    if (!isChangeAware()) {
       return;
     }
     fireEvent(new MapChangeImpl<>(this, ChangeType.UPDATE, keys));
@@ -119,7 +97,7 @@ public abstract class AbstractObservableMap<K, V> extends AbstractMap<K, V> impl
    */
   protected void fireAdd(Object... keys) {
 
-    if (!isObserved()) {
+    if (!isChangeAware()) {
       return;
     }
     fireEvent(new MapChangeImpl<>(this, ChangeType.ADD, keys));
@@ -133,7 +111,7 @@ public abstract class AbstractObservableMap<K, V> extends AbstractMap<K, V> impl
    */
   protected void fireRemove(Object[] keys, Object[] values) {
 
-    if (!isObserved()) {
+    if (!isChangeAware()) {
       return;
     }
     fireEvent(new MapChangeImpl<>(this, keys, values));
@@ -147,19 +125,19 @@ public abstract class AbstractObservableMap<K, V> extends AbstractMap<K, V> impl
    */
   protected void fireRemove(Object key, Object value) {
 
-    if (!isObserved()) {
+    if (!isChangeAware()) {
       return;
     }
     fireEvent(new MapChangeImpl<>(this, new Object[] { key }, new Object[] { value }));
   }
 
   /**
-   * @return the {@link MapChange} event for the remove of all entries or {@code null} if not {@link #isObserved()
+   * @return the {@link MapChange} event for the remove of all entries or {@code null} if not {@link #isChangeAware()
    *         observed} or {@link #isEmpty() empty}.
    */
   protected MapChange<K, V> modRemoveAll() {
 
-    if (isObserved()) {
+    if (isChangeAware()) {
       return null;
     }
     int size = size();

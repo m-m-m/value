@@ -12,6 +12,6 @@ import net.sf.mmm.event.EventListener;
  * @see ChangeAwareObservableEventListener
  */
 @FunctionalInterface
-public interface ObservableEventListener<V> extends EventListenerWithChange<ObservableEvent<V>> {
+public interface ObservableEventListener<V> extends EventListener<ObservableEvent<V>> {
 
 }

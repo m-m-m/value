@@ -6,19 +6,19 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import net.sf.mmm.event.EventListener;
-import net.sf.mmm.value.observable.containers.ObservableContainer;
+import net.sf.mmm.value.observable.containers.ChangeAwareContainer;
 
 /**
- * {@link ObservableContainer} that is a {@link Collection}.
+ * {@link ChangeAwareContainer} that is a {@link Collection}.
  *
  * @param <E> the type of the elements in the container.
  * @param <M> type of the {@link CollectionChange} (event).
  * @param <L> type of the {@link EventListener}.
- * @see net.sf.mmm.value.observable.containers.lists.ObservableList
+ * @see net.sf.mmm.value.observable.containers.lists.ChangeAwareList
  * @since 1.0.0
  */
-public interface ObservableCollection<E, M extends CollectionChange<?, E>, L extends EventListener<M>>
-    extends Collection<E>, ObservableContainer<E, M, L> {
+public interface ChangeAwareCollection<E, M extends CollectionChange<?, E>, L extends EventListener<M>>
+    extends Collection<E>, ChangeAwareContainer<E, M, L> {
 
   /**
    * {@link #add(Object) Adds} all the given {@code elements}.

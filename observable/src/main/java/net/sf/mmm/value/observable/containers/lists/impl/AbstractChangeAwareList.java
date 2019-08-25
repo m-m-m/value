@@ -8,22 +8,22 @@ import net.sf.mmm.event.ChangeType;
 import net.sf.mmm.event.EventSourceAdapter;
 import net.sf.mmm.value.observable.containers.lists.ListChange;
 import net.sf.mmm.value.observable.containers.lists.ListChangeListener;
-import net.sf.mmm.value.observable.containers.lists.ObservableList;
+import net.sf.mmm.value.observable.containers.lists.ChangeAwareList;
 
 /**
- * Abstract base implementation of {@link ObservableList}.
+ * Abstract base implementation of {@link ChangeAwareList}.
  *
  * @param <E> the type of the elements in the container.
  * @since 1.0.0
  */
-public abstract class AbstractObservableList<E> extends AbstractList<E> implements ObservableList<E> {
+public abstract class AbstractChangeAwareList<E> extends AbstractList<E> implements ChangeAwareList<E> {
 
   private EventSourceAdapter<ListChange<E>, ListChangeListener<E>> eventAdapter;
 
   /**
    * The constructor.
    */
-  public AbstractObservableList() {
+  public AbstractChangeAwareList() {
 
     super();
     this.eventAdapter = EventSourceAdapter.empty();

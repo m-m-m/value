@@ -3,6 +3,7 @@
 package net.sf.mmm.value.observable.containers.maps.impl;
 
 import java.util.AbstractSet;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -10,22 +11,40 @@ import java.util.Set;
 import net.sf.mmm.value.observable.containers.maps.MapChange;
 
 /**
- * Regular mutable implementation of {@link net.sf.mmm.value.observable.containers.maps.ObservableMap}.
+ * Regular mutable implementation of {@link net.sf.mmm.value.observable.containers.maps.ChangeAwareMap}.
  *
  * @param <K> type of the {@link Map#containsKey(Object) keys}.
  * @param <V> type of the {@link Map#containsValue(Object) values}.
  * @since 1.0.0
  */
-public class ObservableMapImpl<K, V> extends AbstractObservableMap<K, V> {
+public class ChangeAwareMapImpl<K, V> extends AbstractChangeAwareMap<K, V> {
 
   private final Map<K, V> map;
+
+  /**
+   * The constructor.
+   */
+  public ChangeAwareMapImpl() {
+
+    this(new HashMap<>());
+  }
+
+  /**
+   * The constructor.
+   *
+   * @param capacity the initial capacity.
+   */
+  public ChangeAwareMapImpl(int capacity) {
+
+    this(new HashMap<>(capacity));
+  }
 
   /**
    * The constructor.
    *
    * @param map the adapted {@link Map}.
    */
-  public ObservableMapImpl(Map<K, V> map) {
+  public ChangeAwareMapImpl(Map<K, V> map) {
 
     super();
     this.map = map;
@@ -102,7 +121,7 @@ public class ObservableMapImpl<K, V> extends AbstractObservableMap<K, V> {
     public EntrySet() {
 
       super();
-      this.entrySet = ObservableMapImpl.this.map.entrySet();
+      this.entrySet = ChangeAwareMapImpl.this.map.entrySet();
     }
 
     @Override
@@ -114,13 +133,13 @@ public class ObservableMapImpl<K, V> extends AbstractObservableMap<K, V> {
     @Override
     public void clear() {
 
-      ObservableMapImpl.this.clear();
+      ChangeAwareMapImpl.this.clear();
     }
 
     @Override
     public int size() {
 
-      return ObservableMapImpl.this.size();
+      return ChangeAwareMapImpl.this.size();
     }
 
   }

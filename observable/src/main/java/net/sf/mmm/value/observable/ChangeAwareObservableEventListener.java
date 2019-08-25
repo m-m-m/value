@@ -3,18 +3,19 @@
 package net.sf.mmm.value.observable;
 
 /**
- * {@link ObservableEventListener} that is also {@link #isChangeAware() change aware}.
+ * {@link ObservableEventListener} that is also interested in {@link ObservableEvent#getChange() change}s. For
+ * performance optimization {@link ObservableEvent#getChange() change} events are only created and sent if at least one
+ * {@link ChangeAwareObservableEventListener} is {@link ObservableValue#addListener(net.sf.mmm.event.EventListener)
+ * registered}.<br>
+ * Please note that it is pointless to register a {@link ChangeAwareObservableEventListener} on an
+ * {@link ObservableValue} if the {@link net.sf.mmm.value.ReadableTypedValue#getValueClass() value type} is immutable
+ * ({@link String}, {@link Boolean}, {@link Number}, {@link java.time.temporal.Temporal}, etc.). This only makes sense
+ * for types such as {@link net.sf.mmm.value.observable.containers.collections.ObservableObservableCollectionValue}.
  *
  * @param <V> type of observed {@link ObservableValue#getValue() value}.
  * @since 1.0.0
  */
 @FunctionalInterface
 public interface ChangeAwareObservableEventListener<V> extends ObservableEventListener<V> {
-
-  @Override
-  default boolean isChangeAware() {
-
-    return true;
-  }
 
 }

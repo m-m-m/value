@@ -6,12 +6,12 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Immutable implementation of {@link net.sf.mmm.value.observable.containers.lists.ObservableList}.
+ * Immutable implementation of {@link net.sf.mmm.value.observable.containers.lists.ChangeAwareList}.
  *
  * @param <E> the type of the elements in the container.
  * @since 1.0.0
  */
-public class ImmutableObservableList<E> extends ReadOnlyObservableList<E> {
+public class ImmutableChangeAwareList<E> extends ReadOnlyChangeAwareList<E> {
 
   private final List<E> list;
 
@@ -20,7 +20,7 @@ public class ImmutableObservableList<E> extends ReadOnlyObservableList<E> {
    *
    * @param list the internal {@link List} to adopt.
    */
-  public ImmutableObservableList(List<E> list) {
+  public ImmutableChangeAwareList(List<E> list) {
 
     super();
     this.list = list;
