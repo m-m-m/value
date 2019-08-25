@@ -591,7 +591,7 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
     } else if (other instanceof ObservableShortValue) {
       return divide((ObservableShortValue) other);
     } else if (other instanceof ObservableByteValue) {
-      return divide((ObservableShortValue) other);
+      return divide((ObservableByteValue) other);
     } else {
       return DoubleBinding.divide(this, other);
     }
