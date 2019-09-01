@@ -3,6 +3,7 @@
 package net.sf.mmm.value.observable.containers.lists.impl;
 
 import java.util.AbstractList;
+import java.util.Collection;
 
 import net.sf.mmm.value.observable.containers.lists.ChangeAwareList;
 import net.sf.mmm.value.observable.containers.lists.ListChangeListener;
@@ -30,6 +31,15 @@ public abstract class ReadOnlyChangeAwareList<E> extends AbstractList<E> impleme
   public void remove(int from, int to) {
 
     removeRange(from, to);
+  }
+
+  @Override
+  public boolean addAll(Collection<? extends E> collection) {
+
+    if (collection == null) {
+      return false;
+    }
+    return super.addAll(collection);
   }
 
 }

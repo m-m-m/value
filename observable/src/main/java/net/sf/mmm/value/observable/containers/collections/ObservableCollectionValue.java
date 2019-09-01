@@ -5,6 +5,7 @@ package net.sf.mmm.value.observable.containers.collections;
 import java.util.Collection;
 
 import net.sf.mmm.value.observable.ObservableValue;
+import net.sf.mmm.value.observable.containers.ObservableContainerValue;
 
 /**
  * {@link ObservableValue} with {@link Collection} {@link #getValue() value}.
@@ -14,6 +15,6 @@ import net.sf.mmm.value.observable.ObservableValue;
  * @since 1.0.0
  */
 public interface ObservableCollectionValue<C extends Collection<E>, E>
-    extends ObservableValue<C>, ReadableCollectionValue<C, E> {
+    extends ObservableContainerValue<C, E>, ReadableCollectionValue<C, E> {
 
 }

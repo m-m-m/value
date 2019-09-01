@@ -44,7 +44,11 @@ public class ChangeAwareListImpl<E> extends AbstractChangeAwareList<E> {
   public ChangeAwareListImpl(List<E> list) {
 
     super();
-    this.list = list;
+    if (list == null) {
+      this.list = new ArrayList<>();
+    } else {
+      this.list = list;
+    }
   }
 
   @Override

@@ -44,7 +44,11 @@ public class ChangeAwareSetImpl<E> extends AbstractChangeAwareSet<E> {
   public ChangeAwareSetImpl(Set<E> set) {
 
     super();
-    this.set = set;
+    if (set == null) {
+      this.set = new HashSet<>();
+    } else {
+      this.set = set;
+    }
   }
 
   @Override

@@ -10,7 +10,7 @@ import net.sf.mmm.value.observable.containers.collections.CollectionChange;
 /**
  * {@link ContainerChange} for {@link List}s.
  *
- * @param <E> type of the {@link #getElement(int) elements}.
+ * @param <E> type of the {@link List#contains(Object) contained elements}.
  * @since 1.0.0
  * @see net.sf.mmm.value.observable.ObservableEvent#getChange()
  */

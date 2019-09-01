@@ -3,6 +3,7 @@
 package net.sf.mmm.value.observable.containers.sets.impl;
 
 import java.util.AbstractSet;
+import java.util.Collection;
 
 import net.sf.mmm.value.observable.containers.sets.ChangeAwareSet;
 import net.sf.mmm.value.observable.containers.sets.SetChangeListener;
@@ -24,6 +25,15 @@ public abstract class ReadOnlyChangeAwareSet<E> extends AbstractSet<E> implement
   public boolean removeListener(SetChangeListener<E> listener) {
 
     return false;
+  }
+
+  @Override
+  public boolean addAll(Collection<? extends E> collection) {
+
+    if (collection == null) {
+      return false;
+    }
+    return super.addAll(collection);
   }
 
 }
