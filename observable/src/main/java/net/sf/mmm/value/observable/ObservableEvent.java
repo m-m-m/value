@@ -40,9 +40,9 @@ public interface ObservableEvent<V> {
   /**
    * @param <M> type of the change.
    * @return the modification in case of a {@link #isChange() value change}, {@code null} otherwise.
-   * @see net.sf.mmm.value.observable.containers.lists.ListChange
-   * @see net.sf.mmm.value.observable.containers.maps.MapChange
-   * @see net.sf.mmm.value.observable.containers.sets.SetChange
+   * @see net.sf.mmm.value.observable.container.list.ListChange
+   * @see net.sf.mmm.value.observable.container.map.MapChange
+   * @see net.sf.mmm.value.observable.container.set.SetChange
    */
   <M> M getChange();
 

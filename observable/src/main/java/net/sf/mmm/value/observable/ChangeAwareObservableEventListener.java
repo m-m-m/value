@@ -10,7 +10,7 @@ package net.sf.mmm.value.observable;
  * Please note that it is pointless to register a {@link ChangeAwareObservableEventListener} on an
  * {@link ObservableValue} if the {@link net.sf.mmm.value.ReadableTypedValue#getValueClass() value type} is immutable
  * (such as {@link String}, {@link Boolean}, {@link Number}, {@link java.time.temporal.Temporal}, etc.). This only makes
- * sense for types such as {@link net.sf.mmm.value.observable.containers.ObservableContainerValue}.
+ * sense for types such as {@link net.sf.mmm.value.observable.container.ObservableContainerValue}.
  *
  * @param <V> type of observed {@link ObservableValue#getValue() value}.
  * @since 1.0.0

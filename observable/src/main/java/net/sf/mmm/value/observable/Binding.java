@@ -116,7 +116,7 @@ public abstract class Binding<V> extends AbstractObservableValue<V> implements E
   }
 
   @Override
-  protected void toString(StringBuilder sb) {
+  public void toString(StringBuilder sb) {
 
     if (this.valid) {
       super.toString(sb);

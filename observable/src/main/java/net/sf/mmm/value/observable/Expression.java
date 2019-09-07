@@ -6,8 +6,8 @@ import java.util.Objects;
 
 import net.sf.mmm.value.observable.booleans.BooleanBinding;
 import net.sf.mmm.value.observable.booleans.BooleanExpression;
-import net.sf.mmm.value.observable.strings.StringBinding;
-import net.sf.mmm.value.observable.strings.StringExpression;
+import net.sf.mmm.value.observable.string.StringBinding;
+import net.sf.mmm.value.observable.string.StringExpression;
 
 /**
  * An {@link Expression} is an {@link ObservableValue} providing convenience methods to created dynamically computed

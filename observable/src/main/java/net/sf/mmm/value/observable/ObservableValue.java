@@ -23,4 +23,10 @@ import net.sf.mmm.value.ReadableValue;
 public interface ObservableValue<V>
     extends ReadableValue<V>, EventSource<ObservableEvent<V>, ObservableEventListener<V>> {
 
+  /**
+   * @param sb the {@link StringBuilder} where to append the details of this property for
+   *        {@link #toString()}-Representation.
+   */
+  void toString(StringBuilder sb);
+
 }

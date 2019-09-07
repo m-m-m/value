@@ -164,7 +164,7 @@ public abstract class AbstractObservableValue<V>
    * @param sb the {@link StringBuilder} where to append the details of this property for
    *        {@link #toString()}-Representation.
    */
-  protected void toString(StringBuilder sb) {
+  public void toString(StringBuilder sb) {
 
     sb.append("value=");
     sb.append(getValue());
