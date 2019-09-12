@@ -48,7 +48,6 @@ public abstract class AbstractWritableObservableValue<V> extends AbstractObserva
    * @param observable the {@link ObservableValue} to bind.
    * @see #bind(ObservableValue)
    */
-  @SuppressWarnings({ "rawtypes", "unchecked" })
   protected void bindInternal(ObservableValue<? extends V> observable) {
 
     this.binding = observable;
@@ -58,18 +57,17 @@ public abstract class AbstractWritableObservableValue<V> extends AbstractObserva
     if (this.bindingListener == null) {
       this.bindingListener = new BindingListener(this);
     }
-    observable.addListener((ObservableEventListener) this.bindingListener);
+    observable.addListener(this.bindingListener);
     fireEvent();
   }
 
-  @SuppressWarnings({ "rawtypes", "unchecked" })
   @Override
   public void unbind() {
 
     if (this.binding != null) {
       requireWritable();
       setValue(this.binding.getValue());
-      this.binding.removeListener((ObservableEventListener) this.bindingListener);
+      this.binding.removeListener(this.bindingListener);
       this.binding = null;
       this.bindingListener = null;
     }

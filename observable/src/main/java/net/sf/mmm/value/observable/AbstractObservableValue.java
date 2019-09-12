@@ -13,7 +13,7 @@ import net.sf.mmm.event.AbstractEventSource;
  * @since 1.0.0
  */
 public abstract class AbstractObservableValue<V>
-    extends AbstractEventSource<ObservableEvent<V>, ObservableEventListener<V>> implements ObservableValue<V> {
+    extends AbstractEventSource<ObservableEvent<V>, ObservableEventListener<? super V>> implements ObservableValue<V> {
 
   private ObservableEventImpl<V> observableChangeEvent;
 
@@ -28,7 +28,7 @@ public abstract class AbstractObservableValue<V>
   }
 
   @Override
-  public void addListener(ObservableEventListener<V> listener, boolean weak) {
+  public void addListener(ObservableEventListener<? super V> listener, boolean weak) {
 
     if (listener instanceof ChangeAwareObservableEventListener) {
       this.changeAwareCount++;
@@ -37,7 +37,7 @@ public abstract class AbstractObservableValue<V>
   }
 
   @Override
-  public boolean removeListener(ObservableEventListener<V> listener) {
+  public boolean removeListener(ObservableEventListener<? super V> listener) {
 
     boolean removed = super.removeListener(listener);
     if (removed && (listener instanceof ChangeAwareObservableEventListener)) {
@@ -164,6 +164,7 @@ public abstract class AbstractObservableValue<V>
    * @param sb the {@link StringBuilder} where to append the details of this property for
    *        {@link #toString()}-Representation.
    */
+  @Override
   public void toString(StringBuilder sb) {
 
     sb.append("value=");
