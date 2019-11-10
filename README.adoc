@@ -10,6 +10,7 @@ image:https://travis-ci.org/m-m-m/value.svg?branch=master["build-status",link="h
 
 This library provides generic value infrastructure. The module `mmm-value` provides a minimalistic API for value containers.
 The module `mmm-value-observable` provides observable values that allow to add and remove listeners to observe the value and get notified about changes.
+All is inspired by `ObservableValue` from JavaFx.
 
 === Usage
 
@@ -18,7 +19,7 @@ Want to give it a try?
 Maven Dependency:
 ```xml
 <dependency>
-  <groupId>net.sf.m-m-m</groupId>
+  <groupId>io.github.m-m-m</groupId>
   <artifactId>mmm-value-observable</artifactId>
   <version>1.0.0</version>
 </dependency>
@@ -26,7 +27,7 @@ Maven Dependency:
 
 Module Dependency:
 ```java
-  requires transitive net.sf.mmm.value.observable;
+  requires transitive io.github.mmm.value.observable;
 ```
 
 === Example

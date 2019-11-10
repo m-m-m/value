@@ -2,6 +2,9 @@
  * Copyright (c) The m-m-m Team, Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0
  */
+/**
+ * Provides observable value API and implementation for standard Java types.
+ */
 module io.github.mmm.value.observable {
 
   requires transitive io.github.mmm.value;
