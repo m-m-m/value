@@ -1,18 +1,14 @@
-= Mature Modular Meta-framework (mmm)
+image:https://raw.github.com/m-m-m/mmm/master/src/site/resources/images/logo.png[logo,link="https://m-m-m.github.io"]
 
-image:https://raw.github.com/m-m-m/mmm/master/src/site/resources/images/logo.png[logo]
-
-*Welcome to the wonderful world of http://m-m-m.sourceforge.net/index.html[mmm]*
-
-== mmm-value
+= mmm-value
 
 image:https://travis-ci.org/m-m-m/value.svg?branch=master["build-status",link="https://travis-ci.org/m-m-m/value"]
 
-This library provides generic value infrastructure. The module `mmm-value` provides a minimalistic API for value containers.
+The module `mmm-value` provides a minimal but powerful API for value containers.
 The module `mmm-value-observable` provides observable values that allow to add and remove listeners to observe the value and get notified about changes.
 All is inspired by `ObservableValue` from JavaFx.
 
-=== Usage
+== Usage
 
 Want to give it a try?
 
@@ -30,15 +26,11 @@ Module Dependency:
   requires transitive io.github.mmm.value.observable;
 ```
 
-=== Example
+== Example
 
 ```java
-TODO
+StringProperty name = new StringProperty("name");
+name.addListener(e -> System.out.print(e.getValue()));
+ReadableProperty<String> readOnly = name.getReadOnly();
+name.set("John Doe");
 ```
-
-=== JavaDoc
-
-Here, you can find the JavaDoc of this module:
-
-* https://m-m-m.github.io/maven/apidocs/net/sf/mmm/value/package-summary.html#package.description[Value]
-* https://m-m-m.github.io/maven/apidocs/[and much more... ]
