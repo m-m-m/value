@@ -8,6 +8,8 @@ env:
     - SONARTYPE_USERNAME=awPAYN4P
     - secure: "fB8Xin82KZBLVUuTwcEKiD0QZivNnJr1l1iCUxd2h4lNW4baEP+py7Qb/WEY0wFEizdsCtrwoGpY+bhvgP2Cx5cj5aw1RC5xhnJddhyzQuucVbPs5y6DtNA7oOjrXe63b+OcoFR6bXzHU1VIFK5Y+bYiQ0CEnegvYx/Q33pdMQ1mUg/juJy7lFxDa3Oq2R0Wbo/z99WibbLoSFxW+Zo3iOTQlaE2Eoms/0uTAwVB6FRQ78DlSnfFSw7CraICcCAe5mokAP+gfoYQKz/wueXA2CvZMdkuUcGxFoB3rI0RBRhRdUtQM8KMynku1N/4TXWE3Netj9SPI4k9vfNLP80ktYtVwMw+qkJNVyqU2clw1Aliess1FzI1tEEHZRq8ajgcE4YMvNoWGxrb4Q5n/6uTgmiAyLGHeMFlP+wQgpefwM+0Xt/dTCDHGDvrOFmxkK3cqmgsC5YANoR5AZ8y99c0YrWD471sG5vV8D6YjQWPVl7jjiFGkMsUlmYYxjcpCDVozgIye9OF0UqzfXnr9JTWQNAzwcuU5Rz4MQpxvPPaadFk7tdhMM0OqH5nosF/iO5B+E6uCeSKnZnxv9vDGxq4r448fLGhmLW2NE7bkun6JhxRG7PYAYdIlZwyb05SEN10Z76T3Pqu78NEzpsIHM9VQzx+88ElAMxszBTGKnX3G/U="
 
+install: skip
+
 script:
   - mvn --settings .mvn/settings.xml install
 
