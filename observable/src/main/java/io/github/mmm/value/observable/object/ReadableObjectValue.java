@@ -5,27 +5,27 @@ package io.github.mmm.value.observable.object;
 import io.github.mmm.value.ReadableValue;
 
 /**
- * {@link ReadableValue} for {@link Object} {@link #getValue() value} that has no primitive type.
+ * {@link ReadableValue} for {@link Object} {@link #get() value} that has no primitive type.
  *
- * @param <V> type of the {@link #getValue() value}.
+ * @param <V> type of the {@link #get() value}.
  * @since 1.0.0
  */
 public interface ReadableObjectValue<V> extends ReadableValue<V> {
 
   /**
-   * Same as {@link #getValue()}.
+   * Same as {@link #get()}.
    *
-   * @return the current {@link #getValue() value}.
+   * @return the current {@link #get() value}.
    */
-  default V get() {
+  default V getValue() {
 
-    return getValue();
+    return get();
   }
 
   @Override
-  default V getValueSafe() {
+  default V getSafe() {
 
-    return getValue();
+    return get();
   }
 
 }

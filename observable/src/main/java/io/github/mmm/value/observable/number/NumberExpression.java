@@ -20,23 +20,23 @@ import io.github.mmm.value.observable.number.longs.ObservableLongValue;
 import io.github.mmm.value.observable.number.shorts.ObservableShortValue;
 
 /**
- * {@link ComparableExpression} with {@link Number} {@link #getValue() value}.
+ * {@link ComparableExpression} with {@link Number} {@link #get() value}.
  *
- * @param <N> type of the observable {@link #getValue() value}.
+ * @param <N> type of the observable {@link #get() value}.
  * @since 1.0.0
  */
 public interface NumberExpression<N extends Number & Comparable<? super N>>
     extends ObservableNumberValue<N>, ComparableExpression<N> {
 
   /**
-   * @return a {@link NumberExpression} holding the negative {@link #getValue() value}.
+   * @return a {@link NumberExpression} holding the negative {@link #get() value}.
    */
   NumberExpression<N> negate();
 
   /**
    * @param other the {@link ObservableValue} holding the {@link Number} to add.
-   * @return a new {@link NumberExpression} holding the sum of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableValue}.
+   * @return a new {@link NumberExpression} holding the sum of this {@link #get() value} with the {@link #get() value}
+   *         of the given {@link ObservableValue}.
    */
   default NumberExpression<?> add(ObservableValue<? extends Number> other) {
 
@@ -65,8 +65,8 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
 
   /**
    * @param other the {@link ObservableBigDecimalValue} holding the {@link Number} to add.
-   * @return a new {@link BigDecimalExpression} holding the sum of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableBigDecimalValue}.
+   * @return a new {@link BigDecimalExpression} holding the sum of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableBigDecimalValue}.
    */
   default BigDecimalExpression add(ObservableBigDecimalValue other) {
 
@@ -75,56 +75,56 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
 
   /**
    * @param other the {@link ObservableBigIntegerValue} holding the {@link Number} to add.
-   * @return a new {@link NumberExpression} holding the sum of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableBigIntegerValue}.
+   * @return a new {@link NumberExpression} holding the sum of this {@link #get() value} with the {@link #get() value}
+   *         of the given {@link ObservableBigIntegerValue}.
    */
   NumberExpression<?> add(ObservableBigIntegerValue other);
 
   /**
    * @param other the {@link ObservableDoubleValue} holding the {@link Number} to add.
-   * @return a new {@link NumberExpression} holding the sum of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableDoubleValue}.
+   * @return a new {@link NumberExpression} holding the sum of this {@link #get() value} with the {@link #get() value}
+   *         of the given {@link ObservableDoubleValue}.
    */
   NumberExpression<?> add(ObservableDoubleValue other);
 
   /**
    * @param other the {@link ObservableFloatValue} holding the {@link Number} to add.
-   * @return a new {@link NumberExpression} holding the sum of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableFloatValue}.
+   * @return a new {@link NumberExpression} holding the sum of this {@link #get() value} with the {@link #get() value}
+   *         of the given {@link ObservableFloatValue}.
    */
   NumberExpression<?> add(ObservableFloatValue other);
 
   /**
    * @param other the {@link ObservableLongValue} holding the {@link Number} to add.
-   * @return a new {@link NumberExpression} holding the sum of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableLongValue}.
+   * @return a new {@link NumberExpression} holding the sum of this {@link #get() value} with the {@link #get() value}
+   *         of the given {@link ObservableLongValue}.
    */
   NumberExpression<?> add(ObservableLongValue other);
 
   /**
    * @param other the {@link ObservableIntegerValue} holding the {@link Number} to add.
-   * @return a new {@link NumberExpression} holding the sum of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableIntegerValue}.
+   * @return a new {@link NumberExpression} holding the sum of this {@link #get() value} with the {@link #get() value}
+   *         of the given {@link ObservableIntegerValue}.
    */
   NumberExpression<?> add(ObservableIntegerValue other);
 
   /**
    * @param other the {@link ObservableShortValue} holding the {@link Number} to add.
-   * @return a new {@link NumberExpression} holding the sum of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableShortValue}.
+   * @return a new {@link NumberExpression} holding the sum of this {@link #get() value} with the {@link #get() value}
+   *         of the given {@link ObservableShortValue}.
    */
   NumberExpression<?> add(ObservableShortValue other);
 
   /**
    * @param other the {@link ObservableByteValue} holding the {@link Number} to add.
-   * @return a new {@link NumberExpression} holding the sum of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableByteValue}.
+   * @return a new {@link NumberExpression} holding the sum of this {@link #get() value} with the {@link #get() value}
+   *         of the given {@link ObservableByteValue}.
    */
   NumberExpression<?> add(ObservableByteValue other);
 
   /**
    * @param constant the constant {@link Number} to add.
-   * @return a new {@link NumberExpression} holding the sum of this {@link #getValue() value} with the given
+   * @return a new {@link NumberExpression} holding the sum of this {@link #get() value} with the given
    *         {@code constant}.
    */
   default NumberExpression<?> add(Number constant) {
@@ -154,7 +154,7 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
 
   /**
    * @param constant the constant {@link BigDecimal} to add.
-   * @return a new {@link BigDecimalExpression} holding the sum of this {@link #getValue() value} with the given
+   * @return a new {@link BigDecimalExpression} holding the sum of this {@link #get() value} with the given
    *         {@code constant}.
    */
   default BigDecimalExpression add(BigDecimal constant) {
@@ -164,57 +164,57 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
 
   /**
    * @param constant the constant {@link BigInteger} to add.
-   * @return a new {@link NumberExpression} holding the sum of this {@link #getValue() value} with the given
+   * @return a new {@link NumberExpression} holding the sum of this {@link #get() value} with the given
    *         {@code constant}.
    */
   NumberExpression<?> add(BigInteger constant);
 
   /**
    * @param constant the constant {@code double} to add.
-   * @return a new {@link NumberExpression} holding the sum of this {@link #getValue() value} with the given
+   * @return a new {@link NumberExpression} holding the sum of this {@link #get() value} with the given
    *         {@code constant}.
    */
   NumberExpression<?> add(double constant);
 
   /**
    * @param constant the constant {@code float} to add.
-   * @return a new {@link NumberExpression} holding the sum of this {@link #getValue() value} with the given
+   * @return a new {@link NumberExpression} holding the sum of this {@link #get() value} with the given
    *         {@code constant}.
    */
   NumberExpression<?> add(float constant);
 
   /**
    * @param constant the constant {@code long} to add.
-   * @return a new {@link NumberExpression} holding the sum of this {@link #getValue() value} with the given
+   * @return a new {@link NumberExpression} holding the sum of this {@link #get() value} with the given
    *         {@code constant}.
    */
   NumberExpression<?> add(long constant);
 
   /**
    * @param constant the constant {@code int} to add.
-   * @return a new {@link NumberExpression} holding the sum of this {@link #getValue() value} with the given
+   * @return a new {@link NumberExpression} holding the sum of this {@link #get() value} with the given
    *         {@code constant}.
    */
   NumberExpression<?> add(int constant);
 
   /**
    * @param constant the constant {@code short} to add.
-   * @return a new {@link NumberExpression} holding the sum of this {@link #getValue() value} with the given
+   * @return a new {@link NumberExpression} holding the sum of this {@link #get() value} with the given
    *         {@code constant}.
    */
   NumberExpression<?> add(short constant);
 
   /**
    * @param constant the constant {@code byte} to add.
-   * @return a new {@link NumberExpression} holding the sum of this {@link #getValue() value} with the given
+   * @return a new {@link NumberExpression} holding the sum of this {@link #get() value} with the given
    *         {@code constant}.
    */
   NumberExpression<?> add(byte constant);
 
   /**
    * @param other the {@link ObservableValue} holding the {@link Number} to subtract.
-   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableValue}.
+   * @return a new {@link NumberExpression} holding the difference of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableValue}.
    */
   default NumberExpression<?> subtract(ObservableValue<? extends Number> other) {
 
@@ -243,8 +243,8 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
 
   /**
    * @param other the {@link ObservableBigDecimalValue} holding the {@link Number} to subtract.
-   * @return a new {@link BigDecimalExpression} holding the difference of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableBigDecimalValue}.
+   * @return a new {@link BigDecimalExpression} holding the difference of this {@link #get() value} with the
+   *         {@link #get() value} of the given {@link ObservableBigDecimalValue}.
    */
   default BigDecimalExpression subtract(ObservableBigDecimalValue other) {
 
@@ -253,56 +253,56 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
 
   /**
    * @param other the {@link ObservableBigIntegerValue} holding the {@link Number} to subtract.
-   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableBigIntegerValue}.
+   * @return a new {@link NumberExpression} holding the difference of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableBigIntegerValue}.
    */
   NumberExpression<?> subtract(ObservableBigIntegerValue other);
 
   /**
    * @param other the {@link ObservableDoubleValue} holding the {@link Number} to subtract.
-   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableDoubleValue}.
+   * @return a new {@link NumberExpression} holding the difference of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableDoubleValue}.
    */
   NumberExpression<?> subtract(ObservableDoubleValue other);
 
   /**
    * @param other the {@link ObservableFloatValue} holding the {@link Number} to subtract.
-   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableFloatValue}.
+   * @return a new {@link NumberExpression} holding the difference of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableFloatValue}.
    */
   NumberExpression<?> subtract(ObservableFloatValue other);
 
   /**
    * @param other the {@link ObservableLongValue} holding the {@link Number} to subtract.
-   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableLongValue}.
+   * @return a new {@link NumberExpression} holding the difference of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableLongValue}.
    */
   NumberExpression<?> subtract(ObservableLongValue other);
 
   /**
    * @param other the {@link ObservableIntegerValue} holding the {@link Number} to subtract.
-   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableIntegerValue}.
+   * @return a new {@link NumberExpression} holding the difference of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableIntegerValue}.
    */
   NumberExpression<?> subtract(ObservableIntegerValue other);
 
   /**
    * @param other the {@link ObservableShortValue} holding the {@link Number} to subtract.
-   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableShortValue}.
+   * @return a new {@link NumberExpression} holding the difference of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableShortValue}.
    */
   NumberExpression<?> subtract(ObservableShortValue other);
 
   /**
    * @param other the {@link ObservableByteValue} holding the {@link Number} to subtract.
-   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableByteValue}.
+   * @return a new {@link NumberExpression} holding the difference of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableByteValue}.
    */
   NumberExpression<?> subtract(ObservableByteValue other);
 
   /**
    * @param constant the constant {@link Number} to subtract.
-   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the given
+   * @return a new {@link NumberExpression} holding the difference of this {@link #get() value} with the given
    *         {@code constant}.
    */
   default NumberExpression<?> subtract(Number constant) {
@@ -332,7 +332,7 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
 
   /**
    * @param constant the constant {@link BigDecimal} to subtract.
-   * @return a new {@link BigDecimalExpression} holding the difference of this {@link #getValue() value} with the given
+   * @return a new {@link BigDecimalExpression} holding the difference of this {@link #get() value} with the given
    *         {@code constant}.
    */
   default BigDecimalExpression subtract(BigDecimal constant) {
@@ -342,57 +342,57 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
 
   /**
    * @param constant the constant {@link BigInteger} to subtract.
-   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the given
+   * @return a new {@link NumberExpression} holding the difference of this {@link #get() value} with the given
    *         {@code constant}.
    */
   NumberExpression<?> subtract(BigInteger constant);
 
   /**
    * @param constant the constant {@code double} to subtract.
-   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the given
+   * @return a new {@link NumberExpression} holding the difference of this {@link #get() value} with the given
    *         {@code constant}.
    */
   NumberExpression<?> subtract(double constant);
 
   /**
    * @param constant the constant {@code float} to subtract.
-   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the given
+   * @return a new {@link NumberExpression} holding the difference of this {@link #get() value} with the given
    *         {@code constant}.
    */
   NumberExpression<?> subtract(float constant);
 
   /**
    * @param constant the constant {@code long} to subtract.
-   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the given
+   * @return a new {@link NumberExpression} holding the difference of this {@link #get() value} with the given
    *         {@code constant}.
    */
   NumberExpression<?> subtract(long constant);
 
   /**
    * @param constant the constant {@code int} to subtract.
-   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the given
+   * @return a new {@link NumberExpression} holding the difference of this {@link #get() value} with the given
    *         {@code constant}.
    */
   NumberExpression<?> subtract(int constant);
 
   /**
    * @param constant the constant {@code short} to subtract.
-   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the given
+   * @return a new {@link NumberExpression} holding the difference of this {@link #get() value} with the given
    *         {@code constant}.
    */
   NumberExpression<?> subtract(short constant);
 
   /**
    * @param constant the constant {@code byte} to subtract.
-   * @return a new {@link NumberExpression} holding the difference of this {@link #getValue() value} with the given
+   * @return a new {@link NumberExpression} holding the difference of this {@link #get() value} with the given
    *         {@code constant}.
    */
   NumberExpression<?> subtract(byte constant);
 
   /**
    * @param other the {@link ObservableValue} holding the {@link Number} to multiply.
-   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableValue}.
+   * @return a new {@link NumberExpression} holding the product of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableValue}.
    */
   default NumberExpression<?> multiply(ObservableValue<? extends Number> other) {
 
@@ -421,8 +421,8 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
 
   /**
    * @param other the {@link ObservableBigDecimalValue} holding the {@link Number} to multiply.
-   * @return a new {@link BigDecimalExpression} holding the product of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableBigDecimalValue}.
+   * @return a new {@link BigDecimalExpression} holding the product of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableBigDecimalValue}.
    */
   default BigDecimalExpression multiply(ObservableBigDecimalValue other) {
 
@@ -431,57 +431,57 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
 
   /**
    * @param other the {@link ObservableBigIntegerValue} holding the {@link Number} to multiply.
-   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableBigIntegerValue}.
+   * @return a new {@link NumberExpression} holding the product of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableBigIntegerValue}.
    */
   NumberExpression<?> multiply(ObservableBigIntegerValue other);
 
   /**
    * @param other the {@link ObservableDoubleValue} holding the {@link Number} to multiply.
-   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableDoubleValue}.
+   * @return a new {@link NumberExpression} holding the product of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableDoubleValue}.
    */
   NumberExpression<?> multiply(ObservableDoubleValue other);
 
   /**
    * @param other the {@link ObservableFloatValue} holding the {@link Number} to multiply.
-   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableFloatValue}.
+   * @return a new {@link NumberExpression} holding the product of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableFloatValue}.
    */
   NumberExpression<?> multiply(ObservableFloatValue other);
 
   /**
    * @param other the {@link ObservableLongValue} holding the {@link Number} to multiply.
-   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableLongValue}.
+   * @return a new {@link NumberExpression} holding the product of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableLongValue}.
    */
   NumberExpression<?> multiply(ObservableLongValue other);
 
   /**
    * @param other the {@link ObservableIntegerValue} holding the {@link Number} to multiply.
-   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableIntegerValue}.
+   * @return a new {@link NumberExpression} holding the product of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableIntegerValue}.
    */
   NumberExpression<?> multiply(ObservableIntegerValue other);
 
   /**
    * @param other the {@link ObservableShortValue} holding the {@link Number} to multiply.
-   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableShortValue}.
+   * @return a new {@link NumberExpression} holding the product of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableShortValue}.
    */
   NumberExpression<?> multiply(ObservableShortValue other);
 
   /**
    * @param other the {@link ObservableByteValue} holding the {@link Number} to multiply.
-   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableByteValue}.
+   * @return a new {@link NumberExpression} holding the product of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableByteValue}.
    */
   NumberExpression<?> multiply(ObservableByteValue other);
 
   /**
    * @param constant the constant {@link Number} to multiply.
-   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} multiplied with the
-   *         given {@code constant}.
+   * @return a new {@link NumberExpression} holding the product of this {@link #get() value} multiplied with the given
+   *         {@code constant}.
    */
   default NumberExpression<?> multiply(Number constant) {
 
@@ -510,8 +510,8 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
 
   /**
    * @param constant the constant {@link BigDecimal} to multiply.
-   * @return a new {@link BigDecimalExpression} holding the product of this {@link #getValue() value} multiplied with
-   *         the given {@code constant}.
+   * @return a new {@link BigDecimalExpression} holding the product of this {@link #get() value} multiplied with the
+   *         given {@code constant}.
    */
   default BigDecimalExpression multiply(BigDecimal constant) {
 
@@ -520,57 +520,57 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
 
   /**
    * @param constant the constant {@link BigInteger} to multiply.
-   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} multiplied with the
-   *         given {@code constant}.
+   * @return a new {@link NumberExpression} holding the product of this {@link #get() value} multiplied with the given
+   *         {@code constant}.
    */
   NumberExpression<?> multiply(BigInteger constant);
 
   /**
    * @param constant the constant {@code double} to multiply.
-   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} multiplied with the
-   *         given {@code constant}.
+   * @return a new {@link NumberExpression} holding the product of this {@link #get() value} multiplied with the given
+   *         {@code constant}.
    */
   NumberExpression<?> multiply(double constant);
 
   /**
    * @param constant the constant {@code float} to multiply.
-   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} multiplied with the
-   *         given {@code constant}.
+   * @return a new {@link NumberExpression} holding the product of this {@link #get() value} multiplied with the given
+   *         {@code constant}.
    */
   NumberExpression<?> multiply(float constant);
 
   /**
    * @param constant the constant {@code long} to multiply.
-   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} multiplied with the
-   *         given {@code constant}.
+   * @return a new {@link NumberExpression} holding the product of this {@link #get() value} multiplied with the given
+   *         {@code constant}.
    */
   NumberExpression<?> multiply(long constant);
 
   /**
    * @param constant the constant {@code int} to multiply.
-   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} multiplied with the
-   *         given {@code constant}.
+   * @return a new {@link NumberExpression} holding the product of this {@link #get() value} multiplied with the given
+   *         {@code constant}.
    */
   NumberExpression<?> multiply(int constant);
 
   /**
    * @param constant the constant {@code short} to multiply.
-   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} multiplied with the
-   *         given {@code constant}.
+   * @return a new {@link NumberExpression} holding the product of this {@link #get() value} multiplied with the given
+   *         {@code constant}.
    */
   NumberExpression<?> multiply(short constant);
 
   /**
    * @param constant the constant {@code byte} to multiply.
-   * @return a new {@link NumberExpression} holding the product of this {@link #getValue() value} multiplied with the
-   *         given {@code constant}.
+   * @return a new {@link NumberExpression} holding the product of this {@link #get() value} multiplied with the given
+   *         {@code constant}.
    */
   NumberExpression<?> multiply(byte constant);
 
   /**
    * @param other the {@link ObservableValue} holding the {@link Number} to divide.
-   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableValue}.
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableValue}.
    */
   default NumberExpression<?> divide(ObservableValue<? extends Number> other) {
 
@@ -599,8 +599,8 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
 
   /**
    * @param other the {@link ObservableBigDecimalValue} holding the {@link Number} to divide.
-   * @return a new {@link BigDecimalExpression} holding the quotient of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableBigDecimalValue}.
+   * @return a new {@link BigDecimalExpression} holding the quotient of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableBigDecimalValue}.
    */
   default BigDecimalExpression divide(ObservableBigDecimalValue other) {
 
@@ -609,56 +609,56 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
 
   /**
    * @param other the {@link ObservableBigIntegerValue} holding the {@link Number} to divide.
-   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableBigIntegerValue}.
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableBigIntegerValue}.
    */
   NumberExpression<?> divide(ObservableBigIntegerValue other);
 
   /**
    * @param other the {@link ObservableDoubleValue} holding the {@link Number} to divide.
-   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableDoubleValue}.
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableDoubleValue}.
    */
   NumberExpression<?> divide(ObservableDoubleValue other);
 
   /**
    * @param other the {@link ObservableFloatValue} holding the {@link Number} to divide.
-   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableFloatValue}.
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableFloatValue}.
    */
   NumberExpression<?> divide(ObservableFloatValue other);
 
   /**
    * @param other the {@link ObservableLongValue} holding the {@link Number} to divide.
-   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableLongValue}.
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableLongValue}.
    */
   NumberExpression<?> divide(ObservableLongValue other);
 
   /**
    * @param other the {@link ObservableIntegerValue} holding the {@link Number} to divide.
-   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableIntegerValue}.
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableIntegerValue}.
    */
   NumberExpression<?> divide(ObservableIntegerValue other);
 
   /**
    * @param other the {@link ObservableShortValue} holding the {@link Number} to divide.
-   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableShortValue}.
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableShortValue}.
    */
   NumberExpression<?> divide(ObservableShortValue other);
 
   /**
    * @param other the {@link ObservableByteValue} holding the {@link Number} to divide.
-   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} with the
-   *         {@link #getValue() value} of the given {@link ObservableByteValue}.
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #get() value} with the {@link #get()
+   *         value} of the given {@link ObservableByteValue}.
    */
   NumberExpression<?> divide(ObservableByteValue other);
 
   /**
    * @param constant the constant {@link Number} to divide.
-   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} divided by the given
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #get() value} divided by the given
    *         {@code constant}.
    */
   default NumberExpression<?> divide(Number constant) {
@@ -688,8 +688,8 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
 
   /**
    * @param constant the constant {@link BigDecimal} to divide.
-   * @return a new {@link BigDecimalExpression} holding the quotient of this {@link #getValue() value} divided by the
-   *         given {@code constant}.
+   * @return a new {@link BigDecimalExpression} holding the quotient of this {@link #get() value} divided by the given
+   *         {@code constant}.
    */
   default BigDecimalExpression divide(BigDecimal constant) {
 
@@ -698,49 +698,49 @@ public interface NumberExpression<N extends Number & Comparable<? super N>>
 
   /**
    * @param constant the constant {@link BigInteger} to divide.
-   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} divided by the given
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #get() value} divided by the given
    *         {@code constant}.
    */
   NumberExpression<?> divide(BigInteger constant);
 
   /**
    * @param constant the constant {@code double} to divide.
-   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} divided by the given
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #get() value} divided by the given
    *         {@code constant}.
    */
   NumberExpression<?> divide(double constant);
 
   /**
    * @param constant the constant {@code float} to divide.
-   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} divided by the given
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #get() value} divided by the given
    *         {@code constant}.
    */
   NumberExpression<?> divide(float constant);
 
   /**
    * @param constant the constant {@code long} to divide.
-   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} divided by the given
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #get() value} divided by the given
    *         {@code constant}.
    */
   NumberExpression<?> divide(long constant);
 
   /**
    * @param constant the constant {@code int} to divide.
-   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} divided by the given
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #get() value} divided by the given
    *         {@code constant}.
    */
   NumberExpression<?> divide(int constant);
 
   /**
    * @param constant the constant {@code short} to divide.
-   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} divided by the given
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #get() value} divided by the given
    *         {@code constant}.
    */
   NumberExpression<?> divide(short constant);
 
   /**
    * @param constant the constant {@code byte} to divide.
-   * @return a new {@link NumberExpression} holding the quotient of this {@link #getValue() value} divided by the given
+   * @return a new {@link NumberExpression} holding the quotient of this {@link #get() value} divided by the given
    *         {@code constant}.
    */
   NumberExpression<?> divide(byte constant);

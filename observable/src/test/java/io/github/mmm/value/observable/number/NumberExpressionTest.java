@@ -11,8 +11,6 @@ import org.junit.jupiter.api.Test;
 
 import io.github.mmm.value.observable.ObservableEvent;
 import io.github.mmm.value.observable.ObservableEventListenerMock;
-import io.github.mmm.value.observable.number.NumberExpression;
-import io.github.mmm.value.observable.number.WritableNumberValue;
 import io.github.mmm.value.observable.number.bigdecimal.BigDecimalExpression;
 
 /**
@@ -47,14 +45,14 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
 
     // when + then
     assertThat(expression.getValueClass()).isSameAs(getValueClass());
-    assertThat(expression.getValue()).isNull();
+    assertThat(expression.get()).isNull();
     assertThat(expression.doubleValue()).isZero();
     assertThat(expression.floatValue()).isZero();
     assertThat(expression.longValue()).isZero();
     assertThat(expression.intValue()).isZero();
     assertThat(expression.shortValue()).isZero();
     assertThat(expression.byteValue()).isZero();
-    assertThat(expression.getValueSafe()).isEqualTo(get(0));
+    assertThat(expression.getSafe()).isEqualTo(get(0));
   }
 
   @Test
@@ -70,11 +68,11 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
     // when + then
     ObservableEventListenerMock<N> listener = new ObservableEventListenerMock<>();
     expression.addListener(listener);
-    assertThat(expression.getValue()).isNull();
+    assertThat(expression.get()).isNull();
     assertThat(listener.getEvent()).isNull();
     // test zero
-    writable.setValue(zero);
-    assertThat(expression.getValue()).isSameAs(zero);
+    writable.set(zero);
+    assertThat(expression.get()).isSameAs(zero);
     ObservableEvent<N> event = listener.getEvent();
     assertThat(event).isNotNull();
     assertThat(event.getObservable()).isSameAs(expression);
@@ -82,7 +80,7 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
     assertThat(event.getOldValue()).isNull();
     assertThat(event.getValue()).isSameAs(zero);
     assertThat(event.isChange()).isFalse();
-    assertThat(expression.getValueSafe()).isSameAs(zero);
+    assertThat(expression.getSafe()).isSameAs(zero);
     assertThat(expression.doubleValue()).isZero();
     assertThat(expression.floatValue()).isZero();
     assertThat(expression.longValue()).isZero();
@@ -90,7 +88,7 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
     assertThat(expression.shortValue()).isZero();
     assertThat(expression.byteValue()).isZero();
     // test one
-    writable.setValue(one);
+    writable.set(one);
     event = listener.getEvent();
     assertThat(event).isNotNull();
     assertThat(event.getObservable()).isSameAs(expression);
@@ -123,10 +121,10 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
 
     // when + then
     expression.addListener(listener);
-    assertThat(expression.getValue()).isSameAs(one);
+    assertThat(expression.get()).isSameAs(one);
     assertThat(listener.getEvent()).isNull();
-    writable.setValue(two);
-    assertThat(expression.getValue()).isSameAs(two);
+    writable.set(two);
+    assertThat(expression.get()).isSameAs(two);
     ObservableEvent<N> event = listener.getEvent();
     assertThat(event).isNotNull();
     assertThat(event.getObservable()).isSameAs(expression);
@@ -134,8 +132,8 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
     assertThat(event.getOldValue()).isSameAs(one);
     assertThat(event.getValue()).isSameAs(two);
     assertThat(event.isChange()).isFalse();
-    writable.setValue(three);
-    assertThat(expression.getValue()).isSameAs(three);
+    writable.set(three);
+    assertThat(expression.get()).isSameAs(three);
     event = listener.getEvent();
     assertThat(event).isNotNull();
     assertThat(event.getObservable()).isSameAs(expression);
@@ -155,11 +153,11 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
 
     // add (1+1=2)
     NumberExpression<?> term = expression.add(one);
-    assertThat(term.getValue()).isEqualTo(two);
+    assertThat(term.get()).isEqualTo(two);
     assertThat(term.getValueClass()).isSameAs(getValueClass());
     term.dispose();
     term = expression.add(expression);
-    assertThat(term.getValue()).isEqualTo(two);
+    assertThat(term.get()).isEqualTo(two);
     assertThat(term.getValueClass()).isSameAs(getValueClass());
     term.dispose();
     // BigDecimal
@@ -167,10 +165,10 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
     BigDecimal bd2 = BigDecimal.valueOf(2);
     BigDecimalExpression bdTerm = expression.add(bd1);
     term = bdTerm;
-    assertEquals(term.getValue(), bd2);
+    assertEquals(term.get(), bd2);
     assertThat(term.getValueClass()).isSameAs(BigDecimal.class);
     term = expression.add(bdTerm);
-    assertEquals(term.getValue(), BigDecimal.valueOf(3));
+    assertEquals(term.get(), BigDecimal.valueOf(3));
     assertThat(term.getValueClass()).isSameAs(BigDecimal.class);
     term.dispose();
     bdTerm.dispose();
@@ -187,35 +185,35 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
 
     // 2-1=1
     NumberExpression<?> term = expression.subtract(one);
-    assertEquals(term.getValue(), one);
+    assertEquals(term.get(), one);
     assertThat(term.getValueClass()).isSameAs(getValueClass());
     term.dispose();
     // 2-2=0
     term = expression.subtract(expression);
-    assertEquals(term.getValue(), zero);
+    assertEquals(term.get(), zero);
     assertThat(term.getValueClass()).isSameAs(getValueClass());
     term.dispose();
 
     // BigDecimal: 2-1=1
     BigDecimalExpression bdTerm = expression.subtract(BigDecimal.ONE);
     term = bdTerm;
-    assertEquals(term.getValue(), BigDecimal.ONE);
+    assertEquals(term.get(), BigDecimal.ONE);
     assertThat(term.getValueClass()).isSameAs(BigDecimal.class);
     term = expression.subtract(bdTerm);
-    assertEquals(term.getValue(), BigDecimal.ONE);
+    assertEquals(term.get(), BigDecimal.ONE);
     assertThat(term.getValueClass()).isSameAs(BigDecimal.class);
     term.dispose();
     term = bdTerm;
     term = expression.subtract(term);
-    assertEquals(term.getValue(), BigDecimal.ONE);
+    assertEquals(term.get(), BigDecimal.ONE);
     assertThat(term.getValueClass()).isSameAs(BigDecimal.class);
     term.dispose();
     term = expression.subtract((Number) BigDecimal.ONE);
-    assertEquals(term.getValue(), BigDecimal.ONE);
+    assertEquals(term.get(), BigDecimal.ONE);
     assertThat(term.getValueClass()).isSameAs(BigDecimal.class);
     term.dispose();
     term = expression.subtract((Number) BigInteger.ONE);
-    assertThat(term.getValue().intValue()).isEqualTo(1);
+    assertThat(term.get().intValue()).isEqualTo(1);
     term.dispose();
   }
 
@@ -229,11 +227,11 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
 
     // 2*2=4
     NumberExpression<?> term = expression.multiply(two);
-    assertEquals(term.getValue(), four);
+    assertEquals(term.get(), four);
     assertThat(term.getValueClass()).isSameAs(getValueClass());
     term.dispose();
     term = expression.multiply(expression);
-    assertEquals(term.getValue(), four);
+    assertEquals(term.get(), four);
     assertThat(term.getValueClass()).isSameAs(getValueClass());
     term.dispose();
   }
@@ -250,11 +248,11 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
 
     // 8/4=2
     NumberExpression<?> term = expression.divide(four);
-    assertEquals(term.getValue(), two);
+    assertEquals(term.get(), two);
     assertThat(term.getValueClass()).isSameAs(getValueClass());
     term.dispose();
     term = expression.divide(expression);
-    assertEquals(term.getValue(), one);
+    assertEquals(term.get(), one);
     assertThat(term.getValueClass()).isSameAs(getValueClass());
     term.dispose();
   }

@@ -5,28 +5,28 @@ package io.github.mmm.value.observable.number.longs;
 import io.github.mmm.value.observable.number.WritableNumberValue;
 
 /**
- * {@link WritableNumberValue} with {@link Long} {@link #getValue() value}.
+ * {@link WritableNumberValue} with {@link Long} {@link #get() value}.
  *
  * @since 1.0.0
  */
 public interface WritableLongValue extends ReadableLongValue, WritableNumberValue<Long> {
 
   /**
-   * @param value the new {@link #getValue() value} as primitive.
-   * @see #setValue(Long)
+   * @param value the new {@link #getValue() primitive value}.
+   * @see #set(Long)
    */
-  default void set(long value) {
+  default void setValue(long value) {
 
-    setValue(Long.valueOf(value));
+    set(Long.valueOf(value));
   }
 
   @Override
   default void setValueAsNumber(Number value) {
 
     if ((value == null) || (value instanceof Long)) {
-      setValue((Long) value);
+      set((Long) value);
     } else {
-      setValue(Long.valueOf(value.longValue()));
+      set(Long.valueOf(value.longValue()));
     }
   }
 }

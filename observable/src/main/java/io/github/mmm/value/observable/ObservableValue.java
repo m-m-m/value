@@ -6,10 +6,10 @@ import io.github.mmm.event.EventSource;
 import io.github.mmm.value.ReadableValue;
 
 /**
- * An {@link ObservableValue} wraps a {@link #getValue() value} and allows to observe the value for changes. In general
- * this interface should not be implemented directly but one of its sub-interfaces.
+ * An {@link ObservableValue} wraps a {@link #get() value} and allows to observe the value for changes. In general this
+ * interface should not be implemented directly but one of its sub-interfaces.
  * <p>
- * The value of the {@link ObservableValue} can be requested with {@link #getValue()}.
+ * The value of the {@link ObservableValue} can be requested with {@link #get()}.
  * <p>
  * An implementation of {@link ObservableValue} may support lazy evaluation, which means that the value is not
  * immediately recomputed after changes, but lazily the next time the value is requested. All bindings and properties in
@@ -17,7 +17,7 @@ import io.github.mmm.value.ReadableValue;
  * <p>
  * An {@link ObservableValue} generates change events. A change event indicates that the value has changed.
  *
- * @param <V> type of the observable {@link #getValue() value}.
+ * @param <V> type of the observable {@link #get() value}.
  * @since 1.0.0
  */
 public interface ObservableValue<V>

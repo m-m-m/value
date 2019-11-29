@@ -43,18 +43,18 @@ public class ShortExpressionTest extends NumberExpressionTest<Short> {
   public void testAddCustom() {
 
     ShortExpressionMock value = new ShortExpressionMock();
-    value.setValue(ONE);
+    value.set(ONE);
     ShortExpression expression = value.add((short) 1).add((byte) 6);
     assertThat(expression.getValue()).isEqualTo(Short.valueOf((short) 8));
-    value.setValue(TEN);
+    value.set(TEN);
     assertThat(expression.getValue()).isEqualTo(Short.valueOf((short) 17));
     ShortExpressionMock value2 = new ShortExpressionMock();
-    value2.setValue(ONE);
+    value2.set(ONE);
     ShortExpression expression2 = expression.add(value2);
     assertThat(expression2.getValue()).isEqualTo(Short.valueOf((short) 18));
-    value2.setValue(TEN);
+    value2.set(TEN);
     assertThat(expression2.getValue()).isEqualTo(Short.valueOf((short) 27));
-    value.setValue(ONE);
+    value.set(ONE);
     assertThat(expression2.getValue()).isEqualTo(Short.valueOf((short) 18));
 
     ShortExpression sum = ShortBinding.addAll(value, expression, expression2);
@@ -67,14 +67,14 @@ public class ShortExpressionTest extends NumberExpressionTest<Short> {
     ShortExpressionMock value = new ShortExpressionMock(Short.valueOf((short) 8));
     ShortExpression expression = value.subtract((short) 1).subtract((byte) 7);
     assertThat(expression.getValue()).isEqualTo(ZERO);
-    value.setValue(TEN);
+    value.set(TEN);
     assertThat(expression.getValue()).isEqualTo(Short.valueOf((short) 2));
     ShortExpressionMock value2 = new ShortExpressionMock(ONE);
     ShortExpression expression2 = expression.subtract(value2);
     assertThat(expression2.getValue()).isEqualTo(ONE);
-    value2.setValue(TEN);
+    value2.set(TEN);
     assertThat(expression2.getValue()).isEqualTo(Short.valueOf((short) -8)); // 2 - 10
-    value.setValue(ONE);
+    value.set(ONE);
     assertThat(expression2.getValue()).isEqualTo(Short.valueOf((short) -17));
     assertThat(expression.getValue()).isEqualTo(Short.valueOf((short) -7));
 
@@ -90,14 +90,14 @@ public class ShortExpressionTest extends NumberExpressionTest<Short> {
     ShortExpression expression = value.multiply((short) 2).multiply((byte) 64);
 
     assertThat(expression.getValue()).isEqualTo(Short.valueOf((short) 512));
-    value.setValue(TEN);
+    value.set(TEN);
     assertThat(expression.getValue()).isEqualTo(Short.valueOf((short) 1280));
     ShortExpressionMock value2 = new ShortExpressionMock(two);
     ShortExpression expression2 = expression.multiply(value2);
     assertThat(expression2.getValue()).isEqualTo(Short.valueOf((short) 2560));
-    value2.setValue(TEN);
+    value2.set(TEN);
     assertThat(expression2.getValue()).isEqualTo(Short.valueOf((short) 12800));
-    value.setValue(ONE);
+    value.set(ONE);
     assertThat(expression2.getValue()).isEqualTo(Short.valueOf((short) 1280));
     assertThat(expression.getValue()).isEqualTo(Short.valueOf((short) 128));
 
@@ -112,14 +112,14 @@ public class ShortExpressionTest extends NumberExpressionTest<Short> {
     ShortExpression expression = value.divide((short) 2).divide((byte) 64);
 
     assertThat(expression.getValue()).isEqualTo(Short.valueOf((short) 32));
-    value.setValue(Short.valueOf((short) 512));
+    value.set(Short.valueOf((short) 512));
     assertThat(expression.getValue()).isEqualTo(Short.valueOf((short) 4));
     ShortExpressionMock value2 = new ShortExpressionMock(Short.valueOf((short) 4));
     ShortExpression expression2 = expression.divide(value2);
     assertThat(expression2.getValue()).isEqualTo(ONE);
-    value2.setValue(Short.valueOf((short) 2));
+    value2.set(Short.valueOf((short) 2));
     assertThat(expression2.getValue()).isEqualTo(Short.valueOf((short) 2));
-    value.setValue(Short.valueOf((short) 256));
+    value.set(Short.valueOf((short) 256));
     assertThat(expression2.getValue()).isEqualTo(ONE);
     assertThat(expression.getValue()).isEqualTo(Short.valueOf((short) 2));
 

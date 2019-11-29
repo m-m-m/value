@@ -7,7 +7,7 @@ import java.util.Set;
 import io.github.mmm.value.observable.container.collection.ObservableCollectionValue;
 
 /**
- * {@link io.github.mmm.value.observable.ObservableValue} with {@link Set} {@link #getValue() value}.
+ * {@link io.github.mmm.value.observable.ObservableValue} with {@link Set} {@link #get() value}.
  *
  * @param <E> type of the {@link Set#contains(Object) elements}.
  * @since 1.0.0

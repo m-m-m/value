@@ -5,7 +5,7 @@ package io.github.mmm.value.observable.number.bytes;
 import io.github.mmm.value.observable.number.ReadableNumberValue;
 
 /**
- * {@link ReadableNumberValue} with {@link Byte} {@link #getValue() value}.
+ * {@link ReadableNumberValue} with {@link Byte} {@link #get() value}.
  *
  * @since 1.0.0
  */
@@ -20,15 +20,15 @@ public interface ReadableByteValue extends ReadableNumberValue<Byte> {
   /**
    * @return the current value as primitive. Will be {@code 0} if undefined.
    */
-  default byte get() {
+  default byte getValue() {
 
     return byteValue();
   }
 
   @Override
-  default Byte getValueSafe() {
+  default Byte getSafe() {
 
-    Byte value = getValue();
+    Byte value = get();
     if (value == null) {
       return Byte.valueOf((byte) 0);
     }

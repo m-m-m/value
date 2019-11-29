@@ -8,7 +8,7 @@ import java.util.Map;
 import io.github.mmm.value.observable.container.WritableContainerValue;
 
 /**
- * {@link WritableContainerValue} for {@link Map} {@link #getValue() value}s.
+ * {@link WritableContainerValue} for {@link Map} {@link #get() value}s.
  *
  * @param <K> type of the {@link Map#containsKey(Object) keys}.
  * @param <V> type of the {@link Map#containsValue(Object) values}.
@@ -19,10 +19,10 @@ public interface WritableMapValue<K, V> extends WritableContainerValue<Map<K, V>
   @Override
   default Map<K, V> getOrCreateValue() {
 
-    Map<K, V> value = getValue();
+    Map<K, V> value = get();
     if (value == null) {
       value = new HashMap<>();
-      setValue(value);
+      set(value);
     }
     return value;
   }

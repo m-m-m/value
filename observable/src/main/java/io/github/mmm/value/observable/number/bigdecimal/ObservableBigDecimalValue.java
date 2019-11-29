@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import io.github.mmm.value.observable.number.ObservableNumberValue;
 
 /**
- * {@link ObservableNumberValue} with {@link BigDecimal} {@link #getValue() value}.
+ * {@link ObservableNumberValue} with {@link BigDecimal} {@link #get() value}.
  *
  * @since 1.0.0
  */

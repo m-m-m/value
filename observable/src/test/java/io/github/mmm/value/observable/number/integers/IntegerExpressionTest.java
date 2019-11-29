@@ -43,18 +43,18 @@ public class IntegerExpressionTest extends NumberExpressionTest<Integer> {
   public void testAddCustom() {
 
     IntegerExpressionMock value = new IntegerExpressionMock();
-    value.setValue(ONE);
+    value.set(ONE);
     IntegerExpression expression = value.add(1).add((short) 1).add((byte) 5);
     assertThat(expression.getValue()).isEqualTo(Integer.valueOf(8));
-    value.setValue(TEN);
+    value.set(TEN);
     assertThat(expression.getValue()).isEqualTo(Integer.valueOf(17));
     IntegerExpressionMock value2 = new IntegerExpressionMock();
-    value2.setValue(ONE);
+    value2.set(ONE);
     IntegerExpression expression2 = expression.add(value2);
     assertThat(expression2.getValue()).isEqualTo(Integer.valueOf(18));
-    value2.setValue(TEN);
+    value2.set(TEN);
     assertThat(expression2.getValue()).isEqualTo(Integer.valueOf(27));
-    value.setValue(ONE);
+    value.set(ONE);
     assertThat(expression2.getValue()).isEqualTo(Integer.valueOf(18));
 
     IntegerExpression sum = IntegerBinding.addAll(value, expression, expression2);
@@ -67,14 +67,14 @@ public class IntegerExpressionTest extends NumberExpressionTest<Integer> {
     IntegerExpressionMock value = new IntegerExpressionMock(Integer.valueOf(8));
     IntegerExpression expression = value.subtract(1).subtract((short) 1).subtract((byte) 6);
     assertThat(expression.getValue()).isEqualTo(ZERO);
-    value.setValue(TEN);
+    value.set(TEN);
     assertThat(expression.getValue()).isEqualTo(Integer.valueOf(2));
     IntegerExpressionMock value2 = new IntegerExpressionMock(ONE);
     IntegerExpression expression2 = expression.subtract(value2);
     assertThat(expression2.getValue()).isEqualTo(ONE);
-    value2.setValue(TEN);
+    value2.set(TEN);
     assertThat(expression2.getValue()).isEqualTo(Integer.valueOf(-8)); // 2 - 10
-    value.setValue(ONE);
+    value.set(ONE);
     assertThat(expression2.getValue()).isEqualTo(Integer.valueOf(-17));
     assertThat(expression.getValue()).isEqualTo(Integer.valueOf(-7));
 
@@ -90,14 +90,14 @@ public class IntegerExpressionTest extends NumberExpressionTest<Integer> {
     IntegerExpression expression = value.multiply(2).multiply((short) 2).multiply((byte) 32);
 
     assertThat(expression.getValue()).isEqualTo(Integer.valueOf(512));
-    value.setValue(TEN);
+    value.set(TEN);
     assertThat(expression.getValue()).isEqualTo(Integer.valueOf(1280));
     IntegerExpressionMock value2 = new IntegerExpressionMock(two);
     IntegerExpression expression2 = expression.multiply(value2);
     assertThat(expression2.getValue()).isEqualTo(Integer.valueOf(2560));
-    value2.setValue(TEN);
+    value2.set(TEN);
     assertThat(expression2.getValue()).isEqualTo(Integer.valueOf(12800));
-    value.setValue(ONE);
+    value.set(ONE);
     assertThat(expression2.getValue()).isEqualTo(Integer.valueOf(1280));
     assertThat(expression.getValue()).isEqualTo(Integer.valueOf(128));
 
@@ -112,14 +112,14 @@ public class IntegerExpressionTest extends NumberExpressionTest<Integer> {
     IntegerExpression expression = value.divide(2).divide((short) 2).divide((byte) 32);
 
     assertThat(expression.getValue()).isEqualTo(Integer.valueOf(32));
-    value.setValue(Integer.valueOf(512));
+    value.set(Integer.valueOf(512));
     assertThat(expression.getValue()).isEqualTo(Integer.valueOf(4));
     IntegerExpressionMock value2 = new IntegerExpressionMock(Integer.valueOf(4));
     IntegerExpression expression2 = expression.divide(value2);
     assertThat(expression2.getValue()).isEqualTo(ONE);
-    value2.setValue(Integer.valueOf(2));
+    value2.set(Integer.valueOf(2));
     assertThat(expression2.getValue()).isEqualTo(Integer.valueOf(2));
-    value.setValue(Integer.valueOf(256));
+    value.set(Integer.valueOf(256));
     assertThat(expression2.getValue()).isEqualTo(ONE);
     assertThat(expression.getValue()).isEqualTo(Integer.valueOf(2));
 

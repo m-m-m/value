@@ -5,7 +5,7 @@ package io.github.mmm.value.observable.booleans;
 import io.github.mmm.value.observable.ObservableValue;
 
 /**
- * {@link ObservableValue} with {@link Boolean} {@link #getValue() value}.
+ * {@link ObservableValue} with {@link Boolean} {@link #get() value}.
  *
  * @since 1.0.0
  */

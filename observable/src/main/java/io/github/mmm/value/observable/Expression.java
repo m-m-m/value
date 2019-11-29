@@ -13,78 +13,78 @@ import io.github.mmm.value.observable.string.StringExpression;
  * An {@link Expression} is an {@link ObservableValue} providing convenience methods to created dynamically computed
  * values.
  *
- * @param <V> type of the {@link #getValue() value}.
+ * @param <V> type of the {@link #get() value}.
  * @since 1.0.0
  */
 public interface Expression<V> extends ObservableValue<V> {
 
   /**
    * @param other the {@link ObservableValue} to check.
-   * @return a new {@link BooleanBinding} holding {@code true} if the {@link #getValue() value} of this
-   *         {@link Expression} and the {@link ObservableValue#getValue() value} of the given {@link ObservableValue}
-   *         are {@link Object#equals(Object) equal}.
+   * @return a new {@link BooleanBinding} holding {@code true} if the {@link #get() value} of this {@link Expression}
+   *         and the {@link ObservableValue#get() value} of the given {@link ObservableValue} are
+   *         {@link Object#equals(Object) equal}.
    */
   default BooleanExpression isEqualTo(ObservableValue<V> other) {
 
-    return new BooleanBinding(() -> Objects.equals(getValue(), other.getValue()), this, other);
+    return new BooleanBinding(() -> Objects.equals(get(), other.get()), this, other);
   }
 
   /**
    * @param other the constant value to check.
-   * @return a new {@link BooleanBinding} holding {@code true} if the {@link #getValue() value} of this property and the
+   * @return a new {@link BooleanBinding} holding {@code true} if the {@link #get() value} of this property and the
    *         given {@code value} are {@link Object#equals(Object) equal}.
    */
   default BooleanExpression isEqualTo(V other) {
 
-    return new BooleanBinding(() -> Objects.equals(getValue(), other), this);
+    return new BooleanBinding(() -> Objects.equals(get(), other), this);
   }
 
   /**
    * @param other the {@link ObservableValue} to check.
-   * @return a new {@link BooleanBinding} holding {@code true} if the {@link #getValue() value} of this property and the
-   *         {@link ObservableValue#getValue() value} of the given {@link ObservableValue} are NOT
+   * @return a new {@link BooleanBinding} holding {@code true} if the {@link #get() value} of this property and the
+   *         {@link ObservableValue#get() value} of the given {@link ObservableValue} are NOT
    *         {@link Object#equals(Object) equal}.
    */
   default BooleanExpression isNotEqualTo(ObservableValue<V> other) {
 
-    return new BooleanBinding(() -> !Objects.equals(getValue(), other.getValue()), this, other);
+    return new BooleanBinding(() -> !Objects.equals(get(), other.get()), this, other);
   }
 
   /**
    * @param other the constant value to check.
-   * @return a new {@link BooleanBinding} holding {@code true} if the {@link #getValue() value} of this property and the
+   * @return a new {@link BooleanBinding} holding {@code true} if the {@link #get() value} of this property and the
    *         given {@code value} are NOT {@link Object#equals(Object) equal}.
    */
   default BooleanExpression isNotEqualTo(V other) {
 
-    return new BooleanBinding(() -> !Objects.equals(getValue(), other), this);
+    return new BooleanBinding(() -> !Objects.equals(get(), other), this);
   }
 
   /**
-   * @return a new {@link BooleanBinding} holding {@code true} if the {@link #getValue() value} of this property is
+   * @return a new {@link BooleanBinding} holding {@code true} if the {@link #get() value} of this property is
    *         {@code null}.
    */
   default BooleanExpression isNull() {
 
-    return new BooleanBinding(() -> (getValue() == null), this);
+    return new BooleanBinding(() -> (get() == null), this);
   }
 
   /**
-   * @return a new {@link BooleanBinding} holding {@code true} if the {@link #getValue() value} of this property is NOT
+   * @return a new {@link BooleanBinding} holding {@code true} if the {@link #get() value} of this property is NOT
    *         {@code null}.
    */
   default BooleanExpression isNotNull() {
 
-    return new BooleanBinding(() -> (getValue() != null), this);
+    return new BooleanBinding(() -> (get() != null), this);
   }
 
   /**
    * @return a new {@code StringBinding} holding the {@link Object#toString() String-repersentation} of the
-   *         {@link #getValue() value}.
+   *         {@link #get() value}.
    */
   default StringExpression asString() {
 
-    return new StringBinding(() -> Objects.toString(getValue()), this);
+    return new StringBinding(() -> Objects.toString(get()), this);
   }
 
   /**

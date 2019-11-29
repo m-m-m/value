@@ -8,7 +8,7 @@ import io.github.mmm.value.observable.number.NumberBinding;
 import io.github.mmm.value.observable.number.NumberExpression;
 
 /**
- * {@link io.github.mmm.value.observable.Binding} with {@link Byte} {@link #getValue() value}.
+ * {@link io.github.mmm.value.observable.Binding} with {@link Byte} {@link #get() value}.
  *
  * @since 1.0.0
  */
@@ -19,7 +19,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
   /**
    * The constructor.
    *
-   * @param expression the {@link Supplier} to compute the {@link #getValue() value}.
+   * @param expression the {@link Supplier} to compute the {@link #get() value}.
    * @param dependencies the {@link ObservableValue}s the {@code expression} depends on.
    */
   public ByteBinding(Supplier<Byte> expression, ObservableValue<?>... dependencies) {
@@ -29,13 +29,13 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
 
   /**
    * @param expression the {@link ByteExpression} to negate.
-   * @return a new {@link ByteExpression} holding the negation of the {@link #getValue() value} from the given
+   * @return a new {@link ByteExpression} holding the negation of the {@link #get() value} from the given
    *         {@link ByteExpression}.
    * @see #negate()
    */
   public static ByteExpression negate(ByteExpression expression) {
 
-    return new ByteBinding(() -> negate(expression.getValue()), expression);
+    return new ByteBinding(() -> negate(expression.get()), expression);
   }
 
   /**
@@ -49,15 +49,15 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
     } else if (expression instanceof ByteExpression) {
       return (ByteExpression) expression;
     } else {
-      return new ByteBinding(() -> to(expression.getValue()), expression);
+      return new ByteBinding(() -> to(expression.get()), expression);
     }
   }
 
   /**
    * @param expression the {@link ByteExpression} to add.
    * @param other the {@link ObservableValue} to add.
-   * @return a new {@link ByteExpression} holding the sum of the {@link #getValue() value}s of the first and the second
-   *         given {@link ObservableValue}s.
+   * @return a new {@link ByteExpression} holding the sum of the {@link #get() value}s of the first and the second given
+   *         {@link ObservableValue}s.
    * @see #add(ObservableByteValue)
    */
   public static ByteExpression add(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
@@ -71,7 +71,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
   /**
    * @param expression the {@link ByteExpression} to add.
    * @param constant the constant {@link Number} to add.
-   * @return a new {@link ByteExpression} holding the sum of the {@link #getValue() value} from the given
+   * @return a new {@link ByteExpression} holding the sum of the {@link #get() value} from the given
    *         {@link ByteExpression} with the given {@code constant}.
    * @see #add(ObservableByteValue)
    */
@@ -86,18 +86,18 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
   /**
    * @param expression the {@link ByteExpression} to add.
    * @param constant the constant {@code byte} to add.
-   * @return a new {@link ByteExpression} holding the sum of the {@link #getValue() value} from the given
+   * @return a new {@link ByteExpression} holding the sum of the {@link #get() value} from the given
    *         {@link ByteExpression} with the given {@code constant}.
    * @see #add(ObservableByteValue)
    */
   public static ByteExpression add(NumberExpression<?> expression, byte constant) {
 
-    return new ByteBinding(() -> plus(expression.getValue(), constant), expression);
+    return new ByteBinding(() -> plus(expression.get(), constant), expression);
   }
 
   /**
    * @param observables the {@link ObservableValue}s to add.
-   * @return a new {@link ByteExpression} holding the sum of the {@link #getValue() value}s from the given
+   * @return a new {@link ByteExpression} holding the sum of the {@link #get() value}s from the given
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
@@ -109,7 +109,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
   /**
    * @param expression the {@link ByteExpression}.
    * @param other the {@link ObservableValue} to subtract.
-   * @return a new {@link ByteExpression} holding the difference of the {@link #getValue() value}s of the first and the
+   * @return a new {@link ByteExpression} holding the difference of the {@link #get() value}s of the first and the
    *         second given {@link ObservableValue}s.
    * @see #subtract(ObservableByteValue)
    */
@@ -124,7 +124,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
   /**
    * @param expression the {@link ByteExpression}.
    * @param constant the constant {@link Number} to subtract.
-   * @return a new {@link ByteExpression} holding the difference of the {@link #getValue() value} from the given
+   * @return a new {@link ByteExpression} holding the difference of the {@link #get() value} from the given
    *         {@link ByteExpression} with the given {@code constant}.
    * @see #subtract(ObservableByteValue)
    */
@@ -139,18 +139,18 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
   /**
    * @param expression the {@link ByteExpression}.
    * @param constant the constant {@code byte} to subtract.
-   * @return a new {@link ByteExpression} holding the difference of the {@link #getValue() value} from the given
+   * @return a new {@link ByteExpression} holding the difference of the {@link #get() value} from the given
    *         {@link ByteExpression} with the given {@code constant}.
    * @see #subtract(ObservableByteValue)
    */
   public static ByteExpression subtract(NumberExpression<?> expression, byte constant) {
 
-    return new ByteBinding(() -> minus(expression.getValue(), constant), expression);
+    return new ByteBinding(() -> minus(expression.get(), constant), expression);
   }
 
   /**
    * @param observables the {@link ObservableValue}s to subtract.
-   * @return a new {@link ByteExpression} holding the difference of the {@link #getValue() value}s from the given
+   * @return a new {@link ByteExpression} holding the difference of the {@link #get() value}s from the given
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
@@ -162,8 +162,8 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
   /**
    * @param expression the {@link ByteExpression}.
    * @param other the {@link ObservableValue} to multiply.
-   * @return a new {@link ByteExpression} holding the product of the {@link #getValue() value}s of the first and the
-   *         second given {@link ObservableValue}s.
+   * @return a new {@link ByteExpression} holding the product of the {@link #get() value}s of the first and the second
+   *         given {@link ObservableValue}s.
    * @see #multiply(ObservableByteValue)
    */
   public static ByteExpression multiply(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
@@ -177,7 +177,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
   /**
    * @param expression the {@link ByteExpression}.
    * @param constant the constant {@link Number} to multiply.
-   * @return a new {@link ByteExpression} holding the product of the {@link #getValue() value} from the given
+   * @return a new {@link ByteExpression} holding the product of the {@link #get() value} from the given
    *         {@link ByteExpression} multiplied with the given {@code constant}.
    * @see #multiply(ObservableByteValue)
    */
@@ -192,18 +192,18 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
   /**
    * @param expression the {@link ByteExpression}.
    * @param constant the constant {@code byte} to multiply.
-   * @return a new {@link ByteExpression} holding the product of the {@link #getValue() value} from the given
+   * @return a new {@link ByteExpression} holding the product of the {@link #get() value} from the given
    *         {@link ByteExpression} multiplied with the given {@code constant}.
    * @see #multiply(ObservableByteValue)
    */
   public static ByteExpression multiply(NumberExpression<?> expression, byte constant) {
 
-    return new ByteBinding(() -> mul(expression.getValue(), constant), expression);
+    return new ByteBinding(() -> mul(expression.get(), constant), expression);
   }
 
   /**
    * @param observables the {@link ObservableValue}s to multiply.
-   * @return a new {@link ByteExpression} holding the product of the {@link #getValue() value}s from the given
+   * @return a new {@link ByteExpression} holding the product of the {@link #get() value}s from the given
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
@@ -215,8 +215,8 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
   /**
    * @param expression the {@link ByteExpression}.
    * @param other the {@link ObservableValue} to divide.
-   * @return a new {@link ByteExpression} holding the quotient of the {@link #getValue() value}s of the first and the
-   *         second given {@link ObservableValue}s.
+   * @return a new {@link ByteExpression} holding the quotient of the {@link #get() value}s of the first and the second
+   *         given {@link ObservableValue}s.
    * @see #divide(ObservableByteValue)
    */
   public static ByteExpression divide(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
@@ -230,7 +230,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
   /**
    * @param expression the {@link ByteExpression}.
    * @param constant the constant {@link Number} to divide.
-   * @return a new {@link ByteExpression} holding the quotient of the {@link #getValue() value} from the given
+   * @return a new {@link ByteExpression} holding the quotient of the {@link #get() value} from the given
    *         {@link ByteExpression} divided by the given {@code constant}.
    * @see #divide(ObservableByteValue)
    */
@@ -245,18 +245,18 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
   /**
    * @param expression the {@link ByteExpression}.
    * @param constant the constant {@code byte} to divide.
-   * @return a new {@link ByteExpression} holding the quotient of the {@link #getValue() value} from the given
+   * @return a new {@link ByteExpression} holding the quotient of the {@link #get() value} from the given
    *         {@link ByteExpression} divided by the given {@code constant}.
    * @see #divide(ObservableByteValue)
    */
   public static ByteExpression divide(NumberExpression<?> expression, byte constant) {
 
-    return new ByteBinding(() -> div(expression.getValue(), constant), expression);
+    return new ByteBinding(() -> div(expression.get(), constant), expression);
   }
 
   /**
    * @param observables the {@link ObservableValue}s to divide.
-   * @return a new {@link ByteExpression} holding the quotient of the {@link #getValue() value}s from the given
+   * @return a new {@link ByteExpression} holding the quotient of the {@link #get() value}s from the given
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
@@ -288,7 +288,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
     byte sum = 0;
     for (ReadableValue<? extends Number> observable : observables) {
       if (observable != null) {
-        Number value = observable.getValue();
+        Number value = observable.get();
         if (value != null) {
           sum = (byte) (sum + value.byteValue());
         }
@@ -299,7 +299,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
 
   private static Byte plus(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
 
-    return plus(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+    return plus(ReadableValue.get(v1), ReadableValue.get(v2));
   }
 
   private static Byte plus(Number v1, Number v2) {
@@ -327,7 +327,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
     boolean first = true;
     for (ReadableValue<? extends Number> observable : observables) {
       if (observable != null) {
-        Number value = observable.getValue();
+        Number value = observable.get();
         if (value != null) {
           if (first) {
             difference = value.byteValue();
@@ -343,7 +343,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
 
   private static Byte minus(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
 
-    return minus(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+    return minus(ReadableValue.get(v1), ReadableValue.get(v2));
   }
 
   private static Byte minus(Number v1, Number v2) {
@@ -377,7 +377,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
       if (observable == null) {
         return ZERO;
       }
-      Number value = observable.getValue();
+      Number value = observable.get();
       if (value == null) {
         return ZERO;
       }
@@ -388,7 +388,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
 
   private static Byte mul(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
 
-    return mul(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+    return mul(ReadableValue.get(v1), ReadableValue.get(v2));
   }
 
   private static Byte mul(Number v1, Number v2) {
@@ -414,7 +414,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
     boolean first = true;
     for (ReadableValue<? extends Number> observable : observables) {
       if (observable != null) {
-        Number value = observable.getValue();
+        Number value = observable.get();
         if (value != null) {
           if (first) {
             quotient = value.byteValue();
@@ -430,7 +430,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
 
   private static Byte div(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
 
-    return div(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+    return div(ReadableValue.get(v1), ReadableValue.get(v2));
   }
 
   private static Byte div(Number v1, Number v2) {

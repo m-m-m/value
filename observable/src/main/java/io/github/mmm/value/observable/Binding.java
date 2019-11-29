@@ -5,10 +5,10 @@ package io.github.mmm.value.observable;
 import java.util.function.Supplier;
 
 /**
- * {@link Expression} that calculates its {@link #getValue() value} dynamically from other {@link ObservableValue}s
+ * {@link Expression} that calculates its {@link #get() value} dynamically from other {@link ObservableValue}s
  * (dependencies).
  *
- * @param <V> type of the observable {@link #getValue() value}.
+ * @param <V> type of the observable {@link #get() value}.
  * @since 1.0.0
  */
 public abstract class Binding<V> extends AbstractObservableValue<V> implements Expression<V> {
@@ -26,7 +26,7 @@ public abstract class Binding<V> extends AbstractObservableValue<V> implements E
   /**
    * The constructor.
    *
-   * @param expression the {@link Supplier} to compute the {@link #getValue() value}.
+   * @param expression the {@link Supplier} to compute the {@link #get() value}.
    * @param dependencies the {@link ObservableValue}s the {@code expression} depends on.
    */
   public Binding(Supplier<? extends V> expression, ObservableValue<?>... dependencies) {
@@ -83,7 +83,7 @@ public abstract class Binding<V> extends AbstractObservableValue<V> implements E
   }
 
   @Override
-  public V getValue() {
+  public V get() {
 
     if ((this.dependencies != null) && (this.dependencies.length == 0)) {
       return this.expression.get();
@@ -107,8 +107,8 @@ public abstract class Binding<V> extends AbstractObservableValue<V> implements E
   }
 
   /**
-   * @return {@code true} if the cached {@link #getValue() value} is still valid, {@code false} otherwise
-   *         (re-calculation required).
+   * @return {@code true} if the cached {@link #get() value} is still valid, {@code false} otherwise (re-calculation
+   *         required).
    */
   protected final boolean isValid() {
 

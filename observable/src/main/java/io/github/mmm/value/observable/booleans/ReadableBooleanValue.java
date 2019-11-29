@@ -5,7 +5,7 @@ package io.github.mmm.value.observable.booleans;
 import io.github.mmm.value.ReadableTypedValue;
 
 /**
- * {@link ReadableTypedValue} with {@link Boolean} {@link #getValue() value}.
+ * {@link ReadableTypedValue} with {@link Boolean} {@link #get() value}.
  *
  * @since 1.0.0
  */
@@ -19,11 +19,11 @@ public interface ReadableBooleanValue extends ReadableTypedValue<Boolean> {
 
   /**
    * @return the current value as primitive {@code boolean}.
-   * @see #getValue()
+   * @see #get()
    */
-  default boolean get() {
+  default boolean getValue() {
 
-    Boolean value = getValue();
+    Boolean value = get();
     if (value == null) {
       return false;
     }
@@ -31,9 +31,9 @@ public interface ReadableBooleanValue extends ReadableTypedValue<Boolean> {
   }
 
   @Override
-  default Boolean getValueSafe() {
+  default Boolean getSafe() {
 
-    Boolean value = getValue();
+    Boolean value = get();
     if (value == null) {
       return Boolean.FALSE;
     }

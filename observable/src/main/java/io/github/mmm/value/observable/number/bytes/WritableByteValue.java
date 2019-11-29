@@ -5,28 +5,28 @@ package io.github.mmm.value.observable.number.bytes;
 import io.github.mmm.value.observable.number.WritableNumberValue;
 
 /**
- * {@link WritableNumberValue} with {@link Byte} {@link #getValue() value}.
+ * {@link WritableNumberValue} with {@link Byte} {@link #get() value}.
  *
  * @since 1.0.0
  */
 public interface WritableByteValue extends ReadableByteValue, WritableNumberValue<Byte> {
 
   /**
-   * @param value the new {@link #getValue() value} as primitive.
-   * @see #setValue(Byte)
+   * @param value the new {@link #get() primitive value}.
+   * @see #set(Byte)
    */
-  default void set(byte value) {
+  default void setValue(byte value) {
 
-    setValue(Byte.valueOf(value));
+    set(Byte.valueOf(value));
   }
 
   @Override
   default void setValueAsNumber(Number value) {
 
     if ((value == null) || (value instanceof Byte)) {
-      setValue((Byte) value);
+      set((Byte) value);
     } else {
-      setValue(Byte.valueOf(value.byteValue()));
+      set(Byte.valueOf(value.byteValue()));
     }
   }
 

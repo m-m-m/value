@@ -8,7 +8,7 @@ import java.util.List;
 import io.github.mmm.value.observable.container.collection.ReadableCollectionValue;
 
 /**
- * {@link ReadableCollectionValue} for {@link List} {@link #getValue() value}s.
+ * {@link ReadableCollectionValue} for {@link List} {@link #get() value}s.
  *
  * @param <E> type of the {@link List#contains(Object) elements}.
  * @since 1.0.0
@@ -23,9 +23,9 @@ public interface ReadableListValue<E> extends ReadableCollectionValue<List<E>, E
   }
 
   @Override
-  default List<E> getValueSafe() {
+  default List<E> getSafe() {
 
-    List<E> value = getValue();
+    List<E> value = get();
     if (value == null) {
       value = Collections.emptyList();
     }

@@ -7,17 +7,17 @@ import io.github.mmm.value.observable.ObservableValue;
 import io.github.mmm.value.observable.booleans.BooleanBinding;
 
 /**
- * {@link Expression} with {@link Comparable} {@link #getValue() value}.
+ * {@link Expression} with {@link Comparable} {@link #get() value}.
  *
- * @param <V> type of the {@link #getValue() value}.
+ * @param <V> type of the {@link #get() value}.
  * @since 1.0.0
  */
 public interface ComparableExpression<V extends Comparable<? super V>> extends Expression<V> {
 
   /**
    * @param other the {@code ObservableValue<V>} to compare.
-   * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #getValue() value} of this property is
-   *         greater than the {@link #getValue() value} of another the given {@link ObservableValue}.
+   * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #get() value} of this property is
+   *         greater than the {@link #get() value} of another the given {@link ObservableValue}.
    */
   default BooleanBinding greaterThan(ObservableValue<V> other) {
 
@@ -26,18 +26,18 @@ public interface ComparableExpression<V extends Comparable<? super V>> extends E
 
   /**
    * @param other the constant value to compare.
-   * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #getValue() value} of this property is
+   * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #get() value} of this property is
    *         greater than the given {@link String}.
    */
   default BooleanBinding greaterThan(V other) {
 
-    return new BooleanBinding(() -> (ComparableHelper.compare(getValue(), other) > 0), this);
+    return new BooleanBinding(() -> (ComparableHelper.compare(get(), other) > 0), this);
   }
 
   /**
    * @param other the {@code ObservableValue<V>} to compare.
-   * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #getValue() value} of this property is
-   *         less than the {@link #getValue() value} of another the given {@link ObservableValue}.
+   * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #get() value} of this property is less
+   *         than the {@link #get() value} of another the given {@link ObservableValue}.
    */
   default BooleanBinding lessThan(ObservableValue<V> other) {
 
@@ -46,18 +46,18 @@ public interface ComparableExpression<V extends Comparable<? super V>> extends E
 
   /**
    * @param other the constant value to compare.
-   * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #getValue() value} of this property is
-   *         less than the given {@link String}.
+   * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #get() value} of this property is less
+   *         than the given {@link String}.
    */
   default BooleanBinding lessThan(V other) {
 
-    return new BooleanBinding(() -> (ComparableHelper.compare(getValue(), other) < 0), this);
+    return new BooleanBinding(() -> (ComparableHelper.compare(get(), other) < 0), this);
   }
 
   /**
    * @param other the {@code ObservableValue<V>} to compare.
-   * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #getValue() value} of this property is
-   *         greater than or equal to the {@link #getValue() value} of another the given {@link ObservableValue}.
+   * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #get() value} of this property is
+   *         greater than or equal to the {@link #get() value} of another the given {@link ObservableValue}.
    */
   default BooleanBinding greaterThanOrEqualTo(ObservableValue<V> other) {
 
@@ -66,18 +66,18 @@ public interface ComparableExpression<V extends Comparable<? super V>> extends E
 
   /**
    * @param other the constant value to compare.
-   * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #getValue() value} of this property is
+   * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #get() value} of this property is
    *         greater than or equal to the given {@link String}.
    */
   default BooleanBinding greaterThanOrEqualTo(V other) {
 
-    return new BooleanBinding(() -> (ComparableHelper.compare(getValue(), other) >= 0), this);
+    return new BooleanBinding(() -> (ComparableHelper.compare(get(), other) >= 0), this);
   }
 
   /**
    * @param other the {@code ObservableValue<V>} to compare.
-   * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #getValue() value} of this property is
-   *         less than the {@link #getValue() value} of another the given {@link ObservableValue}.
+   * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #get() value} of this property is less
+   *         than the {@link #get() value} of another the given {@link ObservableValue}.
    */
   default BooleanBinding lessThanOrEqualTo(ObservableValue<V> other) {
 
@@ -86,12 +86,12 @@ public interface ComparableExpression<V extends Comparable<? super V>> extends E
 
   /**
    * @param other the constant value to compare.
-   * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #getValue() value} of this property is
-   *         less than or equal to the given {@link String}.
+   * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #get() value} of this property is less
+   *         than or equal to the given {@link String}.
    */
   default BooleanBinding lessThanOrEqualTo(V other) {
 
-    return new BooleanBinding(() -> (ComparableHelper.compare(getValue(), other) <= 0), this);
+    return new BooleanBinding(() -> (ComparableHelper.compare(get(), other) <= 0), this);
   }
 
 }

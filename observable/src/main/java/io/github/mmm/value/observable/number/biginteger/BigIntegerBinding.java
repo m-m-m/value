@@ -12,7 +12,7 @@ import io.github.mmm.value.observable.number.NumberExpression;
 import io.github.mmm.value.observable.number.bigdecimal.BigDecimalExpression;
 
 /**
- * {@link io.github.mmm.value.observable.Binding} with {@link BigInteger} {@link #getValue() value}.
+ * {@link io.github.mmm.value.observable.Binding} with {@link BigInteger} {@link #get() value}.
  *
  * @since 1.0.0
  */
@@ -21,7 +21,7 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
   /**
    * The constructor.
    *
-   * @param expression the {@link Supplier} to compute the {@link #getValue() value}.
+   * @param expression the {@link Supplier} to compute the {@link #get() value}.
    * @param dependencies the {@link ObservableValue}s the {@code expression} depends on.
    */
   public BigIntegerBinding(Supplier<BigInteger> expression, ObservableValue<?>... dependencies) {
@@ -31,13 +31,13 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
 
   /**
    * @param expression the {@link BigIntegerExpression} to negate.
-   * @return a new {@link BigIntegerExpression} holding the negation of the {@link #getValue() value} from the given
+   * @return a new {@link BigIntegerExpression} holding the negation of the {@link #get() value} from the given
    *         {@link BigIntegerExpression}.
    * @see #negate()
    */
   public static BigIntegerExpression negate(BigIntegerExpression expression) {
 
-    return new BigIntegerBinding(() -> negate(expression.getValue()), expression);
+    return new BigIntegerBinding(() -> negate(expression.get()), expression);
   }
 
   /**
@@ -51,15 +51,15 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
     } else if (expression instanceof BigIntegerExpression) {
       return (BigIntegerExpression) expression;
     } else {
-      return new BigIntegerBinding(() -> to(expression.getValue()), expression);
+      return new BigIntegerBinding(() -> to(expression.get()), expression);
     }
   }
 
   /**
    * @param expression the {@link NumberExpression} to add.
    * @param other the {@link ObservableValue} to add.
-   * @return a new {@link BigIntegerExpression} holding the sum of the {@link #getValue() value}s of the first and the
-   *         second given {@link ObservableValue}s.
+   * @return a new {@link BigIntegerExpression} holding the sum of the {@link #get() value}s of the first and the second
+   *         given {@link ObservableValue}s.
    * @see #add(ObservableBigIntegerValue)
    */
   public static BigIntegerExpression add(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
@@ -73,7 +73,7 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
   /**
    * @param expression the {@link NumberExpression} to add.
    * @param constant the constant {@link Number} to add.
-   * @return a new {@link BigIntegerExpression} holding the sum of the {@link #getValue() value} from the given
+   * @return a new {@link BigIntegerExpression} holding the sum of the {@link #get() value} from the given
    *         {@link BigIntegerExpression} with the given {@code constant}.
    * @see #add(ObservableBigIntegerValue)
    */
@@ -85,7 +85,7 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
   /**
    * @param expression the {@link NumberExpression} to add.
    * @param constant the constant {@code BigInteger} to add.
-   * @return a new {@link BigIntegerExpression} holding the sum of the {@link #getValue() value} from the given
+   * @return a new {@link BigIntegerExpression} holding the sum of the {@link #get() value} from the given
    *         {@link BigIntegerExpression} with the given {@code constant}.
    * @see #add(ObservableBigIntegerValue)
    */
@@ -95,12 +95,12 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
       return cast(expression);
     }
     Objects.requireNonNull(expression, "expression");
-    return new BigIntegerBinding(() -> plus(expression.getValue(), constant), expression);
+    return new BigIntegerBinding(() -> plus(expression.get(), constant), expression);
   }
 
   /**
    * @param observables the {@link ObservableValue}s to add.
-   * @return a new {@link BigIntegerExpression} holding the sum of the {@link #getValue() value}s from the given
+   * @return a new {@link BigIntegerExpression} holding the sum of the {@link #get() value}s from the given
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
@@ -112,8 +112,8 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
   /**
    * @param expression the {@link NumberExpression}.
    * @param other the {@link ObservableValue} to subtract.
-   * @return a new {@link BigIntegerExpression} holding the difference of the {@link #getValue() value}s of the first
-   *         and the second given {@link ObservableValue}s.
+   * @return a new {@link BigIntegerExpression} holding the difference of the {@link #get() value}s of the first and the
+   *         second given {@link ObservableValue}s.
    * @see #subtract(ObservableBigIntegerValue)
    */
   public static BigIntegerExpression subtract(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
@@ -127,7 +127,7 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
   /**
    * @param expression the {@link NumberExpression}.
    * @param constant the constant {@link Number} to subtract.
-   * @return a new {@link BigIntegerExpression} holding the difference of the {@link #getValue() value} from the given
+   * @return a new {@link BigIntegerExpression} holding the difference of the {@link #get() value} from the given
    *         {@link BigIntegerExpression} with the given {@code constant}.
    * @see #subtract(ObservableBigIntegerValue)
    */
@@ -139,7 +139,7 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
   /**
    * @param expression the {@link NumberExpression}.
    * @param constant the constant {@code BigInteger} to subtract.
-   * @return a new {@link BigIntegerExpression} holding the difference of the {@link #getValue() value} from the given
+   * @return a new {@link BigIntegerExpression} holding the difference of the {@link #get() value} from the given
    *         {@link BigIntegerExpression} with the given {@code constant}.
    * @see #subtract(ObservableBigIntegerValue)
    */
@@ -149,12 +149,12 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
       return cast(expression);
     }
     Objects.requireNonNull(expression, "expression");
-    return new BigIntegerBinding(() -> minus(expression.getValue(), constant), expression);
+    return new BigIntegerBinding(() -> minus(expression.get(), constant), expression);
   }
 
   /**
    * @param observables the {@link ObservableValue}s to subtract.
-   * @return a new {@link BigIntegerExpression} holding the difference of the {@link #getValue() value}s from the given
+   * @return a new {@link BigIntegerExpression} holding the difference of the {@link #get() value}s from the given
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
@@ -166,8 +166,8 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
   /**
    * @param expression the {@link NumberExpression}.
    * @param other the {@link ObservableValue} to multiply.
-   * @return a new {@link BigIntegerExpression} holding the product of the {@link #getValue() value}s of the first and
-   *         the second given {@link ObservableValue}s.
+   * @return a new {@link BigIntegerExpression} holding the product of the {@link #get() value}s of the first and the
+   *         second given {@link ObservableValue}s.
    * @see #multiply(ObservableBigIntegerValue)
    */
   public static BigIntegerExpression multiply(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
@@ -181,7 +181,7 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
   /**
    * @param expression the {@link NumberExpression}.
    * @param constant the constant {@link Number} to multiply.
-   * @return a new {@link BigIntegerExpression} holding the product of the {@link #getValue() value} from the given
+   * @return a new {@link BigIntegerExpression} holding the product of the {@link #get() value} from the given
    *         {@link BigIntegerExpression} multiplied with the given {@code constant}.
    * @see #multiply(ObservableBigIntegerValue)
    */
@@ -193,7 +193,7 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
   /**
    * @param expression the {@link NumberExpression}.
    * @param constant the constant {@code BigInteger} to multiply.
-   * @return a new {@link BigIntegerExpression} holding the product of the {@link #getValue() value} from the given
+   * @return a new {@link BigIntegerExpression} holding the product of the {@link #get() value} from the given
    *         {@link BigIntegerExpression} multiplied with the given {@code constant}.
    * @see #multiply(ObservableBigIntegerValue)
    */
@@ -203,12 +203,12 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
       return cast(expression);
     }
     Objects.requireNonNull(expression, "expression");
-    return new BigIntegerBinding(() -> mul(expression.getValue(), constant), expression);
+    return new BigIntegerBinding(() -> mul(expression.get(), constant), expression);
   }
 
   /**
    * @param observables the {@link ObservableValue}s to multiply.
-   * @return a new {@link BigIntegerExpression} holding the product of the {@link #getValue() value}s from the given
+   * @return a new {@link BigIntegerExpression} holding the product of the {@link #get() value}s from the given
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
@@ -220,8 +220,8 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
   /**
    * @param expression the {@link NumberExpression}.
    * @param other the {@link ObservableValue} to divide.
-   * @return a new {@link BigIntegerExpression} holding the quotient of the {@link #getValue() value}s of the first and
-   *         the second given {@link ObservableValue}s.
+   * @return a new {@link BigIntegerExpression} holding the quotient of the {@link #get() value}s of the first and the
+   *         second given {@link ObservableValue}s.
    * @see #divide(ObservableBigIntegerValue)
    */
   public static BigIntegerExpression divide(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
@@ -235,7 +235,7 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
   /**
    * @param expression the {@link NumberExpression}.
    * @param constant the constant {@link Number} to divide.
-   * @return a new {@link BigIntegerExpression} holding the quotient of the {@link #getValue() value} from the given
+   * @return a new {@link BigIntegerExpression} holding the quotient of the {@link #get() value} from the given
    *         {@link BigIntegerExpression} divided by the given {@code constant}.
    * @see #divide(ObservableBigIntegerValue)
    */
@@ -247,7 +247,7 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
   /**
    * @param expression the {@link NumberExpression}.
    * @param constant the constant {@code BigInteger} to divide.
-   * @return a new {@link BigIntegerExpression} holding the quotient of the {@link #getValue() value} from the given
+   * @return a new {@link BigIntegerExpression} holding the quotient of the {@link #get() value} from the given
    *         {@link BigIntegerExpression} divided by the given {@code constant}.
    * @see #divide(ObservableBigIntegerValue)
    */
@@ -257,12 +257,12 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
       return cast(expression);
     }
     Objects.requireNonNull(expression, "expression");
-    return new BigIntegerBinding(() -> div(expression.getValue(), constant), expression);
+    return new BigIntegerBinding(() -> div(expression.get(), constant), expression);
   }
 
   /**
    * @param observables the {@link ObservableValue}s to divide.
-   * @return a new {@link BigIntegerExpression} holding the quotient of the {@link #getValue() value}s from the given
+   * @return a new {@link BigIntegerExpression} holding the quotient of the {@link #get() value}s from the given
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
@@ -298,9 +298,9 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
     BigInteger sum = null;
     for (ReadableValue<? extends Number> observable : observables) {
       if (sum == null) {
-        sum = to(ReadableValue.unwrap(observable));
+        sum = to(ReadableValue.get(observable));
       } else if (observable != null) {
-        Number value = observable.getValue();
+        Number value = observable.get();
         if (value != null) {
           sum = sum.add(to(value));
         }
@@ -314,7 +314,7 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
 
   private static BigInteger plus(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
 
-    return plus(ReadableValue.unwrap(v2), to(ReadableValue.unwrap(v1)));
+    return plus(ReadableValue.get(v2), to(ReadableValue.get(v1)));
   }
 
   private static BigInteger plus(Number v1, BigInteger v2) {
@@ -333,9 +333,9 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
     BigInteger difference = null;
     for (ReadableValue<? extends Number> observable : observables) {
       if (difference == null) {
-        difference = to(ReadableValue.unwrap(observable));
+        difference = to(ReadableValue.get(observable));
       } else if (observable != null) {
-        Number value = observable.getValue();
+        Number value = observable.get();
         if (value != null) {
           difference = difference.subtract(to(value));
         }
@@ -349,7 +349,7 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
 
   private static BigInteger minus(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
 
-    return minus(ReadableValue.unwrap(v1), to(ReadableValue.unwrap(v2)));
+    return minus(ReadableValue.get(v1), to(ReadableValue.get(v2)));
   }
 
   private static BigInteger minus(Number v1, BigInteger v2) {
@@ -370,7 +370,7 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
       if (observable == null) {
         return BigInteger.ZERO;
       }
-      Number value = observable.getValue();
+      Number value = observable.get();
       if (value == null) {
         return BigInteger.ZERO;
       }
@@ -388,7 +388,7 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
 
   private static BigInteger mul(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
 
-    return mul(ReadableValue.unwrap(v2), to(ReadableValue.unwrap(v1)));
+    return mul(ReadableValue.get(v2), to(ReadableValue.get(v1)));
   }
 
   private static BigInteger mul(Number v1, BigInteger v2) {
@@ -406,7 +406,7 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
     for (ReadableValue<? extends Number> observable : observables) {
       BigInteger arg = BigInteger.ZERO;
       if (observable != null) {
-        Number value = observable.getValue();
+        Number value = observable.get();
         if (value != null) {
           arg = to(value);
         }
@@ -425,7 +425,7 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
 
   private static BigInteger div(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
 
-    return div(ReadableValue.unwrap(v1), to(ReadableValue.unwrap(v2)));
+    return div(ReadableValue.get(v1), to(ReadableValue.get(v2)));
   }
 
   private static BigInteger div(Number v1, BigInteger v2) {

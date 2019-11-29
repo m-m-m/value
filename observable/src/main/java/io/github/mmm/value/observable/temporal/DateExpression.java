@@ -9,20 +9,20 @@ import io.github.mmm.value.observable.booleans.BooleanBinding;
 import io.github.mmm.value.observable.comparable.ComparableExpression;
 
 /**
- * {@link ComparableExpression} for date {@link #getValue() values} (e.g. {@link Instant} or {@link LocalDateTime}).
+ * {@link ComparableExpression} for date {@link #get() values} (e.g. {@link Instant} or {@link LocalDateTime}).
  *
- * @param <V> type of the {@link #getValue() value}.
+ * @param <V> type of the {@link #get() value}.
  * @since 1.0.0
  */
 public interface DateExpression<V extends Comparable<? super V>> extends ComparableExpression<V> {
 
   /**
-   * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #getValue() value} is in the future.
+   * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #get() value} is in the future.
    */
   BooleanBinding inFuture();
 
   /**
-   * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #getValue() value} is in the past.
+   * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #get() value} is in the past.
    */
   BooleanBinding inPast();
 

@@ -11,7 +11,7 @@ class ComparableHelper {
 
   static <V extends Comparable<? super V>> int compare(ReadableValue<V> v1, ReadableValue<V> v2) {
 
-    return compare(v1.getValue(), v2.getValue());
+    return compare(v1.get(), v2.get());
   }
 
   static <V extends Comparable<? super V>> int compare(V v1, V v2) {

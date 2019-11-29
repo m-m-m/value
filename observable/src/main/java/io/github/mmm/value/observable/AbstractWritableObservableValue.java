@@ -7,7 +7,7 @@ import java.util.Objects;
 /**
  * Abstract base implementation of {@link WritableObservableValue} that handles bindings.
  *
- * @param <V> type of the observable {@link #getValue() value}.
+ * @param <V> type of the observable {@link #get() value}.
  * @since 1.0.0
  */
 public abstract class AbstractWritableObservableValue<V> extends AbstractObservableValue<V>
@@ -18,16 +18,16 @@ public abstract class AbstractWritableObservableValue<V> extends AbstractObserva
   private BindingListener bindingListener;
 
   @Override
-  public V getValue() {
+  public V get() {
 
     if (this.binding != null) {
-      return this.binding.getValue();
+      return this.binding.get();
     }
     return doGetValue();
   }
 
   /**
-   * @return the internal {@link #getValue() value}.
+   * @return the internal {@link #get() value}.
    */
   protected abstract V doGetValue();
 
@@ -66,7 +66,7 @@ public abstract class AbstractWritableObservableValue<V> extends AbstractObserva
 
     if (this.binding != null) {
       requireWritable();
-      setValue(this.binding.getValue());
+      set(this.binding.get());
       this.binding.removeListener(this.bindingListener);
       this.binding = null;
       this.bindingListener = null;
@@ -92,7 +92,7 @@ public abstract class AbstractWritableObservableValue<V> extends AbstractObserva
   }
 
   @Override
-  public void setValue(V value) {
+  public void set(V value) {
 
     requireWritable();
     V oldValue = doGetValue();
@@ -113,8 +113,8 @@ public abstract class AbstractWritableObservableValue<V> extends AbstractObserva
   }
 
   /**
-   * @param newValue the new {@link #getValue() value} to set.
-   * @see #setValue(Object)
+   * @param newValue the new {@link #get() value} to set.
+   * @see #set(Object)
    */
   protected abstract void doSetValue(V newValue);
 

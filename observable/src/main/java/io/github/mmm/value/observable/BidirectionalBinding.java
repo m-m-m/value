@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * {@link ObservableEventListener} for a bidirectional binding.
  *
- * @param <V> type of observed {@link ObservableValue#getValue() value}.
+ * @param <V> type of observed {@link ObservableValue#get() value}.
  */
 public class BidirectionalBinding<V> implements ObservableEventListener<V> {
 
@@ -47,9 +47,9 @@ public class BidirectionalBinding<V> implements ObservableEventListener<V> {
         try {
           this.updating = true;
           if (v1 == source) {
-            v2.setValue(v1.getValue());
+            v2.set(v1.get());
           } else {
-            v1.setValue(v2.getValue());
+            v1.set(v2.get());
           }
         } catch (RuntimeException e) {
           throw new RuntimeException("Bidirectional binding failed!", e);
@@ -125,7 +125,7 @@ public class BidirectionalBinding<V> implements ObservableEventListener<V> {
   }
 
   /**
-   * @param <V> type of observed {@link ObservableValue#getValue() value}.
+   * @param <V> type of observed {@link ObservableValue#get() value}.
    * @param property1 the first {@link WritableObservableValue} to bind.
    * @param property2 the second {@link WritableObservableValue} to bind.
    *
@@ -137,14 +137,14 @@ public class BidirectionalBinding<V> implements ObservableEventListener<V> {
 
     checkProperties(property1, property2);
     BidirectionalBinding<V> binding = new BidirectionalBinding<>(property1, property2);
-    property1.setValue(property2.getValue());
+    property1.set(property2.get());
     property1.addListener(binding);
     property2.addListener(binding);
     return binding;
   }
 
   /**
-   * @param <V> type of observed {@link ObservableValue#getValue() value}.
+   * @param <V> type of observed {@link ObservableValue#get() value}.
    * @param property1 the first {@link WritableObservableValue} to unbind.
    * @param property2 the second {@link WritableObservableValue} to unbind.
    * @see WritableObservableValue#unbindBidirectional(WritableObservableValue)

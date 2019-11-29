@@ -7,9 +7,9 @@ import java.util.Collection;
 import io.github.mmm.value.observable.container.WritableContainerValue;
 
 /**
- * {@link WritableContainerValue} for {@link Collection} {@link #getValue() value}s.
+ * {@link WritableContainerValue} for {@link Collection} {@link #get() value}s.
  *
- * @param <C> type of the {@link Collection} {@link #getValue() value}.
+ * @param <C> type of the {@link Collection} {@link #get() value}.
  * @param <E> type of the {@link Collection#contains(Object) elements}.
  * @since 1.0.0
  */

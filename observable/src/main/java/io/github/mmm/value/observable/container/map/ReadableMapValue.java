@@ -7,7 +7,7 @@ import java.util.Map;
 import io.github.mmm.value.observable.container.ReadableContainerValue;
 
 /**
- * {@link ReadableContainerValue} for {@link Map} {@link #getValue() value}s.
+ * {@link ReadableContainerValue} for {@link Map} {@link #get() value}s.
  *
  * @param <K> type of the {@link Map#containsKey(Object) keys}.
  * @param <V> type of the {@link Map#containsValue(Object) values}.
@@ -25,7 +25,7 @@ public interface ReadableMapValue<K, V> extends ReadableContainerValue<Map<K, V>
   @Override
   default int size() {
 
-    return getValueSafe().size();
+    return getSafe().size();
   }
 
 }

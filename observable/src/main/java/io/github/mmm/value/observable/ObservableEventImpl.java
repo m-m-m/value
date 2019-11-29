@@ -5,7 +5,7 @@ package io.github.mmm.value.observable;
 /**
  * Default implementation of {@link ObservableEvent}.
  *
- * @param <V> type of observed {@link ObservableValue#getValue() value}.
+ * @param <V> type of observed {@link ObservableValue#get() value}.
  * @since 1.0.0
  */
 public class ObservableEventImpl<V> implements ObservableEvent<V> {
@@ -33,7 +33,7 @@ public class ObservableEventImpl<V> implements ObservableEvent<V> {
 
     super();
     this.observable = observable;
-    this.oldValue = observable.getValue();
+    this.oldValue = observable.get();
     this.hasOldValue = true;
   }
 
@@ -47,7 +47,7 @@ public class ObservableEventImpl<V> implements ObservableEvent<V> {
   public V getValue() {
 
     if (!this.valueUpdated) {
-      this.value = this.observable.getValue();
+      this.value = this.observable.get();
       this.valueUpdated = true;
     }
     return this.value;

@@ -5,7 +5,7 @@ package io.github.mmm.value.observable.number.shorts;
 import io.github.mmm.value.observable.number.ReadableNumberValue;
 
 /**
- * {@link ReadableNumberValue} with {@link Short} {@link #getValue() value}.
+ * {@link ReadableNumberValue} with {@link Short} {@link #get() value}.
  *
  * @since 1.0.0
  */
@@ -20,15 +20,15 @@ public interface ReadableShortValue extends ReadableNumberValue<Short> {
   /**
    * @return the current value as primitive. Will be {@code 0} if undefined.
    */
-  default short get() {
+  default short getValue() {
 
     return shortValue();
   }
 
   @Override
-  default Short getValueSafe() {
+  default Short getSafe() {
 
-    Short value = getValue();
+    Short value = get();
     if (value == null) {
       return Short.valueOf((short) 0);
     }

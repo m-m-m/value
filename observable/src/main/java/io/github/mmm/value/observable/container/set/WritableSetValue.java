@@ -8,7 +8,7 @@ import java.util.Set;
 import io.github.mmm.value.observable.container.collection.WritableCollectionValue;
 
 /**
- * {@link WritableCollectionValue} for {@link Set} {@link #getValue() value}s.
+ * {@link WritableCollectionValue} for {@link Set} {@link #get() value}s.
  *
  * @param <E> type of the {@link Set#contains(Object) elements}.
  * @since 1.0.0
@@ -18,10 +18,10 @@ public interface WritableSetValue<E> extends WritableCollectionValue<Set<E>, E>,
   @Override
   default Set<E> getOrCreateValue() {
 
-    Set<E> value = getValue();
+    Set<E> value = get();
     if (value == null) {
       value = new HashSet<>();
-      setValue(value);
+      set(value);
     }
     return value;
   }

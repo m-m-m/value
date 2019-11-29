@@ -9,7 +9,7 @@ import io.github.mmm.event.AbstractEventSource;
 /**
  * Abstract base implementation of {@link ObservableValue} that handles {@link ObservableEventListener}s.
  *
- * @param <V> type of the observable {@link #getValue() value}.
+ * @param <V> type of the observable {@link #get() value}.
  * @since 1.0.0
  */
 public abstract class AbstractObservableValue<V>
@@ -48,8 +48,8 @@ public abstract class AbstractObservableValue<V>
 
   /**
    * @return {@code true} if at least one {@link ChangeAwareObservableEventListener} is
-   *         {@link #addListener(io.github.mmm.event.EventListener) registered}, {@code false} otherwise (to avoid building
-   *         and {@link #fireChange(Object) sending} {@link ObservableEvent#getChange() change}s for better
+   *         {@link #addListener(io.github.mmm.event.EventListener) registered}, {@code false} otherwise (to avoid
+   *         building and {@link #fireChange(Object) sending} {@link ObservableEvent#getChange() change}s for better
    *         performance).
    */
   protected boolean hasChangeAwareListeners() {
@@ -168,7 +168,7 @@ public abstract class AbstractObservableValue<V>
   public void toString(StringBuilder sb) {
 
     sb.append("value=");
-    sb.append(getValue());
+    sb.append(get());
   }
 
 }

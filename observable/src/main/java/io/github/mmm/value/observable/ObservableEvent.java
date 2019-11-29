@@ -5,7 +5,7 @@ package io.github.mmm.value.observable;
 /**
  * Event notifying about changes of an {@link ObservableValue}.
  *
- * @param <V> type of observed {@link ObservableValue#getValue() value}.
+ * @param <V> type of observed {@link ObservableValue#get() value}.
  * @since 1.0.0
  * @see ObservableEventListener
  * @see ObservableValue
@@ -18,13 +18,13 @@ public interface ObservableEvent<V> {
   ObservableValue<V> getObservable();
 
   /**
-   * @return the current {@link ObservableValue#getValue() value}.
+   * @return the current {@link ObservableValue#get() value}.
    */
   V getValue();
 
   /**
-   * @return the {@link ObservableValue#getValue() value} before the change. May be {@code null} if the previous value
-   *         was {@code null} or {@link #hasOldValue() the old value is not available}.
+   * @return the {@link ObservableValue#get() value} before the change. May be {@code null} if the previous value was
+   *         {@code null} or {@link #hasOldValue() the old value is not available}.
    */
   V getOldValue();
 

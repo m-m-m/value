@@ -13,13 +13,13 @@ import io.github.mmm.value.WritableValue;
 public interface WritableObjectValue<V> extends ReadableObjectValue<V>, WritableValue<V> {
 
   /**
-   * Same as {@link #setValue(Object)}.
+   * Same as {@link #set(Object)}.
    *
    * @param value the new value.
    */
-  default void set(V value) {
+  default void setValue(V value) {
 
-    setValue(value);
+    set(value);
   }
 
 }

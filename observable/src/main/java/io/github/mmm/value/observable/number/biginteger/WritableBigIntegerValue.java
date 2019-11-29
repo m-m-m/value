@@ -8,7 +8,7 @@ import java.math.BigInteger;
 import io.github.mmm.value.observable.number.WritableNumberValue;
 
 /**
- * {@link io.github.mmm.value.WritableValue} containing a {@link BigInteger} {@link #getValue() value}.
+ * {@link io.github.mmm.value.WritableValue} containing a {@link BigInteger} {@link #get() value}.
  *
  * @since 1.0.0
  */
@@ -18,11 +18,11 @@ public interface WritableBigIntegerValue extends ReadableBigIntegerValue, Writab
   default void setValueAsNumber(Number value) {
 
     if ((value == null) || (value instanceof BigInteger)) {
-      setValue((BigInteger) value);
+      set((BigInteger) value);
     } else if (value instanceof BigDecimal) {
-      setValue(((BigDecimal) value).toBigInteger());
+      set(((BigDecimal) value).toBigInteger());
     } else {
-      setValue(BigInteger.valueOf(value.longValue()));
+      set(BigInteger.valueOf(value.longValue()));
     }
   }
 

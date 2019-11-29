@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import io.github.mmm.value.observable.number.ReadableNumberValue;
 
 /**
- * {@link ReadableNumberValue} with {@link BigDecimal} {@link #getValue() value}.
+ * {@link ReadableNumberValue} with {@link BigDecimal} {@link #get() value}.
  *
  * @since 1.0.0
  */
@@ -20,9 +20,9 @@ public interface ReadableBigDecimalValue extends ReadableNumberValue<BigDecimal>
   }
 
   @Override
-  default BigDecimal getValueSafe() {
+  default BigDecimal getSafe() {
 
-    BigDecimal value = getValue();
+    BigDecimal value = get();
     if (value == null) {
       return BigDecimal.ZERO;
     }

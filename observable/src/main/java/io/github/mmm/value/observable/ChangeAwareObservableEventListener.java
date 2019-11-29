@@ -12,7 +12,7 @@ package io.github.mmm.value.observable;
  * (such as {@link String}, {@link Boolean}, {@link Number}, {@link java.time.temporal.Temporal}, etc.). This only makes
  * sense for types such as {@link io.github.mmm.value.observable.container.ObservableContainerValue}.
  *
- * @param <V> type of observed {@link ObservableValue#getValue() value}.
+ * @param <V> type of observed {@link ObservableValue#get() value}.
  * @since 1.0.0
  */
 @FunctionalInterface

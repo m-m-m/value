@@ -9,7 +9,7 @@ import io.github.mmm.value.observable.Binding;
 import io.github.mmm.value.observable.ObservableValue;
 
 /**
- * {@link Binding} for a {@link Boolean} {@link #getValue() value}.
+ * {@link Binding} for a {@link Boolean} {@link #get() value}.
  *
  * @see Binding
  * @see BooleanExpression
@@ -21,7 +21,7 @@ public class BooleanBinding extends Binding<Boolean> implements BooleanExpressio
   /**
    * The constructor.
    *
-   * @param expression the {@link Supplier} to compute the {@link #getValue() value}.
+   * @param expression the {@link Supplier} to compute the {@link #get() value}.
    * @param dependencies the {@link ObservableValue}s the {@code expression} depends on.
    */
   public BooleanBinding(Supplier<? extends Boolean> expression, ObservableValue<?>... dependencies) {
@@ -31,17 +31,17 @@ public class BooleanBinding extends Binding<Boolean> implements BooleanExpressio
 
   /**
    * @param expression the {@link BooleanExpression}.
-   * @return a new {@code BooleanExpression} holding the negation of this {@link #getValue() value}.
+   * @return a new {@code BooleanExpression} holding the negation of this {@link #get() value}.
    */
   public static BooleanExpression not(BooleanExpression expression) {
 
-    return new BooleanBinding(() -> not(ReadableValue.unwrap(expression)), expression);
+    return new BooleanBinding(() -> not(ReadableValue.get(expression)), expression);
   }
 
   /**
    * @param expression the {@link BooleanExpression}.
    * @param other the {@code ObservableValue}.
-   * @return a new {@code BooleanExpression} holding the logical AND of the {@link #getValue() value}s from the given
+   * @return a new {@code BooleanExpression} holding the logical AND of the {@link #get() value}s from the given
    *         {@link ObservableValue}s.
    * @see #and(ObservableValue)
    */
@@ -50,14 +50,14 @@ public class BooleanBinding extends Binding<Boolean> implements BooleanExpressio
     if (other == null) {
       return expression;
     }
-    return new BooleanBinding(() -> and(ReadableValue.unwrap(expression), ReadableValue.unwrap(other)), expression,
+    return new BooleanBinding(() -> and(ReadableValue.get(expression), ReadableValue.get(other)), expression,
         other);
   }
 
   /**
    * @param expression the {@link BooleanExpression}.
    * @param constant the constant {@link Boolean} value.
-   * @return a new {@code BooleanExpression} holding the logical AND of the {@link #getValue() value} from the given
+   * @return a new {@code BooleanExpression} holding the logical AND of the {@link #get() value} from the given
    *         {@link BooleanExpression} and the given {@code constant} value.
    */
   public static BooleanExpression and(BooleanExpression expression, Boolean constant) {
@@ -65,13 +65,13 @@ public class BooleanBinding extends Binding<Boolean> implements BooleanExpressio
     if (constant == null) {
       return expression;
     }
-    return new BooleanBinding(() -> and(ReadableValue.unwrap(expression), constant), expression);
+    return new BooleanBinding(() -> and(ReadableValue.get(expression), constant), expression);
   }
 
   /**
    * @param expression the {@link BooleanExpression}.
    * @param other the other {@code ObservableValue}.
-   * @return a new {@code BooleanExpression} holding the logical OR of the {@link #getValue() value}s from the given
+   * @return a new {@code BooleanExpression} holding the logical OR of the {@link #get() value}s from the given
    *         {@link ObservableValue}s.
    */
   public static BooleanExpression or(BooleanExpression expression, ObservableValue<Boolean> other) {
@@ -79,14 +79,14 @@ public class BooleanBinding extends Binding<Boolean> implements BooleanExpressio
     if (other == null) {
       return expression;
     }
-    return new BooleanBinding(() -> or(ReadableValue.unwrap(expression), ReadableValue.unwrap(other)), expression,
+    return new BooleanBinding(() -> or(ReadableValue.get(expression), ReadableValue.get(other)), expression,
         other);
   }
 
   /**
    * @param expression the {@link BooleanExpression}.
    * @param other the constant {@link Boolean} value.
-   * @return a new {@code BooleanExpression} holding the logical OR of the {@link #getValue() value} from the given
+   * @return a new {@code BooleanExpression} holding the logical OR of the {@link #get() value} from the given
    *         {@link BooleanExpression} and the given {@code constant} value.
    */
   public static BooleanExpression or(BooleanExpression expression, Boolean other) {
@@ -94,7 +94,7 @@ public class BooleanBinding extends Binding<Boolean> implements BooleanExpressio
     if (other == null) {
       return expression;
     }
-    return new BooleanBinding(() -> or(ReadableValue.unwrap(expression), other), expression);
+    return new BooleanBinding(() -> or(ReadableValue.get(expression), other), expression);
   }
 
   private static boolean get(Boolean value) {

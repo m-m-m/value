@@ -8,7 +8,7 @@ import io.github.mmm.value.observable.number.NumberBinding;
 import io.github.mmm.value.observable.number.NumberExpression;
 
 /**
- * {@link NumberBinding} with {@link Float} {@link #getValue() value}.
+ * {@link NumberBinding} with {@link Float} {@link #get() value}.
  *
  * @since 1.0.0
  */
@@ -19,7 +19,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
   /**
    * The constructor.
    *
-   * @param expression the {@link Supplier} to compute the {@link #getValue() value}.
+   * @param expression the {@link Supplier} to compute the {@link #get() value}.
    * @param dependencies the {@link ObservableValue}s the {@code expression} depends on.
    */
   public FloatBinding(Supplier<Float> expression, ObservableValue<?>... dependencies) {
@@ -29,13 +29,13 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
 
   /**
    * @param expression the {@link FloatExpression} to negate.
-   * @return a new {@link FloatExpression} holding the negation of the {@link #getValue() value} from the given
+   * @return a new {@link FloatExpression} holding the negation of the {@link #get() value} from the given
    *         {@link FloatExpression}.
    * @see #negate()
    */
   public static FloatExpression negate(FloatExpression expression) {
 
-    return new FloatBinding(() -> negate(expression.getValue()), expression);
+    return new FloatBinding(() -> negate(expression.get()), expression);
   }
 
   /**
@@ -49,14 +49,14 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
     } else if (expression instanceof FloatExpression) {
       return (FloatExpression) expression;
     } else {
-      return new FloatBinding(() -> to(expression.getValue()), expression);
+      return new FloatBinding(() -> to(expression.get()), expression);
     }
   }
 
   /**
    * @param expression the {@link FloatExpression} to add.
    * @param other the {@link ObservableValue} to add.
-   * @return a new {@link FloatExpression} holding the sum of the {@link #getValue() value}s of the first and the second
+   * @return a new {@link FloatExpression} holding the sum of the {@link #get() value}s of the first and the second
    *         given {@link ObservableValue}s.
    * @see #add(ObservableFloatValue)
    */
@@ -71,7 +71,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
   /**
    * @param expression the {@link FloatExpression} to add.
    * @param constant the constant {@link Number} to add.
-   * @return a new {@link FloatExpression} holding the sum of the {@link #getValue() value} from the given
+   * @return a new {@link FloatExpression} holding the sum of the {@link #get() value} from the given
    *         {@link FloatExpression} with the given {@code constant}.
    * @see #add(ObservableFloatValue)
    */
@@ -86,18 +86,18 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
   /**
    * @param expression the {@link FloatExpression} to add.
    * @param constant the constant {@code float} to add.
-   * @return a new {@link FloatExpression} holding the sum of the {@link #getValue() value} from the given
+   * @return a new {@link FloatExpression} holding the sum of the {@link #get() value} from the given
    *         {@link FloatExpression} with the given {@code constant}.
    * @see #add(ObservableFloatValue)
    */
   public static FloatExpression add(NumberExpression<?> expression, float constant) {
 
-    return new FloatBinding(() -> plus(expression.getValue(), constant), expression);
+    return new FloatBinding(() -> plus(expression.get(), constant), expression);
   }
 
   /**
    * @param observables the {@link ObservableValue}s to add.
-   * @return a new {@link FloatExpression} holding the sum of the {@link #getValue() value}s from the given
+   * @return a new {@link FloatExpression} holding the sum of the {@link #get() value}s from the given
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
@@ -109,7 +109,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
   /**
    * @param expression the {@link FloatExpression}.
    * @param other the {@link ObservableValue} to subtract.
-   * @return a new {@link FloatExpression} holding the difference of the {@link #getValue() value}s of the first and the
+   * @return a new {@link FloatExpression} holding the difference of the {@link #get() value}s of the first and the
    *         second given {@link ObservableValue}s.
    * @see #subtract(ObservableFloatValue)
    */
@@ -124,7 +124,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
   /**
    * @param expression the {@link FloatExpression}.
    * @param constant the constant {@link Number} to subtract.
-   * @return a new {@link FloatExpression} holding the difference of the {@link #getValue() value} from the given
+   * @return a new {@link FloatExpression} holding the difference of the {@link #get() value} from the given
    *         {@link FloatExpression} with the given {@code constant}.
    * @see #subtract(ObservableFloatValue)
    */
@@ -139,18 +139,18 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
   /**
    * @param expression the {@link FloatExpression}.
    * @param constant the constant {@code float} to subtract.
-   * @return a new {@link FloatExpression} holding the difference of the {@link #getValue() value} from the given
+   * @return a new {@link FloatExpression} holding the difference of the {@link #get() value} from the given
    *         {@link FloatExpression} with the given {@code constant}.
    * @see #subtract(ObservableFloatValue)
    */
   public static FloatExpression subtract(NumberExpression<?> expression, float constant) {
 
-    return new FloatBinding(() -> minus(expression.getValue(), constant), expression);
+    return new FloatBinding(() -> minus(expression.get(), constant), expression);
   }
 
   /**
    * @param observables the {@link ObservableValue}s to subtract.
-   * @return a new {@link FloatExpression} holding the difference of the {@link #getValue() value}s from the given
+   * @return a new {@link FloatExpression} holding the difference of the {@link #get() value}s from the given
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
@@ -162,8 +162,8 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
   /**
    * @param expression the {@link FloatExpression}.
    * @param other the {@link ObservableValue} to multiply.
-   * @return a new {@link FloatExpression} holding the product of the {@link #getValue() value}s of the first and the
-   *         second given {@link ObservableValue}s.
+   * @return a new {@link FloatExpression} holding the product of the {@link #get() value}s of the first and the second
+   *         given {@link ObservableValue}s.
    * @see #multiply(ObservableFloatValue)
    */
   public static FloatExpression multiply(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
@@ -177,7 +177,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
   /**
    * @param expression the {@link FloatExpression}.
    * @param constant the constant {@link Number} to multiply.
-   * @return a new {@link FloatExpression} holding the product of the {@link #getValue() value} from the given
+   * @return a new {@link FloatExpression} holding the product of the {@link #get() value} from the given
    *         {@link FloatExpression} multiplied with the given {@code constant}.
    * @see #multiply(ObservableFloatValue)
    */
@@ -192,18 +192,18 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
   /**
    * @param expression the {@link FloatExpression}.
    * @param constant the constant {@code float} to multiply.
-   * @return a new {@link FloatExpression} holding the product of the {@link #getValue() value} from the given
+   * @return a new {@link FloatExpression} holding the product of the {@link #get() value} from the given
    *         {@link FloatExpression} multiplied with the given {@code constant}.
    * @see #multiply(ObservableFloatValue)
    */
   public static FloatExpression multiply(NumberExpression<?> expression, float constant) {
 
-    return new FloatBinding(() -> mul(expression.getValue(), constant), expression);
+    return new FloatBinding(() -> mul(expression.get(), constant), expression);
   }
 
   /**
    * @param observables the {@link ObservableValue}s to multiply.
-   * @return a new {@link FloatExpression} holding the product of the {@link #getValue() value}s from the given
+   * @return a new {@link FloatExpression} holding the product of the {@link #get() value}s from the given
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
@@ -215,8 +215,8 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
   /**
    * @param expression the {@link FloatExpression}.
    * @param other the {@link ObservableValue} to divide.
-   * @return a new {@link FloatExpression} holding the quotient of the {@link #getValue() value}s of the first and the
-   *         second given {@link ObservableValue}s.
+   * @return a new {@link FloatExpression} holding the quotient of the {@link #get() value}s of the first and the second
+   *         given {@link ObservableValue}s.
    * @see #divide(ObservableFloatValue)
    */
   public static FloatExpression divide(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
@@ -230,7 +230,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
   /**
    * @param expression the {@link FloatExpression}.
    * @param constant the constant {@link Number} to divide.
-   * @return a new {@link FloatExpression} holding the quotient of the {@link #getValue() value} from the given
+   * @return a new {@link FloatExpression} holding the quotient of the {@link #get() value} from the given
    *         {@link FloatExpression} divided by the given {@code constant}.
    * @see #divide(ObservableFloatValue)
    */
@@ -245,18 +245,18 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
   /**
    * @param expression the {@link FloatExpression}.
    * @param constant the constant {@code float} to divide.
-   * @return a new {@link FloatExpression} holding the quotient of the {@link #getValue() value} from the given
+   * @return a new {@link FloatExpression} holding the quotient of the {@link #get() value} from the given
    *         {@link FloatExpression} divided by the given {@code constant}.
    * @see #divide(ObservableFloatValue)
    */
   public static FloatExpression divide(NumberExpression<?> expression, float constant) {
 
-    return new FloatBinding(() -> div(expression.getValue(), constant), expression);
+    return new FloatBinding(() -> div(expression.get(), constant), expression);
   }
 
   /**
    * @param observables the {@link ObservableValue}s to divide.
-   * @return a new {@link FloatExpression} holding the quotient of the {@link #getValue() value}s from the given
+   * @return a new {@link FloatExpression} holding the quotient of the {@link #get() value}s from the given
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
@@ -290,7 +290,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
     float sum = 0;
     for (ReadableValue<? extends Number> observable : observables) {
       if (observable != null) {
-        Number value = observable.getValue();
+        Number value = observable.get();
         if (value != null) {
           sum = sum + value.floatValue();
         }
@@ -301,7 +301,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
 
   private static Float plus(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
 
-    return plus(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+    return plus(ReadableValue.get(v1), ReadableValue.get(v2));
   }
 
   private static Float plus(Number v1, Number v2) {
@@ -329,7 +329,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
     boolean first = true;
     for (ReadableValue<? extends Number> observable : observables) {
       if (observable != null) {
-        Number value = observable.getValue();
+        Number value = observable.get();
         if (value != null) {
           if (first) {
             difference = value.floatValue();
@@ -345,7 +345,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
 
   private static Float minus(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
 
-    return minus(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+    return minus(ReadableValue.get(v1), ReadableValue.get(v2));
   }
 
   private static Float minus(Number v1, Number v2) {
@@ -378,7 +378,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
       if (observable == null) {
         return ZERO;
       }
-      Number value = observable.getValue();
+      Number value = observable.get();
       if (value == null) {
         return ZERO;
       }
@@ -389,7 +389,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
 
   private static Float mul(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
 
-    return mul(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+    return mul(ReadableValue.get(v1), ReadableValue.get(v2));
   }
 
   private static Float mul(Number v1, Number v2) {
@@ -415,7 +415,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
     boolean first = true;
     for (ReadableValue<? extends Number> observable : observables) {
       if (observable != null) {
-        Number value = observable.getValue();
+        Number value = observable.get();
         if (value != null) {
           if (first) {
             quotient = value.floatValue();
@@ -431,7 +431,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
 
   private static Float div(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
 
-    return div(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+    return div(ReadableValue.get(v1), ReadableValue.get(v2));
   }
 
   private static Float div(Number v1, Number v2) {

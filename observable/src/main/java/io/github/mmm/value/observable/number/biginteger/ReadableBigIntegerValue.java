@@ -7,7 +7,7 @@ import java.math.BigInteger;
 import io.github.mmm.value.observable.number.ReadableNumberValue;
 
 /**
- * {@link io.github.mmm.value.ReadableValue} containing a {@link BigInteger} {@link #getValue() value}.
+ * {@link io.github.mmm.value.ReadableValue} containing a {@link BigInteger} {@link #get() value}.
  *
  * @since 1.0.0
  */
@@ -20,9 +20,9 @@ public interface ReadableBigIntegerValue extends ReadableNumberValue<BigInteger>
   }
 
   @Override
-  default BigInteger getValueSafe() {
+  default BigInteger getSafe() {
 
-    BigInteger value = getValue();
+    BigInteger value = get();
     if (value == null) {
       return BigInteger.ZERO;
     }

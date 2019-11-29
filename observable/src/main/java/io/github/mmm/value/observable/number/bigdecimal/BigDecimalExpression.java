@@ -14,7 +14,7 @@ import io.github.mmm.value.observable.number.longs.ObservableLongValue;
 import io.github.mmm.value.observable.number.shorts.ObservableShortValue;
 
 /**
- * {@link NumberExpression} with {@link BigDecimal} {@link #getValue() value}.
+ * {@link NumberExpression} with {@link BigDecimal} {@link #get() value}.
  *
  * @since 1.0.0
  */

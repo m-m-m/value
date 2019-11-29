@@ -43,18 +43,18 @@ public class ByteExpressionTest extends NumberExpressionTest<Byte> {
   public void testAddCustom() {
 
     ByteExpressionMock value = new ByteExpressionMock();
-    value.setValue(ONE);
+    value.set(ONE);
     ByteExpression expression = value.add((byte) 1).add((byte) 6);
     assertThat(expression.getValue()).isEqualTo(Byte.valueOf((byte) 8));
-    value.setValue(TEN);
+    value.set(TEN);
     assertThat(expression.getValue()).isEqualTo(Byte.valueOf((byte) 17));
     ByteExpressionMock value2 = new ByteExpressionMock();
-    value2.setValue(ONE);
+    value2.set(ONE);
     ByteExpression expression2 = expression.add(value2);
     assertThat(expression2.getValue()).isEqualTo(Byte.valueOf((byte) 18));
-    value2.setValue(TEN);
+    value2.set(TEN);
     assertThat(expression2.getValue()).isEqualTo(Byte.valueOf((byte) 27));
-    value.setValue(ONE);
+    value.set(ONE);
     assertThat(expression2.getValue()).isEqualTo(Byte.valueOf((byte) 18));
 
     ByteExpression sum = ByteBinding.addAll(value, expression, expression2);
@@ -67,14 +67,14 @@ public class ByteExpressionTest extends NumberExpressionTest<Byte> {
     ByteExpressionMock value = new ByteExpressionMock(Byte.valueOf((byte) 8));
     ByteExpression expression = value.subtract((byte) 1).subtract((byte) 7);
     assertThat(expression.getValue()).isEqualTo(ZERO);
-    value.setValue(TEN);
+    value.set(TEN);
     assertThat(expression.getValue()).isEqualTo(Byte.valueOf((byte) 2));
     ByteExpressionMock value2 = new ByteExpressionMock(ONE);
     ByteExpression expression2 = expression.subtract(value2);
     assertThat(expression2.getValue()).isEqualTo(ONE);
-    value2.setValue(TEN);
+    value2.set(TEN);
     assertThat(expression2.getValue()).isEqualTo(Byte.valueOf((byte) -8)); // 2 - 10
-    value.setValue(ONE);
+    value.set(ONE);
     assertThat(expression2.getValue()).isEqualTo(Byte.valueOf((byte) -17));
     assertThat(expression.getValue()).isEqualTo(Byte.valueOf((byte) -7));
 
@@ -90,14 +90,14 @@ public class ByteExpressionTest extends NumberExpressionTest<Byte> {
     ByteExpression expression = value.multiply((byte) 2).multiply((byte) 64);
 
     assertThat(expression.getValue()).isEqualTo(Byte.valueOf((byte) 512));
-    value.setValue(TEN);
+    value.set(TEN);
     assertThat(expression.getValue()).isEqualTo(Byte.valueOf((byte) 1280));
     ByteExpressionMock value2 = new ByteExpressionMock(two);
     ByteExpression expression2 = expression.multiply(value2);
     assertThat(expression2.getValue()).isEqualTo(Byte.valueOf((byte) 2560));
-    value2.setValue(TEN);
+    value2.set(TEN);
     assertThat(expression2.getValue()).isEqualTo(Byte.valueOf((byte) 12800));
-    value.setValue(ONE);
+    value.set(ONE);
     assertThat(expression2.getValue()).isEqualTo(Byte.valueOf((byte) 1280));
     assertThat(expression.getValue()).isEqualTo(Byte.valueOf((byte) 128));
 
@@ -112,14 +112,14 @@ public class ByteExpressionTest extends NumberExpressionTest<Byte> {
     ByteExpression expression = value.divide((byte) 2);
 
     assertThat(expression.getValue()).isEqualTo(Byte.valueOf((byte) 32));
-    value.setValue(Byte.valueOf((byte) 32));
+    value.set(Byte.valueOf((byte) 32));
     assertThat(expression.getValue()).isEqualTo(Byte.valueOf((byte) 16));
     ByteExpressionMock value2 = new ByteExpressionMock(Byte.valueOf((byte) 2));
     ByteExpression expression2 = expression.divide(value2);
     assertThat(expression2.getValue()).isEqualTo(Byte.valueOf((byte) 8));
-    value2.setValue(Byte.valueOf((byte) 16));
+    value2.set(Byte.valueOf((byte) 16));
     assertThat(expression2.getValue()).isEqualTo(ONE);
-    value.setValue(Byte.valueOf((byte) 64));
+    value.set(Byte.valueOf((byte) 64));
     assertThat(expression2.getValue()).isEqualTo(Byte.valueOf((byte) 2));
 
     ByteExpression quotient = ByteBinding.divideAll(value, expression, expression2);

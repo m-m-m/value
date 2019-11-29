@@ -11,7 +11,7 @@ import io.github.mmm.value.observable.number.NumberBinding;
 import io.github.mmm.value.observable.number.NumberExpression;
 
 /**
- * {@link io.github.mmm.value.observable.Binding} with {@link BigDecimal} {@link #getValue() value}.
+ * {@link io.github.mmm.value.observable.Binding} with {@link BigDecimal} {@link #get() value}.
  *
  * @since 1.0.0
  */
@@ -20,7 +20,7 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
   /**
    * The constructor.
    *
-   * @param expression the {@link Supplier} to compute the {@link #getValue() value}.
+   * @param expression the {@link Supplier} to compute the {@link #get() value}.
    * @param dependencies the {@link ObservableValue}s the {@code expression} depends on.
    */
   public BigDecimalBinding(Supplier<BigDecimal> expression, ObservableValue<?>... dependencies) {
@@ -30,13 +30,13 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
 
   /**
    * @param expression the {@link BigDecimalExpression} to negate.
-   * @return a new {@link BigDecimalExpression} holding the negation of the {@link #getValue() value} from the given
+   * @return a new {@link BigDecimalExpression} holding the negation of the {@link #get() value} from the given
    *         {@link BigDecimalExpression}.
    * @see #negate()
    */
   public static BigDecimalExpression negate(BigDecimalExpression expression) {
 
-    return new BigDecimalBinding(() -> negate(expression.getValue()), expression);
+    return new BigDecimalBinding(() -> negate(expression.get()), expression);
   }
 
   /**
@@ -50,15 +50,15 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
     } else if (expression instanceof BigDecimalExpression) {
       return (BigDecimalExpression) expression;
     } else {
-      return new BigDecimalBinding(() -> to(expression.getValue()), expression);
+      return new BigDecimalBinding(() -> to(expression.get()), expression);
     }
   }
 
   /**
    * @param expression the {@link BigDecimalExpression} to add.
    * @param other the {@link ObservableValue} to add.
-   * @return a new {@link BigDecimalExpression} holding the sum of the {@link #getValue() value}s of the first and the
-   *         second given {@link ObservableValue}s.
+   * @return a new {@link BigDecimalExpression} holding the sum of the {@link #get() value}s of the first and the second
+   *         given {@link ObservableValue}s.
    * @see #add(ObservableBigDecimalValue)
    */
   public static BigDecimalExpression add(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
@@ -72,7 +72,7 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
   /**
    * @param expression the {@link NumberExpression} to add.
    * @param constant the constant {@link Number} to add.
-   * @return a new {@link BigDecimalExpression} holding the sum of the {@link #getValue() value} from the given
+   * @return a new {@link BigDecimalExpression} holding the sum of the {@link #get() value} from the given
    *         {@link BigDecimalExpression} with the given {@code constant}.
    * @see #add(ObservableBigDecimalValue)
    */
@@ -84,7 +84,7 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
   /**
    * @param expression the {@link BigDecimalExpression} to add.
    * @param constant the constant {@code BigDecimal} to add.
-   * @return a new {@link BigDecimalExpression} holding the sum of the {@link #getValue() value} from the given
+   * @return a new {@link BigDecimalExpression} holding the sum of the {@link #get() value} from the given
    *         {@link BigDecimalExpression} with the given {@code constant}.
    * @see #add(ObservableBigDecimalValue)
    */
@@ -94,12 +94,12 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
       return cast(expression);
     }
     Objects.requireNonNull(expression, "expression");
-    return new BigDecimalBinding(() -> plus(expression.getValue(), constant), expression);
+    return new BigDecimalBinding(() -> plus(expression.get(), constant), expression);
   }
 
   /**
    * @param observables the {@link ObservableValue}s to add.
-   * @return a new {@link BigDecimalExpression} holding the sum of the {@link #getValue() value}s from the given
+   * @return a new {@link BigDecimalExpression} holding the sum of the {@link #get() value}s from the given
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
@@ -111,8 +111,8 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
   /**
    * @param expression the {@link BigDecimalExpression}.
    * @param other the {@link ObservableValue} to subtract.
-   * @return a new {@link BigDecimalExpression} holding the difference of the {@link #getValue() value}s of the first
-   *         and the second given {@link ObservableValue}s.
+   * @return a new {@link BigDecimalExpression} holding the difference of the {@link #get() value}s of the first and the
+   *         second given {@link ObservableValue}s.
    * @see #subtract(ObservableBigDecimalValue)
    */
   public static BigDecimalExpression subtract(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
@@ -126,7 +126,7 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
   /**
    * @param expression the {@link NumberExpression}.
    * @param constant the constant {@link Number} to subtract.
-   * @return a new {@link BigDecimalExpression} holding the difference of the {@link #getValue() value} from the given
+   * @return a new {@link BigDecimalExpression} holding the difference of the {@link #get() value} from the given
    *         {@link BigDecimalExpression} with the given {@code constant}.
    * @see #subtract(ObservableBigDecimalValue)
    */
@@ -138,7 +138,7 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
   /**
    * @param expression the {@link BigDecimalExpression}.
    * @param constant the constant {@code BigDecimal} to subtract.
-   * @return a new {@link BigDecimalExpression} holding the difference of the {@link #getValue() value} from the given
+   * @return a new {@link BigDecimalExpression} holding the difference of the {@link #get() value} from the given
    *         {@link BigDecimalExpression} with the given {@code constant}.
    * @see #subtract(ObservableBigDecimalValue)
    */
@@ -148,12 +148,12 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
       return cast(expression);
     }
     Objects.requireNonNull(expression, "expression");
-    return new BigDecimalBinding(() -> minus(expression.getValue(), constant), expression);
+    return new BigDecimalBinding(() -> minus(expression.get(), constant), expression);
   }
 
   /**
    * @param observables the {@link ObservableValue}s to subtract.
-   * @return a new {@link BigDecimalExpression} holding the difference of the {@link #getValue() value}s from the given
+   * @return a new {@link BigDecimalExpression} holding the difference of the {@link #get() value}s from the given
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
@@ -165,8 +165,8 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
   /**
    * @param expression the {@link BigDecimalExpression}.
    * @param other the {@link ObservableValue} to multiply.
-   * @return a new {@link BigDecimalExpression} holding the product of the {@link #getValue() value}s of the first and
-   *         the second given {@link ObservableValue}s.
+   * @return a new {@link BigDecimalExpression} holding the product of the {@link #get() value}s of the first and the
+   *         second given {@link ObservableValue}s.
    * @see #multiply(ObservableBigDecimalValue)
    */
   public static BigDecimalExpression multiply(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
@@ -180,7 +180,7 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
   /**
    * @param expression the {@link NumberExpression}.
    * @param constant the constant {@link Number} to multiply.
-   * @return a new {@link BigDecimalExpression} holding the product of the {@link #getValue() value} from the given
+   * @return a new {@link BigDecimalExpression} holding the product of the {@link #get() value} from the given
    *         {@link BigDecimalExpression} multiplied with the given {@code constant}.
    * @see #multiply(ObservableBigDecimalValue)
    */
@@ -192,7 +192,7 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
   /**
    * @param expression the {@link BigDecimalExpression}.
    * @param constant the constant {@code BigDecimal} to multiply.
-   * @return a new {@link BigDecimalExpression} holding the product of the {@link #getValue() value} from the given
+   * @return a new {@link BigDecimalExpression} holding the product of the {@link #get() value} from the given
    *         {@link BigDecimalExpression} multiplied with the given {@code constant}.
    * @see #multiply(ObservableBigDecimalValue)
    */
@@ -202,12 +202,12 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
       return cast(expression);
     }
     Objects.requireNonNull(expression, "expression");
-    return new BigDecimalBinding(() -> mul(expression.getValue(), constant), expression);
+    return new BigDecimalBinding(() -> mul(expression.get(), constant), expression);
   }
 
   /**
    * @param observables the {@link ObservableValue}s to multiply.
-   * @return a new {@link BigDecimalExpression} holding the product of the {@link #getValue() value}s from the given
+   * @return a new {@link BigDecimalExpression} holding the product of the {@link #get() value}s from the given
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
@@ -219,8 +219,8 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
   /**
    * @param expression the {@link BigDecimalExpression}.
    * @param other the {@link ObservableValue} to divide.
-   * @return a new {@link BigDecimalExpression} holding the quotient of the {@link #getValue() value}s of the first and
-   *         the second given {@link ObservableValue}s.
+   * @return a new {@link BigDecimalExpression} holding the quotient of the {@link #get() value}s of the first and the
+   *         second given {@link ObservableValue}s.
    * @see #divide(ObservableBigDecimalValue)
    */
   public static BigDecimalExpression divide(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
@@ -234,7 +234,7 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
   /**
    * @param expression the {@link NumberExpression}.
    * @param constant the constant {@link Number} to divide.
-   * @return a new {@link BigDecimalExpression} holding the quotient of the {@link #getValue() value} from the given
+   * @return a new {@link BigDecimalExpression} holding the quotient of the {@link #get() value} from the given
    *         {@link BigDecimalExpression} divided by the given {@code constant}.
    * @see #divide(ObservableBigDecimalValue)
    */
@@ -246,7 +246,7 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
   /**
    * @param expression the {@link BigDecimalExpression}.
    * @param constant the constant {@code BigDecimal} to divide.
-   * @return a new {@link BigDecimalExpression} holding the quotient of the {@link #getValue() value} from the given
+   * @return a new {@link BigDecimalExpression} holding the quotient of the {@link #get() value} from the given
    *         {@link BigDecimalExpression} divided by the given {@code constant}.
    * @see #divide(ObservableBigDecimalValue)
    */
@@ -256,12 +256,12 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
       return cast(expression);
     }
     Objects.requireNonNull(expression, "expression");
-    return new BigDecimalBinding(() -> div(expression.getValue(), constant), expression);
+    return new BigDecimalBinding(() -> div(expression.get(), constant), expression);
   }
 
   /**
    * @param observables the {@link ObservableValue}s to divide.
-   * @return a new {@link BigDecimalExpression} holding the quotient of the {@link #getValue() value}s from the given
+   * @return a new {@link BigDecimalExpression} holding the quotient of the {@link #get() value}s from the given
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
@@ -299,7 +299,7 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
     BigDecimal sum = BigDecimal.ZERO;
     for (ReadableValue<? extends Number> observable : observables) {
       if (observable != null) {
-        Number value = observable.getValue();
+        Number value = observable.get();
         if (value != null) {
           sum = sum.add(to(value));
         }
@@ -324,9 +324,9 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
     BigDecimal difference = null;
     for (ReadableValue<? extends Number> observable : observables) {
       if (difference == null) {
-        difference = to(ReadableValue.unwrap(observable));
+        difference = to(ReadableValue.get(observable));
       } else if (observable != null) {
-        Number value = observable.getValue();
+        Number value = observable.get();
         if (value != null) {
           difference = difference.subtract(to(value));
         }
@@ -356,7 +356,7 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
       if (observable == null) {
         return BigDecimal.ZERO;
       }
-      Number value = observable.getValue();
+      Number value = observable.get();
       if (value == null) {
         return BigDecimal.ZERO;
       }
@@ -387,7 +387,7 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
     for (ReadableValue<? extends Number> observable : observables) {
       BigDecimal arg = BigDecimal.ZERO;
       if (observable != null) {
-        Number value = observable.getValue();
+        Number value = observable.get();
         if (value != null) {
           arg = to(value);
         }

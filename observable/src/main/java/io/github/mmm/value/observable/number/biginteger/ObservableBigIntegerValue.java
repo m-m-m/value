@@ -7,7 +7,7 @@ import java.math.BigInteger;
 import io.github.mmm.value.observable.number.ObservableNumberValue;
 
 /**
- * {@link io.github.mmm.value.observable.ObservableValue} containing a {@link BigInteger} {@link #getValue() value}.
+ * {@link io.github.mmm.value.observable.ObservableValue} containing a {@link BigInteger} {@link #get() value}.
  *
  * @since 1.0.0
  */

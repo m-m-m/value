@@ -8,7 +8,7 @@ import java.util.Map;
 import io.github.mmm.value.observable.container.ObservableContainerValue;
 
 /**
- * {@link io.github.mmm.value.observable.ObservableValue} with {@link List} {@link #getValue() value}.
+ * {@link io.github.mmm.value.observable.ObservableValue} with {@link List} {@link #get() value}.
  *
  * @param <K> type of the {@link Map#containsKey(Object) keys}.
  * @param <V> type of the {@link Map#containsValue(Object) values}.

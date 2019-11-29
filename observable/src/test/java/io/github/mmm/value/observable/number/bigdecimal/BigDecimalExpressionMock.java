@@ -5,8 +5,6 @@ package io.github.mmm.value.observable.number.bigdecimal;
 import java.math.BigDecimal;
 
 import io.github.mmm.value.observable.AbstractWritableObservableValue;
-import io.github.mmm.value.observable.number.bigdecimal.BigDecimalExpression;
-import io.github.mmm.value.observable.number.bigdecimal.WritableBigDecimalValue;
 
 /**
  * Implementation of {@link BigDecimalExpression} for testing.
@@ -27,7 +25,7 @@ public class BigDecimalExpressionMock extends AbstractWritableObservableValue<Bi
   /**
    * The constructor.
    *
-   * @param value the initial {@link #getValue() value}.
+   * @param value the initial {@link #get() value}.
    */
   public BigDecimalExpressionMock(BigDecimal value) {
 

@@ -5,15 +5,14 @@ package io.github.mmm.value;
 /**
  * {@link ReadableValue} knowing its {@link #getValueClass() value class}.
  *
- * @param <V> type of the {@link #getValue() value}.
+ * @param <V> type of the {@link #get() value}.
  * @since 1.0.0
  */
 public interface ReadableTypedValue<V> extends ReadableValue<V> {
 
   /**
-   * @return the {@link Class} reflecting the type of {@link #getValue() values} that can be stored by this property.
-   *         Even if the {@link #getValue() value} is {@code null} the property must support returning the property
-   *         class.
+   * @return the {@link Class} reflecting the type of {@link #get() values} that can be stored by this property. Even if
+   *         the {@link #get() value} is {@code null} the property must support returning the property class.
    */
   Class<V> getValueClass();
 

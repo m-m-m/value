@@ -5,7 +5,7 @@ package io.github.mmm.value.observable.number.doubles;
 import io.github.mmm.value.observable.number.ReadableNumberValue;
 
 /**
- * {@link ReadableNumberValue} with {@link Double} {@link #getValue() value}.
+ * {@link ReadableNumberValue} with {@link Double} {@link #get() value}.
  *
  * @since 1.0.0
  */
@@ -20,15 +20,15 @@ public interface ReadableDoubleValue extends ReadableNumberValue<Double> {
   /**
    * @return the current value as primitive. Will be {@code 0} if undefined.
    */
-  default double get() {
+  default double getValue() {
 
     return doubleValue();
   }
 
   @Override
-  default Double getValueSafe() {
+  default Double getSafe() {
 
-    Double value = getValue();
+    Double value = get();
     if (value == null) {
       return Double.valueOf(0);
     }

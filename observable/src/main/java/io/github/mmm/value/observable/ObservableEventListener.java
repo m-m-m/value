@@ -7,7 +7,7 @@ import io.github.mmm.event.EventListener;
 /**
  * {@link EventListener} for {@link ObservableEvent}s.
  *
- * @param <V> type of observed {@link ObservableValue#getValue() value}.
+ * @param <V> type of observed {@link ObservableValue#get() value}.
  * @since 1.0.0
  * @see ChangeAwareObservableEventListener
  */

@@ -8,7 +8,7 @@ import java.util.Set;
 import io.github.mmm.value.observable.container.collection.ReadableCollectionValue;
 
 /**
- * {@link ReadableCollectionValue} for {@link Set} {@link #getValue() value}s.
+ * {@link ReadableCollectionValue} for {@link Set} {@link #get() value}s.
  *
  * @param <E> type of the {@link Set#contains(Object) elements}.
  * @since 1.0.0
@@ -23,9 +23,9 @@ public interface ReadableSetValue<E> extends ReadableCollectionValue<Set<E>, E> 
   }
 
   @Override
-  default Set<E> getValueSafe() {
+  default Set<E> getSafe() {
 
-    Set<E> value = getValue();
+    Set<E> value = get();
     if (value == null) {
       value = Collections.emptySet();
     }

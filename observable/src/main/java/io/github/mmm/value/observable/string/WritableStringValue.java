@@ -10,15 +10,15 @@ import io.github.mmm.value.WritableValue;
  * @since 1.0.0
  */
 public interface WritableStringValue extends WritableValue<String>, ReadableStringValue {
- 
+
   /**
    * @param value the value to set.
    * @see #get()
-   * @see #setValue(String)
+   * @see #set(String)
    */
-  default void set(String value) {
+  default void setValue(String value) {
 
-    setValue(value);
+    set(value);
   }
 
 }

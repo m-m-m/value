@@ -3,9 +3,9 @@ package io.github.mmm.value.observable;
 import io.github.mmm.value.WritableValue;
 
 /**
- * {@link ObservableValue} that is {@link WritableValue writable} and allows to {@link #setValue(Object) set} its value.
+ * {@link ObservableValue} that is {@link WritableValue writable} and allows to {@link #set(Object) set} its value.
  *
- * @param <V> type of the {@link #getValue() value}.
+ * @param <V> type of the {@link #get() value}.
  * @since 1.0.0
  */
 public interface WritableObservableValue<V> extends ObservableValue<V>, WritableValue<V> {
@@ -14,7 +14,7 @@ public interface WritableObservableValue<V> extends ObservableValue<V>, Writable
    * Creates a unidirection binding for this object.<br>
    * <b>ATTENTION:</b><br>
    * An unidirectional binding is very strict. It makes this object to appear exactly as the {@link ObservableValue} it
-   * is bound to. After creating the unidirectional binding, calls to {@link #setValue(Object)} will fail. This is very
+   * is bound to. After creating the unidirectional binding, calls to {@link #set(Object)} will fail. This is very
    * different to an {@link #bindBidirectional(WritableObservableValue) bidirectional binding}.
    *
    * @param observable the {@link ObservableValue} this object should be bound to.
@@ -39,7 +39,7 @@ public interface WritableObservableValue<V> extends ObservableValue<V>, Writable
 
   /**
    * Create a bidirectional binding between this object and the given one. After a bidirectional binding,
-   * {@link #setValue(Object)} on this object will propagate its value to the bound one and vice versa. Bidirectional
+   * {@link #set(Object)} on this object will propagate its value to the bound one and vice versa. Bidirectional
    * bindings exists independently of {@link #bind(ObservableValue) unidirectional bindings}. However, it is bad
    * practice to combine both. It is possible to have multiple bidirectional bindings for the same object.
    *

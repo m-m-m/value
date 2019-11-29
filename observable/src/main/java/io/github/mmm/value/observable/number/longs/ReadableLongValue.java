@@ -5,7 +5,7 @@ package io.github.mmm.value.observable.number.longs;
 import io.github.mmm.value.observable.number.ReadableNumberValue;
 
 /**
- * {@link ReadableNumberValue} with {@link Long} {@link #getValue() value}.
+ * {@link ReadableNumberValue} with {@link Long} {@link #get() value}.
  *
  * @since 1.0.0
  */
@@ -20,15 +20,15 @@ public interface ReadableLongValue extends ReadableNumberValue<Long> {
   /**
    * @return the current value as primitive. Will be {@code 0} if undefined.
    */
-  default long get() {
+  default long getValue() {
 
     return longValue();
   }
 
   @Override
-  default Long getValueSafe() {
+  default Long getSafe() {
 
-    Long value = getValue();
+    Long value = get();
     if (value == null) {
       return Long.valueOf(0);
     }

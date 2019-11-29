@@ -12,11 +12,11 @@ public interface WritableBooleanValue extends WritableValue<Boolean>, ReadableBo
   /**
    * @param value the value to set.
    * @see #get()
-   * @see #setValue(Boolean)
+   * @see #set(Boolean)
    */
   default void set(boolean value) {
 
-    setValue(Boolean.valueOf(value));
+    set(Boolean.valueOf(value));
   }
 
 }

@@ -8,7 +8,7 @@ import java.util.List;
 import io.github.mmm.value.observable.container.collection.WritableCollectionValue;
 
 /**
- * {@link WritableCollectionValue} for {@link List} {@link #getValue() value}s.
+ * {@link WritableCollectionValue} for {@link List} {@link #get() value}s.
  *
  * @param <E> type of the {@link List#contains(Object) elements}.
  * @since 1.0.0
@@ -18,10 +18,10 @@ public interface WritableListValue<E> extends WritableCollectionValue<List<E>, E
   @Override
   default List<E> getOrCreateValue() {
 
-    List<E> value = getValue();
+    List<E> value = get();
     if (value == null) {
       value = new ArrayList<>();
-      setValue(value);
+      set(value);
     }
     return value;
   }

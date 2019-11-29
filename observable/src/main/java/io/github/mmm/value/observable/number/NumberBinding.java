@@ -8,12 +8,12 @@ import io.github.mmm.value.observable.Binding;
 import io.github.mmm.value.observable.ObservableValue;
 
 /**
- * {@link Binding} for a {@link Number} {@link #getValue() value}.
+ * {@link Binding} for a {@link Number} {@link #get() value}.
  *
  * @see Binding
  * @see NumberExpression
  *
- * @param <N> type of the observable {@link #getValue() value}.
+ * @param <N> type of the observable {@link #get() value}.
  * @since 1.0.0
  */
 public abstract class NumberBinding<N extends Number & Comparable<? super N>> extends Binding<N>
@@ -22,7 +22,7 @@ public abstract class NumberBinding<N extends Number & Comparable<? super N>> ex
   /**
    * The constructor.
    *
-   * @param expression the {@link Supplier} to compute the {@link #getValue() value}.
+   * @param expression the {@link Supplier} to compute the {@link #get() value}.
    * @param dependencies the {@link ObservableValue}s the {@code expression} depends on.
    */
   public NumberBinding(Supplier<? extends N> expression, ObservableValue<?>... dependencies) {

@@ -5,9 +5,9 @@ package io.github.mmm.value.observable.number;
 import io.github.mmm.value.ReadableTypedValue;
 
 /**
- * {@link ReadableTypedValue} with {@link Number} {@link #getValue() value}.
+ * {@link ReadableTypedValue} with {@link Number} {@link #get() value}.
  *
- * @param <N> type of the observable {@link #getValue() value}.
+ * @param <N> type of the observable {@link #get() value}.
  * @since 1.0.0
  */
 public abstract interface ReadableNumberValue<N extends Number> extends ReadableTypedValue<N> {
@@ -17,7 +17,7 @@ public abstract interface ReadableNumberValue<N extends Number> extends Readable
    */
   default int intValue() {
 
-    N value = getValue();
+    N value = get();
     if (value == null) {
       return 0;
     }
@@ -29,7 +29,7 @@ public abstract interface ReadableNumberValue<N extends Number> extends Readable
    */
   default long longValue() {
 
-    N value = getValue();
+    N value = get();
     if (value == null) {
       return 0;
     }
@@ -41,7 +41,7 @@ public abstract interface ReadableNumberValue<N extends Number> extends Readable
    */
   default float floatValue() {
 
-    N value = getValue();
+    N value = get();
     if (value == null) {
       return 0;
     }
@@ -53,7 +53,7 @@ public abstract interface ReadableNumberValue<N extends Number> extends Readable
    */
   default double doubleValue() {
 
-    N value = getValue();
+    N value = get();
     if (value == null) {
       return 0;
     }
@@ -65,7 +65,7 @@ public abstract interface ReadableNumberValue<N extends Number> extends Readable
    */
   default short shortValue() {
 
-    N value = getValue();
+    N value = get();
     if (value == null) {
       return 0;
     }
@@ -77,7 +77,7 @@ public abstract interface ReadableNumberValue<N extends Number> extends Readable
    */
   default byte byteValue() {
 
-    N value = getValue();
+    N value = get();
     if (value == null) {
       return 0;
     }

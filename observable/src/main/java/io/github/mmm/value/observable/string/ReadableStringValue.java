@@ -5,7 +5,7 @@ package io.github.mmm.value.observable.string;
 import io.github.mmm.value.ReadableTypedValue;
 
 /**
- * {@link ReadableTypedValue} with {@link String} {@link #getValue() value}.
+ * {@link ReadableTypedValue} with {@link String} {@link #get() value}.
  *
  * @since 1.0.0
  */
@@ -18,18 +18,19 @@ public interface ReadableStringValue extends ReadableTypedValue<String> {
   }
 
   /**
-   * @return the current value as primitive {@code boolean}.
-   * @see #getValue()
+   * Same as {@link #get()}.
+   *
+   * @return the current {@link #get() value}.
    */
-  default String get() {
+  default String getValue() {
 
-    return getValue();
+    return get();
   }
 
   @Override
-  default String getValueSafe() {
+  default String getSafe() {
 
-    final String value = getValue();
+    final String value = get();
     return value == null ? "" : value;
   }
 

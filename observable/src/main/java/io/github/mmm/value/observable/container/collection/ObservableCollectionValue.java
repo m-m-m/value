@@ -8,9 +8,9 @@ import io.github.mmm.value.observable.ObservableValue;
 import io.github.mmm.value.observable.container.ObservableContainerValue;
 
 /**
- * {@link ObservableValue} with {@link Collection} {@link #getValue() value}.
+ * {@link ObservableValue} with {@link Collection} {@link #get() value}.
  *
- * @param <C> type of the {@link Collection} {@link #getValue() value}.
+ * @param <C> type of the {@link Collection} {@link #get() value}.
  * @param <E> type of the {@link Collection#contains(Object) elements}.
  * @since 1.0.0
  */

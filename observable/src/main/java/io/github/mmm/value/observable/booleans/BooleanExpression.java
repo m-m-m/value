@@ -6,14 +6,14 @@ import io.github.mmm.value.observable.Expression;
 import io.github.mmm.value.observable.ObservableValue;
 
 /**
- * {@link Expression} with {@link Boolean} {@link #getValue() value}.
+ * {@link Expression} with {@link Boolean} {@link #get() value}.
  *
  * @since 1.0.0
  */
 public interface BooleanExpression extends ObservableBooleanValue, Expression<Boolean> {
 
   /**
-   * @return a new {@code BooleanExpression} holding the negation of this {@link #getValue() value}.
+   * @return a new {@code BooleanExpression} holding the negation of this {@link #get() value}.
    */
   default BooleanExpression not() {
 
@@ -22,7 +22,7 @@ public interface BooleanExpression extends ObservableBooleanValue, Expression<Bo
 
   /**
    * @param other the other {@code ObservableValue}.
-   * @return the new {@code BooleanExpression} holding the logical AND of the {@link #getValue() value}s from this
+   * @return the new {@code BooleanExpression} holding the logical AND of the {@link #get() value}s from this
    *         {@link BooleanExpression} and the given {@link ObservableValue}.
    */
   default BooleanExpression and(ObservableValue<Boolean> other) {
@@ -32,7 +32,7 @@ public interface BooleanExpression extends ObservableBooleanValue, Expression<Bo
 
   /**
    * @param constant the constant {@link Boolean} value.
-   * @return a new {@code BooleanExpression} holding the logical AND of this {@link #getValue() value} and the given
+   * @return a new {@code BooleanExpression} holding the logical AND of this {@link #get() value} and the given
    *         {@code constant} value.
    */
   default BooleanExpression and(Boolean constant) {
@@ -42,7 +42,7 @@ public interface BooleanExpression extends ObservableBooleanValue, Expression<Bo
 
   /**
    * @param other the other {@code ObservableValue}.
-   * @return the new {@code BooleanExpression} holding the logical OR of this {@link #getValue() value} and the given
+   * @return the new {@code BooleanExpression} holding the logical OR of this {@link #get() value} and the given
    *         {@code other}s value.
    */
   default BooleanExpression or(ObservableValue<Boolean> other) {
@@ -52,7 +52,7 @@ public interface BooleanExpression extends ObservableBooleanValue, Expression<Bo
 
   /**
    * @param constant the constant {@link Boolean} value.
-   * @return the new {@code BooleanExpression} holding the logical OR of the {@link #getValue() value}s from this
+   * @return the new {@code BooleanExpression} holding the logical OR of the {@link #get() value}s from this
    *         {@link BooleanExpression} and the given {@code constant} value.
    */
   default BooleanExpression or(Boolean constant) {

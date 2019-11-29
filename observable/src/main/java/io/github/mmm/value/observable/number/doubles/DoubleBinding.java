@@ -19,7 +19,7 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
   /**
    * The constructor.
    *
-   * @param expression the {@link Supplier} to compute the {@link #getValue() value}.
+   * @param expression the {@link Supplier} to compute the {@link #get() value}.
    * @param dependencies the {@link ObservableValue}s the {@code expression} depends on.
    */
   public DoubleBinding(Supplier<Double> expression, ObservableValue<?>... dependencies) {
@@ -29,13 +29,13 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
 
   /**
    * @param expression the {@link DoubleExpression} to negate.
-   * @return a new {@link DoubleExpression} holding the negation of the {@link #getValue() value} from the given
+   * @return a new {@link DoubleExpression} holding the negation of the {@link #get() value} from the given
    *         {@link DoubleExpression}.
    * @see #negate()
    */
   public static DoubleExpression negate(DoubleExpression expression) {
 
-    return new DoubleBinding(() -> negate(expression.getValue()), expression);
+    return new DoubleBinding(() -> negate(expression.get()), expression);
   }
 
   /**
@@ -49,15 +49,15 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
     } else if (expression instanceof DoubleExpression) {
       return (DoubleExpression) expression;
     } else {
-      return new DoubleBinding(() -> to(expression.getValue()), expression);
+      return new DoubleBinding(() -> to(expression.get()), expression);
     }
   }
 
   /**
    * @param expression the {@link DoubleExpression} to add.
    * @param other the {@link ObservableValue} to add.
-   * @return a new {@link DoubleExpression} holding the sum of the {@link #getValue() value}s of the first and the
-   *         second given {@link ObservableValue}s.
+   * @return a new {@link DoubleExpression} holding the sum of the {@link #get() value}s of the first and the second
+   *         given {@link ObservableValue}s.
    * @see #add(ObservableDoubleValue)
    */
   public static DoubleExpression add(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
@@ -71,7 +71,7 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
   /**
    * @param expression the {@link DoubleExpression} to add.
    * @param constant the constant {@link Number} to add.
-   * @return a new {@link DoubleExpression} holding the sum of the {@link #getValue() value} from the given
+   * @return a new {@link DoubleExpression} holding the sum of the {@link #get() value} from the given
    *         {@link DoubleExpression} with the given {@code constant}.
    * @see #add(ObservableDoubleValue)
    */
@@ -86,18 +86,18 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
   /**
    * @param expression the {@link DoubleExpression} to add.
    * @param constant the constant {@code double} to add.
-   * @return a new {@link DoubleExpression} holding the sum of the {@link #getValue() value} from the given
+   * @return a new {@link DoubleExpression} holding the sum of the {@link #get() value} from the given
    *         {@link DoubleExpression} with the given {@code constant}.
    * @see #add(ObservableDoubleValue)
    */
   public static DoubleExpression add(NumberExpression<?> expression, double constant) {
 
-    return new DoubleBinding(() -> plus(expression.getValue(), constant), expression);
+    return new DoubleBinding(() -> plus(expression.get(), constant), expression);
   }
 
   /**
    * @param observables the {@link ObservableValue}s to add.
-   * @return a new {@link DoubleExpression} holding the sum of the {@link #getValue() value}s from the given
+   * @return a new {@link DoubleExpression} holding the sum of the {@link #get() value}s from the given
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
@@ -109,8 +109,8 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
   /**
    * @param expression the {@link DoubleExpression}.
    * @param other the {@link ObservableValue} to subtract.
-   * @return a new {@link DoubleExpression} holding the difference of the {@link #getValue() value}s of the first and
-   *         the second given {@link ObservableValue}s.
+   * @return a new {@link DoubleExpression} holding the difference of the {@link #get() value}s of the first and the
+   *         second given {@link ObservableValue}s.
    * @see #subtract(ObservableDoubleValue)
    */
   public static DoubleExpression subtract(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
@@ -124,7 +124,7 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
   /**
    * @param expression the {@link DoubleExpression}.
    * @param constant the constant {@link Number} to subtract.
-   * @return a new {@link DoubleExpression} holding the difference of the {@link #getValue() value} from the given
+   * @return a new {@link DoubleExpression} holding the difference of the {@link #get() value} from the given
    *         {@link DoubleExpression} with the given {@code constant}.
    * @see #subtract(ObservableDoubleValue)
    */
@@ -139,18 +139,18 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
   /**
    * @param expression the {@link DoubleExpression}.
    * @param constant the constant {@code double} to subtract.
-   * @return a new {@link DoubleExpression} holding the difference of the {@link #getValue() value} from the given
+   * @return a new {@link DoubleExpression} holding the difference of the {@link #get() value} from the given
    *         {@link DoubleExpression} with the given {@code constant}.
    * @see #subtract(ObservableDoubleValue)
    */
   public static DoubleExpression subtract(NumberExpression<?> expression, double constant) {
 
-    return new DoubleBinding(() -> minus(expression.getValue(), constant), expression);
+    return new DoubleBinding(() -> minus(expression.get(), constant), expression);
   }
 
   /**
    * @param observables the {@link ObservableValue}s to subtract.
-   * @return a new {@link DoubleExpression} holding the difference of the {@link #getValue() value}s from the given
+   * @return a new {@link DoubleExpression} holding the difference of the {@link #get() value}s from the given
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
@@ -162,8 +162,8 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
   /**
    * @param expression the {@link DoubleExpression}.
    * @param other the {@link ObservableValue} to multiply.
-   * @return a new {@link DoubleExpression} holding the product of the {@link #getValue() value}s of the first and the
-   *         second given {@link ObservableValue}s.
+   * @return a new {@link DoubleExpression} holding the product of the {@link #get() value}s of the first and the second
+   *         given {@link ObservableValue}s.
    * @see #multiply(ObservableDoubleValue)
    */
   public static DoubleExpression multiply(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
@@ -177,7 +177,7 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
   /**
    * @param expression the {@link DoubleExpression}.
    * @param constant the constant {@link Number} to multiply.
-   * @return a new {@link DoubleExpression} holding the product of the {@link #getValue() value} from the given
+   * @return a new {@link DoubleExpression} holding the product of the {@link #get() value} from the given
    *         {@link DoubleExpression} multiplied with the given {@code constant}.
    * @see #multiply(ObservableDoubleValue)
    */
@@ -192,18 +192,18 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
   /**
    * @param expression the {@link DoubleExpression}.
    * @param constant the constant {@code double} to multiply.
-   * @return a new {@link DoubleExpression} holding the product of the {@link #getValue() value} from the given
+   * @return a new {@link DoubleExpression} holding the product of the {@link #get() value} from the given
    *         {@link DoubleExpression} multiplied with the given {@code constant}.
    * @see #multiply(ObservableDoubleValue)
    */
   public static DoubleExpression multiply(NumberExpression<?> expression, double constant) {
 
-    return new DoubleBinding(() -> mul(expression.getValue(), constant), expression);
+    return new DoubleBinding(() -> mul(expression.get(), constant), expression);
   }
 
   /**
    * @param observables the {@link ObservableValue}s to multiply.
-   * @return a new {@link DoubleExpression} holding the product of the {@link #getValue() value}s from the given
+   * @return a new {@link DoubleExpression} holding the product of the {@link #get() value}s from the given
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
@@ -215,7 +215,7 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
   /**
    * @param expression the {@link DoubleExpression}.
    * @param other the {@link ObservableValue} to divide.
-   * @return a new {@link DoubleExpression} holding the quotient of the {@link #getValue() value}s of the first and the
+   * @return a new {@link DoubleExpression} holding the quotient of the {@link #get() value}s of the first and the
    *         second given {@link ObservableValue}s.
    * @see #divide(ObservableDoubleValue)
    */
@@ -230,7 +230,7 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
   /**
    * @param expression the {@link DoubleExpression}.
    * @param constant the constant {@link Number} to divide.
-   * @return a new {@link DoubleExpression} holding the quotient of the {@link #getValue() value} from the given
+   * @return a new {@link DoubleExpression} holding the quotient of the {@link #get() value} from the given
    *         {@link DoubleExpression} divided by the given {@code constant}.
    * @see #divide(ObservableDoubleValue)
    */
@@ -245,18 +245,18 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
   /**
    * @param expression the {@link DoubleExpression}.
    * @param constant the constant {@code double} to divide.
-   * @return a new {@link DoubleExpression} holding the quotient of the {@link #getValue() value} from the given
+   * @return a new {@link DoubleExpression} holding the quotient of the {@link #get() value} from the given
    *         {@link DoubleExpression} divided by the given {@code constant}.
    * @see #divide(ObservableDoubleValue)
    */
   public static DoubleExpression divide(NumberExpression<?> expression, double constant) {
 
-    return new DoubleBinding(() -> div(expression.getValue(), constant), expression);
+    return new DoubleBinding(() -> div(expression.get(), constant), expression);
   }
 
   /**
    * @param observables the {@link ObservableValue}s to divide.
-   * @return a new {@link DoubleExpression} holding the quotient of the {@link #getValue() value}s from the given
+   * @return a new {@link DoubleExpression} holding the quotient of the {@link #get() value}s from the given
    *         {@link ObservableValue}s.
    */
   @SafeVarargs
@@ -290,7 +290,7 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
     double sum = 0;
     for (ReadableValue<? extends Number> observable : observables) {
       if (observable != null) {
-        Number value = observable.getValue();
+        Number value = observable.get();
         if (value != null) {
           sum = sum + value.doubleValue();
         }
@@ -301,7 +301,7 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
 
   private static Double plus(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
 
-    return plus(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+    return plus(ReadableValue.get(v1), ReadableValue.get(v2));
   }
 
   private static Double plus(Number v1, Number v2) {
@@ -329,7 +329,7 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
     boolean first = true;
     for (ReadableValue<? extends Number> observable : observables) {
       if (observable != null) {
-        Number value = observable.getValue();
+        Number value = observable.get();
         if (value != null) {
           if (first) {
             difference = value.doubleValue();
@@ -345,7 +345,7 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
 
   private static Double minus(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
 
-    return minus(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+    return minus(ReadableValue.get(v1), ReadableValue.get(v2));
   }
 
   private static Double minus(Number v1, Number v2) {
@@ -379,7 +379,7 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
       if (observable == null) {
         return ZERO;
       }
-      Number value = observable.getValue();
+      Number value = observable.get();
       if (value == null) {
         return ZERO;
       }
@@ -390,7 +390,7 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
 
   private static Double mul(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
 
-    return mul(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+    return mul(ReadableValue.get(v1), ReadableValue.get(v2));
   }
 
   private static Double mul(Number v1, Number v2) {
@@ -416,7 +416,7 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
     boolean first = true;
     for (ReadableValue<? extends Number> observable : observables) {
       if (observable != null) {
-        Number value = observable.getValue();
+        Number value = observable.get();
         if (value != null) {
           if (first) {
             quotient = value.doubleValue();
@@ -432,7 +432,7 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
 
   private static Double div(ReadableValue<? extends Number> v1, ReadableValue<? extends Number> v2) {
 
-    return div(ReadableValue.unwrap(v1), ReadableValue.unwrap(v2));
+    return div(ReadableValue.get(v1), ReadableValue.get(v2));
   }
 
   private static Double div(Number v1, Number v2) {
