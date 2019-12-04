@@ -14,7 +14,7 @@ public interface WritableBooleanValue extends WritableValue<Boolean>, ReadableBo
    * @see #get()
    * @see #set(Boolean)
    */
-  default void set(boolean value) {
+  default void setValue(boolean value) {
 
     set(Boolean.valueOf(value));
   }
