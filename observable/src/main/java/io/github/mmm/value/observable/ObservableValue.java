@@ -25,7 +25,7 @@ public interface ObservableValue<V>
 
   /**
    * @param sb the {@link StringBuilder} where to append the details of this property for
-   *        {@link #toString()}-Representation.
+   *        {@link Object#toString()}-Representation.
    */
   void toString(StringBuilder sb);
 
