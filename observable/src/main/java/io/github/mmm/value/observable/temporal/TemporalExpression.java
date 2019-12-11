@@ -14,7 +14,7 @@ import io.github.mmm.value.observable.comparable.ComparableExpression;
  * @param <V> type of the {@link #get() value}.
  * @since 1.0.0
  */
-public interface DateExpression<V extends Comparable<? super V>> extends ComparableExpression<V> {
+public interface TemporalExpression<V extends Comparable<? super V>> extends ComparableExpression<V> {
 
   /**
    * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #get() value} is in the future.

@@ -13,4 +13,13 @@ import io.github.mmm.value.observable.temporal.WritableTemporalValue;
  */
 public interface WritableInstantValue extends ReadableInstantValue, WritableTemporalValue<Instant> {
 
+  @Override
+  default Instant parse(String value) {
+
+    if (value == null) {
+      return null;
+    }
+    return Instant.parse(value);
+  }
+
 }

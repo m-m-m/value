@@ -34,13 +34,13 @@ public class LongExpressionMock extends AbstractWritableObservableValue<Long>
   }
 
   @Override
-  protected Long doGetValue() {
+  protected Long doGet() {
 
     return this.value;
   }
 
   @Override
-  protected void doSetValue(Long newValue) {
+  protected void doSet(Long newValue) {
 
     this.value = newValue;
   }

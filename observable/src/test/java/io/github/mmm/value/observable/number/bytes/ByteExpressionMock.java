@@ -34,13 +34,13 @@ public class ByteExpressionMock extends AbstractWritableObservableValue<Byte>
   }
 
   @Override
-  protected Byte doGetValue() {
+  protected Byte doGet() {
 
     return this.value;
   }
 
   @Override
-  protected void doSetValue(Byte newValue) {
+  protected void doSet(Byte newValue) {
 
     this.value = newValue;
   }

@@ -11,6 +11,15 @@ import io.github.mmm.value.observable.number.WritableNumberValue;
  */
 public interface WritableShortValue extends ReadableShortValue, WritableNumberValue<Short> {
 
+  @Override
+  default Short parse(String value) {
+
+    if (value == null) {
+      return null;
+    }
+    return Short.valueOf(value);
+  }
+
   /**
    * @param value the new {@link #getValue() primitive value}.
    * @see #set(Short)

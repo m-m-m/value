@@ -3,13 +3,20 @@
 package io.github.mmm.value.observable.string;
 
 import io.github.mmm.value.ReadableTypedValue;
+import io.github.mmm.value.observable.object.ReadableSimpleValue;
 
 /**
  * {@link ReadableTypedValue} with {@link String} {@link #get() value}.
  *
  * @since 1.0.0
  */
-public interface ReadableStringValue extends ReadableTypedValue<String> {
+public interface ReadableStringValue extends ReadableSimpleValue<String> {
+
+  @Override
+  default String getAsString() {
+
+    return get();
+  }
 
   @Override
   default Class<String> getValueClass() {

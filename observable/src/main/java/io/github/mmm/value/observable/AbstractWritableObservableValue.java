@@ -23,13 +23,13 @@ public abstract class AbstractWritableObservableValue<V> extends AbstractObserva
     if (this.binding != null) {
       return this.binding.get();
     }
-    return doGetValue();
+    return doGet();
   }
 
   /**
    * @return the internal {@link #get() value}.
    */
-  protected abstract V doGetValue();
+  protected abstract V doGet();
 
   @Override
   public void bind(ObservableValue<? extends V> observable) {
@@ -95,11 +95,22 @@ public abstract class AbstractWritableObservableValue<V> extends AbstractObserva
   public void set(V value) {
 
     requireWritable();
-    V oldValue = doGetValue();
+    V oldValue = doGet();
     if (!Objects.equals(oldValue, value)) {
-      doSetValue(value);
-      fireEventWithOldValue(oldValue);
+      setWithChange(oldValue, value);
     }
+  }
+
+  /**
+   * Internal method called from {@link #set(Object)} if the value actually changed.
+   *
+   * @param oldValue the old value.
+   * @param value the new value.
+   */
+  protected void setWithChange(V oldValue, V value) {
+
+    doSet(value);
+    fireEventWithOldValue(oldValue);
   }
 
   /**
@@ -116,6 +127,6 @@ public abstract class AbstractWritableObservableValue<V> extends AbstractObserva
    * @param newValue the new {@link #get() value} to set.
    * @see #set(Object)
    */
-  protected abstract void doSetValue(V newValue);
+  protected abstract void doSet(V newValue);
 
 }

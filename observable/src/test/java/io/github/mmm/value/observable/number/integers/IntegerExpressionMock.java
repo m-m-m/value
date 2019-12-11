@@ -34,13 +34,13 @@ public class IntegerExpressionMock extends AbstractWritableObservableValue<Integ
   }
 
   @Override
-  protected Integer doGetValue() {
+  protected Integer doGet() {
 
     return this.value;
   }
 
   @Override
-  protected void doSetValue(Integer newValue) {
+  protected void doSet(Integer newValue) {
 
     this.value = newValue;
   }

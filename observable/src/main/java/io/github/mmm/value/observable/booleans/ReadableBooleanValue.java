@@ -3,13 +3,14 @@
 package io.github.mmm.value.observable.booleans;
 
 import io.github.mmm.value.ReadableTypedValue;
+import io.github.mmm.value.observable.object.ReadableSimpleValue;
 
 /**
  * {@link ReadableTypedValue} with {@link Boolean} {@link #get() value}.
  *
  * @since 1.0.0
  */
-public interface ReadableBooleanValue extends ReadableTypedValue<Boolean> {
+public interface ReadableBooleanValue extends ReadableSimpleValue<Boolean> {
 
   @Override
   default Class<Boolean> getValueClass() {

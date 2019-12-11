@@ -15,6 +15,15 @@ import io.github.mmm.value.observable.number.WritableNumberValue;
 public interface WritableBigIntegerValue extends ReadableBigIntegerValue, WritableNumberValue<BigInteger> {
 
   @Override
+  default BigInteger parse(String value) {
+
+    if (value == null) {
+      return null;
+    }
+    return new BigInteger(value);
+  }
+
+  @Override
   default void setValueAsNumber(Number value) {
 
     if ((value == null) || (value instanceof BigInteger)) {

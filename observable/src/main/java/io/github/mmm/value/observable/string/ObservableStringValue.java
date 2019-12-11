@@ -3,12 +3,13 @@
 package io.github.mmm.value.observable.string;
 
 import io.github.mmm.value.observable.ObservableValue;
+import io.github.mmm.value.observable.object.ObservableSimpleValue;
 
 /**
  * {@link ObservableValue} with {@link String} {@link #getValue() value}.
  *
  * @since 1.0.0
  */
-public interface ObservableStringValue extends ObservableValue<String>, ReadableStringValue {
+public interface ObservableStringValue extends ObservableSimpleValue<String>, ReadableStringValue {
 
 }

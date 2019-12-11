@@ -34,13 +34,13 @@ public class DoubleExpressionMock extends AbstractWritableObservableValue<Double
   }
 
   @Override
-  protected Double doGetValue() {
+  protected Double doGet() {
 
     return this.value;
   }
 
   @Override
-  protected void doSetValue(Double newValue) {
+  protected void doSet(Double newValue) {
 
     this.value = newValue;
   }

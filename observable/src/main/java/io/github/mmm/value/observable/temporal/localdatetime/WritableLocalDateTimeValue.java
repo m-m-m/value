@@ -13,4 +13,13 @@ import io.github.mmm.value.observable.temporal.WritableTemporalValue;
  */
 public interface WritableLocalDateTimeValue extends ReadableLocalDateTimeValue, WritableTemporalValue<LocalDateTime> {
 
+  @Override
+  default LocalDateTime parse(String value) {
+
+    if (value == null) {
+      return null;
+    }
+    return LocalDateTime.parse(value);
+  }
+
 }

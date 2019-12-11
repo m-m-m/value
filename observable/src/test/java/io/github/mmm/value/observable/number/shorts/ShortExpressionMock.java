@@ -34,13 +34,13 @@ public class ShortExpressionMock extends AbstractWritableObservableValue<Short>
   }
 
   @Override
-  protected Short doGetValue() {
+  protected Short doGet() {
 
     return this.value;
   }
 
   @Override
-  protected void doSetValue(Short newValue) {
+  protected void doSet(Short newValue) {
 
     this.value = newValue;
   }

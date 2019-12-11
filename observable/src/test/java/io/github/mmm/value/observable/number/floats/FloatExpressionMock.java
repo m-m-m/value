@@ -34,13 +34,13 @@ public class FloatExpressionMock extends AbstractWritableObservableValue<Float>
   }
 
   @Override
-  protected Float doGetValue() {
+  protected Float doGet() {
 
     return this.value;
   }
 
   @Override
-  protected void doSetValue(Float newValue) {
+  protected void doSet(Float newValue) {
 
     this.value = newValue;
   }

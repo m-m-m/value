@@ -11,6 +11,15 @@ import io.github.mmm.value.observable.number.WritableNumberValue;
  */
 public interface WritableFloatValue extends ReadableFloatValue, WritableNumberValue<Float> {
 
+  @Override
+  default Float parse(String value) {
+
+    if (value == null) {
+      return null;
+    }
+    return Float.valueOf(value);
+  }
+
   /**
    * @param value the new {@link #getValue() primitive value}.
    * @see #set(Float)

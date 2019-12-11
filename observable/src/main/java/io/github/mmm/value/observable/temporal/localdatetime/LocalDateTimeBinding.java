@@ -2,19 +2,18 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.value.observable.temporal.localdatetime;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.function.Supplier;
 
 import io.github.mmm.value.observable.Binding;
 import io.github.mmm.value.observable.ObservableValue;
-import io.github.mmm.value.observable.temporal.localdate.LocalDateExpression;
 
 /**
- * {@link io.github.mmm.value.observable.Binding} for an {@link LocalDate} {@link #getValue() value}.
+ * {@link io.github.mmm.value.observable.Binding} for an {@link LocalDateTime} {@link #getValue() value}.
  *
  * @since 1.0.0
  */
-public class LocalDateBinding extends Binding<LocalDate> implements LocalDateExpression {
+public class LocalDateTimeBinding extends Binding<LocalDateTime> implements LocalDateTimeExpression {
 
   /**
    * The constructor.
@@ -22,7 +21,7 @@ public class LocalDateBinding extends Binding<LocalDate> implements LocalDateExp
    * @param expression the {@link Supplier} to compute the {@link #getValue() value}.
    * @param dependencies the {@link ObservableValue}s the {@code expression} depends on.
    */
-  public LocalDateBinding(Supplier<LocalDate> expression, ObservableValue<?>... dependencies) {
+  public LocalDateTimeBinding(Supplier<LocalDateTime> expression, ObservableValue<?>... dependencies) {
 
     super(expression, dependencies);
   }

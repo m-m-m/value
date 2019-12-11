@@ -34,13 +34,13 @@ public class BigIntegerExpressionMock extends AbstractWritableObservableValue<Bi
   }
 
   @Override
-  protected BigInteger doGetValue() {
+  protected BigInteger doGet() {
 
     return this.value;
   }
 
   @Override
-  protected void doSetValue(BigInteger newValue) {
+  protected void doSet(BigInteger newValue) {
 
     this.value = newValue;
   }

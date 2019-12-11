@@ -3,6 +3,7 @@
 package io.github.mmm.value.observable.number;
 
 import io.github.mmm.value.WritableValue;
+import io.github.mmm.value.observable.object.WritableSimpleValue;
 
 /**
  * {@link WritableValue} with {@link Number} {@link #get() value}.
@@ -10,7 +11,7 @@ import io.github.mmm.value.WritableValue;
  * @param <N> type of the observable {@link #get() value}.
  * @since 1.0.0
  */
-public abstract interface WritableNumberValue<N extends Number> extends ReadableNumberValue<N>, WritableValue<N> {
+public abstract interface WritableNumberValue<N extends Number> extends ReadableNumberValue<N>, WritableSimpleValue<N> {
 
   /**
    * @param value the new value as generic {@link Number} instance.

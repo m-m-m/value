@@ -34,13 +34,13 @@ public class BigDecimalExpressionMock extends AbstractWritableObservableValue<Bi
   }
 
   @Override
-  protected BigDecimal doGetValue() {
+  protected BigDecimal doGet() {
 
     return this.value;
   }
 
   @Override
-  protected void doSetValue(BigDecimal newValue) {
+  protected void doSet(BigDecimal newValue) {
 
     this.value = newValue;
   }

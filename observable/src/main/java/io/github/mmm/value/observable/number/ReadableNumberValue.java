@@ -3,6 +3,7 @@
 package io.github.mmm.value.observable.number;
 
 import io.github.mmm.value.ReadableTypedValue;
+import io.github.mmm.value.observable.object.ReadableSimpleValue;
 
 /**
  * {@link ReadableTypedValue} with {@link Number} {@link #get() value}.
@@ -10,7 +11,7 @@ import io.github.mmm.value.ReadableTypedValue;
  * @param <N> type of the observable {@link #get() value}.
  * @since 1.0.0
  */
-public abstract interface ReadableNumberValue<N extends Number> extends ReadableTypedValue<N> {
+public abstract interface ReadableNumberValue<N extends Number> extends ReadableSimpleValue<N> {
 
   /**
    * @return the value converted to {@code int}. Will be {@code 0} if undefined.

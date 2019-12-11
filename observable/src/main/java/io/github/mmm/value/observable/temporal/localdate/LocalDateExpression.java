@@ -3,13 +3,13 @@ package io.github.mmm.value.observable.temporal.localdate;
 import java.time.LocalDate;
 
 import io.github.mmm.value.observable.booleans.BooleanBinding;
-import io.github.mmm.value.observable.temporal.DateExpression;
+import io.github.mmm.value.observable.temporal.TemporalExpression;
 
 /**
- * {@link DateExpression} for {@link LocalDate} {@link #getValue() values}.
+ * {@link TemporalExpression} for {@link LocalDate} {@link #getValue() values}.
  *
  */
-public interface LocalDateExpression extends ObservableLocalDateValue, DateExpression<LocalDate> {
+public interface LocalDateExpression extends ObservableLocalDateValue, TemporalExpression<LocalDate> {
 
   @Override
   default BooleanBinding inFuture() {

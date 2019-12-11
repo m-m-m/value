@@ -2,18 +2,17 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.value.observable.temporal.localdatetime;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import io.github.mmm.value.observable.booleans.BooleanBinding;
-import io.github.mmm.value.observable.temporal.DateExpression;
+import io.github.mmm.value.observable.temporal.TemporalExpression;
 
 /**
- * {@link DateExpression} for {@link LocalDate} {@link #getValue() values}.
- * 
+ * {@link TemporalExpression} for {@link LocalDateTime} {@link #getValue() values}.
+ *
  * @since 1.0.0
  */
-public interface LocalDateTimeExpression extends ObservableLocalDateTimeValue, DateExpression<LocalDateTime> {
+public interface LocalDateTimeExpression extends ObservableLocalDateTimeValue, TemporalExpression<LocalDateTime> {
 
   @Override
   default BooleanBinding inFuture() {

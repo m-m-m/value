@@ -57,4 +57,12 @@ module io.github.mmm.value.observable {
 
   exports io.github.mmm.value.observable.temporal.localdatetime;
 
+  exports io.github.mmm.value.observable.temporal.localtime;
+
+  exports io.github.mmm.value.observable.temporal.offsetdatetime;
+
+  exports io.github.mmm.value.observable.temporal.offsettime;
+
+  exports io.github.mmm.value.observable.temporal.zoneddatetime;
+
 }

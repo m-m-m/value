@@ -11,6 +11,15 @@ import io.github.mmm.value.observable.number.WritableNumberValue;
  */
 public interface WritableLongValue extends ReadableLongValue, WritableNumberValue<Long> {
 
+  @Override
+  default Long parse(String value) {
+
+    if (value == null) {
+      return null;
+    }
+    return Long.valueOf(value);
+  }
+
   /**
    * @param value the new {@link #getValue() primitive value}.
    * @see #set(Long)

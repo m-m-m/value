@@ -11,6 +11,15 @@ import io.github.mmm.value.observable.number.WritableNumberValue;
  */
 public interface WritableByteValue extends ReadableByteValue, WritableNumberValue<Byte> {
 
+  @Override
+  default Byte parse(String value) {
+
+    if (value == null) {
+      return null;
+    }
+    return Byte.valueOf(value);
+  }
+
   /**
    * @param value the new {@link #get() primitive value}.
    * @see #set(Byte)

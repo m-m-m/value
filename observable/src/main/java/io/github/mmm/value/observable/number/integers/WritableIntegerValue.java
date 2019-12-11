@@ -11,6 +11,15 @@ import io.github.mmm.value.observable.number.WritableNumberValue;
  */
 public interface WritableIntegerValue extends ReadableIntegerValue, WritableNumberValue<Integer> {
 
+  @Override
+  default Integer parse(String value) {
+
+    if (value == null) {
+      return null;
+    }
+    return Integer.valueOf(value);
+  }
+
   /**
    * @param value the new {@link #getValue() primitive value}.
    * @see #set(Integer)

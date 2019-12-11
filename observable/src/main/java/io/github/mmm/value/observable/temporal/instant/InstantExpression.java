@@ -3,13 +3,13 @@ package io.github.mmm.value.observable.temporal.instant;
 import java.time.Instant;
 
 import io.github.mmm.value.observable.booleans.BooleanBinding;
-import io.github.mmm.value.observable.temporal.DateExpression;
+import io.github.mmm.value.observable.temporal.TemporalExpression;
 
 /**
- * {@link DateExpression} for {@link Instant} {@link #getValue() values}.
+ * {@link TemporalExpression} for {@link Instant} {@link #getValue() values}.
  *
  */
-public interface InstantExpression extends ObservableInstantValue, DateExpression<Instant> {
+public interface InstantExpression extends ObservableInstantValue, TemporalExpression<Instant> {
 
   @Override
   default BooleanBinding inFuture() {

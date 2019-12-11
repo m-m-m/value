@@ -4,6 +4,7 @@ package io.github.mmm.value.observable.temporal;
 
 import java.time.temporal.Temporal;
 
+import io.github.mmm.value.observable.object.ReadableSimpleValue;
 import io.github.mmm.value.observable.object.ReadableTypedObjectValue;
 
 /**
@@ -12,6 +13,6 @@ import io.github.mmm.value.observable.object.ReadableTypedObjectValue;
  * @param <V> type of the {@link #getValue() value}.
  * @since 1.0.0
  */
-public interface ReadableTemporalValue<V extends Temporal> extends ReadableTypedObjectValue<V> {
+public interface ReadableTemporalValue<V extends Temporal> extends ReadableTypedObjectValue<V>, ReadableSimpleValue<V> {
 
 }
