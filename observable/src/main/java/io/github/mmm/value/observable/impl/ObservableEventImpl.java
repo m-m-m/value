@@ -1,6 +1,10 @@
 /* Copyright (c) The m-m-m Team, Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0 */
-package io.github.mmm.value.observable;
+package io.github.mmm.value.observable.impl;
+
+import io.github.mmm.value.observable.ObservableEvent;
+import io.github.mmm.value.observable.ObservableEventListener;
+import io.github.mmm.value.observable.ObservableValue;
 
 /**
  * Default implementation of {@link ObservableEvent}.
@@ -76,16 +80,19 @@ public class ObservableEventImpl<V> implements ObservableEvent<V> {
    * Needs to be called before this event is sent as a new event to the first {@link ObservableEventListener}.
    *
    * @param theOldValue the {@link #getOldValue() old value}.
+   * @return this event itself or a new instance if locked.
    */
-  ObservableEventImpl<V> startWithOldValue(V theOldValue) {
+  public ObservableEventImpl<V> startWithOldValue(V theOldValue) {
 
     return start(theOldValue, true, null);
   }
 
   /**
    * Needs to be called before this event is sent as a new event to the first {@link ObservableEventListener}.
+   *
+   * @return this event itself or a new instance if locked.
    */
-  ObservableEventImpl<V> start() {
+  public ObservableEventImpl<V> start() {
 
     return start(null, false, null);
   }
@@ -94,8 +101,9 @@ public class ObservableEventImpl<V> implements ObservableEvent<V> {
    * Needs to be called before this event is sent as a new event to the first {@link ObservableEventListener}.
    *
    * @param valueChange the {@link #getChange() change}.
+   * @return this event itself or a new instance if locked.
    */
-  ObservableEventImpl<V> startWithChange(Object valueChange) {
+  public ObservableEventImpl<V> startWithChange(Object valueChange) {
 
     return start(null, false, valueChange);
   }
@@ -133,7 +141,10 @@ public class ObservableEventImpl<V> implements ObservableEvent<V> {
     return event;
   }
 
-  void end() {
+  /**
+   * Ends the event.
+   */
+  public void end() {
 
     this.locked = true;
   }

@@ -5,6 +5,7 @@ package io.github.mmm.value.observable;
 import java.util.Objects;
 
 import io.github.mmm.event.AbstractEventSource;
+import io.github.mmm.value.observable.impl.ObservableEventImpl;
 
 /**
  * Abstract base implementation of {@link ObservableValue} that handles {@link ObservableEventListener}s.
