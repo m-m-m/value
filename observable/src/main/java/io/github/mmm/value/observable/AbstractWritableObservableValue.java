@@ -32,21 +32,21 @@ public abstract class AbstractWritableObservableValue<V> extends AbstractObserva
   protected abstract V doGet();
 
   @Override
-  public void bind(ObservableValue<? extends V> observable) {
+  public void bindOneWay(ObservableValue<? extends V> observable) {
 
     Objects.requireNonNull(observable, "observable");
     if (!observable.equals(this.binding)) {
       requireWritable();
-      unbind();
+      unbindOneWay();
       bindInternal(observable);
     }
   }
 
   /**
-   * Internal method of {@link #bind(ObservableValue)}. Do not call.
+   * Internal method of {@link #bindOneWay(ObservableValue)}. Do not call.
    *
    * @param observable the {@link ObservableValue} to bind.
-   * @see #bind(ObservableValue)
+   * @see #bindOneWay(ObservableValue)
    */
   protected void bindInternal(ObservableValue<? extends V> observable) {
 
@@ -62,7 +62,7 @@ public abstract class AbstractWritableObservableValue<V> extends AbstractObserva
   }
 
   @Override
-  public void unbind() {
+  public void unbindOneWay() {
 
     if (this.binding != null) {
       requireWritable();
@@ -74,19 +74,19 @@ public abstract class AbstractWritableObservableValue<V> extends AbstractObserva
   }
 
   @Override
-  public boolean isBound() {
+  public boolean isBoundOneWay() {
 
     return (this.binding != null);
   }
 
   @Override
-  public void bindBidirectional(WritableObservableValue<V> other) {
+  public void bindTwoWay(WritableObservableValue<V> other) {
 
     BidirectionalBinding.bind(this, other);
   }
 
   @Override
-  public void unbindBidirectional(WritableObservableValue<V> other) {
+  public void unbindTwoWay(WritableObservableValue<V> other) {
 
     BidirectionalBinding.unbind(this, other);
   }
@@ -118,7 +118,7 @@ public abstract class AbstractWritableObservableValue<V> extends AbstractObserva
    */
   protected void requireWritable() throws IllegalStateException {
 
-    if (isBound()) {
+    if (isBoundOneWay()) {
       throw new IllegalStateException(toString() + ": The value cannot be set if bound unidirectional.");
     }
   }
