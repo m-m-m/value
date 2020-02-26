@@ -14,10 +14,10 @@ import io.github.mmm.value.WritableValue;
 public interface WritableSimpleValue<V> extends ReadableSimpleValue<V>, WritableValue<V> {
 
   /**
-   * @param value the value as {@link String}. May be {@code null}.
+   * @param valueAsString the value as {@link String}. May be {@code null}.
    * @return the parsed {@code value}. May be {@code null} (e.g. if the given {@link String} is {@code null}).
    */
-  V parse(String value);
+  V parse(String valueAsString);
 
   /**
    * @param value
