@@ -3,17 +3,18 @@
 package io.github.mmm.value;
 
 /**
- * Interface for a typed path.
+ * Interface for a valued path. May be a property itself, a reference on a property or a query criteria to match a
+ * property.
  *
- * @param <V> the generic type of the property value identified by this path.
+ * @param <V> type of the {@link #get() value}.
  *
  * @since 1.0.0
  */
 public interface PropertyPath<V> extends ReadableValue<V> {
 
   /**
-   * @return the name what is the {@link String} representation of this path. May be a single property (e.g.
-   *         "MyProperty") or a dot-separated path (e.g. "MyEntity.MyProperty").
+   * @return the name of this path. May be a single property (e.g. "MyProperty") or a dot-separated path (e.g.
+   *         "MyEntity.MyProperty").
    */
   String getName();
 
