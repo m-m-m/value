@@ -96,9 +96,21 @@ public abstract class AbstractWritableObservableValue<V> extends AbstractObserva
 
     requireWritable();
     V oldValue = doGet();
-    if (!Objects.equals(oldValue, value)) {
+    if (!isValueEqual(value, oldValue)) {
       setWithChange(oldValue, value);
     }
+  }
+
+  /**
+   * Null-safe check if two {@link #get() values} are considered equal (unchanged).
+   *
+   * @param newValue the new value.
+   * @param oldValue the old value.
+   * @return {@code true} if equal (unchanged), {@code false} otherwise (changed),
+   */
+  protected boolean isValueEqual(V newValue, V oldValue) {
+
+    return Objects.equals(oldValue, newValue);
   }
 
   /**
