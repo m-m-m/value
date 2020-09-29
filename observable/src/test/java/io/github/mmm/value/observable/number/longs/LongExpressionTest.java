@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import io.github.mmm.value.observable.number.NumberExpression;
 import io.github.mmm.value.observable.number.NumberExpressionTest;
-import io.github.mmm.value.observable.number.longs.LongBinding;
-import io.github.mmm.value.observable.number.longs.LongExpression;
 
 /**
  * Test of {@link LongExpression}.

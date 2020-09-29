@@ -3,8 +3,6 @@
 package io.github.mmm.value.observable.number.floats;
 
 import io.github.mmm.value.observable.AbstractWritableObservableValue;
-import io.github.mmm.value.observable.number.floats.FloatExpression;
-import io.github.mmm.value.observable.number.floats.WritableFloatValue;
 
 /**
  * Implementation of {@link FloatExpression} for testing.

@@ -3,8 +3,6 @@
 package io.github.mmm.value.observable.number.doubles;
 
 import io.github.mmm.value.observable.AbstractWritableObservableValue;
-import io.github.mmm.value.observable.number.doubles.DoubleExpression;
-import io.github.mmm.value.observable.number.doubles.WritableDoubleValue;
 
 /**
  * Implementation of {@link DoubleExpression} for testing.

@@ -3,8 +3,6 @@
 package io.github.mmm.value.observable.number.bytes;
 
 import io.github.mmm.value.observable.AbstractWritableObservableValue;
-import io.github.mmm.value.observable.number.bytes.ByteExpression;
-import io.github.mmm.value.observable.number.bytes.WritableByteValue;
 
 /**
  * Implementation of {@link ByteExpression} for testing.

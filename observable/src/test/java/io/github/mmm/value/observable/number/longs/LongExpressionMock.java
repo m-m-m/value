@@ -3,8 +3,6 @@
 package io.github.mmm.value.observable.number.longs;
 
 import io.github.mmm.value.observable.AbstractWritableObservableValue;
-import io.github.mmm.value.observable.number.longs.LongExpression;
-import io.github.mmm.value.observable.number.longs.WritableLongValue;
 
 /**
  * Implementation of {@link LongExpression} for testing.

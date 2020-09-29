@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import io.github.mmm.value.observable.number.NumberExpression;
 import io.github.mmm.value.observable.number.NumberExpressionTest;
-import io.github.mmm.value.observable.number.shorts.ShortBinding;
-import io.github.mmm.value.observable.number.shorts.ShortExpression;
 
 /**
  * Test of {@link ShortExpression}.

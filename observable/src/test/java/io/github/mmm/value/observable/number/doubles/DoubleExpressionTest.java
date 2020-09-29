@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import io.github.mmm.value.observable.number.NumberExpression;
 import io.github.mmm.value.observable.number.NumberExpressionTest;
-import io.github.mmm.value.observable.number.doubles.DoubleBinding;
-import io.github.mmm.value.observable.number.doubles.DoubleExpression;
 
 /**
  * Test of {@link DoubleExpression}.

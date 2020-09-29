@@ -3,8 +3,6 @@
 package io.github.mmm.value.observable.number.integers;
 
 import io.github.mmm.value.observable.AbstractWritableObservableValue;
-import io.github.mmm.value.observable.number.integers.IntegerExpression;
-import io.github.mmm.value.observable.number.integers.WritableIntegerValue;
 
 /**
  * Implementation of {@link IntegerExpression} for testing.

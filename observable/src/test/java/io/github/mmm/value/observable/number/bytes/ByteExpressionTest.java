@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import io.github.mmm.value.observable.number.NumberExpression;
 import io.github.mmm.value.observable.number.NumberExpressionTest;
-import io.github.mmm.value.observable.number.bytes.ByteBinding;
-import io.github.mmm.value.observable.number.bytes.ByteExpression;
 
 /**
  * Test of {@link ByteExpression}.

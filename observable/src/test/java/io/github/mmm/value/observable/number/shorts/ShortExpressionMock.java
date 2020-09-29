@@ -3,8 +3,6 @@
 package io.github.mmm.value.observable.number.shorts;
 
 import io.github.mmm.value.observable.AbstractWritableObservableValue;
-import io.github.mmm.value.observable.number.shorts.ShortExpression;
-import io.github.mmm.value.observable.number.shorts.WritableShortValue;
 
 /**
  * Implementation of {@link ShortExpression} for testing.
