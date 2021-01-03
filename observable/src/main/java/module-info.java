@@ -47,6 +47,8 @@ module io.github.mmm.value.observable {
 
   exports io.github.mmm.value.observable.object;
 
+  exports io.github.mmm.value.observable.pattern;
+
   exports io.github.mmm.value.observable.string;
 
   exports io.github.mmm.value.observable.temporal;
@@ -64,5 +66,4 @@ module io.github.mmm.value.observable {
   exports io.github.mmm.value.observable.temporal.offsettime;
 
   exports io.github.mmm.value.observable.temporal.zoneddatetime;
-
 }
