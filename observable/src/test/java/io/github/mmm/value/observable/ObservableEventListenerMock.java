@@ -2,9 +2,6 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.value.observable;
 
-import io.github.mmm.value.observable.ObservableEvent;
-import io.github.mmm.value.observable.ObservableEventListener;
-
 /**
  * Mock implementation of {@link ObservableEventListener} for testing.
  *
