@@ -10,12 +10,18 @@ package io.github.mmm.value;
  *
  * @since 1.0.0
  */
-public interface PropertyPath<V> extends ReadableValue<V> {
+public interface PropertyPath<V> extends ReadableValue<V>, ReadablePath {
 
   /**
    * @return the name of this path. May be a single property (e.g. "MyProperty") or a dot-separated path (e.g.
    *         "MyEntity.MyProperty").
    */
   String getName();
+
+  @Override
+  default String path() {
+
+    return getName();
+  }
 
 }
