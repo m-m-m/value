@@ -15,8 +15,6 @@
   <description>Simple library for generic value access.</description>
 
   <properties>
-    <revision>1.0.0</revision>
-    <changelist>-SNAPSHOT</changelist>
     <java.version>11</java.version>
     <mmm.repository>value</mmm.repository>
   </properties>
@@ -57,7 +55,7 @@
       <dependency>
         <groupId>${project.groupId}</groupId>
         <artifactId>mmm-event-parent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>0.1.0-SNAPSHOT</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
