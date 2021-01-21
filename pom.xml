@@ -15,7 +15,6 @@
   <description>Simple library for generic value access.</description>
 
   <properties>
-    <java.version>11</java.version>
     <mmm.repository>value</mmm.repository>
   </properties>
 
@@ -23,22 +22,6 @@
     <module>core</module>
     <module>observable</module>
   </modules>
-
-  <dependencies>
-    <!-- Test -->
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter</artifactId>
-      <version>5.5.1</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.assertj</groupId>
-      <artifactId>assertj-core</artifactId>
-      <version>3.12.2</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
 
   <dependencyManagement>
     <dependencies>
@@ -55,7 +38,7 @@
       <dependency>
         <groupId>${project.groupId}</groupId>
         <artifactId>mmm-event-parent</artifactId>
-        <version>0.1.0-SNAPSHOT</version>
+        <version>0.1.0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
