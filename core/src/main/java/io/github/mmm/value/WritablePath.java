@@ -2,6 +2,8 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.value;
 
+import java.util.function.Supplier;
+
 /**
  * Interface to {@link #path() read} and {@link #path(String) write} the {@link #path()}.
  *
@@ -14,8 +16,15 @@ public interface WritablePath extends ReadablePath {
    * properties of beans implementing this interface.
    *
    * @param path new value of {@link #path()}.
-   * @return the old value of {@link #path()}.
    */
-  String path(String path);
+  void path(String path);
+
+  /**
+   * This method sets the {@link #path()} of this object as dynamic reference to the given {@link Supplier}. It is not a
+   * regular setter to avoid conflicts with custom properties of beans implementing this interface.
+   *
+   * @param pathSupplier the {@link Supplier} that {@link Supplier#get() provides} the {@link #path()}.
+   */
+  void path(Supplier<String> pathSupplier);
 
 }
