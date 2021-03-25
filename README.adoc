@@ -17,8 +17,14 @@ Maven Dependency:
 <dependency>
   <groupId>io.github.m-m-m</groupId>
   <artifactId>mmm-value</artifactId>
+  <!-- <version>${mmmVersion}</version> -->
 </dependency>
 ```
+Gradle Dependency:
+```
+implementation 'io.github.m-m-m:mmm-value:${mmmVersion}'
+```
+For `${mmmVersion}` please fill in the latest version that you can find in the badge above.
 
 Module Dependency:
 ```java
@@ -40,8 +46,14 @@ Maven Dependency:
 <dependency>
   <groupId>io.github.m-m-m</groupId>
   <artifactId>mmm-value-observable</artifactId>
+  <!-- <version>${mmmVersion}</version> -->
 </dependency>
 ```
+Gradle Dependency:
+```
+implementation 'io.github.m-m-m:mmm-value-observable:${mmmVersion}'
+```
+For `${mmmVersion}` please fill in the latest version that you can find in the badge above.
 
 Module Dependency:
 ```java
