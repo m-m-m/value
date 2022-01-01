@@ -8,6 +8,7 @@ import io.github.mmm.value.observable.temporal.TemporalExpression;
 /**
  * {@link TemporalExpression} for {@link Instant} {@link #getValue() values}.
  *
+ * @since 1.0.0
  */
 public interface InstantExpression extends ObservableInstantValue, TemporalExpression<Instant> {
 

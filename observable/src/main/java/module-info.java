@@ -53,6 +53,8 @@ module io.github.mmm.value.observable {
 
   exports io.github.mmm.value.observable.temporal;
 
+  exports io.github.mmm.value.observable.temporal.duration;
+
   exports io.github.mmm.value.observable.temporal.instant;
 
   exports io.github.mmm.value.observable.temporal.localdate;
