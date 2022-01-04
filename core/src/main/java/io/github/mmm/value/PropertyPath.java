@@ -19,7 +19,7 @@ public interface PropertyPath<V> extends ReadableValue<V>, ReadablePath {
   String getName();
 
   @Override
-  default String path() {
+  default String pathSegment() {
 
     return getName();
   }
