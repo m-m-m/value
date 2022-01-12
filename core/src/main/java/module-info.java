@@ -6,5 +6,7 @@
  * Provides a minimalistic but powerful API for value containers.
  */
 module io.github.mmm.value {
+
   exports io.github.mmm.value;
+
 }
