@@ -42,9 +42,11 @@ public interface TypeMapper<S, T> {
    *         the name for each decomposed segment has to be unique in some contexts (e.g. as database column). Therefore
    *         if you create a {@link #next() decomposing} {@link TypeMapper} each segment map to a unique name. We
    *         strongly recommend to append a suffix starting with the given separator followed by a short but expressive
-   *         segment name. A {@link TypeMapper} for {@code MonetaryAmount} could map the {@code name} "price" to
-   *         "price$value" with a {@link #getTargetType() target type} of {@link Number} or {@link java.math.BigDecimal}
-   *         having a {@link #next() next}
+   *         segment name. A {@link TypeMapper} for {@code MonetaryAmount} could map the {@code name} "Price" to
+   *         "Price$Value" with a {@link #getTargetType() target type} of {@link Number} or {@link java.math.BigDecimal}
+   *         having a {@link #next() next} that maps to "Price$Currency" of type {@link java.util.Currency}. Another
+   *         obvious example is the type {@link io.github.mmm.base.range.Range} that would result in mapping the
+   *         {@code name} "Range" to "Range$Min" and "Range$Max".
    */
   default String mapName(String name, String separator) {
 
@@ -71,10 +73,19 @@ public interface TypeMapper<S, T> {
   }
 
   /**
-   * @param source the Java value to decompose.
-   * @return the SQL value to store in the column represented by this type.
+   * @param source the value of the {@link #getSourceType() source type} to convert. Must not be {@code null}. For
+   *        {@code null} values use {@link #toTargetNull()} instead.
+   * @return the {@code source} value converted to the {@link #getTargetType() target type}.
    */
   T toTarget(S source);
+
+  /**
+   * @return the representation of {@code null} for the {@link #getTargetType() target type} (typically {@code null}).
+   */
+  default T toTargetNull() {
+
+    return null;
+  }
 
   /**
    * This method converts back from the {@link #getTargetType() target type} to the {@link #getSourceType() source
@@ -82,13 +93,22 @@ public interface TypeMapper<S, T> {
    * <b>ATTENTION:</b> This method may only be used for atomic {@link TypeMapper}s. For {@link #next() composite}
    * {@link TypeMapper} use {@link #with(Builder, Object)} or {@link #toSource(Object...)}.
    *
-   * @param target the value of the {@link #getTargetType() target type} to convert.
-   * @return the converted {@link #getSourceType() source} value.
+   * @param target the value of the {@link #getTargetType() target type} to convert. Must not be {@code null}. For
+   *        {@code null} values use {@link #toSourceNull()} instead.
+   * @return the {@code target} value converted to the {@link #getSourceType() source type}.
    */
   @SuppressWarnings("unchecked")
   default S toSource(T target) {
 
     return (S) target;
+  }
+
+  /**
+   * @return the representation of {@code null} for the {@link #getSourceType() source type} (typically {@code null}).
+   */
+  default S toSourceNull() {
+
+    return null;
   }
 
   /**

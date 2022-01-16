@@ -9,24 +9,22 @@ package io.github.mmm.value.converter;
  */
 public abstract class AtomicTypeMapper<S, T> extends AbstractTypeMapper<S, T> {
 
-  private final Class<? extends S> sourceType;
+  /**
+   * The constructor.
+   */
+  public AtomicTypeMapper() {
+
+    this("");
+  }
 
   /**
    * The constructor.
    *
-   * @param sourceType the {@link #getSourceType() source type}.
    * @param declaration the {@link #getDeclaration() SQL type declaration}.
    */
-  public AtomicTypeMapper(Class<? extends S> sourceType, String declaration) {
+  public AtomicTypeMapper(String declaration) {
 
     super(declaration);
-    this.sourceType = sourceType;
-  }
-
-  @Override
-  public Class<? extends S> getSourceType() {
-
-    return this.sourceType;
   }
 
   @Override

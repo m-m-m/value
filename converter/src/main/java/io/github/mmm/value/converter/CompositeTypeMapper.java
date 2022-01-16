@@ -1,5 +1,7 @@
 package io.github.mmm.value.converter;
 
+import io.github.mmm.base.lang.Builder;
+
 /**
  * Implementation of {@link TypeMapper} for a composite type mapping. It will decompose the {@link #getSourceType()
  * source type} into multiple segments and has to have at least one {@link #next()} {@link TypeMapper}.
@@ -10,7 +12,8 @@ package io.github.mmm.value.converter;
  */
 public abstract class CompositeTypeMapper<S, T> extends AbstractTypeMapper<S, T> {
 
-  private final String suffix;
+  /** @see #getSuffix() */
+  protected final String suffix;
 
   private final CompositeTypeMapper<S, ?> next;
 
@@ -61,5 +64,18 @@ public abstract class CompositeTypeMapper<S, T> extends AbstractTypeMapper<S, T>
 
     return this.next;
   }
+
+  @Override
+  public S toSource(T target) {
+
+    // you shall not call this method on composite type mappers, read the JavaDocs...
+    throw new IllegalStateException();
+  }
+
+  @Override
+  public abstract Builder<S> sourceBuilder();
+
+  @Override
+  public abstract void with(Builder<S> builder, T targetSegment);
 
 }

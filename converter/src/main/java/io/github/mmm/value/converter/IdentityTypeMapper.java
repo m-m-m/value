@@ -9,21 +9,30 @@ package io.github.mmm.value.converter;
  */
 public class IdentityTypeMapper<V> extends AtomicTypeMapper<V, V> {
 
+  private final Class<? extends V> type;
+
   /**
    * The constructor.
    *
-   * @param sourceType the {@link #getSourceType() source type}.
+   * @param type the {@link #getSourceType() source type} and {@link #getTargetType() target type}.
    * @param declaration the {@link #getDeclaration() SQL type declaration}.
    */
-  public IdentityTypeMapper(Class<? extends V> sourceType, String declaration) {
+  public IdentityTypeMapper(Class<? extends V> type, String declaration) {
 
-    super(sourceType, declaration);
+    super(declaration);
+    this.type = type;
+  }
+
+  @Override
+  public Class<? extends V> getSourceType() {
+
+    return this.type;
   }
 
   @Override
   public Class<? extends V> getTargetType() {
 
-    return getSourceType();
+    return this.type;
   }
 
   @Override
