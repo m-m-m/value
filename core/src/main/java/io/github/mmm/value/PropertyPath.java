@@ -10,7 +10,7 @@ package io.github.mmm.value;
  *
  * @since 1.0.0
  */
-public interface PropertyPath<V> extends ReadableValue<V>, ReadablePath, CriteriaSelection<V> {
+public interface PropertyPath<V> extends ReadableValue<V>, ReadablePath, CriteriaObject<V> {
 
   /**
    * @return the name of this path. May be a single property (e.g. "MyProperty") or a dot-separated path (e.g.
