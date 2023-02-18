@@ -27,6 +27,8 @@ module io.github.mmm.value.observable {
 
   exports io.github.mmm.value.observable.container.set;
 
+  exports io.github.mmm.value.observable.locale;
+
   exports io.github.mmm.value.observable.number;
 
   exports io.github.mmm.value.observable.number.bigdecimal;
