@@ -32,9 +32,18 @@ public interface ReadablePath {
       return pathSegment();
     }
     PathBuilder builder = PathBuilder.of();
-    parent.path(builder);
-    builder.add(pathSegment());
+    path(builder);
     return builder.toString();
+  }
+
+  /**
+   * @param fixed {@code true} to prefer static {@link #pathSegment() segments} if available, {@code false} otherwise.
+   * @return the path of this object. May be a single property name (e.g. "MyProperty") or a dot-separated path (e.g.
+   *         "MyEntity.MyProperty").
+   */
+  default String path(boolean fixed) {
+
+    return path();
   }
 
   /**
@@ -47,10 +56,7 @@ public interface ReadablePath {
     if (parent != null) {
       parent.path(builder);
     }
-    String pathSegment = pathSegment();
-    if ((pathSegment != null) && !pathSegment.isEmpty()) {
-      builder.add(pathSegment);
-    }
+    builder.add(this);
   }
 
   /**
@@ -65,6 +71,11 @@ public interface ReadablePath {
    * Interface for a builder to a path.
    */
   interface PathBuilder {
+
+    default void add(ReadablePath path) {
+
+      add(path.pathSegment());
+    }
 
     /**
      * @param segment the {@link ReadablePath#path() path} segment to add. Typically the {@link PropertyPath#getName()
