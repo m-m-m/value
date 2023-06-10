@@ -99,7 +99,7 @@ public abstract class AbstractObservableValue<V>
   /**
    * Fires a default {@link ObservableEvent#getChange() value change} event.
    *
-   * @param change the {@link ObservableEvent#getChange() change}.
+   * @param change the {@link ObservableEvent#getChange() changed value}.
    * @see #fireEvent(ObservableEvent)
    */
   protected void fireChange(Object change) {
