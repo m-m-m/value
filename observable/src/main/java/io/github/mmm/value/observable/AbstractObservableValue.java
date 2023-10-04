@@ -4,7 +4,8 @@ package io.github.mmm.value.observable;
 
 import java.util.Objects;
 
-import io.github.mmm.event.AbstractEventSource;
+import io.github.mmm.event.AbstractEventSender;
+import io.github.mmm.event.EventListener;
 import io.github.mmm.value.observable.impl.ObservableEventImpl;
 
 /**
@@ -14,7 +15,7 @@ import io.github.mmm.value.observable.impl.ObservableEventImpl;
  * @since 1.0.0
  */
 public abstract class AbstractObservableValue<V>
-    extends AbstractEventSource<ObservableEvent<V>, ObservableEventListener<? super V>> implements ObservableValue<V> {
+    extends AbstractEventSender<ObservableEvent<V>, ObservableEventListener<? super V>> implements ObservableValue<V> {
 
   private ObservableEventImpl<V> observableChangeEvent;
 
@@ -29,12 +30,12 @@ public abstract class AbstractObservableValue<V>
   }
 
   @Override
-  public void addListener(ObservableEventListener<? super V> listener, boolean weak) {
+  protected void doAddListener(EventListener<ObservableEvent<V>> listener) {
 
     if (listener instanceof ChangeAwareObservableEventListener) {
       this.changeAwareCount++;
     }
-    super.addListener(listener, weak);
+    super.doAddListener(listener);
   }
 
   @Override
@@ -117,9 +118,9 @@ public abstract class AbstractObservableValue<V>
   }
 
   @Override
-  protected void fireEvent(ObservableEvent<V> event) {
+  protected boolean fireEvent(ObservableEvent<V> event) {
 
-    super.fireEvent(event);
+    return super.fireEvent(event);
   }
 
   /**
