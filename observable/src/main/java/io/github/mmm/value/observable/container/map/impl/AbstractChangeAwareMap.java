@@ -6,6 +6,7 @@ import java.util.AbstractMap;
 import java.util.Map;
 
 import io.github.mmm.event.ChangeType;
+import io.github.mmm.event.EventListener;
 import io.github.mmm.event.EventSourceAdapter;
 import io.github.mmm.value.observable.container.map.ChangeAwareMap;
 import io.github.mmm.value.observable.container.map.MapChange;
@@ -20,7 +21,7 @@ import io.github.mmm.value.observable.container.map.MapChangeListener;
  */
 public abstract class AbstractChangeAwareMap<K, V> extends AbstractMap<K, V> implements ChangeAwareMap<K, V> {
 
-  private EventSourceAdapter<MapChange<K, V>, MapChangeListener<K, V>> eventAdapter;
+  private EventSourceAdapter<MapChange<K, V>, EventListener<MapChange<K, V>>> eventAdapter;
 
   /**
    * The constructor.
@@ -34,13 +35,17 @@ public abstract class AbstractChangeAwareMap<K, V> extends AbstractMap<K, V> imp
   @Override
   public void addListener(MapChangeListener<K, V> listener, boolean weak) {
 
-    this.eventAdapter = this.eventAdapter.addListener(listener, weak);
+    EventListener<MapChange<K, V>> l = listener;
+    if (weak) {
+      l = l.weak(this);
+    }
+    this.eventAdapter = this.eventAdapter.addListener(l);
   }
 
   @Override
   public boolean removeListener(MapChangeListener<K, V> listener) {
 
-    EventSourceAdapter<MapChange<K, V>, MapChangeListener<K, V>> adapter = this.eventAdapter.removeListener(listener);
+    var adapter = this.eventAdapter.removeListener(listener);
     if (adapter == null) {
       return false;
     }

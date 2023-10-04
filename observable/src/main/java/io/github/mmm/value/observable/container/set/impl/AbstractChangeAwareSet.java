@@ -5,6 +5,7 @@ package io.github.mmm.value.observable.container.set.impl;
 import java.util.AbstractSet;
 
 import io.github.mmm.event.ChangeType;
+import io.github.mmm.event.EventListener;
 import io.github.mmm.event.EventSourceAdapter;
 import io.github.mmm.value.observable.container.set.ChangeAwareSet;
 import io.github.mmm.value.observable.container.set.SetChange;
@@ -18,7 +19,7 @@ import io.github.mmm.value.observable.container.set.SetChangeListener;
  */
 public abstract class AbstractChangeAwareSet<E> extends AbstractSet<E> implements ChangeAwareSet<E> {
 
-  private EventSourceAdapter<SetChange<E>, SetChangeListener<E>> eventAdapter;
+  private EventSourceAdapter<SetChange<E>, EventListener<SetChange<E>>> eventAdapter;
 
   /**
    * The constructor.
@@ -32,13 +33,17 @@ public abstract class AbstractChangeAwareSet<E> extends AbstractSet<E> implement
   @Override
   public void addListener(SetChangeListener<E> listener, boolean weak) {
 
-    this.eventAdapter = this.eventAdapter.addListener(listener, weak);
+    EventListener<SetChange<E>> l = listener;
+    if (weak) {
+      l = l.weak(this);
+    }
+    this.eventAdapter = this.eventAdapter.addListener(l);
   }
 
   @Override
   public boolean removeListener(SetChangeListener<E> listener) {
 
-    EventSourceAdapter<SetChange<E>, SetChangeListener<E>> adapter = this.eventAdapter.removeListener(listener);
+    var adapter = this.eventAdapter.removeListener(listener);
     if (adapter == null) {
       return false;
     }

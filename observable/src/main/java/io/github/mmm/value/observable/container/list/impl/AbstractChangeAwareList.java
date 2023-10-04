@@ -5,6 +5,7 @@ package io.github.mmm.value.observable.container.list.impl;
 import java.util.AbstractList;
 
 import io.github.mmm.event.ChangeType;
+import io.github.mmm.event.EventListener;
 import io.github.mmm.event.EventSourceAdapter;
 import io.github.mmm.value.observable.container.list.ChangeAwareList;
 import io.github.mmm.value.observable.container.list.ListChange;
@@ -18,7 +19,7 @@ import io.github.mmm.value.observable.container.list.ListChangeListener;
  */
 public abstract class AbstractChangeAwareList<E> extends AbstractList<E> implements ChangeAwareList<E> {
 
-  private EventSourceAdapter<ListChange<E>, ListChangeListener<E>> eventAdapter;
+  private EventSourceAdapter<ListChange<E>, EventListener<ListChange<E>>> eventAdapter;
 
   /**
    * The constructor.
@@ -32,14 +33,17 @@ public abstract class AbstractChangeAwareList<E> extends AbstractList<E> impleme
   @Override
   public void addListener(ListChangeListener<E> listener, boolean weak) {
 
-    this.eventAdapter = this.eventAdapter.addListener(listener, weak);
+    EventListener<ListChange<E>> l = listener;
+    if (weak) {
+      l = l.weak(this);
+    }
+    this.eventAdapter = this.eventAdapter.addListener(l);
   }
 
   @Override
   public boolean removeListener(ListChangeListener<E> listener) {
 
-    EventSourceAdapter<ListChange<E>, ListChangeListener<E>> adapter = this.eventAdapter
-        .removeListener(listener);
+    var adapter = this.eventAdapter.removeListener(listener);
     if (adapter == null) {
       return false;
     }
@@ -48,8 +52,8 @@ public abstract class AbstractChangeAwareList<E> extends AbstractList<E> impleme
   }
 
   /**
-   * @return {@code true} if at least one {@link ListChangeListener} is
-   *         {@link #addListener(ListChangeListener, boolean) registered}, {@code false} otherwise.
+   * @return {@code true} if at least one {@link ListChangeListener} is {@link #addListener(ListChangeListener, boolean)
+   *         registered}, {@code false} otherwise.
    */
   protected boolean hasListeners() {
 
@@ -82,8 +86,8 @@ public abstract class AbstractChangeAwareList<E> extends AbstractList<E> impleme
 
   /**
    * @param from the {@link #indexOf(Object) index} of the element that is going to be removed.
-   * @return a new {@link ListChange} notifying about a remove of a single element at the given {@code from}
-   *         index. May be {@code null}.
+   * @return a new {@link ListChange} notifying about a remove of a single element at the given {@code from} index. May
+   *         be {@code null}.
    */
   protected ListChange<E> modRemove(int from) {
 
