@@ -20,6 +20,9 @@ public interface WritableByteValue extends ReadableByteValue, WritableNumberValu
     return Byte.valueOf(value);
   }
 
+  @Override
+  void set(Byte value);
+
   /**
    * @param value the new {@link #get() primitive value}.
    * @see #set(Byte)

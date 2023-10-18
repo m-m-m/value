@@ -20,6 +20,9 @@ public interface WritableFloatValue extends ReadableFloatValue, WritableNumberVa
     return Float.valueOf(value);
   }
 
+  @Override
+  void set(Float value);
+
   /**
    * @param value the new {@link #getValue() primitive value}.
    * @see #set(Float)

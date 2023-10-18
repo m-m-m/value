@@ -20,6 +20,9 @@ public interface WritableShortValue extends ReadableShortValue, WritableNumberVa
     return Short.valueOf(value);
   }
 
+  @Override
+  void set(Short value);
+
   /**
    * @param value the new {@link #getValue() primitive value}.
    * @see #set(Short)

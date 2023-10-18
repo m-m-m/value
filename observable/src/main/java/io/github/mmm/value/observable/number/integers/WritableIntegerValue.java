@@ -20,6 +20,9 @@ public interface WritableIntegerValue extends ReadableIntegerValue, WritableNumb
     return Integer.valueOf(value);
   }
 
+  @Override
+  void set(Integer value);
+
   /**
    * @param value the new {@link #getValue() primitive value}.
    * @see #set(Integer)

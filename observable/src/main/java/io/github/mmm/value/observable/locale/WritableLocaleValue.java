@@ -20,6 +20,9 @@ public interface WritableLocaleValue extends WritableSimpleValue<Locale>, Readab
     return Locale.forLanguageTag(value.replace('_', '-'));
   }
 
+  @Override
+  void set(Locale value);
+
   /**
    * @param value the value to set.
    * @see #get()

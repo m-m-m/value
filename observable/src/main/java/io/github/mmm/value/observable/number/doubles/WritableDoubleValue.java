@@ -20,6 +20,9 @@ public interface WritableDoubleValue extends ReadableDoubleValue, WritableNumber
     return Double.valueOf(value);
   }
 
+  @Override
+  void set(Double value);
+
   /**
    * @param value the new {@link #getValue() primitive value}.
    * @see #set(Double)

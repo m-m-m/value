@@ -20,6 +20,9 @@ public interface WritableLongValue extends ReadableLongValue, WritableNumberValu
     return Long.valueOf(value);
   }
 
+  @Override
+  void set(Long value);
+
   /**
    * @param value the new {@link #getValue() primitive value}.
    * @see #set(Long)

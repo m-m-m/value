@@ -10,6 +10,9 @@ import io.github.mmm.value.observable.object.WritableSimpleValue;
  */
 public interface WritableBooleanValue extends WritableSimpleValue<Boolean>, ReadableBooleanValue {
 
+  @Override
+  void set(Boolean value);
+
   /**
    * @param value the value to set.
    * @see #get()
