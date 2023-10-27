@@ -24,7 +24,7 @@ public interface WritableIntegerValue extends ReadableIntegerValue, WritableNumb
   void set(Integer value);
 
   /**
-   * @param value the new {@link #getValue() primitive value}.
+   * @param value the new {@link #getValue() value} as primitive.
    * @see #set(Integer)
    */
   default void setValue(int value) {
