@@ -35,10 +35,9 @@ public interface ReadableStringValue extends ReadableSimpleValue<String> {
   }
 
   @Override
-  default String getSafe() {
+  default String getStaticSafeValue() {
 
-    final String value = get();
-    return value == null ? "" : value;
+    return "";
   }
 
 }

@@ -20,4 +20,10 @@ public interface ReadableDurationValue extends ReadableTemporalAmountValue<Durat
     return Duration.class;
   }
 
+  @Override
+  default Duration getStaticSafeValue() {
+
+    return Duration.ZERO;
+  }
+
 }

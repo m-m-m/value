@@ -22,10 +22,4 @@ public interface ReadableObjectValue<V> extends ReadableValue<V> {
     return get();
   }
 
-  @Override
-  default V getSafe() {
-
-    return get();
-  }
-
 }

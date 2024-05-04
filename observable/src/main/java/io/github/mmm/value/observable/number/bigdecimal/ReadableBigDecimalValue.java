@@ -20,13 +20,9 @@ public interface ReadableBigDecimalValue extends ReadableNumberValue<BigDecimal>
   }
 
   @Override
-  default BigDecimal getSafe() {
+  default BigDecimal getStaticSafeValue() {
 
-    BigDecimal value = get();
-    if (value == null) {
-      return BigDecimal.ZERO;
-    }
-    return value;
+    return BigDecimal.ZERO;
   }
 
 }

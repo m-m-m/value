@@ -19,4 +19,10 @@ public interface ReadableInstantValue extends ReadableTemporalValue<Instant> {
     return Instant.class;
   }
 
+  @Override
+  default Instant getStaticSafeValue() {
+
+    return Instant.MIN;
+  }
+
 }

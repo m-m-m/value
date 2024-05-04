@@ -8,7 +8,7 @@ import io.github.mmm.value.observable.ObservableValue;
 import io.github.mmm.value.observable.object.ObservableSimpleValue;
 
 /**
- * {@link ObservableValue} with {@link Locale} {@link #getValue() value}.
+ * {@link ObservableValue} with {@link Locale} {@link #get() value}.
  *
  * @since 1.0.0
  */

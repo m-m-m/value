@@ -8,7 +8,7 @@ import io.github.mmm.value.WritableValue;
 import io.github.mmm.value.observable.object.WritableSimpleValue;
 
 /**
- * {@link WritableValue} with {@link Locale} {@link #getValue() value}.
+ * {@link WritableValue} with {@link Locale} {@link #get() value}.
  *
  * @since 1.0.0
  */

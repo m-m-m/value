@@ -19,4 +19,10 @@ public interface ReadableLocalTimeValue extends ReadableTemporalValue<LocalTime>
     return LocalTime.class;
   }
 
+  @Override
+  default LocalTime getStaticSafeValue() {
+
+    return LocalTime.MIN;
+  }
+
 }

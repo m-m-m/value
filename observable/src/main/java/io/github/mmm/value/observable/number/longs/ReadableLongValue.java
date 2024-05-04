@@ -26,12 +26,8 @@ public interface ReadableLongValue extends ReadableNumberValue<Long> {
   }
 
   @Override
-  default Long getSafe() {
+  default Long getStaticSafeValue() {
 
-    Long value = get();
-    if (value == null) {
-      return Long.valueOf(0);
-    }
-    return value;
+    return Long.valueOf(0);
   }
 }

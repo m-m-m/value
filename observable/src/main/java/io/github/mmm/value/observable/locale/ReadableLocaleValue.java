@@ -26,21 +26,10 @@ public interface ReadableLocaleValue extends ReadableSimpleValue<Locale> {
     return Locale.class;
   }
 
-  /**
-   * Same as {@link #get()}.
-   *
-   * @return the current {@link #get() value}.
-   */
-  default Locale getValue() {
-
-    return get();
-  }
-
   @Override
-  default Locale getSafe() {
+  default Locale getStaticSafeValue() {
 
-    final Locale value = get();
-    return value == null ? Locale.ROOT : value;
+    return Locale.ROOT;
   }
 
 }

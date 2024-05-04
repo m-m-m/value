@@ -19,11 +19,26 @@ public abstract interface ReadableValue<V> extends Supplier<V> {
   V get();
 
   /**
-   * @return the same as {@link #get()} but trying to avoid returning {@code null} where possible. So a neutral element
-   *         is returned instead of {@code null} for each type supporting this (e.g. "" for {@link String}, {@code 0}
-   *         for any kind of {@link Number}, {@link Boolean#FALSE}, empty collection, etc.).
+   * @return the value of {@link #get()} but in case this is {@code null} it will return {@link #getStaticSafeValue()}.
+   *         So unless {@link #getStaticSafeValue()} also returns {@code null} this method a null-safe variant of
+   *         {@link #get()}.
+   * @see #getStaticSafeValue()
    */
-  V getSafe();
+  default V getSafe() {
+
+    V value = get();
+    if (value == null) {
+      value = getStaticSafeValue();
+    }
+    return value;
+  }
+
+  /**
+   * @return a neutral element to be used instead of {@code null} if supported for this type of value (e.g. "" for
+   *         {@link String}, {@code 0} for any kind of {@link Number}, {@link Boolean#FALSE}, empty collection, etc.).
+   *         May still be {@code null} for types that have no such neutral element.
+   */
+  V getStaticSafeValue();
 
   /**
    * Null-safe access to {@link #get()}.

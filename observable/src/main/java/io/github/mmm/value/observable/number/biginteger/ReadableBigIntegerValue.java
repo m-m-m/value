@@ -20,13 +20,9 @@ public interface ReadableBigIntegerValue extends ReadableNumberValue<BigInteger>
   }
 
   @Override
-  default BigInteger getSafe() {
+  default BigInteger getStaticSafeValue() {
 
-    BigInteger value = get();
-    if (value == null) {
-      return BigInteger.ZERO;
-    }
-    return value;
+    return BigInteger.ZERO;
   }
 
 }

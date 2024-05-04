@@ -2,6 +2,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.value.observable.container.map;
 
+import java.util.Collections;
 import java.util.Map;
 
 import io.github.mmm.value.observable.container.ReadableContainerValue;
@@ -26,6 +27,12 @@ public interface ReadableMapValue<K, V> extends ReadableContainerValue<Map<K, V>
   default int size() {
 
     return getSafe().size();
+  }
+
+  @Override
+  default Map<K, V> getStaticSafeValue() {
+
+    return Collections.emptyMap();
   }
 
 }

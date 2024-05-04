@@ -23,13 +23,9 @@ public interface ReadableSetValue<E> extends ReadableCollectionValue<Set<E>, E> 
   }
 
   @Override
-  default Set<E> getSafe() {
+  default Set<E> getStaticSafeValue() {
 
-    Set<E> value = get();
-    if (value == null) {
-      value = Collections.emptySet();
-    }
-    return value;
+    return Collections.emptySet();
   }
 
 }

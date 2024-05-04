@@ -19,7 +19,7 @@ public class LocaleValueTest extends Assertions {
     assertThat(localeValue.getSafe()).isSameAs(Locale.ROOT);
     assertThat(localeValue.get()).isNull();
     localeValue.set(Locale.GERMAN);
-    assertThat(localeValue.getValue()).isSameAs(Locale.GERMAN);
+    assertThat(localeValue.get()).isSameAs(Locale.GERMAN);
     assertThat(localeValue.getSafe()).isSameAs(Locale.GERMAN);
     localeValue.setAsString("en_GB");
     assertThat(localeValue.getAsString()).isEqualTo("en_GB");

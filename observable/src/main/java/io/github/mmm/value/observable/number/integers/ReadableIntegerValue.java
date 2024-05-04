@@ -26,12 +26,8 @@ public interface ReadableIntegerValue extends ReadableNumberValue<Integer> {
   }
 
   @Override
-  default Integer getSafe() {
+  default Integer getStaticSafeValue() {
 
-    Integer value = get();
-    if (value == null) {
-      return Integer.valueOf(0);
-    }
-    return value;
+    return Integer.valueOf(0);
   }
 }

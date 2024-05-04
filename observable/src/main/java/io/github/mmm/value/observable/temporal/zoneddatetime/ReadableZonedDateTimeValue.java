@@ -2,6 +2,8 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.value.observable.temporal.zoneddatetime;
 
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 
 import io.github.mmm.value.observable.temporal.ReadableTemporalValue;
@@ -13,10 +15,19 @@ import io.github.mmm.value.observable.temporal.ReadableTemporalValue;
  */
 public interface ReadableZonedDateTimeValue extends ReadableTemporalValue<ZonedDateTime> {
 
+  /** @see #getStaticSafeValue() */
+  ZonedDateTime STATIC_SAFE_VALUE = ZonedDateTime.of(LocalDateTime.MIN, ZoneOffset.MIN);
+
   @Override
   default Class<ZonedDateTime> getValueClass() {
 
     return ZonedDateTime.class;
+  }
+
+  @Override
+  default ZonedDateTime getStaticSafeValue() {
+
+    return STATIC_SAFE_VALUE;
   }
 
 }
