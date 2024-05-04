@@ -2,8 +2,6 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.value.observable.enumeration;
 
-import java.util.Objects;
-
 import io.github.mmm.value.ReadableTypedValue;
 import io.github.mmm.value.observable.object.ReadableSimpleValue;
 
@@ -36,11 +34,17 @@ public interface ReadableEnumValue<E extends Enum<E>> extends ReadableSimpleValu
   }
 
   @Override
-  default E getSafe() {
+  default E getStaticSafeValue() {
 
-    E e = get();
-    Objects.requireNonNull(e);
-    return e;
+    Class<E> valueClass = getValueClass();
+    if (valueClass == null) {
+      return null;
+    }
+    E[] constants = valueClass.getEnumConstants();
+    if (constants.length == 0) {
+      return null;
+    }
+    return constants[0];
   }
 
 }
