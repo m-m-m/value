@@ -7,6 +7,8 @@
  */
 module io.github.mmm.value.observable {
 
+  requires transitive io.github.mmm.base;
+
   requires transitive io.github.mmm.value;
 
   requires transitive io.github.mmm.event;

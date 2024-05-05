@@ -4,11 +4,12 @@ package io.github.mmm.value.observable.container.map;
 
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Supplier;
 
-import io.github.mmm.value.observable.container.list.ChangeAwareList;
 import io.github.mmm.value.observable.container.map.impl.ChangeAwareMapImpl;
 import io.github.mmm.value.observable.container.map.impl.EmptyChangeAwareMap;
 import io.github.mmm.value.observable.container.map.impl.ImmutableChangeAwareMap;
+import io.github.mmm.value.observable.container.map.impl.ImmutableChangeAwareMapView;
 
 /**
  * Factory for {@link ChangeAwareMap}.
@@ -71,9 +72,9 @@ public final class ChangeAwareMaps {
   /**
    * @param <K> type of the {@link Map#containsKey(Object) keys}.
    * @param <V> type of the {@link Map#containsValue(Object) values}.
-   * @param map the existing {@link Map} implementation to wrap as {@link ChangeAwareMap}. Please avoid to modify this
-   *        {@link Map} afterwards, as this will not trigger modification events.
-   * @return a new empty mutable {@link ChangeAwareList}.
+   * @param map the existing {@link Map} implementation to wrap as {@link ChangeAwareMap}. Modifying such {@link Map}
+   *        afterwards will not trigger modification events in the read-only view returned by this method.
+   * @return a unmodifiable {@link ChangeAwareMap} that acts as a view on the given {@link Map}.
    */
   public static <K, V> ChangeAwareMap<K, V> ofUnmodifiable(Map<K, V> map) {
 
@@ -81,6 +82,20 @@ public final class ChangeAwareMaps {
       return (ChangeAwareMap<K, V>) map;
     }
     return new ImmutableChangeAwareMap<>(map);
+  }
+
+  /**
+   * @param <K> type of the {@link Map#containsKey(Object) keys}.
+   * @param <V> type of the {@link Map#containsValue(Object) values}.
+   * @param mapSupplier the {@link Supplier} to the (mutable) {@link Map} implementation to wrap as
+   *        {@link ChangeAwareMap}. Modifying such {@link Map} afterwards will not trigger modification events in the
+   *        read-only view returned by this method.
+   * @return a unmodifiable {@link ChangeAwareMap} that acts as a view on the {@link Supplier#get() supplied}
+   *         {@link Map}.
+   */
+  public static <K, V> ChangeAwareMap<K, V> ofUnmodifiable(Supplier<Map<K, V>> mapSupplier) {
+
+    return new ImmutableChangeAwareMapView<>(mapSupplier);
   }
 
 }

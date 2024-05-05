@@ -4,6 +4,7 @@ package io.github.mmm.value.observable.container.list.impl;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Supplier;
 
 /**
  * Immutable implementation of {@link io.github.mmm.value.observable.container.list.ChangeAwareList}.
@@ -11,55 +12,55 @@ import java.util.List;
  * @param <E> the type of the elements in the container.
  * @since 1.0.0
  */
-public class ImmutableChangeAwareList<E> extends ReadOnlyChangeAwareList<E> {
+public class ImmutableChangeAwareListView<E> extends ReadOnlyChangeAwareList<E> {
 
-  private final List<E> list;
+  private final Supplier<List<E>> listSupplier;
 
   /**
    * The constructor.
    *
-   * @param list the internal {@link List} to adopt.
+   * @param listSupplied the {@link Supplier} of the internal (mutable) {@link List} to adopt.
    */
-  public ImmutableChangeAwareList(List<E> list) {
+  public ImmutableChangeAwareListView(Supplier<List<E>> listSupplied) {
 
     super();
-    this.list = list;
+    this.listSupplier = listSupplied;
   }
 
   @Override
   public E get(int index) {
 
-    return this.list.get(index);
+    return this.listSupplier.get().get(index);
   }
 
   @Override
   public int size() {
 
-    return this.list.size();
+    return this.listSupplier.get().size();
   }
 
   @Override
   public int indexOf(Object element) {
 
-    return this.list.indexOf(element);
+    return this.listSupplier.get().indexOf(element);
   }
 
   @Override
   public int lastIndexOf(Object element) {
 
-    return this.list.lastIndexOf(element);
+    return this.listSupplier.get().lastIndexOf(element);
   }
 
   @Override
   public boolean contains(Object element) {
 
-    return this.list.contains(element);
+    return this.listSupplier.get().contains(element);
   }
 
   @Override
   public boolean containsAll(Collection<?> collection) {
 
-    return this.list.containsAll(collection);
+    return this.listSupplier.get().containsAll(collection);
   }
 
 }

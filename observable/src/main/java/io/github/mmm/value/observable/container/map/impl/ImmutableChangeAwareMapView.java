@@ -6,6 +6,7 @@ import java.util.AbstractSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Supplier;
 
 import io.github.mmm.base.collection.ReadOnlyIterator;
 
@@ -16,43 +17,43 @@ import io.github.mmm.base.collection.ReadOnlyIterator;
  * @param <V> type of the {@link java.util.Map#containsValue(Object) values}.
  * @since 1.0.0
  */
-public class ImmutableChangeAwareMap<K, V> extends ReadOnlyChangeAwareMap<K, V> {
+public class ImmutableChangeAwareMapView<K, V> extends ReadOnlyChangeAwareMap<K, V> {
 
-  private final Map<K, V> map;
+  private final Supplier<Map<K, V>> mapSupplier;
 
   /**
    * The constructor.
    *
-   * @param map the internal {@link Map} to adopt.
+   * @param mapSupplier the internal {@link Map} to adopt.
    */
-  public ImmutableChangeAwareMap(Map<K, V> map) {
+  public ImmutableChangeAwareMapView(Supplier<Map<K, V>> mapSupplier) {
 
     super();
-    this.map = map;
+    this.mapSupplier = mapSupplier;
   }
 
   @Override
   public int size() {
 
-    return this.map.size();
+    return this.mapSupplier.get().size();
   }
 
   @Override
   public boolean containsKey(Object key) {
 
-    return this.map.containsKey(key);
+    return this.mapSupplier.get().containsKey(key);
   }
 
   @Override
   public boolean containsValue(Object value) {
 
-    return this.map.containsValue(value);
+    return this.mapSupplier.get().containsValue(value);
   }
 
   @Override
   public V get(Object key) {
 
-    return this.map.get(key);
+    return this.mapSupplier.get().get(key);
   }
 
   @Override
@@ -68,7 +69,7 @@ public class ImmutableChangeAwareMap<K, V> extends ReadOnlyChangeAwareMap<K, V> 
     public EntrySet() {
 
       super();
-      this.entrySet = ImmutableChangeAwareMap.this.map.entrySet();
+      this.entrySet = ImmutableChangeAwareMapView.this.mapSupplier.get().entrySet();
     }
 
     @Override
@@ -86,7 +87,7 @@ public class ImmutableChangeAwareMap<K, V> extends ReadOnlyChangeAwareMap<K, V> 
     @Override
     public int size() {
 
-      return ImmutableChangeAwareMap.this.map.size();
+      return ImmutableChangeAwareMapView.this.mapSupplier.get().size();
     }
   }
 

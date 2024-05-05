@@ -5,6 +5,7 @@ package io.github.mmm.value.observable.container.set.impl;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.function.Supplier;
 
 import io.github.mmm.base.collection.ReadOnlyIterator;
 
@@ -14,43 +15,43 @@ import io.github.mmm.base.collection.ReadOnlyIterator;
  * @param <E> the type of the elements in the container.
  * @since 1.0.0
  */
-public class ImmutableChangeAwareSet<E> extends ReadOnlyChangeAwareSet<E> {
+public class ImmutableChangeAwareSetView<E> extends ReadOnlyChangeAwareSet<E> {
 
-  private final Set<E> set;
+  private final Supplier<Set<E>> setSupplier;
 
   /**
    * The constructor.
    *
-   * @param set the internal {@link Set} to adopt.
+   * @param setSupplier the internal {@link Set} to adopt.
    */
-  public ImmutableChangeAwareSet(Set<E> set) {
+  public ImmutableChangeAwareSetView(Supplier<Set<E>> setSupplier) {
 
     super();
-    this.set = set;
+    this.setSupplier = setSupplier;
   }
 
   @Override
   public int size() {
 
-    return this.set.size();
+    return this.setSupplier.get().size();
   }
 
   @Override
   public boolean contains(Object element) {
 
-    return this.set.contains(element);
+    return this.setSupplier.get().contains(element);
   }
 
   @Override
   public boolean containsAll(Collection<?> collection) {
 
-    return this.set.containsAll(collection);
+    return this.setSupplier.get().containsAll(collection);
   }
 
   @Override
   public Iterator<E> iterator() {
 
-    return new ReadOnlyIterator<>(this.set.iterator());
+    return new ReadOnlyIterator<>(this.setSupplier.get().iterator());
   }
 
 }

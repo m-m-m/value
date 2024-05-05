@@ -3,10 +3,12 @@
 package io.github.mmm.value.observable.container.list;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 import io.github.mmm.value.observable.container.list.impl.ChangeAwareListImpl;
 import io.github.mmm.value.observable.container.list.impl.EmptyChangeAwareList;
 import io.github.mmm.value.observable.container.list.impl.ImmutableChangeAwareList;
+import io.github.mmm.value.observable.container.list.impl.ImmutableChangeAwareListView;
 
 /**
  * Factory for {@link ChangeAwareList}.
@@ -64,16 +66,29 @@ public final class ChangeAwareLists {
 
   /**
    * @param <E> the type of the elements.
-   * @param list the existing {@link List} implementation to wrap as {@link ChangeAwareList}. Please avoid to modify
-   *        this {@link List} afterwards, as this will not trigger modification events.
-   * @return a new empty mutable {@link ChangeAwareList}.
+   * @param list the existing {@link List} implementation to wrap as {@link ChangeAwareList}. Modifying such
+   *        {@link List} afterwards will not trigger modification events in the read-only view returned by this method.
+   * @return a unmodifiable {@link ChangeAwareList} that acts as a view on the given {@link List}.
    */
   public static <E> ChangeAwareList<E> ofUnmodifiable(List<E> list) {
 
-    if (list instanceof ImmutableChangeAwareList) {
-      return (ChangeAwareList<E>) list;
+    if (list instanceof ImmutableChangeAwareList<E> result) {
+      return result;
     }
     return new ImmutableChangeAwareList<>(list);
+  }
+
+  /**
+   * @param <E> the type of the elements.
+   * @param listSupplier the {@link Supplier} to the (mutable) {@link List} implementation to wrap as
+   *        {@link ChangeAwareList}. Modifying such {@link List} afterwards will not trigger modification events in the
+   *        read-only view returned by this method.
+   * @return a unmodifiable {@link ChangeAwareList} that acts as a view on the {@link Supplier#get() supplied}
+   *         {@link List}.
+   */
+  public static <E> ChangeAwareList<E> ofUnmodifiable(Supplier<List<E>> listSupplier) {
+
+    return new ImmutableChangeAwareListView<>(listSupplier);
   }
 
 }
