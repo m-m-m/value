@@ -32,7 +32,7 @@ public interface ReadableBooleanValue extends ReadableSimpleValue<Boolean> {
   }
 
   @Override
-  default Boolean getStaticSafeValue() {
+  default Boolean getFallbackSafeValue() {
 
     return Boolean.FALSE;
   }

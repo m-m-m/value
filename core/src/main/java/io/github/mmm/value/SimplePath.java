@@ -36,7 +36,7 @@ public final class SimplePath implements PropertyPath<Object> {
   }
 
   @Override
-  public Object getStaticSafeValue() {
+  public Object getFallbackSafeValue() {
 
     return null;
   }

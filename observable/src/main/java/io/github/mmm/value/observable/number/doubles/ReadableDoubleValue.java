@@ -26,7 +26,7 @@ public interface ReadableDoubleValue extends ReadableNumberValue<Double> {
   }
 
   @Override
-  default Double getStaticSafeValue() {
+  default Double getFallbackSafeValue() {
 
     return Double.valueOf(0);
   }

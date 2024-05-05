@@ -14,7 +14,7 @@ import io.github.mmm.value.observable.object.ReadableSimpleValue;
  */
 public interface ReadablePatternValue extends ReadableSimpleValue<Pattern> {
 
-  /** @see #getStaticSafeValue() */
+  /** @see #getFallbackSafeValue() */
   Pattern STATIC_SAFE_VALUE = Pattern.compile("");
 
   @Override
@@ -44,7 +44,7 @@ public interface ReadablePatternValue extends ReadableSimpleValue<Pattern> {
   }
 
   @Override
-  default Pattern getStaticSafeValue() {
+  default Pattern getFallbackSafeValue() {
 
     return STATIC_SAFE_VALUE;
   }

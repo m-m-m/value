@@ -15,7 +15,7 @@ import io.github.mmm.value.observable.temporal.ReadableTemporalValue;
  */
 public interface ReadableZonedDateTimeValue extends ReadableTemporalValue<ZonedDateTime> {
 
-  /** @see #getStaticSafeValue() */
+  /** @see #getFallbackSafeValue() */
   ZonedDateTime STATIC_SAFE_VALUE = ZonedDateTime.of(LocalDateTime.MIN, ZoneOffset.MIN);
 
   @Override
@@ -25,7 +25,7 @@ public interface ReadableZonedDateTimeValue extends ReadableTemporalValue<ZonedD
   }
 
   @Override
-  default ZonedDateTime getStaticSafeValue() {
+  default ZonedDateTime getFallbackSafeValue() {
 
     return STATIC_SAFE_VALUE;
   }

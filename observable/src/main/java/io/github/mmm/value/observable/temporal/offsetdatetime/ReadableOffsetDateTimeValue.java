@@ -20,7 +20,7 @@ public interface ReadableOffsetDateTimeValue extends ReadableTemporalValue<Offse
   }
 
   @Override
-  default OffsetDateTime getStaticSafeValue() {
+  default OffsetDateTime getFallbackSafeValue() {
 
     return OffsetDateTime.MIN;
   }

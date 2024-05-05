@@ -23,7 +23,7 @@ public interface ReadableListValue<E> extends ReadableCollectionValue<List<E>, E
   }
 
   @Override
-  default List<E> getStaticSafeValue() {
+  default List<E> getFallbackSafeValue() {
 
     return Collections.emptyList();
   }

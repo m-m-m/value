@@ -34,7 +34,7 @@ public interface ReadableEnumValue<E extends Enum<E>> extends ReadableSimpleValu
   }
 
   @Override
-  default E getStaticSafeValue() {
+  default E getFallbackSafeValue() {
 
     Class<E> valueClass = getValueClass();
     if (valueClass == null) {

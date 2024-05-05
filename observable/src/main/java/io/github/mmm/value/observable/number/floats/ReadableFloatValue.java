@@ -26,7 +26,7 @@ public interface ReadableFloatValue extends ReadableNumberValue<Float> {
   }
 
   @Override
-  default Float getStaticSafeValue() {
+  default Float getFallbackSafeValue() {
 
     return Float.valueOf(0);
   }

@@ -26,7 +26,7 @@ public interface ReadableLongValue extends ReadableNumberValue<Long> {
   }
 
   @Override
-  default Long getStaticSafeValue() {
+  default Long getFallbackSafeValue() {
 
     return Long.valueOf(0);
   }

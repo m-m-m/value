@@ -30,7 +30,7 @@ public interface ReadableMapValue<K, V> extends ReadableContainerValue<Map<K, V>
   }
 
   @Override
-  default Map<K, V> getStaticSafeValue() {
+  default Map<K, V> getFallbackSafeValue() {
 
     return Collections.emptyMap();
   }

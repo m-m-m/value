@@ -19,16 +19,16 @@ public abstract interface ReadableValue<V> extends Supplier<V> {
   V get();
 
   /**
-   * @return the value of {@link #get()} but in case this is {@code null} it will return {@link #getStaticSafeValue()}.
-   *         So unless {@link #getStaticSafeValue()} also returns {@code null} this method a null-safe variant of
+   * @return the value of {@link #get()} but in case this is {@code null} it will return {@link #getFallbackSafeValue()}.
+   *         So unless {@link #getFallbackSafeValue()} also returns {@code null} this method a null-safe variant of
    *         {@link #get()}.
-   * @see #getStaticSafeValue()
+   * @see #getFallbackSafeValue()
    */
   default V getSafe() {
 
     V value = get();
     if (value == null) {
-      value = getStaticSafeValue();
+      value = getFallbackSafeValue();
     }
     return value;
   }
@@ -38,7 +38,7 @@ public abstract interface ReadableValue<V> extends Supplier<V> {
    *         {@link String}, {@code 0} for any kind of {@link Number}, {@link Boolean#FALSE}, empty collection, etc.).
    *         May still be {@code null} for types that have no such neutral element.
    */
-  V getStaticSafeValue();
+  V getFallbackSafeValue();
 
   /**
    * Null-safe access to {@link #get()}.

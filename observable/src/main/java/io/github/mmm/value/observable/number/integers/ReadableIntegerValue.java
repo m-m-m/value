@@ -26,7 +26,7 @@ public interface ReadableIntegerValue extends ReadableNumberValue<Integer> {
   }
 
   @Override
-  default Integer getStaticSafeValue() {
+  default Integer getFallbackSafeValue() {
 
     return Integer.valueOf(0);
   }

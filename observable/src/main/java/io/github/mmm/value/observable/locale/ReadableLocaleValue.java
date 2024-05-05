@@ -27,7 +27,7 @@ public interface ReadableLocaleValue extends ReadableSimpleValue<Locale> {
   }
 
   @Override
-  default Locale getStaticSafeValue() {
+  default Locale getFallbackSafeValue() {
 
     return Locale.ROOT;
   }

@@ -26,7 +26,7 @@ public interface ReadableByteValue extends ReadableNumberValue<Byte> {
   }
 
   @Override
-  default Byte getStaticSafeValue() {
+  default Byte getFallbackSafeValue() {
 
     return Byte.valueOf((byte) 0);
   }

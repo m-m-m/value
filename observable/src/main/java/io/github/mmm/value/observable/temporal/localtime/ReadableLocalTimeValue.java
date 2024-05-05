@@ -20,7 +20,7 @@ public interface ReadableLocalTimeValue extends ReadableTemporalValue<LocalTime>
   }
 
   @Override
-  default LocalTime getStaticSafeValue() {
+  default LocalTime getFallbackSafeValue() {
 
     return LocalTime.MIN;
   }

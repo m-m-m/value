@@ -20,7 +20,7 @@ public interface ReadableInstantValue extends ReadableTemporalValue<Instant> {
   }
 
   @Override
-  default Instant getStaticSafeValue() {
+  default Instant getFallbackSafeValue() {
 
     return Instant.MIN;
   }

@@ -21,7 +21,7 @@ public interface ReadableDurationValue extends ReadableTemporalAmountValue<Durat
   }
 
   @Override
-  default Duration getStaticSafeValue() {
+  default Duration getFallbackSafeValue() {
 
     return Duration.ZERO;
   }

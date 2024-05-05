@@ -20,7 +20,7 @@ public interface ReadableLocalDateTimeValue extends ReadableTemporalValue<LocalD
   }
 
   @Override
-  default LocalDateTime getStaticSafeValue() {
+  default LocalDateTime getFallbackSafeValue() {
 
     return LocalDateTime.MIN;
   }

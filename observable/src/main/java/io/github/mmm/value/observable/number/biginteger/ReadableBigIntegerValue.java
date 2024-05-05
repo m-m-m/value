@@ -20,7 +20,7 @@ public interface ReadableBigIntegerValue extends ReadableNumberValue<BigInteger>
   }
 
   @Override
-  default BigInteger getStaticSafeValue() {
+  default BigInteger getFallbackSafeValue() {
 
     return BigInteger.ZERO;
   }

@@ -26,7 +26,7 @@ public interface ReadableShortValue extends ReadableNumberValue<Short> {
   }
 
   @Override
-  default Short getStaticSafeValue() {
+  default Short getFallbackSafeValue() {
 
     return Short.valueOf((short) 0);
   }

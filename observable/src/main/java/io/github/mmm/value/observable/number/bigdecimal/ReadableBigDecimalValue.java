@@ -20,7 +20,7 @@ public interface ReadableBigDecimalValue extends ReadableNumberValue<BigDecimal>
   }
 
   @Override
-  default BigDecimal getStaticSafeValue() {
+  default BigDecimal getFallbackSafeValue() {
 
     return BigDecimal.ZERO;
   }
