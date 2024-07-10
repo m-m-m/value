@@ -69,7 +69,8 @@ public abstract class CompositeTypeMapper<S, T> extends AbstractTypeMapper<S, T>
   public S toSource(T target) {
 
     // you shall not call this method on composite type mappers, read the JavaDocs...
-    throw new IllegalStateException();
+    throw new IllegalStateException(
+        "Composite mapper (" + getClass().getSimpleName() + ") shall only be used via builder!");
   }
 
   @Override
