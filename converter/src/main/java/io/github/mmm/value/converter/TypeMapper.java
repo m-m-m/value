@@ -12,7 +12,12 @@ import io.github.mmm.base.lang.Builder;
  */
 public interface TypeMapper<S, T> {
 
-  /** The default separator for {@link #mapName(String) name mapping}. */
+  /**
+   * The default separator for {@link #mapName(String) name mapping}. It would be more natural to use "." but
+   * unfortunately this is not accepted in column names of common database products. Other common separators like "_"
+   * are likely to clash with other convenient naming. Therefore, we need to use something that is reserved or specific
+   * enough not to be used in regular names but is still accepted by all databases.
+   */
   String DEFAULT_SEPARATOR = "$";
 
   /**
