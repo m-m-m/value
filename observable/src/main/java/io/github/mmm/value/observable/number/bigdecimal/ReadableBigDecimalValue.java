@@ -25,4 +25,12 @@ public interface ReadableBigDecimalValue extends ReadableNumberValue<BigDecimal>
     return BigDecimal.ZERO;
   }
 
+  @Override
+  default BigDecimal parse(String value) {
+
+    if (value == null) {
+      return null;
+    }
+    return new BigDecimal(value);
+  }
 }

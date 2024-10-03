@@ -30,4 +30,14 @@ public interface ReadableFloatValue extends ReadableNumberValue<Float> {
 
     return Float.valueOf(0);
   }
+
+  @Override
+  default Float parse(String value) {
+
+    if (value == null) {
+      return null;
+    }
+    return Float.valueOf(value);
+  }
+
 }

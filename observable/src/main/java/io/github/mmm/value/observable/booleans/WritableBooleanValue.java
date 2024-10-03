@@ -23,18 +23,4 @@ public interface WritableBooleanValue extends WritableSimpleValue<Boolean>, Read
     set(Boolean.valueOf(value));
   }
 
-  @Override
-  default Boolean parse(String value) {
-
-    if (value == null) {
-      return null;
-    } else if ("true".equalsIgnoreCase(value)) {
-      return Boolean.TRUE;
-    } else if ("false".equalsIgnoreCase(value)) {
-      return Boolean.FALSE;
-    } else {
-      throw new IllegalArgumentException(value);
-    }
-  }
-
 }

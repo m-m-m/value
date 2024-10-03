@@ -30,4 +30,13 @@ public interface ReadableLongValue extends ReadableNumberValue<Long> {
 
     return Long.valueOf(0);
   }
+
+  @Override
+  default Long parse(String value) {
+
+    if (value == null) {
+      return null;
+    }
+    return Long.valueOf(value);
+  }
 }

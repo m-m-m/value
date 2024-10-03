@@ -13,12 +13,6 @@ import io.github.mmm.value.observable.object.WritableSimpleValue;
 public interface WritableStringValue extends WritableSimpleValue<String>, ReadableStringValue {
 
   @Override
-  default String parse(String value) {
-
-    return value;
-  }
-
-  @Override
   default void setAsString(String value) {
 
     set(value);

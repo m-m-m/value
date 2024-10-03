@@ -2,11 +2,10 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.value.observable.booleans;
 
-import io.github.mmm.value.ReadableTypedValue;
 import io.github.mmm.value.observable.object.ReadableSimpleValue;
 
 /**
- * {@link ReadableTypedValue} with {@link Boolean} {@link #get() value}.
+ * {@link ReadableSimpleValue} with {@link Boolean} {@link #get() value}.
  *
  * @since 1.0.0
  */
@@ -35,6 +34,20 @@ public interface ReadableBooleanValue extends ReadableSimpleValue<Boolean> {
   default Boolean getFallbackSafeValue() {
 
     return Boolean.FALSE;
+  }
+
+  @Override
+  default Boolean parse(String value) {
+
+    if (value == null) {
+      return null;
+    } else if ("true".equalsIgnoreCase(value)) {
+      return Boolean.TRUE;
+    } else if ("false".equalsIgnoreCase(value)) {
+      return Boolean.FALSE;
+    } else {
+      throw new IllegalArgumentException(value);
+    }
   }
 
 }

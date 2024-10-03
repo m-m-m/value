@@ -13,20 +13,6 @@ import io.github.mmm.value.observable.object.WritableSimpleValue;
  */
 public interface WritableEnumValue<E extends Enum<E>> extends WritableSimpleValue<E>, ReadableEnumValue<E> {
 
-  @Override
-  default E parse(String value) {
-
-    if (value == null) {
-      return null;
-    }
-    for (E e : getValueClass().getEnumConstants()) {
-      if (e.toString().equals(value)) {
-        return e;
-      }
-    }
-    throw new IllegalArgumentException("Undefined constant '" + value + "' for enum " + getValueClass().getName());
-  }
-
   /**
    * @param value the value to set.
    * @see #get()

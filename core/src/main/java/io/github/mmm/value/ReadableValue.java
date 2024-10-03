@@ -19,9 +19,9 @@ public abstract interface ReadableValue<V> extends Supplier<V> {
   V get();
 
   /**
-   * @return the value of {@link #get()} but in case this is {@code null} it will return {@link #getFallbackSafeValue()}.
-   *         So unless {@link #getFallbackSafeValue()} also returns {@code null} this method a null-safe variant of
-   *         {@link #get()}.
+   * @return the value of {@link #get()} but in case this is {@code null} it will return
+   *         {@link #getFallbackSafeValue()}. So unless {@link #getFallbackSafeValue()} also returns {@code null} this
+   *         method a null-safe variant of {@link #get()}.
    * @see #getFallbackSafeValue()
    */
   default V getSafe() {
@@ -55,5 +55,11 @@ public abstract interface ReadableValue<V> extends Supplier<V> {
     }
     return value.get();
   }
+
+  /**
+   * @return the {@link Class} reflecting the type of {@link #get() value}. Even if the {@link #get() value} is
+   *         {@code null} the property must support returning the value class.
+   */
+  Class<V> getValueClass();
 
 }

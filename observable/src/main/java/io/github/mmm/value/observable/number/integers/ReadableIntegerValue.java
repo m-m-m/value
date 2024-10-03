@@ -30,4 +30,14 @@ public interface ReadableIntegerValue extends ReadableNumberValue<Integer> {
 
     return Integer.valueOf(0);
   }
+
+  @Override
+  default Integer parse(String value) {
+
+    if (value == null) {
+      return null;
+    }
+    return Integer.valueOf(value);
+  }
+
 }

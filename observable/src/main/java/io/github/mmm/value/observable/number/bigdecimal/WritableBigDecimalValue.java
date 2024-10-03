@@ -15,15 +15,6 @@ import io.github.mmm.value.observable.number.WritableNumberValue;
 public interface WritableBigDecimalValue extends ReadableBigDecimalValue, WritableNumberValue<BigDecimal> {
 
   @Override
-  default BigDecimal parse(String value) {
-
-    if (value == null) {
-      return null;
-    }
-    return new BigDecimal(value);
-  }
-
-  @Override
   default void setValueAsNumber(Number value) {
 
     if ((value == null) || (value instanceof BigDecimal)) {

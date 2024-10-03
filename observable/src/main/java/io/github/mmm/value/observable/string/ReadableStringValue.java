@@ -2,15 +2,14 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.value.observable.string;
 
-import io.github.mmm.value.ReadableTypedValue;
-import io.github.mmm.value.observable.object.ReadableSimpleValue;
+import io.github.mmm.value.observable.object.ReadableSimpleObjectValue;
 
 /**
- * {@link ReadableTypedValue} with {@link String} {@link #get() value}.
+ * {@link ReadableSimpleObjectValue} with {@link String} {@link #get() value}.
  *
  * @since 1.0.0
  */
-public interface ReadableStringValue extends ReadableSimpleValue<String> {
+public interface ReadableStringValue extends ReadableSimpleObjectValue<String> {
 
   @Override
   default String getAsString() {
@@ -24,20 +23,16 @@ public interface ReadableStringValue extends ReadableSimpleValue<String> {
     return String.class;
   }
 
-  /**
-   * Same as {@link #get()}.
-   *
-   * @return the current {@link #get() value}.
-   */
-  default String getValue() {
-
-    return get();
-  }
-
   @Override
   default String getFallbackSafeValue() {
 
     return "";
+  }
+
+  @Override
+  default String parse(String value) {
+
+    return value;
   }
 
 }

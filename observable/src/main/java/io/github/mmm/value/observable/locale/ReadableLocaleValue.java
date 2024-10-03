@@ -4,15 +4,14 @@ package io.github.mmm.value.observable.locale;
 
 import java.util.Locale;
 
-import io.github.mmm.value.ReadableTypedValue;
-import io.github.mmm.value.observable.object.ReadableSimpleValue;
+import io.github.mmm.value.observable.object.ReadableSimpleObjectValue;
 
 /**
- * {@link ReadableTypedValue} with {@link Locale} {@link #get() value}.
+ * {@link ReadableSimpleObjectValue} with {@link Locale} {@link #get() value}.
  *
  * @since 1.0.0
  */
-public interface ReadableLocaleValue extends ReadableSimpleValue<Locale> {
+public interface ReadableLocaleValue extends ReadableSimpleObjectValue<Locale> {
 
   @Override
   default String getAsString() {
@@ -30,6 +29,12 @@ public interface ReadableLocaleValue extends ReadableSimpleValue<Locale> {
   default Locale getFallbackSafeValue() {
 
     return Locale.ROOT;
+  }
+
+  @Override
+  default Locale parse(String value) {
+
+    return Locale.forLanguageTag(value.replace('_', '-'));
   }
 
 }

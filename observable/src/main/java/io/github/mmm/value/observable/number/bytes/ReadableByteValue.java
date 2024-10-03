@@ -30,4 +30,14 @@ public interface ReadableByteValue extends ReadableNumberValue<Byte> {
 
     return Byte.valueOf((byte) 0);
   }
+
+  @Override
+  default Byte parse(String value) {
+
+    if (value == null) {
+      return null;
+    }
+    return Byte.valueOf(value);
+  }
+
 }

@@ -30,4 +30,14 @@ public interface ReadableDoubleValue extends ReadableNumberValue<Double> {
 
     return Double.valueOf(0);
   }
+
+  @Override
+  default Double parse(String value) {
+
+    if (value == null) {
+      return null;
+    }
+    return Double.valueOf(value);
+  }
+
 }

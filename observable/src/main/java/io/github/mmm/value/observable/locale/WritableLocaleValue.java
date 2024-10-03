@@ -15,12 +15,6 @@ import io.github.mmm.value.observable.object.WritableSimpleValue;
 public interface WritableLocaleValue extends WritableSimpleValue<Locale>, ReadableLocaleValue {
 
   @Override
-  default Locale parse(String value) {
-
-    return Locale.forLanguageTag(value.replace('_', '-'));
-  }
-
-  @Override
   void set(Locale value);
 
   /**

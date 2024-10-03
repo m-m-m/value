@@ -30,4 +30,13 @@ public interface ReadableShortValue extends ReadableNumberValue<Short> {
 
     return Short.valueOf((short) 0);
   }
+
+  @Override
+  default Short parse(String value) {
+
+    if (value == null) {
+      return null;
+    }
+    return Short.valueOf(value);
+  }
 }

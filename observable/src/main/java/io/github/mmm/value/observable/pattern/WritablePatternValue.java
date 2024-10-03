@@ -14,15 +14,6 @@ import io.github.mmm.value.observable.object.WritableSimpleValue;
  */
 public interface WritablePatternValue extends WritableSimpleValue<Pattern>, ReadablePatternValue {
 
-  @Override
-  default Pattern parse(String value) {
-
-    if (value == null) {
-      return null;
-    }
-    return Pattern.compile(value);
-  }
-
   /**
    * @param value the value to set.
    * @see #get()

@@ -25,4 +25,13 @@ public interface ReadableBigIntegerValue extends ReadableNumberValue<BigInteger>
     return BigInteger.ZERO;
   }
 
+  @Override
+  default BigInteger parse(String value) {
+
+    if (value == null) {
+      return null;
+    }
+    return new BigInteger(value);
+  }
+
 }

@@ -2,11 +2,10 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.value.observable.number;
 
-import io.github.mmm.value.ReadableTypedValue;
 import io.github.mmm.value.observable.object.ReadableSimpleValue;
 
 /**
- * {@link ReadableTypedValue} with {@link Number} {@link #get() value}.
+ * {@link ReadableSimpleValue} with {@link Number} {@link #get() value}.
  *
  * @param <N> type of the observable {@link #get() value}.
  * @since 1.0.0

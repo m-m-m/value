@@ -12,15 +12,6 @@ import io.github.mmm.value.observable.number.WritableNumberValue;
 public interface WritableDoubleValue extends ReadableDoubleValue, WritableNumberValue<Double> {
 
   @Override
-  default Double parse(String value) {
-
-    if (value == null) {
-      return null;
-    }
-    return Double.valueOf(value);
-  }
-
-  @Override
   void set(Double value);
 
   /**

@@ -54,6 +54,12 @@ public final class SimplePath implements PropertyPath<Object> {
   }
 
   @Override
+  public Class<Object> getValueClass() {
+
+    return Object.class;
+  }
+
+  @Override
   public String toString() {
 
     return path();

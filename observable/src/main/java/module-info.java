@@ -57,21 +57,27 @@ module io.github.mmm.value.observable {
 
   exports io.github.mmm.value.observable.string;
 
-  exports io.github.mmm.value.observable.temporal;
+  exports io.github.mmm.value.observable.time;
 
-  exports io.github.mmm.value.observable.temporal.duration;
+  exports io.github.mmm.value.observable.time.dayofweek;
 
-  exports io.github.mmm.value.observable.temporal.instant;
+  exports io.github.mmm.value.observable.time.duration;
 
-  exports io.github.mmm.value.observable.temporal.localdate;
+  exports io.github.mmm.value.observable.time.instant;
 
-  exports io.github.mmm.value.observable.temporal.localdatetime;
+  exports io.github.mmm.value.observable.time.localdate;
 
-  exports io.github.mmm.value.observable.temporal.localtime;
+  exports io.github.mmm.value.observable.time.localdatetime;
 
-  exports io.github.mmm.value.observable.temporal.offsetdatetime;
+  exports io.github.mmm.value.observable.time.localtime;
 
-  exports io.github.mmm.value.observable.temporal.offsettime;
+  exports io.github.mmm.value.observable.time.month;
 
-  exports io.github.mmm.value.observable.temporal.zoneddatetime;
+  exports io.github.mmm.value.observable.time.offsetdatetime;
+
+  exports io.github.mmm.value.observable.time.offsettime;
+
+  exports io.github.mmm.value.observable.time.year;
+
+  exports io.github.mmm.value.observable.time.zoneddatetime;
 }
