@@ -45,18 +45,10 @@ public abstract class CompositeTypeMapper<S, T> extends AbstractTypeMapper<S, T>
     this.next = next;
   }
 
-  /**
-   * @return the suffix to {@link #mapName(String, String) append to the name}.
-   */
+  @Override
   public String getSuffix() {
 
     return this.suffix;
-  }
-
-  @Override
-  public String mapName(String name, String separator) {
-
-    return name + separator + this.suffix;
   }
 
   @Override

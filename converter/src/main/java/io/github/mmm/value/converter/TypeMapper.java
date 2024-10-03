@@ -13,10 +13,10 @@ import io.github.mmm.base.lang.Builder;
 public interface TypeMapper<S, T> {
 
   /**
-   * The default separator for {@link #mapName(String) name mapping}. It would be more natural to use "." but
-   * unfortunately this is not accepted in column names of common database products. Other common separators like "_"
-   * are likely to clash with other convenient naming. Therefore, we need to use something that is reserved or specific
-   * enough not to be used in regular names but is still accepted by all databases.
+   * The default separator for {@link NameMode#format(String, String) name mapping}. It would be more natural to use "."
+   * but unfortunately this is not accepted in column names of common database products. Other common separators like
+   * "_" are likely to clash with other convenient naming. Therefore, we need to use something that is reserved or
+   * specific enough not to be used in regular names but is still accepted by all databases.
    */
   String DEFAULT_SEPARATOR = "$";
 
@@ -31,31 +31,20 @@ public interface TypeMapper<S, T> {
   Class<? extends T> getTargetType();
 
   /**
-   * @param name the name of the value to convert (e.g. property name).
-   * @return the original {@code name} or a mapped variant. See {@link #mapName(String, String)} for details.
-   * @see #mapName(String, String)
+   * @return the suffix to {@link NameMode#format(String, String) append to the name}. Will be the empty {@link String}
+   *         for no suffix.
    */
-  default String mapName(String name) {
+  default String getSuffix() {
 
-    return mapName(name, DEFAULT_SEPARATOR);
+    return "";
   }
 
   /**
-   * @param name the name of the value to convert (e.g. property name).
-   * @param separator the separator to use. Should typically be {@link #DEFAULT_SEPARATOR}.
-   * @return the original {@code name} or a mapped variant. In case of {@link #next() decomposition of composite types}
-   *         the name for each decomposed segment has to be unique in some contexts (e.g. as database column). Therefore
-   *         if you create a {@link #next() decomposing} {@link TypeMapper} each segment map to a unique name. We
-   *         strongly recommend to append a suffix starting with the given separator followed by a short but expressive
-   *         segment name. A {@link TypeMapper} for {@code MonetaryAmount} could map the {@code name} "Price" to
-   *         "Price$Value" with a {@link #getTargetType() target type} of {@link Number} or {@link java.math.BigDecimal}
-   *         having a {@link #next() next} that maps to "Price$Currency" of type {@link java.util.Currency}. Another
-   *         obvious example is the type {@link io.github.mmm.base.range.Range} that would result in mapping the
-   *         {@code name} "Range" to "Range$Min" and "Range$Max".
+   * @return the {@link NameMode} of this mapper.
    */
-  default String mapName(String name, String separator) {
+  default NameMode getNameMode() {
 
-    return name;
+    return NameMode.NORMAL;
   }
 
   /**
@@ -183,6 +172,67 @@ public interface TypeMapper<S, T> {
   default TypeMapper<S, ?> next() {
 
     return null;
+  }
+
+  public static enum NameMode {
+
+    /**
+     * Use the name followed by {@link TypeMapper#DEFAULT_SEPARATOR separator} and the {@link TypeMapper#getSuffix()
+     * suffix}. If {@link TypeMapper#getSuffix() suffix} is empty only use name.
+     */
+    NORMAL() {
+
+      @Override
+      public String format(String name, String suffix, String separator) {
+
+        if ((suffix == null) || suffix.isEmpty()) {
+          return name;
+        }
+        return name + separator + suffix;
+      }
+    },
+
+    /** Use the name only and ignore the {@link TypeMapper#getSuffix() suffix}. */
+    NAME() {
+
+      @Override
+      public String format(String name, String suffix, String separator) {
+
+        return name;
+      }
+    },
+
+    /** Use the {@link TypeMapper#getSuffix() suffix} only and ignore the name. */
+    SUFFIX() {
+
+      @Override
+      public String format(String name, String suffix, String separator) {
+
+        assert !suffix.isEmpty();
+        return suffix;
+      }
+    };
+
+    /**
+     * @param name the name to format (e.g. name of property or database column).
+     * @param suffix the {@link TypeMapper#getSuffix() suffix}.
+     * @return the original {@code name} or a mapped variant. E.g. for {@link #NORMAL} the result of
+     *         {@link #format(String, String) format}("Range", "Min") would be "Range$Min".
+     */
+    public String format(String name, String suffix) {
+
+      return format(name, suffix, DEFAULT_SEPARATOR);
+    }
+
+    /**
+     * @param name the name to format (e.g. name of property or database column).
+     * @param suffix the {@link TypeMapper#getSuffix() suffix}.
+     * @param separator the explicit {@link TypeMapper#DEFAULT_SEPARATOR separator} to use.
+     * @return the original {@code name} or a mapped variant. E.g. for {@link #NORMAL} the result of
+     *         {@link #format(String, String) format}("Range", "Min") would be "Range$Min".
+     */
+    public abstract String format(String name, String suffix, String separator);
+
   }
 
 }
