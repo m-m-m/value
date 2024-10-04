@@ -5,14 +5,14 @@ package io.github.mmm.value.observable.time.month;
 import java.time.Month;
 import java.util.Locale;
 
-import io.github.mmm.value.observable.object.ReadableSimpleObjectValue;
+import io.github.mmm.value.observable.object.ReadableSimpleValue;
 
 /**
- * {@link io.github.mmm.value.ReadableValue} containing a {@link Month} {@link #getValue() value}.
+ * {@link io.github.mmm.value.ReadableValue} containing a {@link Month} {@link #get() value}.
  *
  * @since 1.0.0
  */
-public interface ReadableMonthValue extends ReadableSimpleObjectValue<Month> {
+public interface ReadableMonthValue extends ReadableSimpleValue<Month> {
 
   @Override
   default Class<Month> getValueClass() {
@@ -38,6 +38,18 @@ public interface ReadableMonthValue extends ReadableSimpleObjectValue<Month> {
     } else {
       return Month.valueOf(value.toUpperCase(Locale.ROOT));
     }
+  }
+
+  /**
+   * @return the {@link Month} {@link #get() value} as primitive {@code int} value. Will be {@code 0} if undefined.
+   */
+  default int getValue() {
+
+    Month month = get();
+    if (month == null) {
+      return 0;
+    }
+    return month.getValue();
   }
 
 }

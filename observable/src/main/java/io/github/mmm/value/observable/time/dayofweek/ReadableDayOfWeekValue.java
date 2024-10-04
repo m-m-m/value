@@ -5,14 +5,14 @@ package io.github.mmm.value.observable.time.dayofweek;
 import java.time.DayOfWeek;
 import java.util.Locale;
 
-import io.github.mmm.value.observable.enumeration.ReadableEnumValue;
+import io.github.mmm.value.observable.object.ReadableSimpleValue;
 
 /**
  * {@link io.github.mmm.value.ReadableValue} containing a {@link DayOfWeek} {@link #getValue() value}.
  *
  * @since 1.0.0
  */
-public interface ReadableDayOfWeekValue extends ReadableEnumValue<DayOfWeek> {
+public interface ReadableDayOfWeekValue extends ReadableSimpleValue<DayOfWeek> {
 
   @Override
   default Class<DayOfWeek> getValueClass() {
@@ -38,6 +38,18 @@ public interface ReadableDayOfWeekValue extends ReadableEnumValue<DayOfWeek> {
     } else {
       return DayOfWeek.valueOf(value.toUpperCase(Locale.ROOT));
     }
+  }
+
+  /**
+   * @return the {@link DayOfWeek} {@link #get() value} as primitive {@code int} value. Will be {@code 0} if undefined.
+   */
+  default int getValue() {
+
+    DayOfWeek dayOfWeek = get();
+    if (dayOfWeek == null) {
+      return 0;
+    }
+    return dayOfWeek.getValue();
   }
 
 }

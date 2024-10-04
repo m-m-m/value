@@ -4,13 +4,25 @@ package io.github.mmm.value.observable.time.month;
 
 import java.time.Month;
 
-import io.github.mmm.value.observable.object.WritableSimpleObjectValue;
+import io.github.mmm.value.observable.object.WritableSimpleValue;
 
 /**
  * {@link io.github.mmm.value.WritableValue} containing a {@link Month} {@link #getValue() value}.
  *
  * @since 1.0.0
  */
-public interface WritableMonthValue extends ReadableMonthValue, WritableSimpleObjectValue<Month> {
+public interface WritableMonthValue extends ReadableMonthValue, WritableSimpleValue<Month> {
+
+  /**
+   * @param month the {@link Month} as primitive {@code int} value.
+   */
+  default void setValue(int month) {
+
+    if (month == 0) {
+      set(null);
+    } else {
+      set(Month.of(month));
+    }
+  }
 
 }

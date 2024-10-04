@@ -4,13 +4,21 @@ package io.github.mmm.value.observable.time.year;
 
 import java.time.Year;
 
-import io.github.mmm.value.observable.object.WritableSimpleObjectValue;
+import io.github.mmm.value.observable.object.WritableSimpleValue;
 
 /**
  * {@link io.github.mmm.value.WritableValue} containing a {@link Year} {@link #getValue() value}.
  *
  * @since 1.0.0
  */
-public interface WritableYearValue extends ReadableYearValue, WritableSimpleObjectValue<Year> {
+public interface WritableYearValue extends ReadableYearValue, WritableSimpleValue<Year> {
+
+  /**
+   * @param year the {@link Year} as primitive {@code int} value.
+   */
+  default void setValue(int year) {
+
+    set(Year.of(year));
+  }
 
 }

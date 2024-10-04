@@ -2,17 +2,16 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.value.observable.time.year;
 
-import java.time.Instant;
 import java.time.Year;
 
-import io.github.mmm.value.observable.object.ReadableSimpleObjectValue;
+import io.github.mmm.value.observable.object.ReadableSimpleValue;
 
 /**
- * {@link io.github.mmm.value.ReadableValue} containing a {@link Instant} {@link #getValue() value}.
+ * {@link io.github.mmm.value.ReadableValue} containing a {@link Year} {@link #getValue() value}.
  *
  * @since 1.0.0
  */
-public interface ReadableYearValue extends ReadableSimpleObjectValue<Year> {
+public interface ReadableYearValue extends ReadableSimpleValue<Year> {
 
   @Override
   default Class<Year> getValueClass() {
@@ -33,6 +32,14 @@ public interface ReadableYearValue extends ReadableSimpleObjectValue<Year> {
       return null;
     }
     return Year.parse(value);
+  }
+
+  /**
+   * @return the {@link Year} {@link #get() value} as primitive {@code int} value. Will be {@code 0} if undefined.
+   */
+  default int getValue() {
+
+    return getSafe().getValue();
   }
 
 }
