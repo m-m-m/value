@@ -24,7 +24,16 @@ public interface ReadableSimpleValue<V> extends ReadableValue<V> {
    */
   default String getAsString() {
 
-    V value = get();
+    return format(get());
+  }
+
+  /**
+   * @param value the {@link #get() value}.
+   * @return the {@link #toString() string representation} of the given {@code value}. Will typically be {@code null} if
+   *         {@code value} is {@code null}.
+   */
+  default String format(V value) {
+
     if (value == null) {
       return null;
     }

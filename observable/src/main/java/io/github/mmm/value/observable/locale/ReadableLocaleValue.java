@@ -14,12 +14,6 @@ import io.github.mmm.value.observable.object.ReadableSimpleObjectValue;
 public interface ReadableLocaleValue extends ReadableSimpleObjectValue<Locale> {
 
   @Override
-  default String getAsString() {
-
-    return getSafe().toString();
-  }
-
-  @Override
   default Class<Locale> getValueClass() {
 
     return Locale.class;

@@ -18,6 +18,12 @@ public interface ReadableStringValue extends ReadableSimpleObjectValue<String> {
   }
 
   @Override
+  default String format(String value) {
+
+    return value;
+  }
+
+  @Override
   default Class<String> getValueClass() {
 
     return String.class;

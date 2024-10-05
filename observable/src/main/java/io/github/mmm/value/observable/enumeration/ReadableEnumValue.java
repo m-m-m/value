@@ -14,16 +14,6 @@ import io.github.mmm.value.observable.object.ReadableSimpleValue;
 public interface ReadableEnumValue<E extends Enum<E>> extends ReadableSimpleObjectValue<E> {
 
   @Override
-  default String getAsString() {
-
-    E e = get();
-    if (e == null) {
-      return null;
-    }
-    return e.toString();
-  }
-
-  @Override
   default E getFallbackSafeValue() {
 
     Class<E> valueClass = getValueClass();

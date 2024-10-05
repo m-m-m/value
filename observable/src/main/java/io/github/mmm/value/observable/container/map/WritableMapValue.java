@@ -17,14 +17,9 @@ import io.github.mmm.value.observable.container.WritableContainerValue;
 public interface WritableMapValue<K, V> extends WritableContainerValue<Map<K, V>, V>, ReadableMapValue<K, V> {
 
   @Override
-  default Map<K, V> getOrCreate() {
+  default Map<K, V> create() {
 
-    Map<K, V> value = get();
-    if (value == null) {
-      value = new HashMap<>();
-      set(value);
-    }
-    return value;
+    return new HashMap<>();
   }
 
 }

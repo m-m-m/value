@@ -17,16 +17,6 @@ public interface ReadablePatternValue extends ReadableSimpleObjectValue<Pattern>
   Pattern STATIC_SAFE_VALUE = Pattern.compile("");
 
   @Override
-  default String getAsString() {
-
-    Pattern p = get();
-    if (p == null) {
-      return null;
-    }
-    return p.pattern();
-  }
-
-  @Override
   default Class<Pattern> getValueClass() {
 
     return Pattern.class;

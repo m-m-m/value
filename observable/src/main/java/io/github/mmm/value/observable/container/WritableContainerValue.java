@@ -19,6 +19,19 @@ public interface WritableContainerValue<C, E> extends ReadableContainerValue<C, 
    * @return the current null-safe {@link #get() value}. Unlike {@link #getSafe()} this method will modify and
    *         initialize the {@link #get() value} with an empty mutable container if it was {@code null}.
    */
-  C getOrCreate();
+  default C getOrCreate() {
+
+    C value = get();
+    if (value == null) {
+      value = create();
+      set(value);
+    }
+    return value;
+  }
+
+  /**
+   * @return a new mutable container instance of {@link #getValueClass() value class}.
+   */
+  C create();
 
 }

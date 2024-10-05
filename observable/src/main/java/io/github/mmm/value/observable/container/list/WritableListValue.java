@@ -16,14 +16,9 @@ import io.github.mmm.value.observable.container.collection.WritableCollectionVal
 public interface WritableListValue<E> extends WritableCollectionValue<List<E>, E>, ReadableListValue<E> {
 
   @Override
-  default List<E> getOrCreate() {
+  default List<E> create() {
 
-    List<E> value = get();
-    if (value == null) {
-      value = new ArrayList<>();
-      set(value);
-    }
-    return value;
+    return new ArrayList<>();
   }
 
 }

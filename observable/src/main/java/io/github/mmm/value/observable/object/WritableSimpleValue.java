@@ -14,11 +14,15 @@ import io.github.mmm.value.WritableValue;
 public interface WritableSimpleValue<V> extends ReadableSimpleValue<V>, WritableValue<V> {
 
   /**
-   * @param value
+   * @param valueAsString the {@link #get() value} as {@link #format(Object) string representation}.
+   * @return the parsed value.
+   * @see #getAsString()
    */
-  default void setAsString(String value) {
+  default V setAsString(String valueAsString) {
 
-    set(parse(value));
+    V value = parse(valueAsString);
+    set(value);
+    return value;
   }
 
 }

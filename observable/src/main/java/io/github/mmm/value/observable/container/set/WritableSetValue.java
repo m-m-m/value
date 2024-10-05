@@ -16,14 +16,9 @@ import io.github.mmm.value.observable.container.collection.WritableCollectionVal
 public interface WritableSetValue<E> extends WritableCollectionValue<Set<E>, E>, ReadableSetValue<E> {
 
   @Override
-  default Set<E> getOrCreate() {
+  default Set<E> create() {
 
-    Set<E> value = get();
-    if (value == null) {
-      value = new HashSet<>();
-      set(value);
-    }
-    return value;
+    return new HashSet<>();
   }
 
 }
