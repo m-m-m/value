@@ -6,7 +6,7 @@ image:https://github.com/m-m-m/value/actions/workflows/build.yml/badge.svg["Buil
 = mmm-value
 
 image:https://img.shields.io/maven-central/v/io.github.m-m-m/mmm-value.svg?label=Maven%20Central["Maven Central",link=https://search.maven.org/search?q=g:io.github.m-m-m]
-image:https://javadoc.io/badge2/io.github.m-m-m/mmm-value/javadoc.svg["base JavaDoc", link=https://javadoc.io/doc/io.github.m-m-m/mmm-value]
+image:https://javadoc.io/badge2/io.github.m-m-m/mmm-value/javadoc.svg["JavaDoc",link=https://javadoc.io/doc/io.github.m-m-m/mmm-value]
 
 The module `io.github.mmm.value` (artifactId `mmm-value`) provides a minimal but powerful API for value containers.
 
@@ -34,7 +34,7 @@ Module Dependency:
 = mmm-value-observable
 
 image:https://img.shields.io/maven-central/v/io.github.m-m-m/mmm-value-observable.svg?label=Maven%20Central["Maven Central",link=https://search.maven.org/search?q=g:io.github.m-m-m]
-image:https://javadoc.io/badge2/io.github.m-m-m/mmm-value-observable/javadoc.svg["base JavaDoc", link=https://javadoc.io/doc/io.github.m-m-m/mmm-value-observable]
+image:https://javadoc.io/badge2/io.github.m-m-m/mmm-value-observable/javadoc.svg["JavaDoc",link=https://javadoc.io/doc/io.github.m-m-m/mmm-value-observable]
 
 The module `io.github.mmm.value.observable` (artifactId `mmm-value-observable`) provides observable values that allow to add and remove listeners to observe the value and get notified about changes.
 All is inspired by `ObservableValue` from JavaFx.
