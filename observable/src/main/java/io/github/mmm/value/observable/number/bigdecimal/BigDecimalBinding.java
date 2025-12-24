@@ -32,7 +32,7 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
    * @param expression the {@link BigDecimalExpression} to negate.
    * @return a new {@link BigDecimalExpression} holding the negation of the {@link #get() value} from the given
    *         {@link BigDecimalExpression}.
-   * @see #negate()
+   * @see #expNegate()
    */
   public static BigDecimalExpression negate(BigDecimalExpression expression) {
 
@@ -59,9 +59,9 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
    * @param other the {@link ObservableValue} to add.
    * @return a new {@link BigDecimalExpression} holding the sum of the {@link #get() value}s of the first and the second
    *         given {@link ObservableValue}s.
-   * @see #add(ObservableBigDecimalValue)
+   * @see #expAdd(ObservableBigDecimalValue)
    */
-  public static BigDecimalExpression add(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
+  public static BigDecimalExpression expAdd(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
     if (other == null) {
       return cast(expression);
@@ -74,11 +74,11 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
    * @param constant the constant {@link Number} to add.
    * @return a new {@link BigDecimalExpression} holding the sum of the {@link #get() value} from the given
    *         {@link BigDecimalExpression} with the given {@code constant}.
-   * @see #add(ObservableBigDecimalValue)
+   * @see #expAdd(ObservableBigDecimalValue)
    */
   public static BigDecimalExpression add(NumberExpression<?> expression, Number constant) {
 
-    return add(expression, to(constant));
+    return expAdd(expression, to(constant));
   }
 
   /**
@@ -86,9 +86,9 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
    * @param constant the constant {@code BigDecimal} to add.
    * @return a new {@link BigDecimalExpression} holding the sum of the {@link #get() value} from the given
    *         {@link BigDecimalExpression} with the given {@code constant}.
-   * @see #add(ObservableBigDecimalValue)
+   * @see #expAdd(ObservableBigDecimalValue)
    */
-  public static BigDecimalExpression add(NumberExpression<?> expression, BigDecimal constant) {
+  public static BigDecimalExpression expAdd(NumberExpression<?> expression, BigDecimal constant) {
 
     if (constant == null) {
       return cast(expression);
@@ -113,9 +113,9 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
    * @param other the {@link ObservableValue} to subtract.
    * @return a new {@link BigDecimalExpression} holding the difference of the {@link #get() value}s of the first and the
    *         second given {@link ObservableValue}s.
-   * @see #subtract(ObservableBigDecimalValue)
+   * @see #expSub(ObservableBigDecimalValue)
    */
-  public static BigDecimalExpression subtract(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
+  public static BigDecimalExpression expSub(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
     if (other == null) {
       return cast(expression);
@@ -128,11 +128,11 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
    * @param constant the constant {@link Number} to subtract.
    * @return a new {@link BigDecimalExpression} holding the difference of the {@link #get() value} from the given
    *         {@link BigDecimalExpression} with the given {@code constant}.
-   * @see #subtract(ObservableBigDecimalValue)
+   * @see #expSub(ObservableBigDecimalValue)
    */
   public static BigDecimalExpression subtract(NumberExpression<?> expression, Number constant) {
 
-    return subtract(expression, to(constant));
+    return expSub(expression, to(constant));
   }
 
   /**
@@ -140,9 +140,9 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
    * @param constant the constant {@code BigDecimal} to subtract.
    * @return a new {@link BigDecimalExpression} holding the difference of the {@link #get() value} from the given
    *         {@link BigDecimalExpression} with the given {@code constant}.
-   * @see #subtract(ObservableBigDecimalValue)
+   * @see #expSub(ObservableBigDecimalValue)
    */
-  public static BigDecimalExpression subtract(NumberExpression<?> expression, BigDecimal constant) {
+  public static BigDecimalExpression expSub(NumberExpression<?> expression, BigDecimal constant) {
 
     if (constant == null) {
       return cast(expression);
@@ -167,9 +167,9 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
    * @param other the {@link ObservableValue} to multiply.
    * @return a new {@link BigDecimalExpression} holding the product of the {@link #get() value}s of the first and the
    *         second given {@link ObservableValue}s.
-   * @see #multiply(ObservableBigDecimalValue)
+   * @see #expMul(ObservableBigDecimalValue)
    */
-  public static BigDecimalExpression multiply(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
+  public static BigDecimalExpression expMul(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
     if (other == null) {
       return cast(expression);
@@ -182,11 +182,11 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
    * @param constant the constant {@link Number} to multiply.
    * @return a new {@link BigDecimalExpression} holding the product of the {@link #get() value} from the given
    *         {@link BigDecimalExpression} multiplied with the given {@code constant}.
-   * @see #multiply(ObservableBigDecimalValue)
+   * @see #expMul(ObservableBigDecimalValue)
    */
   public static BigDecimalExpression multiply(NumberExpression<?> expression, Number constant) {
 
-    return multiply(expression, to(constant));
+    return expMul(expression, to(constant));
   }
 
   /**
@@ -194,9 +194,9 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
    * @param constant the constant {@code BigDecimal} to multiply.
    * @return a new {@link BigDecimalExpression} holding the product of the {@link #get() value} from the given
    *         {@link BigDecimalExpression} multiplied with the given {@code constant}.
-   * @see #multiply(ObservableBigDecimalValue)
+   * @see #expMul(ObservableBigDecimalValue)
    */
-  public static BigDecimalExpression multiply(NumberExpression<?> expression, BigDecimal constant) {
+  public static BigDecimalExpression expMul(NumberExpression<?> expression, BigDecimal constant) {
 
     if (constant == null) {
       return cast(expression);
@@ -221,9 +221,9 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
    * @param other the {@link ObservableValue} to divide.
    * @return a new {@link BigDecimalExpression} holding the quotient of the {@link #get() value}s of the first and the
    *         second given {@link ObservableValue}s.
-   * @see #divide(ObservableBigDecimalValue)
+   * @see #expDiv(ObservableBigDecimalValue)
    */
-  public static BigDecimalExpression divide(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
+  public static BigDecimalExpression expDiv(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
     if (other == null) {
       return cast(expression);
@@ -236,11 +236,11 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
    * @param constant the constant {@link Number} to divide.
    * @return a new {@link BigDecimalExpression} holding the quotient of the {@link #get() value} from the given
    *         {@link BigDecimalExpression} divided by the given {@code constant}.
-   * @see #divide(ObservableBigDecimalValue)
+   * @see #expDiv(ObservableBigDecimalValue)
    */
   public static BigDecimalExpression divide(NumberExpression<?> expression, Number constant) {
 
-    return divide(expression, to(constant));
+    return expDiv(expression, to(constant));
   }
 
   /**
@@ -248,9 +248,9 @@ public class BigDecimalBinding extends NumberBinding<BigDecimal> implements BigD
    * @param constant the constant {@code BigDecimal} to divide.
    * @return a new {@link BigDecimalExpression} holding the quotient of the {@link #get() value} from the given
    *         {@link BigDecimalExpression} divided by the given {@code constant}.
-   * @see #divide(ObservableBigDecimalValue)
+   * @see #expDiv(ObservableBigDecimalValue)
    */
-  public static BigDecimalExpression divide(NumberExpression<?> expression, BigDecimal constant) {
+  public static BigDecimalExpression expDiv(NumberExpression<?> expression, BigDecimal constant) {
 
     if (constant == null) {
       return cast(expression);

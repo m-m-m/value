@@ -21,4 +21,11 @@ public interface ReadableCollectionValue<C extends Collection<E>, E> extends Rea
     return getSafe().size();
   }
 
+  @Override
+  default boolean isEmpty() {
+
+    C collection = get();
+    return (collection == null) || collection.isEmpty();
+  }
+
 }

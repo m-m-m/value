@@ -21,393 +21,393 @@ import io.github.mmm.value.observable.number.shorts.ObservableShortValue;
 public interface BigDecimalExpression extends ObservableBigDecimalValue, NumberExpression<BigDecimal> {
 
   @Override
-  default BigDecimalExpression negate() {
+  default BigDecimalExpression expNegate() {
 
     return BigDecimalBinding.negate(this);
   }
 
   @Override
-  default BigDecimalExpression add(ObservableValue<? extends Number> other) {
+  default BigDecimalExpression expAdd(ObservableValue<? extends Number> other) {
 
-    return BigDecimalBinding.add(this, other);
+    return BigDecimalBinding.expAdd(this, other);
   }
 
   @Override
-  default BigDecimalExpression add(ObservableBigIntegerValue other) {
+  default BigDecimalExpression expAdd(ObservableBigIntegerValue other) {
 
-    return BigDecimalBinding.add(this, other);
+    return BigDecimalBinding.expAdd(this, other);
   }
 
   @Override
-  default BigDecimalExpression add(ObservableDoubleValue other) {
+  default BigDecimalExpression expAdd(ObservableDoubleValue other) {
 
-    return BigDecimalBinding.add(this, other);
+    return BigDecimalBinding.expAdd(this, other);
   }
 
   @Override
-  default BigDecimalExpression add(ObservableFloatValue other) {
+  default BigDecimalExpression expAdd(ObservableFloatValue other) {
 
-    return BigDecimalBinding.add(this, other);
+    return BigDecimalBinding.expAdd(this, other);
   }
 
   @Override
-  default BigDecimalExpression add(ObservableLongValue other) {
+  default BigDecimalExpression expAdd(ObservableLongValue other) {
 
-    return BigDecimalBinding.add(this, other);
+    return BigDecimalBinding.expAdd(this, other);
   }
 
   @Override
-  default BigDecimalExpression add(ObservableIntegerValue other) {
+  default BigDecimalExpression expAdd(ObservableIntegerValue other) {
 
-    return BigDecimalBinding.add(this, other);
+    return BigDecimalBinding.expAdd(this, other);
   }
 
   @Override
-  default BigDecimalExpression add(ObservableShortValue other) {
+  default BigDecimalExpression expAdd(ObservableShortValue other) {
 
-    return BigDecimalBinding.add(this, other);
+    return BigDecimalBinding.expAdd(this, other);
   }
 
   @Override
-  default BigDecimalExpression add(ObservableByteValue other) {
+  default BigDecimalExpression expAdd(ObservableByteValue other) {
 
-    return BigDecimalBinding.add(this, other);
+    return BigDecimalBinding.expAdd(this, other);
   }
 
   @Override
-  default BigDecimalExpression add(Number constant) {
+  default BigDecimalExpression expAdd(Number constant) {
 
     return BigDecimalBinding.add(this, constant);
   }
 
   @Override
-  default BigDecimalExpression add(BigInteger constant) {
+  default BigDecimalExpression expAdd(BigInteger constant) {
 
-    return add(new BigDecimal(constant));
+    return expAdd(new BigDecimal(constant));
   }
 
   @Override
-  default BigDecimalExpression add(double constant) {
+  default BigDecimalExpression expAdd(double constant) {
 
-    return add(BigDecimal.valueOf(constant));
+    return expAdd(BigDecimal.valueOf(constant));
   }
 
   @Override
-  default BigDecimalExpression add(float constant) {
+  default BigDecimalExpression expAdd(float constant) {
 
-    return add((double) constant);
+    return expAdd((double) constant);
   }
 
   @Override
-  default BigDecimalExpression add(long constant) {
+  default BigDecimalExpression expAdd(long constant) {
 
-    return add((double) constant);
+    return expAdd((double) constant);
   }
 
   @Override
-  default BigDecimalExpression add(int constant) {
+  default BigDecimalExpression expAdd(int constant) {
 
-    return add((double) constant);
+    return expAdd((double) constant);
   }
 
   @Override
-  default BigDecimalExpression add(short constant) {
+  default BigDecimalExpression expAdd(short constant) {
 
-    return add((double) constant);
+    return expAdd((double) constant);
   }
 
   @Override
-  default BigDecimalExpression add(byte constant) {
+  default BigDecimalExpression expAdd(byte constant) {
 
-    return add((double) constant);
+    return expAdd((double) constant);
   }
 
   @Override
-  default BigDecimalExpression subtract(ObservableValue<? extends Number> other) {
+  default BigDecimalExpression expSub(ObservableValue<? extends Number> other) {
 
-    return BigDecimalBinding.subtract(this, other);
+    return BigDecimalBinding.expSub(this, other);
   }
 
   @Override
-  default BigDecimalExpression subtract(ObservableBigIntegerValue other) {
+  default BigDecimalExpression expSub(ObservableBigIntegerValue other) {
 
-    return BigDecimalBinding.subtract(this, other);
+    return BigDecimalBinding.expSub(this, other);
   }
 
   @Override
-  default BigDecimalExpression subtract(ObservableDoubleValue other) {
+  default BigDecimalExpression expSub(ObservableDoubleValue other) {
 
-    return BigDecimalBinding.subtract(this, other);
+    return BigDecimalBinding.expSub(this, other);
   }
 
   @Override
-  default BigDecimalExpression subtract(ObservableFloatValue other) {
+  default BigDecimalExpression expSub(ObservableFloatValue other) {
 
-    return BigDecimalBinding.subtract(this, other);
+    return BigDecimalBinding.expSub(this, other);
   }
 
   @Override
-  default BigDecimalExpression subtract(ObservableLongValue other) {
+  default BigDecimalExpression expSub(ObservableLongValue other) {
 
-    return BigDecimalBinding.subtract(this, other);
+    return BigDecimalBinding.expSub(this, other);
   }
 
   @Override
-  default BigDecimalExpression subtract(ObservableIntegerValue other) {
+  default BigDecimalExpression expSub(ObservableIntegerValue other) {
 
-    return BigDecimalBinding.subtract(this, other);
+    return BigDecimalBinding.expSub(this, other);
   }
 
   @Override
-  default BigDecimalExpression subtract(ObservableShortValue other) {
+  default BigDecimalExpression expSub(ObservableShortValue other) {
 
-    return BigDecimalBinding.subtract(this, other);
+    return BigDecimalBinding.expSub(this, other);
   }
 
   @Override
-  default BigDecimalExpression subtract(ObservableByteValue other) {
+  default BigDecimalExpression expSub(ObservableByteValue other) {
 
-    return BigDecimalBinding.subtract(this, other);
+    return BigDecimalBinding.expSub(this, other);
   }
 
   @Override
-  default BigDecimalExpression subtract(Number constant) {
+  default BigDecimalExpression expSub(Number constant) {
 
     return BigDecimalBinding.subtract(this, constant);
   }
 
   @Override
-  default BigDecimalExpression subtract(BigInteger constant) {
+  default BigDecimalExpression expSub(BigInteger constant) {
 
-    return subtract(new BigDecimal(constant));
+    return expSub(new BigDecimal(constant));
   }
 
   @Override
-  default BigDecimalExpression subtract(double constant) {
+  default BigDecimalExpression expSub(double constant) {
 
-    return subtract(BigDecimal.valueOf(constant));
+    return expSub(BigDecimal.valueOf(constant));
   }
 
   @Override
-  default BigDecimalExpression subtract(float constant) {
+  default BigDecimalExpression expSub(float constant) {
 
-    return subtract((double) constant);
+    return expSub((double) constant);
   }
 
   @Override
-  default BigDecimalExpression subtract(long constant) {
+  default BigDecimalExpression expSub(long constant) {
 
-    return subtract((double) constant);
+    return expSub((double) constant);
   }
 
   @Override
-  default BigDecimalExpression subtract(int constant) {
+  default BigDecimalExpression expSub(int constant) {
 
-    return subtract((double) constant);
+    return expSub((double) constant);
   }
 
   @Override
-  default BigDecimalExpression subtract(short constant) {
+  default BigDecimalExpression expSub(short constant) {
 
-    return subtract((double) constant);
+    return expSub((double) constant);
   }
 
   @Override
-  default BigDecimalExpression subtract(byte constant) {
+  default BigDecimalExpression expSub(byte constant) {
 
-    return subtract((double) constant);
+    return expSub((double) constant);
   }
 
   @Override
-  default BigDecimalExpression multiply(ObservableValue<? extends Number> other) {
+  default BigDecimalExpression expMul(ObservableValue<? extends Number> other) {
 
-    return BigDecimalBinding.multiply(this, other);
+    return BigDecimalBinding.expMul(this, other);
   }
 
   @Override
-  default BigDecimalExpression multiply(ObservableBigIntegerValue other) {
+  default BigDecimalExpression expMul(ObservableBigIntegerValue other) {
 
-    return BigDecimalBinding.multiply(this, other);
+    return BigDecimalBinding.expMul(this, other);
   }
 
   @Override
-  default BigDecimalExpression multiply(ObservableDoubleValue other) {
+  default BigDecimalExpression expMul(ObservableDoubleValue other) {
 
-    return BigDecimalBinding.multiply(this, other);
+    return BigDecimalBinding.expMul(this, other);
   }
 
   @Override
-  default BigDecimalExpression multiply(ObservableFloatValue other) {
+  default BigDecimalExpression expMul(ObservableFloatValue other) {
 
-    return BigDecimalBinding.multiply(this, other);
+    return BigDecimalBinding.expMul(this, other);
   }
 
   @Override
-  default BigDecimalExpression multiply(ObservableLongValue other) {
+  default BigDecimalExpression expMul(ObservableLongValue other) {
 
-    return BigDecimalBinding.multiply(this, other);
+    return BigDecimalBinding.expMul(this, other);
   }
 
   @Override
-  default BigDecimalExpression multiply(ObservableIntegerValue other) {
+  default BigDecimalExpression expMul(ObservableIntegerValue other) {
 
-    return BigDecimalBinding.multiply(this, other);
+    return BigDecimalBinding.expMul(this, other);
   }
 
   @Override
-  default BigDecimalExpression multiply(ObservableShortValue other) {
+  default BigDecimalExpression expMul(ObservableShortValue other) {
 
-    return BigDecimalBinding.multiply(this, other);
+    return BigDecimalBinding.expMul(this, other);
   }
 
   @Override
-  default BigDecimalExpression multiply(ObservableByteValue other) {
+  default BigDecimalExpression expMul(ObservableByteValue other) {
 
-    return BigDecimalBinding.multiply(this, other);
+    return BigDecimalBinding.expMul(this, other);
   }
 
   @Override
-  default BigDecimalExpression multiply(Number constant) {
+  default BigDecimalExpression expMul(Number constant) {
 
     return BigDecimalBinding.multiply(this, constant);
   }
 
   @Override
-  default BigDecimalExpression multiply(BigInteger constant) {
+  default BigDecimalExpression expMul(BigInteger constant) {
 
-    return multiply(new BigDecimal(constant));
+    return expMul(new BigDecimal(constant));
   }
 
   @Override
-  default BigDecimalExpression multiply(double constant) {
+  default BigDecimalExpression expMul(double constant) {
 
-    return multiply(BigDecimal.valueOf(constant));
+    return expMul(BigDecimal.valueOf(constant));
   }
 
   @Override
-  default BigDecimalExpression multiply(float constant) {
+  default BigDecimalExpression expMul(float constant) {
 
-    return multiply((double) constant);
+    return expMul((double) constant);
   }
 
   @Override
-  default BigDecimalExpression multiply(long constant) {
+  default BigDecimalExpression expMul(long constant) {
 
-    return multiply((double) constant);
+    return expMul((double) constant);
   }
 
   @Override
-  default BigDecimalExpression multiply(int constant) {
+  default BigDecimalExpression expMul(int constant) {
 
-    return multiply((double) constant);
+    return expMul((double) constant);
   }
 
   @Override
-  default BigDecimalExpression multiply(short constant) {
+  default BigDecimalExpression expMul(short constant) {
 
-    return multiply((double) constant);
+    return expMul((double) constant);
   }
 
   @Override
-  default BigDecimalExpression multiply(byte constant) {
+  default BigDecimalExpression expMul(byte constant) {
 
-    return multiply((double) constant);
+    return expMul((double) constant);
   }
 
   @Override
-  default BigDecimalExpression divide(ObservableValue<? extends Number> other) {
+  default BigDecimalExpression expDiv(ObservableValue<? extends Number> other) {
 
-    return BigDecimalBinding.divide(this, other);
+    return BigDecimalBinding.expDiv(this, other);
   }
 
   @Override
-  default BigDecimalExpression divide(ObservableBigIntegerValue other) {
+  default BigDecimalExpression expDiv(ObservableBigIntegerValue other) {
 
-    return BigDecimalBinding.divide(this, other);
+    return BigDecimalBinding.expDiv(this, other);
   }
 
   @Override
-  default BigDecimalExpression divide(ObservableDoubleValue other) {
+  default BigDecimalExpression expDiv(ObservableDoubleValue other) {
 
-    return BigDecimalBinding.divide(this, other);
+    return BigDecimalBinding.expDiv(this, other);
   }
 
   @Override
-  default BigDecimalExpression divide(ObservableFloatValue other) {
+  default BigDecimalExpression expDiv(ObservableFloatValue other) {
 
-    return BigDecimalBinding.divide(this, other);
+    return BigDecimalBinding.expDiv(this, other);
   }
 
   @Override
-  default BigDecimalExpression divide(ObservableLongValue other) {
+  default BigDecimalExpression expDiv(ObservableLongValue other) {
 
-    return BigDecimalBinding.divide(this, other);
+    return BigDecimalBinding.expDiv(this, other);
   }
 
   @Override
-  default BigDecimalExpression divide(ObservableIntegerValue other) {
+  default BigDecimalExpression expDiv(ObservableIntegerValue other) {
 
-    return BigDecimalBinding.divide(this, other);
+    return BigDecimalBinding.expDiv(this, other);
   }
 
   @Override
-  default BigDecimalExpression divide(ObservableShortValue other) {
+  default BigDecimalExpression expDiv(ObservableShortValue other) {
 
-    return BigDecimalBinding.divide(this, other);
+    return BigDecimalBinding.expDiv(this, other);
   }
 
   @Override
-  default BigDecimalExpression divide(ObservableByteValue other) {
+  default BigDecimalExpression expDiv(ObservableByteValue other) {
 
-    return BigDecimalBinding.divide(this, other);
+    return BigDecimalBinding.expDiv(this, other);
   }
 
   @Override
-  default BigDecimalExpression divide(Number constant) {
+  default BigDecimalExpression expDiv(Number constant) {
 
     return BigDecimalBinding.divide(this, constant);
   }
 
   @Override
-  default BigDecimalExpression divide(BigInteger constant) {
+  default BigDecimalExpression expDiv(BigInteger constant) {
 
-    return divide(new BigDecimal(constant));
+    return expDiv(new BigDecimal(constant));
   }
 
   @Override
-  default BigDecimalExpression divide(double constant) {
+  default BigDecimalExpression expDiv(double constant) {
 
-    return divide(BigDecimal.valueOf(constant));
+    return expDiv(BigDecimal.valueOf(constant));
   }
 
   @Override
-  default BigDecimalExpression divide(float constant) {
+  default BigDecimalExpression expDiv(float constant) {
 
-    return divide((double) constant);
+    return expDiv((double) constant);
   }
 
   @Override
-  default BigDecimalExpression divide(long constant) {
+  default BigDecimalExpression expDiv(long constant) {
 
-    return divide((double) constant);
+    return expDiv((double) constant);
   }
 
   @Override
-  default BigDecimalExpression divide(int constant) {
+  default BigDecimalExpression expDiv(int constant) {
 
-    return divide((double) constant);
+    return expDiv((double) constant);
   }
 
   @Override
-  default BigDecimalExpression divide(short constant) {
+  default BigDecimalExpression expDiv(short constant) {
 
-    return divide((double) constant);
+    return expDiv((double) constant);
   }
 
   @Override
-  default BigDecimalExpression divide(byte constant) {
+  default BigDecimalExpression expDiv(byte constant) {
 
-    return divide((double) constant);
+    return expDiv((double) constant);
   }
 
 }

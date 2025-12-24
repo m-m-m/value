@@ -31,7 +31,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
    * @param expression the {@link FloatExpression} to negate.
    * @return a new {@link FloatExpression} holding the negation of the {@link #get() value} from the given
    *         {@link FloatExpression}.
-   * @see #negate()
+   * @see #expNegate()
    */
   public static FloatExpression negate(FloatExpression expression) {
 
@@ -58,7 +58,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
    * @param other the {@link ObservableValue} to add.
    * @return a new {@link FloatExpression} holding the sum of the {@link #get() value}s of the first and the second
    *         given {@link ObservableValue}s.
-   * @see #add(ObservableFloatValue)
+   * @see #expAdd(ObservableFloatValue)
    */
   public static FloatExpression add(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
@@ -73,7 +73,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
    * @param constant the constant {@link Number} to add.
    * @return a new {@link FloatExpression} holding the sum of the {@link #get() value} from the given
    *         {@link FloatExpression} with the given {@code constant}.
-   * @see #add(ObservableFloatValue)
+   * @see #expAdd(ObservableFloatValue)
    */
   public static FloatExpression add(NumberExpression<?> expression, Number constant) {
 
@@ -88,7 +88,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
    * @param constant the constant {@code float} to add.
    * @return a new {@link FloatExpression} holding the sum of the {@link #get() value} from the given
    *         {@link FloatExpression} with the given {@code constant}.
-   * @see #add(ObservableFloatValue)
+   * @see #expAdd(ObservableFloatValue)
    */
   public static FloatExpression add(NumberExpression<?> expression, float constant) {
 
@@ -111,7 +111,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
    * @param other the {@link ObservableValue} to subtract.
    * @return a new {@link FloatExpression} holding the difference of the {@link #get() value}s of the first and the
    *         second given {@link ObservableValue}s.
-   * @see #subtract(ObservableFloatValue)
+   * @see #expSub(ObservableFloatValue)
    */
   public static FloatExpression subtract(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
@@ -126,7 +126,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
    * @param constant the constant {@link Number} to subtract.
    * @return a new {@link FloatExpression} holding the difference of the {@link #get() value} from the given
    *         {@link FloatExpression} with the given {@code constant}.
-   * @see #subtract(ObservableFloatValue)
+   * @see #expSub(ObservableFloatValue)
    */
   public static FloatExpression subtract(NumberExpression<?> expression, Number constant) {
 
@@ -141,7 +141,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
    * @param constant the constant {@code float} to subtract.
    * @return a new {@link FloatExpression} holding the difference of the {@link #get() value} from the given
    *         {@link FloatExpression} with the given {@code constant}.
-   * @see #subtract(ObservableFloatValue)
+   * @see #expSub(ObservableFloatValue)
    */
   public static FloatExpression subtract(NumberExpression<?> expression, float constant) {
 
@@ -164,7 +164,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
    * @param other the {@link ObservableValue} to multiply.
    * @return a new {@link FloatExpression} holding the product of the {@link #get() value}s of the first and the second
    *         given {@link ObservableValue}s.
-   * @see #multiply(ObservableFloatValue)
+   * @see #expMul(ObservableFloatValue)
    */
   public static FloatExpression multiply(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
@@ -179,7 +179,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
    * @param constant the constant {@link Number} to multiply.
    * @return a new {@link FloatExpression} holding the product of the {@link #get() value} from the given
    *         {@link FloatExpression} multiplied with the given {@code constant}.
-   * @see #multiply(ObservableFloatValue)
+   * @see #expMul(ObservableFloatValue)
    */
   public static FloatExpression multiply(NumberExpression<?> expression, Number constant) {
 
@@ -194,7 +194,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
    * @param constant the constant {@code float} to multiply.
    * @return a new {@link FloatExpression} holding the product of the {@link #get() value} from the given
    *         {@link FloatExpression} multiplied with the given {@code constant}.
-   * @see #multiply(ObservableFloatValue)
+   * @see #expMul(ObservableFloatValue)
    */
   public static FloatExpression multiply(NumberExpression<?> expression, float constant) {
 
@@ -217,7 +217,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
    * @param other the {@link ObservableValue} to divide.
    * @return a new {@link FloatExpression} holding the quotient of the {@link #get() value}s of the first and the second
    *         given {@link ObservableValue}s.
-   * @see #divide(ObservableFloatValue)
+   * @see #expDiv(ObservableFloatValue)
    */
   public static FloatExpression divide(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
@@ -232,7 +232,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
    * @param constant the constant {@link Number} to divide.
    * @return a new {@link FloatExpression} holding the quotient of the {@link #get() value} from the given
    *         {@link FloatExpression} divided by the given {@code constant}.
-   * @see #divide(ObservableFloatValue)
+   * @see #expDiv(ObservableFloatValue)
    */
   public static FloatExpression divide(NumberExpression<?> expression, Number constant) {
 
@@ -247,7 +247,7 @@ public class FloatBinding extends NumberBinding<Float> implements FloatExpressio
    * @param constant the constant {@code float} to divide.
    * @return a new {@link FloatExpression} holding the quotient of the {@link #get() value} from the given
    *         {@link FloatExpression} divided by the given {@code constant}.
-   * @see #divide(ObservableFloatValue)
+   * @see #expDiv(ObservableFloatValue)
    */
   public static FloatExpression divide(NumberExpression<?> expression, float constant) {
 

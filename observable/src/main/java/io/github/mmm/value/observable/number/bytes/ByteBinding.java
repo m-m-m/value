@@ -31,7 +31,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
    * @param expression the {@link ByteExpression} to negate.
    * @return a new {@link ByteExpression} holding the negation of the {@link #get() value} from the given
    *         {@link ByteExpression}.
-   * @see #negate()
+   * @see #expNegate()
    */
   public static ByteExpression negate(ByteExpression expression) {
 
@@ -58,7 +58,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
    * @param other the {@link ObservableValue} to add.
    * @return a new {@link ByteExpression} holding the sum of the {@link #get() value}s of the first and the second given
    *         {@link ObservableValue}s.
-   * @see #add(ObservableByteValue)
+   * @see #expAdd(ObservableByteValue)
    */
   public static ByteExpression add(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
@@ -73,7 +73,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
    * @param constant the constant {@link Number} to add.
    * @return a new {@link ByteExpression} holding the sum of the {@link #get() value} from the given
    *         {@link ByteExpression} with the given {@code constant}.
-   * @see #add(ObservableByteValue)
+   * @see #expAdd(ObservableByteValue)
    */
   public static ByteExpression add(NumberExpression<?> expression, Number constant) {
 
@@ -88,7 +88,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
    * @param constant the constant {@code byte} to add.
    * @return a new {@link ByteExpression} holding the sum of the {@link #get() value} from the given
    *         {@link ByteExpression} with the given {@code constant}.
-   * @see #add(ObservableByteValue)
+   * @see #expAdd(ObservableByteValue)
    */
   public static ByteExpression add(NumberExpression<?> expression, byte constant) {
 
@@ -111,7 +111,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
    * @param other the {@link ObservableValue} to subtract.
    * @return a new {@link ByteExpression} holding the difference of the {@link #get() value}s of the first and the
    *         second given {@link ObservableValue}s.
-   * @see #subtract(ObservableByteValue)
+   * @see #expSub(ObservableByteValue)
    */
   public static ByteExpression subtract(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
@@ -126,7 +126,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
    * @param constant the constant {@link Number} to subtract.
    * @return a new {@link ByteExpression} holding the difference of the {@link #get() value} from the given
    *         {@link ByteExpression} with the given {@code constant}.
-   * @see #subtract(ObservableByteValue)
+   * @see #expSub(ObservableByteValue)
    */
   public static ByteExpression subtract(NumberExpression<?> expression, Number constant) {
 
@@ -141,7 +141,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
    * @param constant the constant {@code byte} to subtract.
    * @return a new {@link ByteExpression} holding the difference of the {@link #get() value} from the given
    *         {@link ByteExpression} with the given {@code constant}.
-   * @see #subtract(ObservableByteValue)
+   * @see #expSub(ObservableByteValue)
    */
   public static ByteExpression subtract(NumberExpression<?> expression, byte constant) {
 
@@ -164,7 +164,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
    * @param other the {@link ObservableValue} to multiply.
    * @return a new {@link ByteExpression} holding the product of the {@link #get() value}s of the first and the second
    *         given {@link ObservableValue}s.
-   * @see #multiply(ObservableByteValue)
+   * @see #expMul(ObservableByteValue)
    */
   public static ByteExpression multiply(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
@@ -179,7 +179,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
    * @param constant the constant {@link Number} to multiply.
    * @return a new {@link ByteExpression} holding the product of the {@link #get() value} from the given
    *         {@link ByteExpression} multiplied with the given {@code constant}.
-   * @see #multiply(ObservableByteValue)
+   * @see #expMul(ObservableByteValue)
    */
   public static ByteExpression multiply(NumberExpression<?> expression, Number constant) {
 
@@ -194,7 +194,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
    * @param constant the constant {@code byte} to multiply.
    * @return a new {@link ByteExpression} holding the product of the {@link #get() value} from the given
    *         {@link ByteExpression} multiplied with the given {@code constant}.
-   * @see #multiply(ObservableByteValue)
+   * @see #expMul(ObservableByteValue)
    */
   public static ByteExpression multiply(NumberExpression<?> expression, byte constant) {
 
@@ -217,7 +217,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
    * @param other the {@link ObservableValue} to divide.
    * @return a new {@link ByteExpression} holding the quotient of the {@link #get() value}s of the first and the second
    *         given {@link ObservableValue}s.
-   * @see #divide(ObservableByteValue)
+   * @see #expDiv(ObservableByteValue)
    */
   public static ByteExpression divide(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
@@ -232,7 +232,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
    * @param constant the constant {@link Number} to divide.
    * @return a new {@link ByteExpression} holding the quotient of the {@link #get() value} from the given
    *         {@link ByteExpression} divided by the given {@code constant}.
-   * @see #divide(ObservableByteValue)
+   * @see #expDiv(ObservableByteValue)
    */
   public static ByteExpression divide(NumberExpression<?> expression, Number constant) {
 
@@ -247,7 +247,7 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
    * @param constant the constant {@code byte} to divide.
    * @return a new {@link ByteExpression} holding the quotient of the {@link #get() value} from the given
    *         {@link ByteExpression} divided by the given {@code constant}.
-   * @see #divide(ObservableByteValue)
+   * @see #expDiv(ObservableByteValue)
    */
   public static ByteExpression divide(NumberExpression<?> expression, byte constant) {
 

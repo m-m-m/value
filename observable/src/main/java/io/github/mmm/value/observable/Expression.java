@@ -24,7 +24,7 @@ public interface Expression<V> extends ObservableValue<V> {
    *         and the {@link ObservableValue#get() value} of the given {@link ObservableValue} are
    *         {@link Object#equals(Object) equal}.
    */
-  default BooleanExpression isEqualTo(ObservableValue<V> other) {
+  default BooleanExpression expEq(ObservableValue<V> other) {
 
     return new BooleanBinding(() -> Objects.equals(get(), other.get()), this, other);
   }
@@ -34,7 +34,7 @@ public interface Expression<V> extends ObservableValue<V> {
    * @return a new {@link BooleanBinding} holding {@code true} if the {@link #get() value} of this property and the
    *         given {@code value} are {@link Object#equals(Object) equal}.
    */
-  default BooleanExpression isEqualTo(V other) {
+  default BooleanExpression expEq(V other) {
 
     return new BooleanBinding(() -> Objects.equals(get(), other), this);
   }
@@ -45,7 +45,7 @@ public interface Expression<V> extends ObservableValue<V> {
    *         {@link ObservableValue#get() value} of the given {@link ObservableValue} are NOT
    *         {@link Object#equals(Object) equal}.
    */
-  default BooleanExpression isNotEqualTo(ObservableValue<V> other) {
+  default BooleanExpression expNeq(ObservableValue<V> other) {
 
     return new BooleanBinding(() -> !Objects.equals(get(), other.get()), this, other);
   }
@@ -55,7 +55,7 @@ public interface Expression<V> extends ObservableValue<V> {
    * @return a new {@link BooleanBinding} holding {@code true} if the {@link #get() value} of this property and the
    *         given {@code value} are NOT {@link Object#equals(Object) equal}.
    */
-  default BooleanExpression isNotEqualTo(V other) {
+  default BooleanExpression expNeq(V other) {
 
     return new BooleanBinding(() -> !Objects.equals(get(), other), this);
   }
@@ -64,7 +64,7 @@ public interface Expression<V> extends ObservableValue<V> {
    * @return a new {@link BooleanBinding} holding {@code true} if the {@link #get() value} of this property is
    *         {@code null}.
    */
-  default BooleanExpression isNull() {
+  default BooleanExpression expNull() {
 
     return new BooleanBinding(() -> (get() == null), this);
   }
@@ -73,7 +73,7 @@ public interface Expression<V> extends ObservableValue<V> {
    * @return a new {@link BooleanBinding} holding {@code true} if the {@link #get() value} of this property is NOT
    *         {@code null}.
    */
-  default BooleanExpression isNotNull() {
+  default BooleanExpression expNotNull() {
 
     return new BooleanBinding(() -> (get() != null), this);
   }
@@ -82,7 +82,7 @@ public interface Expression<V> extends ObservableValue<V> {
    * @return a new {@code StringBinding} holding the {@link Object#toString() String-repersentation} of the
    *         {@link #get() value}.
    */
-  default StringExpression asString() {
+  default StringExpression expString() {
 
     return new StringBinding(() -> Objects.toString(get()), this);
   }

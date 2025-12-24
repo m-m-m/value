@@ -39,13 +39,13 @@ public class DoubleExpressionTest extends NumberExpressionTest<Double> {
   public void testAddCustom() {
 
     DoubleExpressionMock value = new DoubleExpressionMock(ONE);
-    DoubleExpression expression = value.add(1D).add(1F).add(1L).add(1).add((short) 1).add((byte) 1);
+    DoubleExpression expression = value.expAdd(1D).expAdd(1F).expAdd(1L).expAdd(1).expAdd((short) 1).expAdd((byte) 1);
     assertThat(expression.getValue()).isEqualTo(Double.valueOf(7));
     value.set(TEN);
     assertThat(expression.getValue()).isEqualTo(Double.valueOf(16));
     DoubleExpressionMock value2 = new DoubleExpressionMock();
     value2.set(ONE);
-    DoubleExpression expression2 = expression.add(value2);
+    DoubleExpression expression2 = expression.expAdd(value2);
     assertThat(expression2.getValue()).isEqualTo(Double.valueOf(17));
     value2.set(TEN);
     assertThat(expression2.getValue()).isEqualTo(Double.valueOf(26));
@@ -60,13 +60,12 @@ public class DoubleExpressionTest extends NumberExpressionTest<Double> {
   public void testSubtractCustom() {
 
     DoubleExpressionMock value = new DoubleExpressionMock(Double.valueOf(8));
-    DoubleExpression expression = value.subtract(1D).subtract(1F).subtract(1L).subtract(1).subtract((short) 1)
-        .subtract((byte) 1);
+    DoubleExpression expression = value.expSub(1D).expSub(1F).expSub(1L).expSub(1).expSub((short) 1).expSub((byte) 1);
     assertThat(expression.getValue()).isEqualTo(Double.valueOf(2));
     value.set(TEN);
     assertThat(expression.getValue()).isEqualTo(Double.valueOf(4));
     DoubleExpressionMock value2 = new DoubleExpressionMock(ONE);
-    DoubleExpression expression2 = expression.subtract(value2);
+    DoubleExpression expression2 = expression.expSub(value2);
     assertThat(expression2.getValue()).isEqualTo(Double.valueOf(3));
     value2.set(TEN);
     assertThat(expression2.getValue()).isEqualTo(Double.valueOf(-6));
@@ -83,14 +82,13 @@ public class DoubleExpressionTest extends NumberExpressionTest<Double> {
 
     Double two = Double.valueOf(2.0);
     DoubleExpressionMock value = new DoubleExpressionMock(two);
-    DoubleExpression expression = value.multiply(2D).multiply(2F).multiply(2L).multiply(2).multiply((short) 8)
-        .multiply((byte) 2);
+    DoubleExpression expression = value.expMul(2D).expMul(2F).expMul(2L).expMul(2).expMul((short) 8).expMul((byte) 2);
 
     assertThat(expression.getValue()).isEqualTo(Double.valueOf(512));
     value.set(TEN);
     assertThat(expression.getValue()).isEqualTo(Double.valueOf(2560));
     DoubleExpressionMock value2 = new DoubleExpressionMock(two);
-    DoubleExpression expression2 = expression.multiply(value2);
+    DoubleExpression expression2 = expression.expMul(value2);
     assertThat(expression2.getValue()).isEqualTo(Double.valueOf(5120));
     value2.set(TEN);
     assertThat(expression2.getValue()).isEqualTo(Double.valueOf(25600));
@@ -107,13 +105,13 @@ public class DoubleExpressionTest extends NumberExpressionTest<Double> {
 
     Double two = Double.valueOf(2.0);
     DoubleExpressionMock value = new DoubleExpressionMock(ONE);
-    DoubleExpression expression = value.divide(2D).divide(2F).divide(2L).divide(2).divide((short) 2).divide((byte) 8);
+    DoubleExpression expression = value.expDiv(2D).expDiv(2F).expDiv(2L).expDiv(2).expDiv((short) 2).expDiv((byte) 8);
 
     assertThat(expression.getValue()).isEqualTo(Double.valueOf(1 / 256D));
     value.set(TEN);
     assertThat(expression.getValue()).isEqualTo(Double.valueOf(10 / 256D));
     DoubleExpressionMock value2 = new DoubleExpressionMock(two);
-    DoubleExpression expression2 = expression.divide(value2);
+    DoubleExpression expression2 = expression.expDiv(value2);
     assertThat(expression2.getValue()).isEqualTo(Double.valueOf(10 / 512D));
     value2.set(TEN);
     assertThat(expression2.getValue()).isEqualTo(Double.valueOf(10 / 2560D));

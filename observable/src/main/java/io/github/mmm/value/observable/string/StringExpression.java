@@ -16,7 +16,7 @@ public interface StringExpression extends ObservableStringValue, ComparableExpre
    * @return a new {@link IntegerBinding} that holds the {@link String#length() length} of the {@code String}
    *         {@link #get() value}.
    */
-  default IntegerBinding length() {
+  default IntegerBinding expLength() {
 
     return new IntegerBinding(() -> getSafe().length(), this);
   }
@@ -26,7 +26,7 @@ public interface StringExpression extends ObservableStringValue, ComparableExpre
    * @return a new {@code StringExpression} that holds the {@link #get() value} of this property concatenated with the
    *         given {@link Object}.
    */
-  default StringExpression concat(Object other) {
+  default StringExpression expConcat(Object other) {
 
     if (other instanceof ObservableValue<?>) {
       ObservableValue<?> observable = (ObservableValue<?>) other;
@@ -42,7 +42,7 @@ public interface StringExpression extends ObservableStringValue, ComparableExpre
    *         {@link ObservableStringValue#get() value} of the given {@link ObservableStringValue} are
    *         {@link String#equalsIgnoreCase(String) equal ignoring the case}.
    */
-  default BooleanBinding isEqualToIgnoreCase(ObservableStringValue other) {
+  default BooleanBinding expEqualToIgnoreCase(ObservableStringValue other) {
 
     return new BooleanBinding(() -> getSafe().equalsIgnoreCase(other.getSafe()), this, other);
   }
@@ -52,7 +52,7 @@ public interface StringExpression extends ObservableStringValue, ComparableExpre
    * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #get() value} of this property and the
    *         given {@link String} are {@link String#equalsIgnoreCase(String) equal ignoring the case}.
    */
-  default BooleanBinding isEqualToIgnoreCase(String other) {
+  default BooleanBinding expEqualToIgnoreCase(String other) {
 
     return new BooleanBinding(() -> getSafe().equalsIgnoreCase(other), this);
   }
@@ -63,7 +63,7 @@ public interface StringExpression extends ObservableStringValue, ComparableExpre
    *         {@link ObservableStringValue#get() value} of the given {@link ObservableStringValue} are NOT
    *         {@link String#equalsIgnoreCase(String) equal ignoring the case}.
    */
-  default BooleanBinding isNotEqualToIgnoreCase(ObservableStringValue other) {
+  default BooleanBinding expNotEqualToIgnoreCase(ObservableStringValue other) {
 
     return new BooleanBinding(() -> !getSafe().equalsIgnoreCase(other.getSafe()), this, other);
   }
@@ -73,7 +73,7 @@ public interface StringExpression extends ObservableStringValue, ComparableExpre
    * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #get() value} of this property and the
    *         given {@link String} are NOT {@link String#equalsIgnoreCase(String) equal ignoring the case}.
    */
-  default BooleanBinding isNotEqualToIgnoreCase(String other) {
+  default BooleanBinding expNotEqualToIgnoreCase(String other) {
 
     return new BooleanBinding(() -> !getSafe().equalsIgnoreCase(other), this);
   }
@@ -82,7 +82,7 @@ public interface StringExpression extends ObservableStringValue, ComparableExpre
    * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #get() value} of this property is
    *         {@link String#isEmpty() empty}.
    */
-  default BooleanBinding isEmpty() {
+  default BooleanBinding expEmpty() {
 
     return new BooleanBinding(() -> getSafe().isEmpty(), this);
   }
@@ -91,7 +91,7 @@ public interface StringExpression extends ObservableStringValue, ComparableExpre
    * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #get() value} of this property is NOT
    *         {@link String#isEmpty() empty}.
    */
-  default BooleanBinding isNotEmpty() {
+  default BooleanBinding expNotEmpty() {
 
     return new BooleanBinding(() -> !getSafe().isEmpty(), this);
   }

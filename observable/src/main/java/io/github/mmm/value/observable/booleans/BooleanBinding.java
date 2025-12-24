@@ -33,7 +33,7 @@ public class BooleanBinding extends Binding<Boolean> implements BooleanExpressio
    * @param expression the {@link BooleanExpression}.
    * @return a new {@code BooleanExpression} holding the negation of this {@link #get() value}.
    */
-  public static BooleanExpression not(BooleanExpression expression) {
+  public static BooleanExpression expNot(BooleanExpression expression) {
 
     return new BooleanBinding(() -> not(ReadableValue.get(expression)), expression);
   }
@@ -43,9 +43,9 @@ public class BooleanBinding extends Binding<Boolean> implements BooleanExpressio
    * @param other the {@code ObservableValue}.
    * @return a new {@code BooleanExpression} holding the logical AND of the {@link #get() value}s from the given
    *         {@link ObservableValue}s.
-   * @see #and(ObservableValue)
+   * @see #expAnd(ObservableValue)
    */
-  public static BooleanExpression and(BooleanExpression expression, ObservableValue<Boolean> other) {
+  public static BooleanExpression expAnd(BooleanExpression expression, ObservableValue<Boolean> other) {
 
     if (other == null) {
       return expression;
@@ -60,7 +60,7 @@ public class BooleanBinding extends Binding<Boolean> implements BooleanExpressio
    * @return a new {@code BooleanExpression} holding the logical AND of the {@link #get() value} from the given
    *         {@link BooleanExpression} and the given {@code constant} value.
    */
-  public static BooleanExpression and(BooleanExpression expression, Boolean constant) {
+  public static BooleanExpression expAnd(BooleanExpression expression, Boolean constant) {
 
     if (constant == null) {
       return expression;
@@ -74,7 +74,7 @@ public class BooleanBinding extends Binding<Boolean> implements BooleanExpressio
    * @return a new {@code BooleanExpression} holding the logical OR of the {@link #get() value}s from the given
    *         {@link ObservableValue}s.
    */
-  public static BooleanExpression or(BooleanExpression expression, ObservableValue<Boolean> other) {
+  public static BooleanExpression expOr(BooleanExpression expression, ObservableValue<Boolean> other) {
 
     if (other == null) {
       return expression;
@@ -89,7 +89,7 @@ public class BooleanBinding extends Binding<Boolean> implements BooleanExpressio
    * @return a new {@code BooleanExpression} holding the logical OR of the {@link #get() value} from the given
    *         {@link BooleanExpression} and the given {@code constant} value.
    */
-  public static BooleanExpression or(BooleanExpression expression, Boolean other) {
+  public static BooleanExpression expOr(BooleanExpression expression, Boolean other) {
 
     if (other == null) {
       return expression;

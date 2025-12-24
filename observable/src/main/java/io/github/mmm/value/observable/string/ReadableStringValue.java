@@ -41,4 +41,11 @@ public interface ReadableStringValue extends ReadableSimpleObjectValue<String> {
     return value;
   }
 
+  @Override
+  default boolean isEmpty() {
+
+    String string = get();
+    return (string == null) || string.isEmpty();
+  }
+
 }

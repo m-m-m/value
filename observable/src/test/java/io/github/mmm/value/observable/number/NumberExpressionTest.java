@@ -152,22 +152,22 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
     NumberExpression<N> expression = of(one);
 
     // add (1+1=2)
-    NumberExpression<?> term = expression.add(one);
+    NumberExpression<?> term = expression.expAdd(one);
     assertThat(term.get()).isEqualTo(two);
     assertThat(term.getValueClass()).isSameAs(getValueClass());
     term.dispose();
-    term = expression.add(expression);
+    term = expression.expAdd(expression);
     assertThat(term.get()).isEqualTo(two);
     assertThat(term.getValueClass()).isSameAs(getValueClass());
     term.dispose();
     // BigDecimal
     BigDecimal bd1 = BigDecimal.valueOf(1);
     BigDecimal bd2 = BigDecimal.valueOf(2);
-    BigDecimalExpression bdTerm = expression.add(bd1);
+    BigDecimalExpression bdTerm = expression.expAdd(bd1);
     term = bdTerm;
     assertEquals(term.get(), bd2);
     assertThat(term.getValueClass()).isSameAs(BigDecimal.class);
-    term = expression.add(bdTerm);
+    term = expression.expAdd(bdTerm);
     assertEquals(term.get(), BigDecimal.valueOf(3));
     assertThat(term.getValueClass()).isSameAs(BigDecimal.class);
     term.dispose();
@@ -184,35 +184,35 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
     NumberExpression<N> expression = of(two);
 
     // 2-1=1
-    NumberExpression<?> term = expression.subtract(one);
+    NumberExpression<?> term = expression.expSub(one);
     assertEquals(term.get(), one);
     assertThat(term.getValueClass()).isSameAs(getValueClass());
     term.dispose();
     // 2-2=0
-    term = expression.subtract(expression);
+    term = expression.expSub(expression);
     assertEquals(term.get(), zero);
     assertThat(term.getValueClass()).isSameAs(getValueClass());
     term.dispose();
 
     // BigDecimal: 2-1=1
-    BigDecimalExpression bdTerm = expression.subtract(BigDecimal.ONE);
+    BigDecimalExpression bdTerm = expression.expSub(BigDecimal.ONE);
     term = bdTerm;
     assertEquals(term.get(), BigDecimal.ONE);
     assertThat(term.getValueClass()).isSameAs(BigDecimal.class);
-    term = expression.subtract(bdTerm);
+    term = expression.expSub(bdTerm);
     assertEquals(term.get(), BigDecimal.ONE);
     assertThat(term.getValueClass()).isSameAs(BigDecimal.class);
     term.dispose();
     term = bdTerm;
-    term = expression.subtract(term);
+    term = expression.expSub(term);
     assertEquals(term.get(), BigDecimal.ONE);
     assertThat(term.getValueClass()).isSameAs(BigDecimal.class);
     term.dispose();
-    term = expression.subtract((Number) BigDecimal.ONE);
+    term = expression.expSub((Number) BigDecimal.ONE);
     assertEquals(term.get(), BigDecimal.ONE);
     assertThat(term.getValueClass()).isSameAs(BigDecimal.class);
     term.dispose();
-    term = expression.subtract((Number) BigInteger.ONE);
+    term = expression.expSub((Number) BigInteger.ONE);
     assertThat(term.get().intValue()).isEqualTo(1);
     term.dispose();
   }
@@ -226,11 +226,11 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
     NumberExpression<N> expression = of(two);
 
     // 2*2=4
-    NumberExpression<?> term = expression.multiply(two);
+    NumberExpression<?> term = expression.expMul(two);
     assertEquals(term.get(), four);
     assertThat(term.getValueClass()).isSameAs(getValueClass());
     term.dispose();
-    term = expression.multiply(expression);
+    term = expression.expMul(expression);
     assertEquals(term.get(), four);
     assertThat(term.getValueClass()).isSameAs(getValueClass());
     term.dispose();
@@ -247,11 +247,11 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
     NumberExpression<N> expression = of(eight);
 
     // 8/4=2
-    NumberExpression<?> term = expression.divide(four);
+    NumberExpression<?> term = expression.expDiv(four);
     assertEquals(term.get(), two);
     assertThat(term.getValueClass()).isSameAs(getValueClass());
     term.dispose();
-    term = expression.divide(expression);
+    term = expression.expDiv(expression);
     assertEquals(term.get(), one);
     assertThat(term.getValueClass()).isSameAs(getValueClass());
     term.dispose();

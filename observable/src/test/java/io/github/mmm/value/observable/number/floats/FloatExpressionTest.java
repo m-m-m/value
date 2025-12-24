@@ -39,13 +39,13 @@ public class FloatExpressionTest extends NumberExpressionTest<Float> {
   public void testAddCustom() {
 
     FloatExpressionMock value = new FloatExpressionMock(ONE);
-    FloatExpression expression = value.add(1F).add(1L).add(1).add((short) 1).add((byte) 2);
+    FloatExpression expression = value.expAdd(1F).expAdd(1L).expAdd(1).expAdd((short) 1).expAdd((byte) 2);
     assertThat(expression.getValue()).isEqualTo(Float.valueOf(7));
     value.set(TEN);
     assertThat(expression.getValue()).isEqualTo(Float.valueOf(16));
     FloatExpressionMock value2 = new FloatExpressionMock();
     value2.set(ONE);
-    FloatExpression expression2 = expression.add(value2);
+    FloatExpression expression2 = expression.expAdd(value2);
     assertThat(expression2.getValue()).isEqualTo(Float.valueOf(17));
     value2.set(TEN);
     assertThat(expression2.getValue()).isEqualTo(Float.valueOf(26));
@@ -60,12 +60,12 @@ public class FloatExpressionTest extends NumberExpressionTest<Float> {
   public void testSubtractCustom() {
 
     FloatExpressionMock value = new FloatExpressionMock(Float.valueOf(8));
-    FloatExpression expression = value.subtract(1F).subtract(1L).subtract(1).subtract((short) 2).subtract((byte) 1);
+    FloatExpression expression = value.expSub(1F).expSub(1L).expSub(1).expSub((short) 2).expSub((byte) 1);
     assertThat(expression.getValue()).isEqualTo(Float.valueOf(2));
     value.set(TEN);
     assertThat(expression.getValue()).isEqualTo(Float.valueOf(4));
     FloatExpressionMock value2 = new FloatExpressionMock(ONE);
-    FloatExpression expression2 = expression.subtract(value2);
+    FloatExpression expression2 = expression.expSub(value2);
     assertThat(expression2.getValue()).isEqualTo(Float.valueOf(3));
     value2.set(TEN);
     assertThat(expression2.getValue()).isEqualTo(Float.valueOf(-6));
@@ -82,13 +82,13 @@ public class FloatExpressionTest extends NumberExpressionTest<Float> {
 
     Float two = Float.valueOf(2.0F);
     FloatExpressionMock value = new FloatExpressionMock(two);
-    FloatExpression expression = value.multiply(2F).multiply(2L).multiply(2).multiply((short) 16).multiply((byte) 2);
+    FloatExpression expression = value.expMul(2F).expMul(2L).expMul(2).expMul((short) 16).expMul((byte) 2);
 
     assertThat(expression.getValue()).isEqualTo(Float.valueOf(512));
     value.set(TEN);
     assertThat(expression.getValue()).isEqualTo(Float.valueOf(2560));
     FloatExpressionMock value2 = new FloatExpressionMock(two);
-    FloatExpression expression2 = expression.multiply(value2);
+    FloatExpression expression2 = expression.expMul(value2);
     assertThat(expression2.getValue()).isEqualTo(Float.valueOf(5120));
     value2.set(TEN);
     assertThat(expression2.getValue()).isEqualTo(Float.valueOf(25600));
@@ -105,13 +105,13 @@ public class FloatExpressionTest extends NumberExpressionTest<Float> {
 
     Float two = Float.valueOf(2.0F);
     FloatExpressionMock value = new FloatExpressionMock(ONE);
-    FloatExpression expression = value.divide(2F).divide(2L).divide(2).divide((short) 2).divide((byte) 16);
+    FloatExpression expression = value.expDiv(2F).expDiv(2L).expDiv(2).expDiv((short) 2).expDiv((byte) 16);
 
     assertThat(expression.getValue()).isEqualTo(Float.valueOf(1 / 256F));
     value.set(TEN);
     assertThat(expression.getValue()).isEqualTo(Float.valueOf(10 / 256F));
     FloatExpressionMock value2 = new FloatExpressionMock(two);
-    FloatExpression expression2 = expression.divide(value2);
+    FloatExpression expression2 = expression.expDiv(value2);
     assertThat(expression2.getValue()).isEqualTo(Float.valueOf(10 / 512F));
     value2.set(TEN);
     assertThat(expression2.getValue()).isEqualTo(Float.valueOf(10 / 2560F));

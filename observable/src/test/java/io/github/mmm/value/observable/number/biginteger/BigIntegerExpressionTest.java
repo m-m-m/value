@@ -38,13 +38,14 @@ public class BigIntegerExpressionTest extends NumberExpressionTest<BigInteger> {
 
     BigIntegerExpressionMock value = new BigIntegerExpressionMock();
     value.set(BigInteger.ONE);
-    BigIntegerExpression expression = value.add(1L).add(1).add((short) 1).add((byte) 3).add(BigInteger.ONE);
+    BigIntegerExpression expression = value.expAdd(1L).expAdd(1).expAdd((short) 1).expAdd((byte) 3)
+        .expAdd(BigInteger.ONE);
     assertThat(expression.get()).isEqualTo(BigInteger.valueOf(8));
     value.set(BigInteger.TEN);
     assertThat(expression.get()).isEqualTo(BigInteger.valueOf(17));
     BigIntegerExpressionMock value2 = new BigIntegerExpressionMock();
     value2.set(BigInteger.ONE);
-    BigIntegerExpression expression2 = expression.add(value2);
+    BigIntegerExpression expression2 = expression.expAdd(value2);
     assertThat(expression2.get()).isEqualTo(BigInteger.valueOf(18));
     value2.set(BigInteger.TEN);
     assertThat(expression2.get()).isEqualTo(BigInteger.valueOf(27));
@@ -59,13 +60,13 @@ public class BigIntegerExpressionTest extends NumberExpressionTest<BigInteger> {
   public void testSubtractCustom() {
 
     BigIntegerExpressionMock value = new BigIntegerExpressionMock(BigInteger.valueOf(8));
-    BigIntegerExpression expression = value.subtract(1L).subtract(1).subtract((short) 1).subtract((byte) 3)
-        .subtract(BigInteger.ONE).subtract(BigInteger.ONE);
+    BigIntegerExpression expression = value.expSub(1L).expSub(1).expSub((short) 1).expSub((byte) 3)
+        .expSub(BigInteger.ONE).expSub(BigInteger.ONE);
     assertThat(expression.get()).isEqualTo(BigInteger.ZERO);
     value.set(BigInteger.TEN);
     assertThat(expression.get()).isEqualTo(BigInteger.valueOf(2));
     BigIntegerExpressionMock value2 = new BigIntegerExpressionMock(BigInteger.ONE);
-    BigIntegerExpression expression2 = expression.subtract(value2);
+    BigIntegerExpression expression2 = expression.expSub(value2);
     assertThat(expression2.get()).isEqualTo(BigInteger.ONE);
     value2.set(BigInteger.TEN);
     assertThat(expression2.get()).isEqualTo(BigInteger.valueOf(-8)); // 2 - 10
@@ -82,14 +83,13 @@ public class BigIntegerExpressionTest extends NumberExpressionTest<BigInteger> {
 
     BigInteger two = BigInteger.valueOf(2);
     BigIntegerExpressionMock value = new BigIntegerExpressionMock(BigInteger.valueOf(4));
-    BigIntegerExpression expression = value.multiply(2L).multiply(2).multiply((short) 2).multiply((byte) 8)
-        .multiply(two);
+    BigIntegerExpression expression = value.expMul(2L).expMul(2).expMul((short) 2).expMul((byte) 8).expMul(two);
 
     assertThat(expression.get()).isEqualTo(BigInteger.valueOf(512));
     value.set(BigInteger.TEN);
     assertThat(expression.get()).isEqualTo(BigInteger.valueOf(1280));
     BigIntegerExpressionMock value2 = new BigIntegerExpressionMock(two);
-    BigIntegerExpression expression2 = expression.multiply(value2);
+    BigIntegerExpression expression2 = expression.expMul(value2);
     assertThat(expression2.get()).isEqualTo(BigInteger.valueOf(2560));
     value2.set(BigInteger.TEN);
     assertThat(expression2.get()).isEqualTo(BigInteger.valueOf(12800));
@@ -105,14 +105,14 @@ public class BigIntegerExpressionTest extends NumberExpressionTest<BigInteger> {
   public void testDivideCustom() {
 
     BigIntegerExpressionMock value = new BigIntegerExpressionMock(BigInteger.valueOf(4096));
-    BigIntegerExpression expression = value.divide(2L).divide(2).divide((short) 2).divide((byte) 8)
-        .divide(BigInteger.valueOf(2));
+    BigIntegerExpression expression = value.expDiv(2L).expDiv(2).expDiv((short) 2).expDiv((byte) 8)
+        .expDiv(BigInteger.valueOf(2));
 
     assertThat(expression.get()).isEqualTo(BigInteger.valueOf(32));
     value.set(BigInteger.valueOf(512));
     assertThat(expression.get()).isEqualTo(BigInteger.valueOf(4));
     BigIntegerExpressionMock value2 = new BigIntegerExpressionMock(BigInteger.valueOf(4));
-    BigIntegerExpression expression2 = expression.divide(value2);
+    BigIntegerExpression expression2 = expression.expDiv(value2);
     assertThat(expression2.get()).isEqualTo(BigInteger.ONE);
     value2.set(BigInteger.valueOf(2));
     assertThat(expression2.get()).isEqualTo(BigInteger.valueOf(2));

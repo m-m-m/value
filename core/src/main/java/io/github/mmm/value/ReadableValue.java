@@ -41,6 +41,16 @@ public abstract interface ReadableValue<V> extends Supplier<V> {
   V getFallbackSafeValue();
 
   /**
+   * @return {@code true} if the value is empty, {@code false} otherwise. The value {@code null} is always considered
+   *         empty. Further, depending on the type of the value, also a non-{@code null} value can be considered empty
+   *         such as {@link String#isEmpty() empty strings} or {@link java.util.Collection#isEmpty() empty collections}.
+   */
+  default boolean isEmpty() {
+
+    return (get() == null);
+  }
+
+  /**
    * Null-safe access to {@link #get()}.
    *
    * @param <T> type of the {@link #get() value}

@@ -15,9 +15,9 @@ public interface BooleanExpression extends ObservableBooleanValue, Expression<Bo
   /**
    * @return a new {@code BooleanExpression} holding the negation of this {@link #get() value}.
    */
-  default BooleanExpression not() {
+  default BooleanExpression expNot() {
 
-    return BooleanBinding.not(this);
+    return BooleanBinding.expNot(this);
   }
 
   /**
@@ -25,9 +25,9 @@ public interface BooleanExpression extends ObservableBooleanValue, Expression<Bo
    * @return the new {@code BooleanExpression} holding the logical AND of the {@link #get() value}s from this
    *         {@link BooleanExpression} and the given {@link ObservableValue}.
    */
-  default BooleanExpression and(ObservableValue<Boolean> other) {
+  default BooleanExpression expAnd(ObservableValue<Boolean> other) {
 
-    return BooleanBinding.and(this, other);
+    return BooleanBinding.expAnd(this, other);
   }
 
   /**
@@ -35,9 +35,9 @@ public interface BooleanExpression extends ObservableBooleanValue, Expression<Bo
    * @return a new {@code BooleanExpression} holding the logical AND of this {@link #get() value} and the given
    *         {@code constant} value.
    */
-  default BooleanExpression and(Boolean constant) {
+  default BooleanExpression expAnd(Boolean constant) {
 
-    return BooleanBinding.and(this, constant);
+    return BooleanBinding.expAnd(this, constant);
   }
 
   /**
@@ -45,9 +45,9 @@ public interface BooleanExpression extends ObservableBooleanValue, Expression<Bo
    * @return the new {@code BooleanExpression} holding the logical OR of this {@link #get() value} and the given
    *         {@code other}s value.
    */
-  default BooleanExpression or(ObservableValue<Boolean> other) {
+  default BooleanExpression expOr(ObservableValue<Boolean> other) {
 
-    return BooleanBinding.or(this, other);
+    return BooleanBinding.expOr(this, other);
   }
 
   /**
@@ -55,9 +55,9 @@ public interface BooleanExpression extends ObservableBooleanValue, Expression<Bo
    * @return the new {@code BooleanExpression} holding the logical OR of the {@link #get() value}s from this
    *         {@link BooleanExpression} and the given {@code constant} value.
    */
-  default BooleanExpression or(Boolean constant) {
+  default BooleanExpression expOr(Boolean constant) {
 
-    return BooleanBinding.or(this, constant);
+    return BooleanBinding.expOr(this, constant);
   }
 
 }

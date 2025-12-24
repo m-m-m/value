@@ -19,7 +19,7 @@ public interface ComparableExpression<V extends Comparable<? super V>> extends E
    * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #get() value} of this property is
    *         greater than the {@link #get() value} of another the given {@link ObservableValue}.
    */
-  default BooleanBinding greaterThan(ObservableValue<V> other) {
+  default BooleanBinding expGt(ObservableValue<V> other) {
 
     return new BooleanBinding(() -> (ComparableHelper.compare(this, other) > 0), this, other);
   }
@@ -29,7 +29,7 @@ public interface ComparableExpression<V extends Comparable<? super V>> extends E
    * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #get() value} of this property is
    *         greater than the given {@link String}.
    */
-  default BooleanBinding greaterThan(V other) {
+  default BooleanBinding expGt(V other) {
 
     return new BooleanBinding(() -> (ComparableHelper.compare(get(), other) > 0), this);
   }
@@ -39,7 +39,7 @@ public interface ComparableExpression<V extends Comparable<? super V>> extends E
    * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #get() value} of this property is less
    *         than the {@link #get() value} of another the given {@link ObservableValue}.
    */
-  default BooleanBinding lessThan(ObservableValue<V> other) {
+  default BooleanBinding expLt(ObservableValue<V> other) {
 
     return new BooleanBinding(() -> (ComparableHelper.compare(this, other) < 0), this, other);
   }
@@ -49,7 +49,7 @@ public interface ComparableExpression<V extends Comparable<? super V>> extends E
    * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #get() value} of this property is less
    *         than the given {@link String}.
    */
-  default BooleanBinding lessThan(V other) {
+  default BooleanBinding expLt(V other) {
 
     return new BooleanBinding(() -> (ComparableHelper.compare(get(), other) < 0), this);
   }
@@ -59,7 +59,7 @@ public interface ComparableExpression<V extends Comparable<? super V>> extends E
    * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #get() value} of this property is
    *         greater than or equal to the {@link #get() value} of another the given {@link ObservableValue}.
    */
-  default BooleanBinding greaterThanOrEqualTo(ObservableValue<V> other) {
+  default BooleanBinding expGe(ObservableValue<V> other) {
 
     return new BooleanBinding(() -> (ComparableHelper.compare(this, other) >= 0), this, other);
   }
@@ -69,7 +69,7 @@ public interface ComparableExpression<V extends Comparable<? super V>> extends E
    * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #get() value} of this property is
    *         greater than or equal to the given {@link String}.
    */
-  default BooleanBinding greaterThanOrEqualTo(V other) {
+  default BooleanBinding expGe(V other) {
 
     return new BooleanBinding(() -> (ComparableHelper.compare(get(), other) >= 0), this);
   }
@@ -79,7 +79,7 @@ public interface ComparableExpression<V extends Comparable<? super V>> extends E
    * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #get() value} of this property is less
    *         than the {@link #get() value} of another the given {@link ObservableValue}.
    */
-  default BooleanBinding lessThanOrEqualTo(ObservableValue<V> other) {
+  default BooleanBinding expLe(ObservableValue<V> other) {
 
     return new BooleanBinding(() -> (ComparableHelper.compare(this, other) <= 0), this, other);
   }
@@ -89,7 +89,7 @@ public interface ComparableExpression<V extends Comparable<? super V>> extends E
    * @return a new {@link BooleanBinding} that holds {@code true} if the {@link #get() value} of this property is less
    *         than or equal to the given {@link String}.
    */
-  default BooleanBinding lessThanOrEqualTo(V other) {
+  default BooleanBinding expLe(V other) {
 
     return new BooleanBinding(() -> (ComparableHelper.compare(get(), other) <= 0), this);
   }

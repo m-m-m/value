@@ -42,13 +42,13 @@ public class LongExpressionTest extends NumberExpressionTest<Long> {
 
     LongExpressionMock value = new LongExpressionMock();
     value.set(ONE);
-    LongExpression expression = value.add(1L).add(1).add((short) 1).add((byte) 4);
+    LongExpression expression = value.expAdd(1L).expAdd(1).expAdd((short) 1).expAdd((byte) 4);
     assertThat(expression.getValue()).isEqualTo(Long.valueOf(8));
     value.set(TEN);
     assertThat(expression.getValue()).isEqualTo(Long.valueOf(17));
     LongExpressionMock value2 = new LongExpressionMock();
     value2.set(ONE);
-    LongExpression expression2 = expression.add(value2);
+    LongExpression expression2 = expression.expAdd(value2);
     assertThat(expression2.getValue()).isEqualTo(Long.valueOf(18));
     value2.set(TEN);
     assertThat(expression2.getValue()).isEqualTo(Long.valueOf(27));
@@ -63,12 +63,12 @@ public class LongExpressionTest extends NumberExpressionTest<Long> {
   public void testSubtractCustom() {
 
     LongExpressionMock value = new LongExpressionMock(Long.valueOf(8));
-    LongExpression expression = value.subtract(1L).subtract(1).subtract((short) 1).subtract((byte) 5);
+    LongExpression expression = value.expSub(1L).expSub(1).expSub((short) 1).expSub((byte) 5);
     assertThat(expression.getValue()).isEqualTo(ZERO);
     value.set(TEN);
     assertThat(expression.getValue()).isEqualTo(Long.valueOf(2));
     LongExpressionMock value2 = new LongExpressionMock(ONE);
-    LongExpression expression2 = expression.subtract(value2);
+    LongExpression expression2 = expression.expSub(value2);
     assertThat(expression2.getValue()).isEqualTo(ONE);
     value2.set(TEN);
     assertThat(expression2.getValue()).isEqualTo(Long.valueOf(-8)); // 2 - 10
@@ -85,13 +85,13 @@ public class LongExpressionTest extends NumberExpressionTest<Long> {
 
     Long two = Long.valueOf(2);
     LongExpressionMock value = new LongExpressionMock(Long.valueOf(4));
-    LongExpression expression = value.multiply(2L).multiply(2).multiply((short) 2).multiply((byte) 16);
+    LongExpression expression = value.expMul(2L).expMul(2).expMul((short) 2).expMul((byte) 16);
 
     assertThat(expression.getValue()).isEqualTo(Long.valueOf(512));
     value.set(TEN);
     assertThat(expression.getValue()).isEqualTo(Long.valueOf(1280));
     LongExpressionMock value2 = new LongExpressionMock(two);
-    LongExpression expression2 = expression.multiply(value2);
+    LongExpression expression2 = expression.expMul(value2);
     assertThat(expression2.getValue()).isEqualTo(Long.valueOf(2560));
     value2.set(TEN);
     assertThat(expression2.getValue()).isEqualTo(Long.valueOf(12800));
@@ -107,13 +107,13 @@ public class LongExpressionTest extends NumberExpressionTest<Long> {
   public void testDivideCustom() {
 
     LongExpressionMock value = new LongExpressionMock(Long.valueOf(4096));
-    LongExpression expression = value.divide(2L).divide(2).divide((short) 2).divide((byte) 16);
+    LongExpression expression = value.expDiv(2L).expDiv(2).expDiv((short) 2).expDiv((byte) 16);
 
     assertThat(expression.getValue()).isEqualTo(Long.valueOf(32));
     value.set(Long.valueOf(512));
     assertThat(expression.getValue()).isEqualTo(Long.valueOf(4));
     LongExpressionMock value2 = new LongExpressionMock(Long.valueOf(4));
-    LongExpression expression2 = expression.divide(value2);
+    LongExpression expression2 = expression.expDiv(value2);
     assertThat(expression2.getValue()).isEqualTo(ONE);
     value2.set(Long.valueOf(2));
     assertThat(expression2.getValue()).isEqualTo(Long.valueOf(2));
