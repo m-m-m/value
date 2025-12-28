@@ -38,7 +38,7 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
   protected abstract NumberExpression<N> of(N value);
 
   @Test
-  public void testEmpty() {
+  void testEmpty() {
 
     // arrange
     NumberExpression<N> expression = of();
@@ -56,7 +56,7 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
   }
 
   @Test
-  public void testModifications() {
+  void testModifications() {
 
     // arrange
     NumberExpression<N> expression = of();
@@ -108,7 +108,7 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
   }
 
   @Test
-  public void testInitialValue() {
+  void testInitialValue() {
 
     // arrange
     N one = get(1);
@@ -144,7 +144,7 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
   }
 
   @Test
-  public void testAdd() {
+  void testAdd() {
 
     // arrange
     N one = get(1);
@@ -175,7 +175,7 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
   }
 
   @Test
-  public void testSubtract() {
+  void testSubtract() {
 
     // arrange
     N zero = get(0);
@@ -218,7 +218,7 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
   }
 
   @Test
-  public void testMultiply() {
+  void testMultiply() {
 
     // arrange
     N two = get(2);
@@ -237,7 +237,7 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
   }
 
   @Test
-  public void testDivide() {
+  void testDivide() {
 
     // arrange
     N eight = get(8);

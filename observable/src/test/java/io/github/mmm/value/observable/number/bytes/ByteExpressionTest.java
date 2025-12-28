@@ -11,7 +11,7 @@ import io.github.mmm.value.observable.number.NumberExpressionTest;
  * Test of {@link ByteExpression}.
  */
 @SuppressWarnings("javadoc")
-public class ByteExpressionTest extends NumberExpressionTest<Byte> {
+class ByteExpressionTest extends NumberExpressionTest<Byte> {
 
   private static final Byte ZERO = Byte.valueOf((byte) 0);
 
@@ -38,7 +38,7 @@ public class ByteExpressionTest extends NumberExpressionTest<Byte> {
   }
 
   @Test
-  public void testAddCustom() {
+  void testAddCustom() {
 
     ByteExpressionMock value = new ByteExpressionMock();
     value.set(ONE);
@@ -60,7 +60,7 @@ public class ByteExpressionTest extends NumberExpressionTest<Byte> {
   }
 
   @Test
-  public void testSubtractCustom() {
+  void testSubtractCustom() {
 
     ByteExpressionMock value = new ByteExpressionMock(Byte.valueOf((byte) 8));
     ByteExpression expression = value.expSub((byte) 1).expSub((byte) 7);
@@ -81,7 +81,7 @@ public class ByteExpressionTest extends NumberExpressionTest<Byte> {
   }
 
   @Test
-  public void testMultiplyCustom() {
+  void testMultiplyCustom() {
 
     Byte two = Byte.valueOf((byte) 2);
     ByteExpressionMock value = new ByteExpressionMock(Byte.valueOf((byte) 4));
@@ -104,7 +104,7 @@ public class ByteExpressionTest extends NumberExpressionTest<Byte> {
   }
 
   @Test
-  public void testDivideCustom() {
+  void testDivideCustom() {
 
     ByteExpressionMock value = new ByteExpressionMock(Byte.valueOf((byte) 64));
     ByteExpression expression = value.expDiv((byte) 2);

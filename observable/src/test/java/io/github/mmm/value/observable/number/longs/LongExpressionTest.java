@@ -11,7 +11,7 @@ import io.github.mmm.value.observable.number.NumberExpressionTest;
  * Test of {@link LongExpression}.
  */
 @SuppressWarnings("javadoc")
-public class LongExpressionTest extends NumberExpressionTest<Long> {
+class LongExpressionTest extends NumberExpressionTest<Long> {
 
   private static final Long ZERO = Long.valueOf(0);
 
@@ -38,7 +38,7 @@ public class LongExpressionTest extends NumberExpressionTest<Long> {
   }
 
   @Test
-  public void testAddCustom() {
+  void testAddCustom() {
 
     LongExpressionMock value = new LongExpressionMock();
     value.set(ONE);
@@ -60,7 +60,7 @@ public class LongExpressionTest extends NumberExpressionTest<Long> {
   }
 
   @Test
-  public void testSubtractCustom() {
+  void testSubtractCustom() {
 
     LongExpressionMock value = new LongExpressionMock(Long.valueOf(8));
     LongExpression expression = value.expSub(1L).expSub(1).expSub((short) 1).expSub((byte) 5);
@@ -81,7 +81,7 @@ public class LongExpressionTest extends NumberExpressionTest<Long> {
   }
 
   @Test
-  public void testMultiplyCustom() {
+  void testMultiplyCustom() {
 
     Long two = Long.valueOf(2);
     LongExpressionMock value = new LongExpressionMock(Long.valueOf(4));
@@ -104,7 +104,7 @@ public class LongExpressionTest extends NumberExpressionTest<Long> {
   }
 
   @Test
-  public void testDivideCustom() {
+  void testDivideCustom() {
 
     LongExpressionMock value = new LongExpressionMock(Long.valueOf(4096));
     LongExpression expression = value.expDiv(2L).expDiv(2).expDiv((short) 2).expDiv((byte) 16);

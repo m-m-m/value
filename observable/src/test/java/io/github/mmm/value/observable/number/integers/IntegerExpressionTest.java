@@ -11,7 +11,7 @@ import io.github.mmm.value.observable.number.NumberExpressionTest;
  * Test of {@link IntegerExpression}.
  */
 @SuppressWarnings("javadoc")
-public class IntegerExpressionTest extends NumberExpressionTest<Integer> {
+class IntegerExpressionTest extends NumberExpressionTest<Integer> {
 
   private static final Integer ZERO = Integer.valueOf(0);
 
@@ -38,7 +38,7 @@ public class IntegerExpressionTest extends NumberExpressionTest<Integer> {
   }
 
   @Test
-  public void testAddCustom() {
+  void testAddCustom() {
 
     IntegerExpressionMock value = new IntegerExpressionMock();
     value.set(ONE);
@@ -60,7 +60,7 @@ public class IntegerExpressionTest extends NumberExpressionTest<Integer> {
   }
 
   @Test
-  public void testSubtractCustom() {
+  void testSubtractCustom() {
 
     IntegerExpressionMock value = new IntegerExpressionMock(Integer.valueOf(8));
     IntegerExpression expression = value.expSub(1).expSub((short) 1).expSub((byte) 6);
@@ -81,7 +81,7 @@ public class IntegerExpressionTest extends NumberExpressionTest<Integer> {
   }
 
   @Test
-  public void testMultiplyCustom() {
+  void testMultiplyCustom() {
 
     Integer two = Integer.valueOf(2);
     IntegerExpressionMock value = new IntegerExpressionMock(Integer.valueOf(4));
@@ -104,7 +104,7 @@ public class IntegerExpressionTest extends NumberExpressionTest<Integer> {
   }
 
   @Test
-  public void testDivideCustom() {
+  void testDivideCustom() {
 
     IntegerExpressionMock value = new IntegerExpressionMock(Integer.valueOf(4096));
     IntegerExpression expression = value.expDiv(2).expDiv((short) 2).expDiv((byte) 32);

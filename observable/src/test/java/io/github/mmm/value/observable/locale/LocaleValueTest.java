@@ -8,11 +8,11 @@ import org.junit.jupiter.api.Test;
 /**
  * Test of {@link ObservableLocaleValue} and {@link WritableLocaleValue}.
  */
-public class LocaleValueTest extends Assertions {
+class LocaleValueTest extends Assertions {
 
   /** Test of basics */
   @Test
-  public void test() {
+  void test() {
 
     LocaleValueMock localeValue = new LocaleValueMock();
     assertThat(localeValue.getValueClass()).isSameAs(Locale.class);

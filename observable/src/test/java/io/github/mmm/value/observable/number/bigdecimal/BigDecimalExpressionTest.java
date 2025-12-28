@@ -14,7 +14,7 @@ import io.github.mmm.value.observable.number.NumberExpressionTest;
  * Test of {@link BigDecimalExpression}.
  */
 @SuppressWarnings("javadoc")
-public class BigDecimalExpressionTest extends NumberExpressionTest<BigDecimal> {
+class BigDecimalExpressionTest extends NumberExpressionTest<BigDecimal> {
 
   @Override
   protected Class<BigDecimal> getValueClass() {
@@ -35,7 +35,7 @@ public class BigDecimalExpressionTest extends NumberExpressionTest<BigDecimal> {
   }
 
   @Test
-  public void testAddCustom() {
+  void testAddCustom() {
 
     BigDecimalExpressionMock value = new BigDecimalExpressionMock();
     value.set(BigDecimal.ONE);
@@ -58,7 +58,7 @@ public class BigDecimalExpressionTest extends NumberExpressionTest<BigDecimal> {
   }
 
   @Test
-  public void testSubtractCustom() {
+  void testSubtractCustom() {
 
     BigDecimalExpressionMock value = new BigDecimalExpressionMock(BigDecimal.valueOf(8));
     BigDecimalExpression expression = value.expSub(1D).expSub(1F).expSub(1L).expSub(1).expSub((short) 1)
@@ -80,7 +80,7 @@ public class BigDecimalExpressionTest extends NumberExpressionTest<BigDecimal> {
   }
 
   @Test
-  public void testMultiplyCustom() {
+  void testMultiplyCustom() {
 
     BigDecimal two = BigDecimal.valueOf(2.0);
     BigDecimalExpressionMock value = new BigDecimalExpressionMock(two);
@@ -104,7 +104,7 @@ public class BigDecimalExpressionTest extends NumberExpressionTest<BigDecimal> {
   }
 
   @Test
-  public void testDivideCustom() {
+  void testDivideCustom() {
 
     BigDecimal two = BigDecimal.valueOf(2.0);
     BigDecimalExpressionMock value = new BigDecimalExpressionMock(BigDecimal.ONE);

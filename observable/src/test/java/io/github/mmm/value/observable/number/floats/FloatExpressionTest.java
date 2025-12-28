@@ -11,7 +11,7 @@ import io.github.mmm.value.observable.number.NumberExpressionTest;
  * Test of {@link FloatExpression}.
  */
 @SuppressWarnings("javadoc")
-public class FloatExpressionTest extends NumberExpressionTest<Float> {
+class FloatExpressionTest extends NumberExpressionTest<Float> {
 
   private static final Float ONE = Float.valueOf(1);
 
@@ -36,7 +36,7 @@ public class FloatExpressionTest extends NumberExpressionTest<Float> {
   }
 
   @Test
-  public void testAddCustom() {
+  void testAddCustom() {
 
     FloatExpressionMock value = new FloatExpressionMock(ONE);
     FloatExpression expression = value.expAdd(1F).expAdd(1L).expAdd(1).expAdd((short) 1).expAdd((byte) 2);
@@ -57,7 +57,7 @@ public class FloatExpressionTest extends NumberExpressionTest<Float> {
   }
 
   @Test
-  public void testSubtractCustom() {
+  void testSubtractCustom() {
 
     FloatExpressionMock value = new FloatExpressionMock(Float.valueOf(8));
     FloatExpression expression = value.expSub(1F).expSub(1L).expSub(1).expSub((short) 2).expSub((byte) 1);
@@ -78,7 +78,7 @@ public class FloatExpressionTest extends NumberExpressionTest<Float> {
   }
 
   @Test
-  public void testMultiplyCustom() {
+  void testMultiplyCustom() {
 
     Float two = Float.valueOf(2.0F);
     FloatExpressionMock value = new FloatExpressionMock(two);
@@ -101,7 +101,7 @@ public class FloatExpressionTest extends NumberExpressionTest<Float> {
   }
 
   @Test
-  public void testDivideCustom() {
+  void testDivideCustom() {
 
     Float two = Float.valueOf(2.0F);
     FloatExpressionMock value = new FloatExpressionMock(ONE);

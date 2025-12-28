@@ -13,7 +13,7 @@ import io.github.mmm.value.observable.number.NumberExpressionTest;
  * Test of {@link BigIntegerExpression}.
  */
 @SuppressWarnings("javadoc")
-public class BigIntegerExpressionTest extends NumberExpressionTest<BigInteger> {
+class BigIntegerExpressionTest extends NumberExpressionTest<BigInteger> {
 
   @Override
   protected Class<BigInteger> getValueClass() {
@@ -34,7 +34,7 @@ public class BigIntegerExpressionTest extends NumberExpressionTest<BigInteger> {
   }
 
   @Test
-  public void testAddCustom() {
+  void testAddCustom() {
 
     BigIntegerExpressionMock value = new BigIntegerExpressionMock();
     value.set(BigInteger.ONE);
@@ -57,7 +57,7 @@ public class BigIntegerExpressionTest extends NumberExpressionTest<BigInteger> {
   }
 
   @Test
-  public void testSubtractCustom() {
+  void testSubtractCustom() {
 
     BigIntegerExpressionMock value = new BigIntegerExpressionMock(BigInteger.valueOf(8));
     BigIntegerExpression expression = value.expSub(1L).expSub(1).expSub((short) 1).expSub((byte) 3)
@@ -79,7 +79,7 @@ public class BigIntegerExpressionTest extends NumberExpressionTest<BigInteger> {
   }
 
   @Test
-  public void testMultiplyCustom() {
+  void testMultiplyCustom() {
 
     BigInteger two = BigInteger.valueOf(2);
     BigIntegerExpressionMock value = new BigIntegerExpressionMock(BigInteger.valueOf(4));
@@ -102,7 +102,7 @@ public class BigIntegerExpressionTest extends NumberExpressionTest<BigInteger> {
   }
 
   @Test
-  public void testDivideCustom() {
+  void testDivideCustom() {
 
     BigIntegerExpressionMock value = new BigIntegerExpressionMock(BigInteger.valueOf(4096));
     BigIntegerExpression expression = value.expDiv(2L).expDiv(2).expDiv((short) 2).expDiv((byte) 8)

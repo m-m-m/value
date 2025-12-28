@@ -11,7 +11,7 @@ import io.github.mmm.value.observable.number.NumberExpressionTest;
  * Test of {@link ShortExpression}.
  */
 @SuppressWarnings("javadoc")
-public class ShortExpressionTest extends NumberExpressionTest<Short> {
+class ShortExpressionTest extends NumberExpressionTest<Short> {
 
   private static final Short ZERO = Short.valueOf((short) 0);
 
@@ -38,7 +38,7 @@ public class ShortExpressionTest extends NumberExpressionTest<Short> {
   }
 
   @Test
-  public void testAddCustom() {
+  void testAddCustom() {
 
     ShortExpressionMock value = new ShortExpressionMock();
     value.set(ONE);
@@ -60,7 +60,7 @@ public class ShortExpressionTest extends NumberExpressionTest<Short> {
   }
 
   @Test
-  public void testSubtractCustom() {
+  void testSubtractCustom() {
 
     ShortExpressionMock value = new ShortExpressionMock(Short.valueOf((short) 8));
     ShortExpression expression = value.expSub((short) 1).expSub((byte) 7);
@@ -81,7 +81,7 @@ public class ShortExpressionTest extends NumberExpressionTest<Short> {
   }
 
   @Test
-  public void testMultiplyCustom() {
+  void testMultiplyCustom() {
 
     Short two = Short.valueOf((short) 2);
     ShortExpressionMock value = new ShortExpressionMock(Short.valueOf((short) 4));
@@ -104,7 +104,7 @@ public class ShortExpressionTest extends NumberExpressionTest<Short> {
   }
 
   @Test
-  public void testDivideCustom() {
+  void testDivideCustom() {
 
     ShortExpressionMock value = new ShortExpressionMock(Short.valueOf((short) 4096));
     ShortExpression expression = value.expDiv((short) 2).expDiv((byte) 64);

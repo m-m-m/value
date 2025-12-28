@@ -11,7 +11,7 @@ import io.github.mmm.value.observable.number.NumberExpressionTest;
  * Test of {@link DoubleExpression}.
  */
 @SuppressWarnings("javadoc")
-public class DoubleExpressionTest extends NumberExpressionTest<Double> {
+class DoubleExpressionTest extends NumberExpressionTest<Double> {
 
   private static final Double ONE = Double.valueOf(1);
 
@@ -36,7 +36,7 @@ public class DoubleExpressionTest extends NumberExpressionTest<Double> {
   }
 
   @Test
-  public void testAddCustom() {
+  void testAddCustom() {
 
     DoubleExpressionMock value = new DoubleExpressionMock(ONE);
     DoubleExpression expression = value.expAdd(1D).expAdd(1F).expAdd(1L).expAdd(1).expAdd((short) 1).expAdd((byte) 1);
@@ -57,7 +57,7 @@ public class DoubleExpressionTest extends NumberExpressionTest<Double> {
   }
 
   @Test
-  public void testSubtractCustom() {
+  void testSubtractCustom() {
 
     DoubleExpressionMock value = new DoubleExpressionMock(Double.valueOf(8));
     DoubleExpression expression = value.expSub(1D).expSub(1F).expSub(1L).expSub(1).expSub((short) 1).expSub((byte) 1);
@@ -78,7 +78,7 @@ public class DoubleExpressionTest extends NumberExpressionTest<Double> {
   }
 
   @Test
-  public void testMultiplyCustom() {
+  void testMultiplyCustom() {
 
     Double two = Double.valueOf(2.0);
     DoubleExpressionMock value = new DoubleExpressionMock(two);
@@ -101,7 +101,7 @@ public class DoubleExpressionTest extends NumberExpressionTest<Double> {
   }
 
   @Test
-  public void testDivideCustom() {
+  void testDivideCustom() {
 
     Double two = Double.valueOf(2.0);
     DoubleExpressionMock value = new DoubleExpressionMock(ONE);
