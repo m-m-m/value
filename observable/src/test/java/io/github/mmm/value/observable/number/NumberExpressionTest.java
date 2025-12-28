@@ -40,10 +40,10 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
   @Test
   public void testEmpty() {
 
-    // given
+    // arrange
     NumberExpression<N> expression = of();
 
-    // when + then
+    // act + assert
     assertThat(expression.getValueClass()).isSameAs(getValueClass());
     assertThat(expression.get()).isNull();
     assertThat(expression.doubleValue()).isZero();
@@ -58,14 +58,14 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
   @Test
   public void testModifications() {
 
-    // given
+    // arrange
     NumberExpression<N> expression = of();
     @SuppressWarnings("unchecked")
     WritableNumberValue<N> writable = (WritableNumberValue<N>) expression;
     N zero = get(0);
     N one = get(1);
 
-    // when + then
+    // act + assert
     ObservableEventListenerMock<N> listener = new ObservableEventListenerMock<>();
     expression.addListener(listener);
     assertThat(expression.get()).isNull();
@@ -110,7 +110,7 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
   @Test
   public void testInitialValue() {
 
-    // given
+    // arrange
     N one = get(1);
     N two = get(2);
     N three = get(3);
@@ -119,7 +119,7 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
     WritableNumberValue<N> writable = (WritableNumberValue<N>) expression;
     ObservableEventListenerMock<N> listener = new ObservableEventListenerMock<>();
 
-    // when + then
+    // act + assert
     expression.addListener(listener);
     assertThat(expression.get()).isSameAs(one);
     assertThat(listener.getEvent()).isNull();
@@ -146,7 +146,7 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
   @Test
   public void testAdd() {
 
-    // given
+    // arrange
     N one = get(1);
     N two = get(2);
     NumberExpression<N> expression = of(one);
@@ -177,7 +177,7 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
   @Test
   public void testSubtract() {
 
-    // given
+    // arrange
     N zero = get(0);
     N one = get(1);
     N two = get(2);
@@ -220,7 +220,7 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
   @Test
   public void testMultiply() {
 
-    // given
+    // arrange
     N two = get(2);
     N four = get(4);
     NumberExpression<N> expression = of(two);
@@ -239,7 +239,7 @@ public abstract class NumberExpressionTest<N extends Number & Comparable<? super
   @Test
   public void testDivide() {
 
-    // given
+    // arrange
     N eight = get(8);
     N four = get(4);
     N two = get(2);
