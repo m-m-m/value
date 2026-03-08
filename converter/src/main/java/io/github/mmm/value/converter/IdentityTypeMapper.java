@@ -15,11 +15,10 @@ public class IdentityTypeMapper<V> extends AtomicTypeMapper<V, V> {
    * The constructor.
    *
    * @param type the {@link #getSourceType() source type} and {@link #getTargetType() target type}.
-   * @param declaration the {@link #getDeclaration() SQL type declaration}.
    */
-  public IdentityTypeMapper(Class<? extends V> type, String declaration) {
+  public IdentityTypeMapper(Class<? extends V> type) {
 
-    super(declaration);
+    super();
     this.type = type;
   }
 

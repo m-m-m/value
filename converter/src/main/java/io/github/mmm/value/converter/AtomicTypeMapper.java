@@ -9,24 +9,6 @@ package io.github.mmm.value.converter;
  */
 public abstract class AtomicTypeMapper<S, T> extends AbstractTypeMapper<S, T> {
 
-  /**
-   * The constructor.
-   */
-  public AtomicTypeMapper() {
-
-    this("");
-  }
-
-  /**
-   * The constructor.
-   *
-   * @param declaration the {@link #getDeclaration() SQL type declaration}.
-   */
-  public AtomicTypeMapper(String declaration) {
-
-    super(declaration);
-  }
-
   @Override
   public final TypeMapper<S, ?> next() {
 

@@ -9,37 +9,11 @@ package io.github.mmm.value.converter;
  */
 public abstract class AbstractTypeMapper<S, T> implements TypeMapper<S, T> {
 
-  private final String declaration;
-
-  /**
-   * The constructor.
-   */
-  public AbstractTypeMapper() {
-
-    this("");
-  }
-
-  /**
-   * The constructor.
-   *
-   * @param declaration the {@link #getDeclaration() declaration}.
-   */
-  public AbstractTypeMapper(String declaration) {
-
-    super();
-    this.declaration = declaration;
-  }
-
-  @Override
-  public String getDeclaration() {
-
-    return this.declaration;
-  }
-
   @Override
   public String toString() {
 
-    if ((this.declaration == null) || this.declaration.isEmpty()) {
+    String declaration = getDeclaration();
+    if ((declaration == null) || declaration.isEmpty()) {
       String string = getClass().getSimpleName();
       Class<?> sourceType = nonNull(getSourceType());
       Class<?> targetType = nonNull(getTargetType());
@@ -48,7 +22,7 @@ public abstract class AbstractTypeMapper<S, T> implements TypeMapper<S, T> {
       }
       return string;
     }
-    return this.declaration;
+    return declaration;
   }
 
   private String toString(Class<?> type) {

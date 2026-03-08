@@ -15,11 +15,10 @@ public class ToStringTypeMapper<S> extends AtomicTypeMapper<S, String> {
    * The constructor.
    *
    * @param sourceType the {@link #getSourceType() source type}.
-   * @param declaration the {@link #getDeclaration() SQL type declaration}.
    */
-  public ToStringTypeMapper(Class<? extends S> sourceType, String declaration) {
+  public ToStringTypeMapper(Class<? extends S> sourceType) {
 
-    super(declaration);
+    super();
     this.sourceType = sourceType;
   }
 

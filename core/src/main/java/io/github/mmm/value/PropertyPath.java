@@ -2,6 +2,8 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.value;
 
+import java.util.Collection;
+
 /**
  * Interface for a valued path. May be a property itself, a reference on a property or a query criteria to match a
  * property.
@@ -22,6 +24,12 @@ public interface PropertyPath<V> extends ReadableValue<V>, ReadablePath, Criteri
   default String pathSegment() {
 
     return getName();
+  }
+
+  @Override
+  default void collectProperties(Collection<PropertyPath<?>> properties) {
+
+    properties.add(this);
   }
 
 }
