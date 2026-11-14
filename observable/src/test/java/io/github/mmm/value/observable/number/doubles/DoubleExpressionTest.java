@@ -8,7 +8,6 @@ import io.github.mmm.value.observable.number.NumberExpression;
 import io.github.mmm.value.observable.number.NumberExpressionTest;
 
 /// Test of [DoubleExpression].
-@SuppressWarnings("javadoc")
 class DoubleExpressionTest extends NumberExpressionTest<Double> {
 
   private static final Double ONE = Double.valueOf(1);

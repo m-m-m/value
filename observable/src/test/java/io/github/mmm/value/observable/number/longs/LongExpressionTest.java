@@ -8,7 +8,6 @@ import io.github.mmm.value.observable.number.NumberExpression;
 import io.github.mmm.value.observable.number.NumberExpressionTest;
 
 /// Test of [LongExpression].
-@SuppressWarnings("javadoc")
 class LongExpressionTest extends NumberExpressionTest<Long> {
 
   private static final Long ZERO = Long.valueOf(0);

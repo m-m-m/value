@@ -8,7 +8,6 @@ import io.github.mmm.value.observable.number.NumberExpression;
 import io.github.mmm.value.observable.number.NumberExpressionTest;
 
 /// Test of [IntegerExpression].
-@SuppressWarnings("javadoc")
 class IntegerExpressionTest extends NumberExpressionTest<Integer> {
 
   private static final Integer ZERO = Integer.valueOf(0);

@@ -8,7 +8,6 @@ import io.github.mmm.value.observable.number.NumberExpression;
 import io.github.mmm.value.observable.number.NumberExpressionTest;
 
 /// Test of [ShortExpression].
-@SuppressWarnings("javadoc")
 class ShortExpressionTest extends NumberExpressionTest<Short> {
 
   private static final Short ZERO = Short.valueOf((short) 0);

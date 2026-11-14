@@ -10,7 +10,6 @@ import io.github.mmm.value.observable.number.NumberExpression;
 import io.github.mmm.value.observable.number.NumberExpressionTest;
 
 /// Test of [BigIntegerExpression].
-@SuppressWarnings("javadoc")
 class BigIntegerExpressionTest extends NumberExpressionTest<BigInteger> {
 
   @Override

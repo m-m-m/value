@@ -8,7 +8,6 @@ import io.github.mmm.value.observable.number.NumberExpression;
 import io.github.mmm.value.observable.number.NumberExpressionTest;
 
 /// Test of [ByteExpression].
-@SuppressWarnings("javadoc")
 class ByteExpressionTest extends NumberExpressionTest<Byte> {
 
   private static final Byte ZERO = Byte.valueOf((byte) 0);

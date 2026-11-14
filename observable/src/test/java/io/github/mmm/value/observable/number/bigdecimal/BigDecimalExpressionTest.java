@@ -11,7 +11,6 @@ import io.github.mmm.value.observable.number.NumberExpression;
 import io.github.mmm.value.observable.number.NumberExpressionTest;
 
 /// Test of [BigDecimalExpression].
-@SuppressWarnings("javadoc")
 class BigDecimalExpressionTest extends NumberExpressionTest<BigDecimal> {
 
   @Override

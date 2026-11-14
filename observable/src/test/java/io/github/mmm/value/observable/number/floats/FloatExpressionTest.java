@@ -8,7 +8,6 @@ import io.github.mmm.value.observable.number.NumberExpression;
 import io.github.mmm.value.observable.number.NumberExpressionTest;
 
 /// Test of [FloatExpression].
-@SuppressWarnings("javadoc")
 class FloatExpressionTest extends NumberExpressionTest<Float> {
 
   private static final Float ONE = Float.valueOf(1);
