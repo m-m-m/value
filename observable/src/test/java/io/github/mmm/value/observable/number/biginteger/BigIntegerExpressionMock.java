@@ -6,27 +6,21 @@ import java.math.BigInteger;
 
 import io.github.mmm.value.observable.AbstractWritableObservableValue;
 
-/**
- * Implementation of {@link BigIntegerExpression} for testing.
- */
+/// Implementation of [BigIntegerExpression] for testing.
 public class BigIntegerExpressionMock extends AbstractWritableObservableValue<BigInteger>
     implements BigIntegerExpression, WritableBigIntegerValue {
 
   private BigInteger value;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public BigIntegerExpressionMock() {
 
     super();
   }
 
-  /**
-   * The constructor.
-   *
-   * @param value the initial {@link #get() value}.
-   */
+  /// The constructor.
+  ///
+  /// @param value the initial [value][#get()].
   public BigIntegerExpressionMock(BigInteger value) {
 
     super();

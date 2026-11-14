@@ -7,18 +7,14 @@ import java.util.regex.Pattern;
 import io.github.mmm.value.WritableValue;
 import io.github.mmm.value.observable.object.WritableSimpleValue;
 
-/**
- * {@link WritableValue} with {@link Pattern} {@link #getValue() value}.
- *
- * @since 1.0.0
- */
+/// [WritableValue] with [Pattern] [value][#getValue()].
+///
+/// @since 1.0.0
 public interface WritablePatternValue extends WritableSimpleValue<Pattern>, ReadablePatternValue {
 
-  /**
-   * @param value the value to set.
-   * @see #get()
-   * @see #set(Pattern)
-   */
+  /// @param value the value to set.
+  /// @see #get()
+  /// @see #set(Pattern)
   default void setValue(Pattern value) {
 
     set(value);

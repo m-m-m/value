@@ -6,16 +6,12 @@ import java.time.Year;
 
 import io.github.mmm.value.observable.object.WritableSimpleValue;
 
-/**
- * {@link io.github.mmm.value.WritableValue} containing a {@link Year} {@link #getValue() value}.
- *
- * @since 1.0.0
- */
+/// [io.github.mmm.value.WritableValue] containing a [Year] [value][#getValue()].
+///
+/// @since 1.0.0
 public interface WritableYearValue extends ReadableYearValue, WritableSimpleValue<Year> {
 
-  /**
-   * @param year the {@link Year} as primitive {@code int} value.
-   */
+  /// @param year the [Year] as primitive `int` value.
   default void setValue(int year) {
 
     set(Year.of(year));

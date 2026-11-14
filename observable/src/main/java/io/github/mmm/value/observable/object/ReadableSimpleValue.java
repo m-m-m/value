@@ -4,34 +4,26 @@ package io.github.mmm.value.observable.object;
 
 import io.github.mmm.value.ReadableValue;
 
-/**
- * {@link ReadableValue} for a simple datatype (and not a
- * {@link io.github.mmm.value.observable.container.ReadableContainerValue container value}).
- *
- * @param <V> type of the {@link #get() value}.
- * @since 1.0.0
- */
+/// [ReadableValue] for a simple datatype (and not a
+/// [container value][io.github.mmm.value.observable.container.ReadableContainerValue]).
+///
+/// @param <V> type of the [value][#get()].
+/// @since 1.0.0
 public interface ReadableSimpleValue<V> extends ReadableValue<V> {
 
-  /**
-   * @param valueAsString the value as {@link String}. May be {@code null}.
-   * @return the parsed {@code value}. May be {@code null} (e.g. if the given {@link String} is {@code null}).
-   */
+  /// @param valueAsString the value as [String]. May be `null`.
+  /// @return the parsed `value`. May be `null` (e.g. if the given [String] is `null`).
   V parse(String valueAsString);
 
-  /**
-   * @return the {@link #get() value} as {@link String}.
-   */
+  /// @return the [value][#get()] as [String].
   default String getAsString() {
 
     return format(get());
   }
 
-  /**
-   * @param value the {@link #get() value}.
-   * @return the {@link #toString() string representation} of the given {@code value}. Will typically be {@code null} if
-   *         {@code value} is {@code null}.
-   */
+  /// @param value the [value][#get()].
+  /// @return the [string representation][#toString()] of the given `value`. Will typically be `null` if
+  ///         `value` is `null`.
   default String format(V value) {
 
     if (value == null) {

@@ -8,14 +8,12 @@ import java.time.ZonedDateTime;
 
 import io.github.mmm.value.observable.time.ReadableTemporalValue;
 
-/**
- * {@link io.github.mmm.value.ReadableValue} containing a {@link ZonedDateTime} {@link #getValue() value}.
- *
- * @since 1.0.0
- */
+/// [io.github.mmm.value.ReadableValue] containing a [ZonedDateTime] [value][#getValue()].
+///
+/// @since 1.0.0
 public interface ReadableZonedDateTimeValue extends ReadableTemporalValue<ZonedDateTime> {
 
-  /** @see #getFallbackSafeValue() */
+  /// @see #getFallbackSafeValue()
   ZonedDateTime STATIC_SAFE_VALUE = ZonedDateTime.of(LocalDateTime.MIN, ZoneOffset.MIN);
 
   @Override

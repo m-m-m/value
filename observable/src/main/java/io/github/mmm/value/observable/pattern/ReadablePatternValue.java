@@ -6,14 +6,12 @@ import java.util.regex.Pattern;
 
 import io.github.mmm.value.observable.object.ReadableSimpleObjectValue;
 
-/**
- * {@link ReadableSimpleObjectValue} with {@link Pattern} {@link #get() value}.
- *
- * @since 1.0.0
- */
+/// [ReadableSimpleObjectValue] with [Pattern] [value][#get()].
+///
+/// @since 1.0.0
 public interface ReadablePatternValue extends ReadableSimpleObjectValue<Pattern> {
 
-  /** @see #getFallbackSafeValue() */
+  /// @see #getFallbackSafeValue()
   Pattern STATIC_SAFE_VALUE = Pattern.compile("");
 
   @Override
@@ -22,11 +20,9 @@ public interface ReadablePatternValue extends ReadableSimpleObjectValue<Pattern>
     return Pattern.class;
   }
 
-  /**
-   * Same as {@link #get()}.
-   *
-   * @return the current {@link #get() value}.
-   */
+  /// Same as [#get()].
+  ///
+  /// @return the current [value][#get()].
   @Override
   default Pattern getValue() {
 

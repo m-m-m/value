@@ -4,13 +4,11 @@ package io.github.mmm.value.observable.container;
 
 import io.github.mmm.event.EventListener;
 
-/**
- * {@link EventListener} for {@link ContainerChange}s.
- *
- * @param <C> type of the {@link ContainerChange change}.
- * @since 1.0.0
- * @see io.github.mmm.value.observable.ObservableEvent#getChange()
- */
+/// [EventListener] for [ContainerChange]s.
+///
+/// @param <C> type of the [change][ContainerChange].
+/// @since 1.0.0
+/// @see io.github.mmm.value.observable.ObservableEvent#getChange()
 public interface ContainerChangeListener<C extends ContainerChange<?, ?>> extends EventListener<C> {
 
 }

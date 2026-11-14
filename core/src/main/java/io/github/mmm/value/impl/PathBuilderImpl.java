@@ -4,22 +4,18 @@ import java.util.Objects;
 
 import io.github.mmm.value.ReadablePath.PathBuilder;
 
-/**
- * Default implementation of {@link PathBuilder}.
- *
- * @since 1.0.0
- */
+/// Default implementation of [PathBuilder].
+///
+/// @since 1.0.0
 public class PathBuilderImpl implements PathBuilder {
 
   private final String separator;
 
   private final StringBuilder buffer;
 
-  /**
-   * The constructor.
-   *
-   * @param separator the separator used to separate {@link #add(String) path segments}.
-   */
+  /// The constructor.
+  ///
+  /// @param separator the separator used to separate [path segments][#add(String)].
   public PathBuilderImpl(String separator) {
 
     super();

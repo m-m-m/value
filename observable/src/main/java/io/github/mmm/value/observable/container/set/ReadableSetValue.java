@@ -7,12 +7,10 @@ import java.util.Set;
 
 import io.github.mmm.value.observable.container.collection.ReadableCollectionValue;
 
-/**
- * {@link ReadableCollectionValue} for {@link Set} {@link #get() value}s.
- *
- * @param <E> type of the {@link Set#contains(Object) elements}.
- * @since 1.0.0
- */
+/// [ReadableCollectionValue] for [Set] [value][#get()]s.
+///
+/// @param <E> type of the [elements][Set#contains(Object)].
+/// @since 1.0.0
 public interface ReadableSetValue<E> extends ReadableCollectionValue<Set<E>, E> {
 
   @SuppressWarnings({ "unchecked", "rawtypes" })

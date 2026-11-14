@@ -6,16 +6,12 @@ import java.time.Month;
 
 import io.github.mmm.value.observable.object.WritableSimpleValue;
 
-/**
- * {@link io.github.mmm.value.WritableValue} containing a {@link Month} {@link #getValue() value}.
- *
- * @since 1.0.0
- */
+/// [io.github.mmm.value.WritableValue] containing a [Month] [value][#getValue()].
+///
+/// @since 1.0.0
 public interface WritableMonthValue extends ReadableMonthValue, WritableSimpleValue<Month> {
 
-  /**
-   * @param month the {@link Month} as primitive {@code int} value.
-   */
+  /// @param month the [Month] as primitive `int` value.
   default void setValue(int month) {
 
     if (month == 0) {

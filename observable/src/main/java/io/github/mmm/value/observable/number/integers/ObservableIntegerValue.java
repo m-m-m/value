@@ -4,11 +4,9 @@ package io.github.mmm.value.observable.number.integers;
 
 import io.github.mmm.value.observable.number.ObservableNumberValue;
 
-/**
- * {@link ObservableNumberValue} with {@link Integer} {@link #getValue() value}.
- *
- * @since 1.0.0
- */
+/// [ObservableNumberValue] with [Integer] [value][#getValue()].
+///
+/// @since 1.0.0
 public interface ObservableIntegerValue extends ObservableNumberValue<Integer>, ReadableIntegerValue {
 
 }

@@ -7,12 +7,10 @@ import java.util.List;
 
 import io.github.mmm.value.observable.container.collection.WritableCollectionValue;
 
-/**
- * {@link WritableCollectionValue} for {@link List} {@link #get() value}s.
- *
- * @param <E> type of the {@link List#contains(Object) elements}.
- * @since 1.0.0
- */
+/// [WritableCollectionValue] for [List] [value][#get()]s.
+///
+/// @param <E> type of the [elements][List#contains(Object)].
+/// @since 1.0.0
 public interface WritableListValue<E> extends WritableCollectionValue<List<E>, E>, ReadableListValue<E> {
 
   @Override

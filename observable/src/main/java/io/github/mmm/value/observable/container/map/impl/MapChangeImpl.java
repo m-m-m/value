@@ -9,13 +9,11 @@ import io.github.mmm.value.observable.container.impl.AbstractContainerChange;
 import io.github.mmm.value.observable.container.list.ListChange;
 import io.github.mmm.value.observable.container.map.MapChange;
 
-/**
- * Implementation of {@link ListChange}.
- *
- * @param <K> type of the {@link Map#containsKey(Object) keys}.
- * @param <V> type of the {@link Map#containsValue(Object) values}.
- * @since 1.0.0
- */
+/// Implementation of [ListChange].
+///
+/// @param <K> type of the [keys][Map#containsKey(Object)].
+/// @param <V> type of the [values][Map#containsValue(Object)].
+/// @since 1.0.0
 public class MapChangeImpl<K, V> extends AbstractContainerChange<Map<K, V>, V>
     implements MapChange<K, V> {
 
@@ -23,13 +21,11 @@ public class MapChangeImpl<K, V> extends AbstractContainerChange<Map<K, V>, V>
 
   private final Object[] keys;
 
-  /**
-   * The constructor.
-   *
-   * @param container the {@link Map} that changed.
-   * @param removedKeys the keys that have been removed from the {@link Map}.
-   * @param removedElements the elements that have been removed for the {@link Map}.
-   */
+  /// The constructor.
+  ///
+  /// @param container the [Map] that changed.
+  /// @param removedKeys the keys that have been removed from the [Map].
+  /// @param removedElements the elements that have been removed for the [Map].
   public MapChangeImpl(Map<K, V> container, Object[] removedKeys, Object[] removedElements) {
 
     super(ChangeType.REMOVE, removedElements);
@@ -37,13 +33,11 @@ public class MapChangeImpl<K, V> extends AbstractContainerChange<Map<K, V>, V>
     this.keys = removedKeys;
   }
 
-  /**
-   * The constructor.
-   *
-   * @param container the {@link Map} that changed.
-   * @param type the {@link ChangeType}.
-   * @param keys the keys that have changed in the {@link Map}.
-   */
+  /// The constructor.
+  ///
+  /// @param container the [Map] that changed.
+  /// @param type the [ChangeType].
+  /// @param keys the keys that have changed in the [Map].
   public MapChangeImpl(Map<K, V> container, ChangeType type, Object[] keys) {
 
     super(type, keys.length);

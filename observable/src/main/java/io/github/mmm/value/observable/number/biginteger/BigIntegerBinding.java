@@ -11,39 +11,31 @@ import io.github.mmm.value.observable.number.NumberBinding;
 import io.github.mmm.value.observable.number.NumberExpression;
 import io.github.mmm.value.observable.number.bigdecimal.BigDecimalExpression;
 
-/**
- * {@link io.github.mmm.value.observable.Binding} with {@link BigInteger} {@link #get() value}.
- *
- * @since 1.0.0
- */
+/// [io.github.mmm.value.observable.Binding] with [BigInteger] [value][#get()].
+///
+/// @since 1.0.0
 public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigIntegerExpression {
 
-  /**
-   * The constructor.
-   *
-   * @param expression the {@link Supplier} to compute the {@link #get() value}.
-   * @param dependencies the {@link ObservableValue}s the {@code expression} depends on.
-   */
+  /// The constructor.
+  ///
+  /// @param expression the [Supplier] to compute the [value][#get()].
+  /// @param dependencies the [ObservableValue]s the `expression` depends on.
   public BigIntegerBinding(Supplier<BigInteger> expression, ObservableValue<?>... dependencies) {
 
     super(expression, dependencies);
   }
 
-  /**
-   * @param expression the {@link BigIntegerExpression} to negate.
-   * @return a new {@link BigIntegerExpression} holding the negation of the {@link #get() value} from the given
-   *         {@link BigIntegerExpression}.
-   * @see #expNegate()
-   */
+  /// @param expression the [BigIntegerExpression] to negate.
+  /// @return a new [BigIntegerExpression] holding the negation of the [value][#get()] from the given
+  ///         [BigIntegerExpression].
+  /// @see #expNegate()
   public static BigIntegerExpression negate(BigIntegerExpression expression) {
 
     return new BigIntegerBinding(() -> negate(expression.get()), expression);
   }
 
-  /**
-   * @param expression the {@link NumberExpression} to convert.
-   * @return the given {@link NumberExpression} converted to a {@link BigDecimalExpression}.
-   */
+  /// @param expression the [NumberExpression] to convert.
+  /// @return the given [NumberExpression] converted to a [BigDecimalExpression].
   public static BigIntegerExpression cast(NumberExpression<?> expression) {
 
     if (expression == null) {
@@ -55,13 +47,11 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
     }
   }
 
-  /**
-   * @param expression the {@link NumberExpression} to add.
-   * @param other the {@link ObservableValue} to add.
-   * @return a new {@link BigIntegerExpression} holding the sum of the {@link #get() value}s of the first and the second
-   *         given {@link ObservableValue}s.
-   * @see #expAdd(ObservableBigIntegerValue)
-   */
+  /// @param expression the [NumberExpression] to add.
+  /// @param other the [ObservableValue] to add.
+  /// @return a new [BigIntegerExpression] holding the sum of the [value][#get()]s of the first and the second
+  ///         given [ObservableValue]s.
+  /// @see #expAdd(ObservableBigIntegerValue)
   public static BigIntegerExpression add(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
     if (other == null) {
@@ -70,25 +60,21 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
     return new BigIntegerBinding(() -> plus(expression, other), expression, other);
   }
 
-  /**
-   * @param expression the {@link NumberExpression} to add.
-   * @param constant the constant {@link Number} to add.
-   * @return a new {@link BigIntegerExpression} holding the sum of the {@link #get() value} from the given
-   *         {@link BigIntegerExpression} with the given {@code constant}.
-   * @see #expAdd(ObservableBigIntegerValue)
-   */
+  /// @param expression the [NumberExpression] to add.
+  /// @param constant the constant [Number] to add.
+  /// @return a new [BigIntegerExpression] holding the sum of the [value][#get()] from the given
+  ///         [BigIntegerExpression] with the given `constant`.
+  /// @see #expAdd(ObservableBigIntegerValue)
   public static BigIntegerExpression add(NumberExpression<?> expression, Number constant) {
 
     return add(expression, to(constant));
   }
 
-  /**
-   * @param expression the {@link NumberExpression} to add.
-   * @param constant the constant {@code BigInteger} to add.
-   * @return a new {@link BigIntegerExpression} holding the sum of the {@link #get() value} from the given
-   *         {@link BigIntegerExpression} with the given {@code constant}.
-   * @see #expAdd(ObservableBigIntegerValue)
-   */
+  /// @param expression the [NumberExpression] to add.
+  /// @param constant the constant `BigInteger` to add.
+  /// @return a new [BigIntegerExpression] holding the sum of the [value][#get()] from the given
+  ///         [BigIntegerExpression] with the given `constant`.
+  /// @see #expAdd(ObservableBigIntegerValue)
   public static BigIntegerExpression add(NumberExpression<?> expression, BigInteger constant) {
 
     if (constant == null) {
@@ -98,24 +84,20 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
     return new BigIntegerBinding(() -> plus(expression.get(), constant), expression);
   }
 
-  /**
-   * @param observables the {@link ObservableValue}s to add.
-   * @return a new {@link BigIntegerExpression} holding the sum of the {@link #get() value}s from the given
-   *         {@link ObservableValue}s.
-   */
+  /// @param observables the [ObservableValue]s to add.
+  /// @return a new [BigIntegerExpression] holding the sum of the [value][#get()]s from the given
+  ///         [ObservableValue]s.
   @SafeVarargs
   public static BigIntegerExpression addAll(ObservableValue<? extends Number>... observables) {
 
     return new BigIntegerBinding(() -> plusAll(observables), observables);
   }
 
-  /**
-   * @param expression the {@link NumberExpression}.
-   * @param other the {@link ObservableValue} to subtract.
-   * @return a new {@link BigIntegerExpression} holding the difference of the {@link #get() value}s of the first and the
-   *         second given {@link ObservableValue}s.
-   * @see #expSub(ObservableBigIntegerValue)
-   */
+  /// @param expression the [NumberExpression].
+  /// @param other the [ObservableValue] to subtract.
+  /// @return a new [BigIntegerExpression] holding the difference of the [value][#get()]s of the first and the
+  ///         second given [ObservableValue]s.
+  /// @see #expSub(ObservableBigIntegerValue)
   public static BigIntegerExpression subtract(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
     if (other == null) {
@@ -124,25 +106,21 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
     return new BigIntegerBinding(() -> minus(expression, other), expression, other);
   }
 
-  /**
-   * @param expression the {@link NumberExpression}.
-   * @param constant the constant {@link Number} to subtract.
-   * @return a new {@link BigIntegerExpression} holding the difference of the {@link #get() value} from the given
-   *         {@link BigIntegerExpression} with the given {@code constant}.
-   * @see #expSub(ObservableBigIntegerValue)
-   */
+  /// @param expression the [NumberExpression].
+  /// @param constant the constant [Number] to subtract.
+  /// @return a new [BigIntegerExpression] holding the difference of the [value][#get()] from the given
+  ///         [BigIntegerExpression] with the given `constant`.
+  /// @see #expSub(ObservableBigIntegerValue)
   public static BigIntegerExpression subtract(NumberExpression<?> expression, Number constant) {
 
     return subtract(expression, to(constant));
   }
 
-  /**
-   * @param expression the {@link NumberExpression}.
-   * @param constant the constant {@code BigInteger} to subtract.
-   * @return a new {@link BigIntegerExpression} holding the difference of the {@link #get() value} from the given
-   *         {@link BigIntegerExpression} with the given {@code constant}.
-   * @see #expSub(ObservableBigIntegerValue)
-   */
+  /// @param expression the [NumberExpression].
+  /// @param constant the constant `BigInteger` to subtract.
+  /// @return a new [BigIntegerExpression] holding the difference of the [value][#get()] from the given
+  ///         [BigIntegerExpression] with the given `constant`.
+  /// @see #expSub(ObservableBigIntegerValue)
   public static BigIntegerExpression subtract(NumberExpression<?> expression, BigInteger constant) {
 
     if (constant == null) {
@@ -152,24 +130,20 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
     return new BigIntegerBinding(() -> minus(expression.get(), constant), expression);
   }
 
-  /**
-   * @param observables the {@link ObservableValue}s to subtract.
-   * @return a new {@link BigIntegerExpression} holding the difference of the {@link #get() value}s from the given
-   *         {@link ObservableValue}s.
-   */
+  /// @param observables the [ObservableValue]s to subtract.
+  /// @return a new [BigIntegerExpression] holding the difference of the [value][#get()]s from the given
+  ///         [ObservableValue]s.
   @SafeVarargs
   public static BigIntegerExpression subtractAll(ObservableValue<? extends Number>... observables) {
 
     return new BigIntegerBinding(() -> minusAll(observables), observables);
   }
 
-  /**
-   * @param expression the {@link NumberExpression}.
-   * @param other the {@link ObservableValue} to multiply.
-   * @return a new {@link BigIntegerExpression} holding the product of the {@link #get() value}s of the first and the
-   *         second given {@link ObservableValue}s.
-   * @see #expMul(ObservableBigIntegerValue)
-   */
+  /// @param expression the [NumberExpression].
+  /// @param other the [ObservableValue] to multiply.
+  /// @return a new [BigIntegerExpression] holding the product of the [value][#get()]s of the first and the
+  ///         second given [ObservableValue]s.
+  /// @see #expMul(ObservableBigIntegerValue)
   public static BigIntegerExpression multiply(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
     if (other == null) {
@@ -178,25 +152,21 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
     return new BigIntegerBinding(() -> mul(expression, other), expression, other);
   }
 
-  /**
-   * @param expression the {@link NumberExpression}.
-   * @param constant the constant {@link Number} to multiply.
-   * @return a new {@link BigIntegerExpression} holding the product of the {@link #get() value} from the given
-   *         {@link BigIntegerExpression} multiplied with the given {@code constant}.
-   * @see #expMul(ObservableBigIntegerValue)
-   */
+  /// @param expression the [NumberExpression].
+  /// @param constant the constant [Number] to multiply.
+  /// @return a new [BigIntegerExpression] holding the product of the [value][#get()] from the given
+  ///         [BigIntegerExpression] multiplied with the given `constant`.
+  /// @see #expMul(ObservableBigIntegerValue)
   public static BigIntegerExpression multiply(NumberExpression<?> expression, Number constant) {
 
     return multiply(expression, to(constant));
   }
 
-  /**
-   * @param expression the {@link NumberExpression}.
-   * @param constant the constant {@code BigInteger} to multiply.
-   * @return a new {@link BigIntegerExpression} holding the product of the {@link #get() value} from the given
-   *         {@link BigIntegerExpression} multiplied with the given {@code constant}.
-   * @see #expMul(ObservableBigIntegerValue)
-   */
+  /// @param expression the [NumberExpression].
+  /// @param constant the constant `BigInteger` to multiply.
+  /// @return a new [BigIntegerExpression] holding the product of the [value][#get()] from the given
+  ///         [BigIntegerExpression] multiplied with the given `constant`.
+  /// @see #expMul(ObservableBigIntegerValue)
   public static BigIntegerExpression multiply(NumberExpression<?> expression, BigInteger constant) {
 
     if (constant == null) {
@@ -206,24 +176,20 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
     return new BigIntegerBinding(() -> mul(expression.get(), constant), expression);
   }
 
-  /**
-   * @param observables the {@link ObservableValue}s to multiply.
-   * @return a new {@link BigIntegerExpression} holding the product of the {@link #get() value}s from the given
-   *         {@link ObservableValue}s.
-   */
+  /// @param observables the [ObservableValue]s to multiply.
+  /// @return a new [BigIntegerExpression] holding the product of the [value][#get()]s from the given
+  ///         [ObservableValue]s.
   @SafeVarargs
   public static BigIntegerExpression multiplyAll(ObservableValue<? extends Number>... observables) {
 
     return new BigIntegerBinding(() -> mulAll(observables), observables);
   }
 
-  /**
-   * @param expression the {@link NumberExpression}.
-   * @param other the {@link ObservableValue} to divide.
-   * @return a new {@link BigIntegerExpression} holding the quotient of the {@link #get() value}s of the first and the
-   *         second given {@link ObservableValue}s.
-   * @see #expDiv(ObservableBigIntegerValue)
-   */
+  /// @param expression the [NumberExpression].
+  /// @param other the [ObservableValue] to divide.
+  /// @return a new [BigIntegerExpression] holding the quotient of the [value][#get()]s of the first and the
+  ///         second given [ObservableValue]s.
+  /// @see #expDiv(ObservableBigIntegerValue)
   public static BigIntegerExpression divide(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
     if (other == null) {
@@ -232,25 +198,21 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
     return new BigIntegerBinding(() -> div(expression, other), expression, other);
   }
 
-  /**
-   * @param expression the {@link NumberExpression}.
-   * @param constant the constant {@link Number} to divide.
-   * @return a new {@link BigIntegerExpression} holding the quotient of the {@link #get() value} from the given
-   *         {@link BigIntegerExpression} divided by the given {@code constant}.
-   * @see #expDiv(ObservableBigIntegerValue)
-   */
+  /// @param expression the [NumberExpression].
+  /// @param constant the constant [Number] to divide.
+  /// @return a new [BigIntegerExpression] holding the quotient of the [value][#get()] from the given
+  ///         [BigIntegerExpression] divided by the given `constant`.
+  /// @see #expDiv(ObservableBigIntegerValue)
   public static BigIntegerExpression divide(NumberExpression<?> expression, Number constant) {
 
     return divide(expression, to(constant));
   }
 
-  /**
-   * @param expression the {@link NumberExpression}.
-   * @param constant the constant {@code BigInteger} to divide.
-   * @return a new {@link BigIntegerExpression} holding the quotient of the {@link #get() value} from the given
-   *         {@link BigIntegerExpression} divided by the given {@code constant}.
-   * @see #expDiv(ObservableBigIntegerValue)
-   */
+  /// @param expression the [NumberExpression].
+  /// @param constant the constant `BigInteger` to divide.
+  /// @return a new [BigIntegerExpression] holding the quotient of the [value][#get()] from the given
+  ///         [BigIntegerExpression] divided by the given `constant`.
+  /// @see #expDiv(ObservableBigIntegerValue)
   public static BigIntegerExpression divide(NumberExpression<?> expression, BigInteger constant) {
 
     if (constant == null) {
@@ -260,11 +222,9 @@ public class BigIntegerBinding extends NumberBinding<BigInteger> implements BigI
     return new BigIntegerBinding(() -> div(expression.get(), constant), expression);
   }
 
-  /**
-   * @param observables the {@link ObservableValue}s to divide.
-   * @return a new {@link BigIntegerExpression} holding the quotient of the {@link #get() value}s from the given
-   *         {@link ObservableValue}s.
-   */
+  /// @param observables the [ObservableValue]s to divide.
+  /// @return a new [BigIntegerExpression] holding the quotient of the [value][#get()]s from the given
+  ///         [ObservableValue]s.
   @SafeVarargs
   public static BigIntegerExpression divideAll(ObservableValue<? extends Number>... observables) {
 

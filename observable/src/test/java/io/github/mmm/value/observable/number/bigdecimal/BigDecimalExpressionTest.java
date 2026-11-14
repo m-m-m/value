@@ -10,9 +10,7 @@ import org.junit.jupiter.api.Test;
 import io.github.mmm.value.observable.number.NumberExpression;
 import io.github.mmm.value.observable.number.NumberExpressionTest;
 
-/**
- * Test of {@link BigDecimalExpression}.
- */
+/// Test of [BigDecimalExpression].
 @SuppressWarnings("javadoc")
 class BigDecimalExpressionTest extends NumberExpressionTest<BigDecimal> {
 

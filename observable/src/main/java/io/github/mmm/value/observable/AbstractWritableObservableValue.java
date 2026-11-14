@@ -4,12 +4,10 @@ package io.github.mmm.value.observable;
 
 import java.util.Objects;
 
-/**
- * Abstract base implementation of {@link WritableObservableValue} that handles bindings.
- *
- * @param <V> type of the observable {@link #get() value}.
- * @since 1.0.0
- */
+/// Abstract base implementation of [WritableObservableValue] that handles bindings.
+///
+/// @param <V> type of the observable [value][#get()].
+/// @since 1.0.0
 public abstract class AbstractWritableObservableValue<V> extends AbstractObservableValue<V>
     implements WritableObservableValue<V> {
 
@@ -26,9 +24,7 @@ public abstract class AbstractWritableObservableValue<V> extends AbstractObserva
     return doGet();
   }
 
-  /**
-   * @return the internal {@link #get() value}.
-   */
+  /// @return the internal [value][#get()].
   protected abstract V doGet();
 
   @Override
@@ -42,12 +38,10 @@ public abstract class AbstractWritableObservableValue<V> extends AbstractObserva
     }
   }
 
-  /**
-   * Internal method of {@link #bindOneWay(ObservableValue)}. Do not call.
-   *
-   * @param observable the {@link ObservableValue} to bind.
-   * @see #bindOneWay(ObservableValue)
-   */
+  /// Internal method of [#bindOneWay(ObservableValue)]. Do not call.
+  ///
+  /// @param observable the [ObservableValue] to bind.
+  /// @see #bindOneWay(ObservableValue)
   protected void bindInternal(ObservableValue<? extends V> observable) {
 
     this.binding = observable;
@@ -101,33 +95,27 @@ public abstract class AbstractWritableObservableValue<V> extends AbstractObserva
     }
   }
 
-  /**
-   * Null-safe check if two {@link #get() values} are considered equal (unchanged).
-   *
-   * @param newValue the new value.
-   * @param oldValue the old value.
-   * @return {@code true} if equal (unchanged), {@code false} otherwise (changed),
-   */
+  /// Null-safe check if two [values][#get()] are considered equal (unchanged).
+  ///
+  /// @param newValue the new value.
+  /// @param oldValue the old value.
+  /// @return `true` if equal (unchanged), `false` otherwise (changed),
   protected boolean isValueEqual(V newValue, V oldValue) {
 
     return Objects.equals(oldValue, newValue);
   }
 
-  /**
-   * Internal method called from {@link #set(Object)} if the value actually changed.
-   *
-   * @param oldValue the old value.
-   * @param value the new value.
-   */
+  /// Internal method called from [#set(Object)] if the value actually changed.
+  ///
+  /// @param oldValue the old value.
+  /// @param value the new value.
   protected void setWithChange(V oldValue, V value) {
 
     doSet(value);
     fireEventWithOldValue(oldValue);
   }
 
-  /**
-   * @throws IllegalStateException if this property is not writable.
-   */
+  /// @throws IllegalStateException if this property is not writable.
   protected void requireWritable() throws IllegalStateException {
 
     if (isBoundOneWay()) {
@@ -135,10 +123,8 @@ public abstract class AbstractWritableObservableValue<V> extends AbstractObserva
     }
   }
 
-  /**
-   * @param newValue the new {@link #get() value} to set.
-   * @see #set(Object)
-   */
+  /// @param newValue the new [value][#get()] to set.
+  /// @see #set(Object)
   protected abstract void doSet(V newValue);
 
 }

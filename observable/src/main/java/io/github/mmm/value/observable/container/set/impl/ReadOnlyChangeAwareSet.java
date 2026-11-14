@@ -8,12 +8,10 @@ import java.util.Collection;
 import io.github.mmm.value.observable.container.set.ChangeAwareSet;
 import io.github.mmm.value.observable.container.set.SetChangeListener;
 
-/**
- * Abstract base implementation for an immutable {@link ChangeAwareSet}.
- *
- * @param <E> the type of the elements in the container.
- * @since 1.0.0
- */
+/// Abstract base implementation for an immutable [ChangeAwareSet].
+///
+/// @param <E> the type of the elements in the container.
+/// @since 1.0.0
 public abstract class ReadOnlyChangeAwareSet<E> extends AbstractSet<E> implements ChangeAwareSet<E> {
 
   @Override

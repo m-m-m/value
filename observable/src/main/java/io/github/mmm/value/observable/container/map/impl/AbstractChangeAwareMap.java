@@ -12,20 +12,16 @@ import io.github.mmm.value.observable.container.map.ChangeAwareMap;
 import io.github.mmm.value.observable.container.map.MapChange;
 import io.github.mmm.value.observable.container.map.MapChangeListener;
 
-/**
- * Abstract base implementation of mutable {@link ChangeAwareMap}.
- *
- * @param <K> type of the {@link Map#containsKey(Object) keys}.
- * @param <V> type of the {@link Map#containsValue(Object) values}.
- * @since 1.0.0
- */
+/// Abstract base implementation of mutable [ChangeAwareMap].
+///
+/// @param <K> type of the [keys][Map#containsKey(Object)].
+/// @param <V> type of the [values][Map#containsValue(Object)].
+/// @since 1.0.0
 public abstract class AbstractChangeAwareMap<K, V> extends AbstractMap<K, V> implements ChangeAwareMap<K, V> {
 
   private EventSourceAdapter<MapChange<K, V>, EventListener<MapChange<K, V>>> eventAdapter;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public AbstractChangeAwareMap() {
 
     super();
@@ -53,27 +49,20 @@ public abstract class AbstractChangeAwareMap<K, V> extends AbstractMap<K, V> imp
     return true;
   }
 
-  /**
-   * @return {@code true} if at least one {@link MapChangeListener} is {@link #addListener(MapChangeListener, boolean)
-   *         registered}, {@code false} otherwise.
-   */
+  /// @return `true` if at least one [MapChangeListener] is [registered][#addListener(MapChangeListener, boolean)], `false` otherwise.
   protected boolean hasListeners() {
 
     return this.eventAdapter.hasListeners();
   }
 
-  /**
-   * @return {@code true} if modification events should be generated, {@code false} otherwise.
-   */
+  /// @return `true` if modification events should be generated, `false` otherwise.
   protected boolean isChangeAware() {
 
     return hasListeners();
   }
 
-  /**
-   * @param modification the {@link MapChange} to {@link MapChangeListener#onEvent(Object) send} to all
-   *        {@link #addListener(MapChangeListener, boolean) registered} {@link MapChangeListener}s.
-   */
+  /// @param modification the [MapChange] to [send][MapChangeListener#onEvent(Object)] to all
+  ///        [registered][#addListener(MapChangeListener, boolean)] [MapChangeListener]s.
   protected void fireEvent(MapChange<K, V> modification) {
 
     if (modification == null) {
@@ -82,11 +71,9 @@ public abstract class AbstractChangeAwareMap<K, V> extends AbstractMap<K, V> imp
     this.eventAdapter.fireEvent(modification);
   }
 
-  /**
-   * {@link #fireEvent(MapChange) Fires} an {@link ChangeType#UPDATE update} event.
-   *
-   * @param keys the keys of the values that have been updated.
-   */
+  /// [Fires][#fireEvent(MapChange)] an [update][ChangeType#UPDATE] event.
+  ///
+  /// @param keys the keys of the values that have been updated.
   protected void fireUpdate(Object... keys) {
 
     if (!isChangeAware()) {
@@ -95,11 +82,9 @@ public abstract class AbstractChangeAwareMap<K, V> extends AbstractMap<K, V> imp
     fireEvent(new MapChangeImpl<>(this, ChangeType.UPDATE, keys));
   }
 
-  /**
-   * {@link #fireEvent(MapChange) Fires} an {@link ChangeType#ADD add} event.
-   *
-   * @param keys the keys of the values that have been inserted.
-   */
+  /// [Fires][#fireEvent(MapChange)] an [add][ChangeType#ADD] event.
+  ///
+  /// @param keys the keys of the values that have been inserted.
   protected void fireAdd(Object... keys) {
 
     if (!isChangeAware()) {
@@ -108,12 +93,10 @@ public abstract class AbstractChangeAwareMap<K, V> extends AbstractMap<K, V> imp
     fireEvent(new MapChangeImpl<>(this, ChangeType.ADD, keys));
   }
 
-  /**
-   * {@link #fireEvent(MapChange) Fires} an {@link ChangeType#REMOVE remove} event.
-   *
-   * @param keys the keys that have been removed.
-   * @param values the values that have been removed in the order corresponding to the {@code keys}.
-   */
+  /// [Fires][#fireEvent(MapChange)] an [remove][ChangeType#REMOVE] event.
+  ///
+  /// @param keys the keys that have been removed.
+  /// @param values the values that have been removed in the order corresponding to the `keys`.
   protected void fireRemove(Object[] keys, Object[] values) {
 
     if (!isChangeAware()) {
@@ -122,12 +105,10 @@ public abstract class AbstractChangeAwareMap<K, V> extends AbstractMap<K, V> imp
     fireEvent(new MapChangeImpl<>(this, keys, values));
   }
 
-  /**
-   * {@link #fireEvent(MapChange) Fires} an {@link ChangeType#REMOVE remove} event.
-   *
-   * @param key the key that has been removed.
-   * @param value the value that has been removed.
-   */
+  /// [Fires][#fireEvent(MapChange)] an [remove][ChangeType#REMOVE] event.
+  ///
+  /// @param key the key that has been removed.
+  /// @param value the value that has been removed.
   protected void fireRemove(Object key, Object value) {
 
     if (!isChangeAware()) {
@@ -136,10 +117,7 @@ public abstract class AbstractChangeAwareMap<K, V> extends AbstractMap<K, V> imp
     fireEvent(new MapChangeImpl<>(this, new Object[] { key }, new Object[] { value }));
   }
 
-  /**
-   * @return the {@link MapChange} event for the remove of all entries or {@code null} if not {@link #isChangeAware()
-   *         observed} or {@link #isEmpty() empty}.
-   */
+  /// @return the [MapChange] event for the remove of all entries or `null` if not [observed][#isChangeAware()] or [empty][#isEmpty()].
   protected MapChange<K, V> modRemoveAll() {
 
     if (isChangeAware()) {

@@ -4,9 +4,7 @@ package io.github.mmm.value.observable.time.localdate;
 
 import java.time.LocalDate;
 
-/**
- * Internal helper for {@link LocalDate}.
- */
+/// Internal helper for [LocalDate].
 class LocalDateHelper {
 
   static boolean isInFuture(LocalDate value) {

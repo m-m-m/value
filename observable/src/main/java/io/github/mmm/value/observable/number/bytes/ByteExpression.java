@@ -22,11 +22,9 @@ import io.github.mmm.value.observable.number.shorts.ObservableShortValue;
 import io.github.mmm.value.observable.number.shorts.ShortBinding;
 import io.github.mmm.value.observable.number.shorts.ShortExpression;
 
-/**
- * {@link NumberExpression} with {@link Byte} {@link #getValue() value}.
- *
- * @since 1.0.0
- */
+/// [NumberExpression] with [Byte] [value][#getValue()].
+///
+/// @since 1.0.0
 public interface ByteExpression extends ObservableByteValue, NumberExpression<Byte> {
 
   @Override

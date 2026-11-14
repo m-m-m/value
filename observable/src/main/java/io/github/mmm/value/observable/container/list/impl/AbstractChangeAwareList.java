@@ -11,19 +11,15 @@ import io.github.mmm.value.observable.container.list.ChangeAwareList;
 import io.github.mmm.value.observable.container.list.ListChange;
 import io.github.mmm.value.observable.container.list.ListChangeListener;
 
-/**
- * Abstract base implementation of {@link ChangeAwareList}.
- *
- * @param <E> the type of the elements in the container.
- * @since 1.0.0
- */
+/// Abstract base implementation of [ChangeAwareList].
+///
+/// @param <E> the type of the elements in the container.
+/// @since 1.0.0
 public abstract class AbstractChangeAwareList<E> extends AbstractList<E> implements ChangeAwareList<E> {
 
   private EventSourceAdapter<ListChange<E>, EventListener<ListChange<E>>> eventAdapter;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public AbstractChangeAwareList() {
 
     super();
@@ -51,19 +47,14 @@ public abstract class AbstractChangeAwareList<E> extends AbstractList<E> impleme
     return true;
   }
 
-  /**
-   * @return {@code true} if at least one {@link ListChangeListener} is {@link #addListener(ListChangeListener, boolean)
-   *         registered}, {@code false} otherwise.
-   */
+  /// @return `true` if at least one [ListChangeListener] is [registered][#addListener(ListChangeListener, boolean)], `false` otherwise.
   protected boolean hasListeners() {
 
     return this.eventAdapter.hasListeners();
   }
 
-  /**
-   * @param modification the {@link ListChange} to {@link ListChangeListener#onEvent(Object) send} to all
-   *        {@link #addListener(ListChangeListener, boolean) registered} {@link ListChangeListener}s.
-   */
+  /// @param modification the [ListChange] to [send][ListChangeListener#onEvent(Object)] to all
+  ///        [registered][#addListener(ListChangeListener, boolean)] [ListChangeListener]s.
   protected void fireEvent(ListChange<E> modification) {
 
     if (modification == null) {
@@ -72,9 +63,7 @@ public abstract class AbstractChangeAwareList<E> extends AbstractList<E> impleme
     this.eventAdapter.fireEvent(modification);
   }
 
-  /**
-   * @return a new {@link ListChange} notifying about a remove of all current elements. May be {@code null}.
-   */
+  /// @return a new [ListChange] notifying about a remove of all current elements. May be `null`.
   protected ListChange<E> modRemoveAll() {
 
     if (isEmpty() || !this.eventAdapter.hasListeners()) {
@@ -84,11 +73,9 @@ public abstract class AbstractChangeAwareList<E> extends AbstractList<E> impleme
     return new ListChangeImpl<>(this, 0, elements);
   }
 
-  /**
-   * @param from the {@link #indexOf(Object) index} of the element that is going to be removed.
-   * @return a new {@link ListChange} notifying about a remove of a single element at the given {@code from} index. May
-   *         be {@code null}.
-   */
+  /// @param from the [index][#indexOf(Object)] of the element that is going to be removed.
+  /// @return a new [ListChange] notifying about a remove of a single element at the given `from` index. May
+  ///         be `null`.
   protected ListChange<E> modRemove(int from) {
 
     if (!this.eventAdapter.hasListeners()) {
@@ -98,12 +85,10 @@ public abstract class AbstractChangeAwareList<E> extends AbstractList<E> impleme
     return new ListChangeImpl<>(this, from, elements);
   }
 
-  /**
-   * @param from the start {@link #indexOf(Object) index} of the range to be removed (inclusive).
-   * @param to the end {@link #indexOf(Object) index} of the range to be removed (exclusive).
-   * @return a new {@link ListChange} notifying about a remove of the elements in the specified range. May be
-   *         {@code null}.
-   */
+  /// @param from the start [index][#indexOf(Object)] of the range to be removed (inclusive).
+  /// @param to the end [index][#indexOf(Object)] of the range to be removed (exclusive).
+  /// @return a new [ListChange] notifying about a remove of the elements in the specified range. May be
+  ///         `null`.
   protected ListChange<E> modRemove(int from, int to) {
 
     if ((from < 0) || (to == from) || (from >= to) || !this.eventAdapter.hasListeners()) {
@@ -116,10 +101,8 @@ public abstract class AbstractChangeAwareList<E> extends AbstractList<E> impleme
     return new ListChangeImpl<>(this, from, elements);
   }
 
-  /**
-   * @param from the start {@link #indexOf(Object) index} where the element(s) have been inserted.
-   * @param count the number of inserted elements.
-   */
+  /// @param from the start [index][#indexOf(Object)] where the element(s) have been inserted.
+  /// @param count the number of inserted elements.
   protected void fireAdd(int from, int count) {
 
     if (!this.eventAdapter.hasListeners()) {
@@ -128,10 +111,8 @@ public abstract class AbstractChangeAwareList<E> extends AbstractList<E> impleme
     fireEvent(new ListChangeImpl<>(this, ChangeType.ADD, from, count));
   }
 
-  /**
-   * @param from the start {@link #indexOf(Object) index} where the element(s) have been updated (replaced).
-   * @param count the number of updated elements.
-   */
+  /// @param from the start [index][#indexOf(Object)] where the element(s) have been updated (replaced).
+  /// @param count the number of updated elements.
   protected void fireUpdate(int from, int count) {
 
     if (!this.eventAdapter.hasListeners()) {
@@ -140,10 +121,8 @@ public abstract class AbstractChangeAwareList<E> extends AbstractList<E> impleme
     fireEvent(new ListChangeImpl<>(this, ChangeType.UPDATE, from, count));
   }
 
-  /**
-   * @param index the {@link #indexOf(Object) index} of the element that has been removed.
-   * @param element the element that has been removed.
-   */
+  /// @param index the [index][#indexOf(Object)] of the element that has been removed.
+  /// @param element the element that has been removed.
   protected void fireRemove(int index, Object element) {
 
     if (!this.eventAdapter.hasListeners()) {

@@ -4,20 +4,16 @@ package io.github.mmm.value.observable.number.floats;
 
 import io.github.mmm.value.observable.number.WritableNumberValue;
 
-/**
- * {@link WritableNumberValue} with {@link Float} {@link #get() value}.
- *
- * @since 1.0.0
- */
+/// [WritableNumberValue] with [Float] [value][#get()].
+///
+/// @since 1.0.0
 public interface WritableFloatValue extends ReadableFloatValue, WritableNumberValue<Float> {
 
   @Override
   void set(Float value);
 
-  /**
-   * @param value the new {@link #getValue() primitive value}.
-   * @see #set(Float)
-   */
+  /// @param value the new [primitive value][#getValue()].
+  /// @see #set(Float)
   default void setValue(float value) {
 
     set(Float.valueOf(value));

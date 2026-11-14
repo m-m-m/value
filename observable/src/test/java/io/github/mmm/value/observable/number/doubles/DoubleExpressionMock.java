@@ -4,27 +4,21 @@ package io.github.mmm.value.observable.number.doubles;
 
 import io.github.mmm.value.observable.AbstractWritableObservableValue;
 
-/**
- * Implementation of {@link DoubleExpression} for testing.
- */
+/// Implementation of [DoubleExpression] for testing.
 public class DoubleExpressionMock extends AbstractWritableObservableValue<Double>
     implements DoubleExpression, WritableDoubleValue {
 
   private Double value;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public DoubleExpressionMock() {
 
     super();
   }
 
-  /**
-   * The constructor.
-   *
-   * @param value the initial {@link #getValue() value}.
-   */
+  /// The constructor.
+  ///
+  /// @param value the initial [value][#getValue()].
   public DoubleExpressionMock(Double value) {
 
     super();

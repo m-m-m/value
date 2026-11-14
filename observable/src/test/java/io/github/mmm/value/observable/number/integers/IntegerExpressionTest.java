@@ -7,9 +7,7 @@ import org.junit.jupiter.api.Test;
 import io.github.mmm.value.observable.number.NumberExpression;
 import io.github.mmm.value.observable.number.NumberExpressionTest;
 
-/**
- * Test of {@link IntegerExpression}.
- */
+/// Test of [IntegerExpression].
 @SuppressWarnings("javadoc")
 class IntegerExpressionTest extends NumberExpressionTest<Integer> {
 

@@ -10,22 +10,18 @@ import java.util.function.Supplier;
 
 import io.github.mmm.base.collection.ReadOnlyIterator;
 
-/**
- * Immutable implementation of {@link io.github.mmm.value.observable.container.map.ChangeAwareMap}.
- *
- * @param <K> type of the {@link java.util.Map#containsKey(Object) keys}.
- * @param <V> type of the {@link java.util.Map#containsValue(Object) values}.
- * @since 1.0.0
- */
+/// Immutable implementation of [io.github.mmm.value.observable.container.map.ChangeAwareMap].
+///
+/// @param <K> type of the [keys][java.util.Map#containsKey(Object)].
+/// @param <V> type of the [values][java.util.Map#containsValue(Object)].
+/// @since 1.0.0
 public class ImmutableChangeAwareMapView<K, V> extends ReadOnlyChangeAwareMap<K, V> {
 
   private final Supplier<Map<K, V>> mapSupplier;
 
-  /**
-   * The constructor.
-   *
-   * @param mapSupplier the internal {@link Map} to adopt.
-   */
+  /// The constructor.
+  ///
+  /// @param mapSupplier the internal [Map] to adopt.
   public ImmutableChangeAwareMapView(Supplier<Map<K, V>> mapSupplier) {
 
     super();

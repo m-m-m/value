@@ -6,11 +6,9 @@ import java.time.LocalDate;
 
 import io.github.mmm.value.observable.time.ReadableTemporalValue;
 
-/**
- * {@link io.github.mmm.value.ReadableValue} containing a {@link LocalDate} {@link #getValue() value}.
- *
- * @since 1.0.0
- */
+/// [io.github.mmm.value.ReadableValue] containing a [LocalDate] [value][#getValue()].
+///
+/// @since 1.0.0
 public interface ReadableLocalDateValue extends ReadableTemporalValue<LocalDate> {
 
   @Override

@@ -7,13 +7,11 @@ import java.util.Map;
 
 import io.github.mmm.value.observable.container.WritableContainerValue;
 
-/**
- * {@link WritableContainerValue} for {@link Map} {@link #get() value}s.
- *
- * @param <K> type of the {@link Map#containsKey(Object) keys}.
- * @param <V> type of the {@link Map#containsValue(Object) values}.
- * @since 1.0.0
- */
+/// [WritableContainerValue] for [Map] [value][#get()]s.
+///
+/// @param <K> type of the [keys][Map#containsKey(Object)].
+/// @param <V> type of the [values][Map#containsValue(Object)].
+/// @since 1.0.0
 public interface WritableMapValue<K, V> extends WritableContainerValue<Map<K, V>, V>, ReadableMapValue<K, V> {
 
   @Override

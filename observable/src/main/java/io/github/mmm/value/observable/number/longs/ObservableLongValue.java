@@ -4,11 +4,9 @@ package io.github.mmm.value.observable.number.longs;
 
 import io.github.mmm.value.observable.number.ObservableNumberValue;
 
-/**
- * {@link ObservableNumberValue} with {@link Long} {@link #getValue() value}.
- *
- * @since 1.0.0
- */
+/// [ObservableNumberValue] with [Long] [value][#getValue()].
+///
+/// @since 1.0.0
 public interface ObservableLongValue extends ObservableNumberValue<Long>, ReadableLongValue {
 
 }

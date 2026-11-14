@@ -7,25 +7,19 @@ import java.util.List;
 import io.github.mmm.value.observable.container.ContainerChange;
 import io.github.mmm.value.observable.container.collection.CollectionChange;
 
-/**
- * {@link ContainerChange} for {@link List}s.
- *
- * @param <E> type of the {@link List#contains(Object) contained elements}.
- * @since 1.0.0
- * @see io.github.mmm.value.observable.ObservableEvent#getChange()
- */
+/// [ContainerChange] for [List]s.
+///
+/// @param <E> type of the [contained elements][List#contains(Object)].
+/// @since 1.0.0
+/// @see io.github.mmm.value.observable.ObservableEvent#getChange()
 public interface ListChange<E> extends CollectionChange<List<E>, E> {
 
-  /**
-   * @return the {@link java.util.List#indexOf(Object) index} of the start position of this change, or {@code -1} for
-   *         unordered containers (like {@link java.util.Set} or {@link java.util.Map}).
-   */
+  /// @return the [index][java.util.List#indexOf(Object)] of the start position of this change, or `-1` for
+  ///         unordered containers (like [java.util.Set] or [java.util.Map]).
   int getFrom();
 
-  /**
-   * @return the {@link java.util.List#indexOf(Object) index} of the end position of this change, or {@code -1} for
-   *         unordered containers (like {@link java.util.Set} or {@link java.util.Map}).
-   */
+  /// @return the [index][java.util.List#indexOf(Object)] of the end position of this change, or `-1` for
+  ///         unordered containers (like [java.util.Set] or [java.util.Map]).
   default int getTo() {
 
     int from = getFrom();

@@ -4,13 +4,11 @@ package io.github.mmm.value.observable.container.list;
 
 import io.github.mmm.value.observable.container.collection.CollectionChangeListener;
 
-/**
- * {@link CollectionChangeListener} for {@link ListChange}s.
- *
- * @param <E> type of the {@link ListChange#getElement(int) elements}.
- * @since 1.0.0
- * @see io.github.mmm.value.observable.ObservableEvent#getChange()
- */
+/// [CollectionChangeListener] for [ListChange]s.
+///
+/// @param <E> type of the [elements][ListChange#getElement(int)].
+/// @since 1.0.0
+/// @see io.github.mmm.value.observable.ObservableEvent#getChange()
 @FunctionalInterface
 public interface ListChangeListener<E> extends CollectionChangeListener<ListChange<E>> {
 

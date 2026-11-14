@@ -9,16 +9,14 @@ import java.util.Set;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 
-/**
- * Empty singleton implementation of {@link io.github.mmm.value.observable.container.map.ChangeAwareMap}.
- *
- * @param <K> type of the {@link java.util.Map#containsKey(Object) keys}.
- * @param <V> type of the {@link java.util.Map#containsValue(Object) values}.
- * @since 1.0.0
- */
+/// Empty singleton implementation of [io.github.mmm.value.observable.container.map.ChangeAwareMap].
+///
+/// @param <K> type of the [keys][java.util.Map#containsKey(Object)].
+/// @param <V> type of the [values][java.util.Map#containsValue(Object)].
+/// @since 1.0.0
 public class EmptyChangeAwareMap<K, V> extends ReadOnlyChangeAwareMap<K, V> {
 
-  /** The singleton instance. */
+  /// The singleton instance.
   @SuppressWarnings("rawtypes")
   public static EmptyChangeAwareMap INSTANCE = new EmptyChangeAwareMap<>();
 

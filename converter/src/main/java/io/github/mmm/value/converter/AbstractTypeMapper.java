@@ -1,12 +1,10 @@
 package io.github.mmm.value.converter;
 
-/**
- * Abstract base implementation of {@link TypeMapper}.
- *
- * @param <S> the {@link #getSourceType() source type}.
- * @param <T> the {@link #getTargetType() target type}.
- * @since 1.0.0
- */
+/// Abstract base implementation of [TypeMapper].
+///
+/// @param <S> the [source type][#getSourceType()].
+/// @param <T> the [target type][#getTargetType()].
+/// @since 1.0.0
 public abstract class AbstractTypeMapper<S, T> implements TypeMapper<S, T> {
 
   @Override

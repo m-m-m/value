@@ -6,11 +6,9 @@ import java.util.Locale;
 
 import io.github.mmm.value.observable.object.ReadableSimpleObjectValue;
 
-/**
- * {@link ReadableSimpleObjectValue} with {@link Locale} {@link #get() value}.
- *
- * @since 1.0.0
- */
+/// [ReadableSimpleObjectValue] with [Locale] [value][#get()].
+///
+/// @since 1.0.0
 public interface ReadableLocaleValue extends ReadableSimpleObjectValue<Locale> {
 
   @Override

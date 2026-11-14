@@ -5,21 +5,17 @@ package io.github.mmm.value.observable.container.list.impl;
 import java.util.Collection;
 import java.util.List;
 
-/**
- * Immutable implementation of {@link io.github.mmm.value.observable.container.list.ChangeAwareList}.
- *
- * @param <E> the type of the elements in the container.
- * @since 1.0.0
- */
+/// Immutable implementation of [io.github.mmm.value.observable.container.list.ChangeAwareList].
+///
+/// @param <E> the type of the elements in the container.
+/// @since 1.0.0
 public class ImmutableChangeAwareList<E> extends ReadOnlyChangeAwareList<E> {
 
   private final List<E> list;
 
-  /**
-   * The constructor.
-   *
-   * @param list the internal {@link List} to adopt.
-   */
+  /// The constructor.
+  ///
+  /// @param list the internal [List] to adopt.
   public ImmutableChangeAwareList(List<E> list) {
 
     super();

@@ -7,11 +7,9 @@ import java.math.BigInteger;
 
 import io.github.mmm.value.observable.number.WritableNumberValue;
 
-/**
- * {@link WritableNumberValue} with {@link BigDecimal} {@link #get() value}.
- *
- * @since 1.0.0
- */
+/// [WritableNumberValue] with [BigDecimal] [value][#get()].
+///
+/// @since 1.0.0
 public interface WritableBigDecimalValue extends ReadableBigDecimalValue, WritableNumberValue<BigDecimal> {
 
   @Override

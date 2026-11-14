@@ -5,19 +5,15 @@ package io.github.mmm.value.observable.booleans;
 import io.github.mmm.value.WritableValue;
 import io.github.mmm.value.observable.object.WritableSimpleValue;
 
-/**
- * {@link WritableValue} with {@link Boolean} {@link #getValue() value}.
- */
+/// [WritableValue] with [Boolean] [value][#getValue()].
 public interface WritableBooleanValue extends WritableSimpleValue<Boolean>, ReadableBooleanValue {
 
   @Override
   void set(Boolean value);
 
-  /**
-   * @param value the value to set.
-   * @see #get()
-   * @see #set(Boolean)
-   */
+  /// @param value the value to set.
+  /// @see #get()
+  /// @see #set(Boolean)
   default void setValue(boolean value) {
 
     set(Boolean.valueOf(value));

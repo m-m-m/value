@@ -2,59 +2,43 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.value.observable;
 
-/**
- * Event notifying about changes of an {@link ObservableValue}.
- *
- * @param <V> type of observed {@link ObservableValue#get() value}.
- * @since 1.0.0
- * @see ObservableEventListener
- * @see ObservableValue
- */
+/// Event notifying about changes of an [ObservableValue].
+///
+/// @param <V> type of observed [value][ObservableValue#get()].
+/// @since 1.0.0
+/// @see ObservableEventListener
+/// @see ObservableValue
 public interface ObservableEvent<V> {
 
-  /**
-   * @return the {@link ObservableValue} that changed and send this event.
-   */
+  /// @return the [ObservableValue] that changed and send this event.
   ObservableValue<V> getObservable();
 
-  /**
-   * @return the current {@link ObservableValue#get() value}.
-   */
+  /// @return the current [value][ObservableValue#get()].
   V getValue();
 
-  /**
-   * @return the {@link ObservableValue#get() value} before the change. May be {@code null} if the previous value was
-   *         {@code null} or {@link #hasOldValue() the old value is not available}.
-   */
+  /// @return the [value][ObservableValue#get()] before the change. May be `null` if the previous value was
+  ///         `null` or [the old value is not available][#hasOldValue()].
   V getOldValue();
 
-  /**
-   * @return {@code true} if the old value is available, {@code false} otherwise. For advanced performance the old value
-   *         is not available for dynamically computed {@link ObservableValue}s by default. It is guaranteed to be
-   *         available if at least one of the {@link ObservableValue#addListener(io.github.mmm.event.EventListener)
-   *         registered} {@link ObservableEventListener}s has called {@link #getValue()} on the previous
-   *         {@link ObservableEvent} forcing an eager evaluation.
-   */
+  /// @return `true` if the old value is available, `false` otherwise. For advanced performance the old value
+  ///         is not available for dynamically computed [ObservableValue]s by default. It is guaranteed to be
+  ///         available if at least one of the [registered][ObservableValue#addListener(io.github.mmm.event.EventListener)] [ObservableEventListener]s has called [#getValue()] on the previous
+  ///         [ObservableEvent] forcing an eager evaluation.
   boolean hasOldValue();
 
-  /**
-   * @param <M> type of the change.
-   * @return the modification in case of a {@link #isChange() value change}, {@code null} otherwise.
-   * @see io.github.mmm.value.observable.container.list.ListChange
-   * @see io.github.mmm.value.observable.container.map.MapChange
-   * @see io.github.mmm.value.observable.container.set.SetChange
-   */
+  /// @param <M> type of the change.
+  /// @return the modification in case of a [value change][#isChange()], `null` otherwise.
+  /// @see io.github.mmm.value.observable.container.list.ListChange
+  /// @see io.github.mmm.value.observable.container.map.MapChange
+  /// @see io.github.mmm.value.observable.container.set.SetChange
   <M> M getChange();
 
-  /**
-   * @return {@code true} if the {@link #getValue() value} object instance itself has changed. Most
-   *         {@link ObservableValue}s contain immutable value types (such as {@link String}, {@link Boolean},
-   *         {@link Integer}, {@link java.math.BigDecimal}, {@link java.time.Instant}, etc.). However, values like e.g.
-   *         {@link java.util.Collection} are mutable and may support notifying {@link #getChange() changes}. Otherwise,
-   *         if {@code false} the {@link #getObservable() observable} itself was modified and its {@link #getValue()
-   *         value} has changed (or was invalidated and needs to be recalculated).
-   * @see #getChange()
-   */
+  /// @return `true` if the [value][#getValue()] object instance itself has changed. Most
+  ///         [ObservableValue]s contain immutable value types (such as [String], [Boolean],
+  ///         [Integer], [java.math.BigDecimal], [java.time.Instant], etc.). However, values like e.g.
+  ///         [java.util.Collection] are mutable and may support notifying [changes][#getChange()]. Otherwise,
+  ///         if `false` the [observable][#getObservable()] itself was modified and its [value][#getValue()] has changed (or was invalidated and needs to be recalculated).
+  /// @see #getChange()
   default boolean isChange() {
 
     return (getChange() != null);

@@ -5,11 +5,9 @@ import java.time.Instant;
 import io.github.mmm.value.observable.booleans.BooleanBinding;
 import io.github.mmm.value.observable.time.TemporalExpression;
 
-/**
- * {@link TemporalExpression} for {@link Instant} {@link #getValue() values}.
- *
- * @since 1.0.0
- */
+/// [TemporalExpression] for [Instant] [values][#getValue()].
+///
+/// @since 1.0.0
 public interface InstantExpression extends ObservableInstantValue, TemporalExpression<Instant> {
 
   @Override

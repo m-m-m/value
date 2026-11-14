@@ -4,27 +4,21 @@ package io.github.mmm.value.observable.number.bytes;
 
 import io.github.mmm.value.observable.AbstractWritableObservableValue;
 
-/**
- * Implementation of {@link ByteExpression} for testing.
- */
+/// Implementation of [ByteExpression] for testing.
 public class ByteExpressionMock extends AbstractWritableObservableValue<Byte>
     implements ByteExpression, WritableByteValue {
 
   private Byte value;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public ByteExpressionMock() {
 
     super();
   }
 
-  /**
-   * The constructor.
-   *
-   * @param value the initial {@link #getValue() value}.
-   */
+  /// The constructor.
+  ///
+  /// @param value the initial [value][#getValue()].
   public ByteExpressionMock(Byte value) {
 
     super();

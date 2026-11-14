@@ -8,12 +8,10 @@ import java.util.Collection;
 import io.github.mmm.value.observable.container.list.ChangeAwareList;
 import io.github.mmm.value.observable.container.list.ListChangeListener;
 
-/**
- * Abstract base implementation for an immutable {@link ChangeAwareList}.
- *
- * @param <E> the type of the elements in the container.
- * @since 1.0.0
- */
+/// Abstract base implementation for an immutable [ChangeAwareList].
+///
+/// @param <E> the type of the elements in the container.
+/// @since 1.0.0
 public abstract class ReadOnlyChangeAwareList<E> extends AbstractList<E> implements ChangeAwareList<E> {
 
   @Override

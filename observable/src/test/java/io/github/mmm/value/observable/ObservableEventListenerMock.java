@@ -2,11 +2,9 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.value.observable;
 
-/**
- * Mock implementation of {@link ObservableEventListener} for testing.
- *
- * @param <V> type of value.
- */
+/// Mock implementation of [ObservableEventListener] for testing.
+///
+/// @param <V> type of value.
 public class ObservableEventListenerMock<V> implements ObservableEventListener<V> {
 
   private ObservableEvent<V> event;
@@ -17,9 +15,7 @@ public class ObservableEventListenerMock<V> implements ObservableEventListener<V
     this.event = observableEvent;
   }
 
-  /**
-   * @return the last received {@link ObservableEvent}.
-   */
+  /// @return the last received [ObservableEvent].
   public ObservableEvent<V> getEvent() {
 
     return this.event;

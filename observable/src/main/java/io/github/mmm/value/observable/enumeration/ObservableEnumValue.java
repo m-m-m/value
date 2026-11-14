@@ -5,12 +5,10 @@ package io.github.mmm.value.observable.enumeration;
 import io.github.mmm.value.observable.ObservableValue;
 import io.github.mmm.value.observable.object.ObservableSimpleValue;
 
-/**
- * {@link ObservableValue} with {@link Enum} {@link #getValue() value}.
- *
- * @param <E> type of {@link Enum} {@link #getValue() value}.
- * @since 1.0.0
- */
+/// [ObservableValue] with [Enum] [value][#getValue()].
+///
+/// @param <E> type of [Enum] [value][#getValue()].
+/// @since 1.0.0
 public interface ObservableEnumValue<E extends Enum<E>> extends ObservableSimpleValue<E>, ReadableEnumValue<E> {
 
 }

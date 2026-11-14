@@ -6,11 +6,9 @@ import java.time.Instant;
 
 import io.github.mmm.value.observable.time.ObservableTemporalValue;
 
-/**
- * {@link io.github.mmm.value.observable.ObservableValue} containing a {@link Instant} {@link #getValue() value}.
- *
- * @since 1.0.0
- */
+/// [io.github.mmm.value.observable.ObservableValue] containing a [Instant] [value][#getValue()].
+///
+/// @since 1.0.0
 public interface ObservableInstantValue extends ObservableTemporalValue<Instant>, ReadableInstantValue {
 
 }

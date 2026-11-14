@@ -4,11 +4,9 @@ package io.github.mmm.value.observable.number.doubles;
 
 import io.github.mmm.value.observable.number.ObservableNumberValue;
 
-/**
- * {@link ObservableNumberValue} with {@link Double} {@link #getValue() value}.
- *
- * @since 1.0.0
- */
+/// [ObservableNumberValue] with [Double] [value][#getValue()].
+///
+/// @since 1.0.0
 public interface ObservableDoubleValue extends ObservableNumberValue<Double>, ReadableDoubleValue {
 
 }

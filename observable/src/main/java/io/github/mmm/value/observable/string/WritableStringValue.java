@@ -5,11 +5,9 @@ package io.github.mmm.value.observable.string;
 import io.github.mmm.value.WritableValue;
 import io.github.mmm.value.observable.object.WritableSimpleValue;
 
-/**
- * {@link WritableValue} with {@link String} {@link #getValue() value}.
- *
- * @since 1.0.0
- */
+/// [WritableValue] with [String] [value][#getValue()].
+///
+/// @since 1.0.0
 public interface WritableStringValue extends WritableSimpleValue<String>, ReadableStringValue {
 
   @Override
@@ -19,11 +17,9 @@ public interface WritableStringValue extends WritableSimpleValue<String>, Readab
     return value;
   }
 
-  /**
-   * @param value the value to set.
-   * @see #get()
-   * @see #set(String)
-   */
+  /// @param value the value to set.
+  /// @see #get()
+  /// @see #set(String)
   default void setValue(String value) {
 
     set(value);

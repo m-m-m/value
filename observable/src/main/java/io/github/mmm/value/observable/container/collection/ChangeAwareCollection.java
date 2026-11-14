@@ -8,38 +8,32 @@ import java.util.Collection;
 import io.github.mmm.event.EventListener;
 import io.github.mmm.value.observable.container.ChangeAwareContainer;
 
-/**
- * {@link ChangeAwareContainer} that is a {@link Collection}.
- *
- * @param <E> the type of the elements in the container.
- * @param <M> type of the {@link CollectionChange} (event).
- * @param <L> type of the {@link EventListener}.
- * @see io.github.mmm.value.observable.container.list.ChangeAwareList
- * @since 1.0.0
- */
+/// [ChangeAwareContainer] that is a [Collection].
+///
+/// @param <E> the type of the elements in the container.
+/// @param <M> type of the [CollectionChange] (event).
+/// @param <L> type of the [EventListener].
+/// @see io.github.mmm.value.observable.container.list.ChangeAwareList
+/// @since 1.0.0
 public interface ChangeAwareCollection<E, M extends CollectionChange<?, E>, L extends EventListener<M>>
     extends Collection<E>, ChangeAwareContainer<E, M, L> {
 
-  /**
-   * {@link #add(Object) Adds} all the given {@code elements}.
-   *
-   * @param elements the elements to add.
-   * @return {@code true} if this collection has changed (at least one of the given elements has newly been added),
-   *         {@code false} otherwise.
-   */
+  /// [Adds][#add(Object)] all the given `elements`.
+  ///
+  /// @param elements the elements to add.
+  /// @return `true` if this collection has changed (at least one of the given elements has newly been added),
+  ///         `false` otherwise.
   @SuppressWarnings("unchecked")
   default boolean addAll(E... elements) {
 
     return addAll(Arrays.asList(elements));
   }
 
-  /**
-   * {@link #clear() Clears} this collection and {@link #addAll(Object...) adds all} the given {@code elements}.
-   *
-   * @param elements the elements to add.
-   * @return {@code true} if this collection has changed (at least one previous element was removed or one of the given
-   *         elements has newly been added), {@code false} otherwise.
-   */
+  /// [Clears][#clear()] this collection and [adds all][#addAll(Object...)] the given `elements`.
+  ///
+  /// @param elements the elements to add.
+  /// @return `true` if this collection has changed (at least one previous element was removed or one of the given
+  ///         elements has newly been added), `false` otherwise.
   @SuppressWarnings("unchecked")
   default boolean setAll(E... elements) {
 
@@ -49,14 +43,12 @@ public interface ChangeAwareCollection<E, M extends CollectionChange<?, E>, L ex
     return (added || modified);
   }
 
-  /**
-   * {@link #clear() Clears} this collection and {@link #addAll(Collection) adds all} {@code elements} from the given
-   * {@link Collection}.
-   *
-   * @param collection the {@link Collection} with elements to add.
-   * @return {@code true} if this collection has changed (at least one previous element was removed or one of the given
-   *         elements has newly been added), {@code false} otherwise.
-   */
+  /// [Clears][#clear()] this collection and [adds all][#addAll(Collection)] `elements` from the given
+  /// [Collection].
+  ///
+  /// @param collection the [Collection] with elements to add.
+  /// @return `true` if this collection has changed (at least one previous element was removed or one of the given
+  ///         elements has newly been added), `false` otherwise.
   default boolean setAll(Collection<? extends E> collection) {
 
     boolean notEmpty = !isEmpty();
@@ -67,24 +59,20 @@ public interface ChangeAwareCollection<E, M extends CollectionChange<?, E>, L ex
     return (added || notEmpty);
   }
 
-  /**
-   * A convenient method for var-arg usage of removaAll method.
-   *
-   * @param elements the elements to be removed
-   * @return {@code true} if this collection has changed (at least one element was removed), {@code false} otherwise.
-   */
+  /// A convenient method for var-arg usage of removaAll method.
+  ///
+  /// @param elements the elements to be removed
+  /// @return `true` if this collection has changed (at least one element was removed), `false` otherwise.
   @SuppressWarnings("unchecked")
   default boolean removeAll(E... elements) {
 
     return removeAll(Arrays.asList(elements));
   }
 
-  /**
-   * A convenient method for var-arg usage of retain method.
-   *
-   * @param elements the elements to be retained
-   * @return true if list changed as a result of this call
-   */
+  /// A convenient method for var-arg usage of retain method.
+  ///
+  /// @param elements the elements to be retained
+  /// @return true if list changed as a result of this call
   @SuppressWarnings("unchecked")
   default boolean retainAll(E... elements) {
 

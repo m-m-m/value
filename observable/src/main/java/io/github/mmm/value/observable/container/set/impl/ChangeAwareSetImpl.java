@@ -8,39 +8,31 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-/**
- * Regular implementation of {@link io.github.mmm.value.observable.container.list.ChangeAwareList}.
- *
- * @param <E> the type of the elements in the container.
- * @since 1.0.0
- */
+/// Regular implementation of [io.github.mmm.value.observable.container.list.ChangeAwareList].
+///
+/// @param <E> the type of the elements in the container.
+/// @since 1.0.0
 public class ChangeAwareSetImpl<E> extends AbstractChangeAwareSet<E> {
 
   private final Set<E> set;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public ChangeAwareSetImpl() {
 
     this(new HashSet<>());
   }
 
-  /**
-   * The constructor.
-   *
-   * @param capacity the initial capacity.
-   */
+  /// The constructor.
+  ///
+  /// @param capacity the initial capacity.
   public ChangeAwareSetImpl(int capacity) {
 
     this(new HashSet<>(capacity));
   }
 
-  /**
-   * The constructor.
-   *
-   * @param set the {@link Set} to adopt.
-   */
+  /// The constructor.
+  ///
+  /// @param set the [Set] to adopt.
   public ChangeAwareSetImpl(Set<E> set) {
 
     super();

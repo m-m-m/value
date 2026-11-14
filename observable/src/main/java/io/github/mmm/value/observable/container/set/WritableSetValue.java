@@ -7,12 +7,10 @@ import java.util.Set;
 
 import io.github.mmm.value.observable.container.collection.WritableCollectionValue;
 
-/**
- * {@link WritableCollectionValue} for {@link Set} {@link #get() value}s.
- *
- * @param <E> type of the {@link Set#contains(Object) elements}.
- * @since 1.0.0
- */
+/// [WritableCollectionValue] for [Set] [value][#get()]s.
+///
+/// @param <E> type of the [elements][Set#contains(Object)].
+/// @since 1.0.0
 public interface WritableSetValue<E> extends WritableCollectionValue<Set<E>, E>, ReadableSetValue<E> {
 
   @Override

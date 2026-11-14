@@ -4,9 +4,7 @@ package io.github.mmm.value.observable.comparable;
 
 import io.github.mmm.value.ReadableValue;
 
-/**
- * Internal helper for {@link Comparable}s.
- */
+/// Internal helper for [Comparable]s.
 class ComparableHelper {
 
   static <V extends Comparable<? super V>> int compare(ReadableValue<V> v1, ReadableValue<V> v2) {

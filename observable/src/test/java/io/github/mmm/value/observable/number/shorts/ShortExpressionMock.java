@@ -4,27 +4,21 @@ package io.github.mmm.value.observable.number.shorts;
 
 import io.github.mmm.value.observable.AbstractWritableObservableValue;
 
-/**
- * Implementation of {@link ShortExpression} for testing.
- */
+/// Implementation of [ShortExpression] for testing.
 public class ShortExpressionMock extends AbstractWritableObservableValue<Short>
     implements ShortExpression, WritableShortValue {
 
   private Short value;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public ShortExpressionMock() {
 
     super();
   }
 
-  /**
-   * The constructor.
-   *
-   * @param value the initial {@link #getValue() value}.
-   */
+  /// The constructor.
+  ///
+  /// @param value the initial [value][#getValue()].
   public ShortExpressionMock(Short value) {
 
     super();

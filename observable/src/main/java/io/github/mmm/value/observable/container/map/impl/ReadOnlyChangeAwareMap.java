@@ -10,13 +10,11 @@ import java.util.function.Function;
 import io.github.mmm.value.observable.container.map.ChangeAwareMap;
 import io.github.mmm.value.observable.container.map.MapChangeListener;
 
-/**
- * Abstract base implementation for an immutable {@link ChangeAwareMap}.
- *
- * @param <K> type of the {@link ChangeAwareMap#containsKey(Object) keys}.
- * @param <V> type of the {@link ChangeAwareMap#containsValue(Object) values}.
- * @since 1.0.0
- */
+/// Abstract base implementation for an immutable [ChangeAwareMap].
+///
+/// @param <K> type of the [keys][ChangeAwareMap#containsKey(Object)].
+/// @param <V> type of the [values][ChangeAwareMap#containsValue(Object)].
+/// @since 1.0.0
 public abstract class ReadOnlyChangeAwareMap<K, V> extends AbstractMap<K, V> implements ChangeAwareMap<K, V> {
 
   @Override

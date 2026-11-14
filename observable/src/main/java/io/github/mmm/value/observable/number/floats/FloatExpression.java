@@ -14,11 +14,9 @@ import io.github.mmm.value.observable.number.integers.ObservableIntegerValue;
 import io.github.mmm.value.observable.number.longs.ObservableLongValue;
 import io.github.mmm.value.observable.number.shorts.ObservableShortValue;
 
-/**
- * {@link NumberExpression} with {@link Float} {@link #getValue() value}.
- *
- * @since 1.0.0
- */
+/// [NumberExpression] with [Float] [value][#getValue()].
+///
+/// @since 1.0.0
 public interface FloatExpression extends ObservableFloatValue, NumberExpression<Float> {
 
   @Override

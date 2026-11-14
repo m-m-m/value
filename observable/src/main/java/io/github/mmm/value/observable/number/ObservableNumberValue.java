@@ -5,12 +5,10 @@ package io.github.mmm.value.observable.number;
 import io.github.mmm.value.observable.ObservableValue;
 import io.github.mmm.value.observable.object.ObservableSimpleValue;
 
-/**
- * {@link ObservableValue} with {@link Number} {@link #get() value}.
- *
- * @param <N> type of the observable {@link #get() value}.
- * @since 1.0.0
- */
+/// [ObservableValue] with [Number] [value][#get()].
+///
+/// @param <N> type of the observable [value][#get()].
+/// @since 1.0.0
 public abstract interface ObservableNumberValue<N extends Number>
     extends ObservableSimpleValue<N>, ReadableNumberValue<N> {
 

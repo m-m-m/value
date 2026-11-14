@@ -6,13 +6,11 @@ import java.util.Collection;
 
 import io.github.mmm.value.observable.container.ContainerChange;
 
-/**
- * {@link ContainerChange} for {@link Collection}s.
- *
- * @param <C> type of the {@link #getContainer() container}.
- * @param <E> type of the {@link #getElement(int) elements}.
- * @since 1.0.0
- */
+/// [ContainerChange] for [Collection]s.
+///
+/// @param <C> type of the [container][#getContainer()].
+/// @param <E> type of the [elements][#getElement(int)].
+/// @since 1.0.0
 public interface CollectionChange<C extends Collection<E>, E> extends ContainerChange<C, E> {
 
 }

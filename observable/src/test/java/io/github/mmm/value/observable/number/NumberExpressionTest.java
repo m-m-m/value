@@ -13,9 +13,7 @@ import io.github.mmm.value.observable.ObservableEvent;
 import io.github.mmm.value.observable.ObservableEventListenerMock;
 import io.github.mmm.value.observable.number.bigdecimal.BigDecimalExpression;
 
-/**
- * Abstract test-case for {@link NumberExpression}.
- */
+/// Abstract test-case for [NumberExpression].
 @SuppressWarnings("javadoc")
 public abstract class NumberExpressionTest<N extends Number & Comparable<? super N>> extends Assertions {
 

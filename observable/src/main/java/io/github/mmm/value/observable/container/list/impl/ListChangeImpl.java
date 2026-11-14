@@ -8,25 +8,21 @@ import io.github.mmm.event.ChangeType;
 import io.github.mmm.value.observable.container.collection.impl.AbstractCollectionChange;
 import io.github.mmm.value.observable.container.list.ListChange;
 
-/**
- * Implementation of {@link ListChange}.
- *
- * @param <E> type of the {@link #getElement(int) elements}.
- * @since 1.0.0
- */
+/// Implementation of [ListChange].
+///
+/// @param <E> type of the [elements][#getElement(int)].
+/// @since 1.0.0
 public class ListChangeImpl<E> extends AbstractCollectionChange<List<E>, E> implements ListChange<E> {
 
   private final List<E> container;
 
   private final int from;
 
-  /**
-   * The constructor.
-   *
-   * @param container the {@link List} that changed.
-   * @param from the {@link #getFrom() start index}.
-   * @param removedElements the elements that have been removed for the {@link List}.
-   */
+  /// The constructor.
+  ///
+  /// @param container the [List] that changed.
+  /// @param from the [start index][#getFrom()].
+  /// @param removedElements the elements that have been removed for the [List].
   public ListChangeImpl(List<E> container, int from, Object[] removedElements) {
 
     super(ChangeType.REMOVE, removedElements);
@@ -34,14 +30,12 @@ public class ListChangeImpl<E> extends AbstractCollectionChange<List<E>, E> impl
     this.from = from;
   }
 
-  /**
-   * The constructor.
-   *
-   * @param container the {@link List} that changed.
-   * @param type the {@link ChangeType}.
-   * @param from the {@link #getFrom() start index}.
-   * @param count the {@link #getCount() number of changed elements}.
-   */
+  /// The constructor.
+  ///
+  /// @param container the [List] that changed.
+  /// @param type the [ChangeType].
+  /// @param from the [start index][#getFrom()].
+  /// @param count the [number of changed elements][#getCount()].
   public ListChangeImpl(List<E> container, ChangeType type, int from, int count) {
 
     super(type, count);

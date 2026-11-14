@@ -13,11 +13,9 @@ import io.github.mmm.value.observable.number.integers.ObservableIntegerValue;
 import io.github.mmm.value.observable.number.longs.ObservableLongValue;
 import io.github.mmm.value.observable.number.shorts.ObservableShortValue;
 
-/**
- * {@link NumberExpression} with {@link BigDecimal} {@link #get() value}.
- *
- * @since 1.0.0
- */
+/// [NumberExpression] with [BigDecimal] [value][#get()].
+///
+/// @since 1.0.0
 public interface BigDecimalExpression extends ObservableBigDecimalValue, NumberExpression<BigDecimal> {
 
   @Override

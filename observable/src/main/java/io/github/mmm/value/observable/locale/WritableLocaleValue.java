@@ -7,21 +7,17 @@ import java.util.Locale;
 import io.github.mmm.value.WritableValue;
 import io.github.mmm.value.observable.object.WritableSimpleValue;
 
-/**
- * {@link WritableValue} with {@link Locale} {@link #get() value}.
- *
- * @since 1.0.0
- */
+/// [WritableValue] with [Locale] [value][#get()].
+///
+/// @since 1.0.0
 public interface WritableLocaleValue extends WritableSimpleValue<Locale>, ReadableLocaleValue {
 
   @Override
   void set(Locale value);
 
-  /**
-   * @param value the value to set.
-   * @see #get()
-   * @see #set(Locale)
-   */
+  /// @param value the value to set.
+  /// @see #get()
+  /// @see #set(Locale)
   default void setValue(Locale value) {
 
     set(value);

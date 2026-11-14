@@ -2,19 +2,16 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.value.observable;
 
-/**
- * {@link ObservableEventListener} that is also interested in {@link ObservableEvent#getChange() change}s. For
- * performance optimization {@link ObservableEvent#getChange() change} events are only created and sent if at least one
- * {@link ChangeAwareObservableEventListener} is {@link ObservableValue#addListener(io.github.mmm.event.EventListener)
- * registered}.<br>
- * Please note that it is pointless to register a {@link ChangeAwareObservableEventListener} on an
- * {@link ObservableValue} if the {@link io.github.mmm.value.ReadableTypedValue#getValueClass() value type} is immutable
- * (such as {@link String}, {@link Boolean}, {@link Number}, {@link java.time.temporal.Temporal}, etc.). This only makes
- * sense for types such as {@link io.github.mmm.value.observable.container.ObservableContainerValue}.
- *
- * @param <V> type of observed {@link ObservableValue#get() value}.
- * @since 1.0.0
- */
+/// [ObservableEventListener] that is also interested in [change][ObservableEvent#getChange()]s. For
+/// performance optimization [change][ObservableEvent#getChange()] events are only created and sent if at least one
+/// [ChangeAwareObservableEventListener] is [registered][ObservableValue#addListener(io.github.mmm.event.EventListener)].
+/// Please note that it is pointless to register a [ChangeAwareObservableEventListener] on an
+/// [ObservableValue] if the [value type][io.github.mmm.value.ReadableTypedValue#getValueClass()] is immutable
+/// (such as [String], [Boolean], [Number], [java.time.temporal.Temporal], etc.). This only makes
+/// sense for types such as [io.github.mmm.value.observable.container.ObservableContainerValue].
+///
+/// @param <V> type of observed [value][ObservableValue#get()].
+/// @since 1.0.0
 @FunctionalInterface
 public interface ChangeAwareObservableEventListener<V> extends ObservableEventListener<V> {
 

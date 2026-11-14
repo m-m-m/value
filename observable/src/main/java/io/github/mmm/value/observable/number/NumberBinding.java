@@ -7,24 +7,20 @@ import java.util.function.Supplier;
 import io.github.mmm.value.observable.Binding;
 import io.github.mmm.value.observable.ObservableValue;
 
-/**
- * {@link Binding} for a {@link Number} {@link #get() value}.
- *
- * @see Binding
- * @see NumberExpression
- *
- * @param <N> type of the observable {@link #get() value}.
- * @since 1.0.0
- */
+/// [Binding] for a [Number] [value][#get()].
+///
+/// @see Binding
+/// @see NumberExpression
+///
+/// @param <N> type of the observable [value][#get()].
+/// @since 1.0.0
 public abstract class NumberBinding<N extends Number & Comparable<? super N>> extends Binding<N>
     implements NumberExpression<N> {
 
-  /**
-   * The constructor.
-   *
-   * @param expression the {@link Supplier} to compute the {@link #get() value}.
-   * @param dependencies the {@link ObservableValue}s the {@code expression} depends on.
-   */
+  /// The constructor.
+  ///
+  /// @param expression the [Supplier] to compute the [value][#get()].
+  /// @param dependencies the [ObservableValue]s the `expression` depends on.
   public NumberBinding(Supplier<? extends N> expression, ObservableValue<?>... dependencies) {
 
     super(expression, dependencies);

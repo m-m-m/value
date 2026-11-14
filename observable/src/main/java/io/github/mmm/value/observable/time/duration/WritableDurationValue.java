@@ -6,11 +6,9 @@ import java.time.Duration;
 
 import io.github.mmm.value.observable.time.WritableTemporalAmountValue;
 
-/**
- * {@link io.github.mmm.value.WritableValue} containing a {@link Duration} {@link #getValue() value}.
- *
- * @since 1.0.0
- */
+/// [io.github.mmm.value.WritableValue] containing a [Duration] [value][#getValue()].
+///
+/// @since 1.0.0
 public interface WritableDurationValue extends ReadableDurationValue, WritableTemporalAmountValue<Duration> {
 
 }

@@ -7,13 +7,11 @@ import java.util.Set;
 import io.github.mmm.value.observable.container.ContainerChange;
 import io.github.mmm.value.observable.container.collection.CollectionChange;
 
-/**
- * {@link ContainerChange} for {@link Set}s.
- *
- * @param <E> type of the {@link #getElement(int) elements}.
- * @since 1.0.0
- * @see io.github.mmm.value.observable.ObservableEvent#getChange()
- */
+/// [ContainerChange] for [Set]s.
+///
+/// @param <E> type of the [elements][#getElement(int)].
+/// @since 1.0.0
+/// @see io.github.mmm.value.observable.ObservableEvent#getChange()
 public interface SetChange<E> extends CollectionChange<Set<E>, E> {
 
 }

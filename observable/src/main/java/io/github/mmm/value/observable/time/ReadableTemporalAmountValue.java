@@ -6,12 +6,10 @@ import java.time.temporal.TemporalAmount;
 
 import io.github.mmm.value.observable.object.ReadableSimpleObjectValue;
 
-/**
- * {@link io.github.mmm.value.ReadableValue} containing a {@link TemporalAmount} {@link #getValue() value}.
- *
- * @param <V> type of the {@link #getValue() value}.
- * @since 1.0.0
- */
+/// [io.github.mmm.value.ReadableValue] containing a [TemporalAmount] [value][#getValue()].
+///
+/// @param <V> type of the [value][#getValue()].
+/// @since 1.0.0
 public interface ReadableTemporalAmountValue<V extends TemporalAmount> extends ReadableSimpleObjectValue<V> {
 
 }

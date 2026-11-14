@@ -6,13 +6,11 @@ import java.util.Map;
 
 import io.github.mmm.value.observable.container.ChangeAwareContainer;
 
-/**
- * {@link io.github.mmm.value.observable.container.ChangeAwareContainer} that is a {@link Map}.
- *
- * @param <K> type of the {@link Map#containsKey(Object) keys}.
- * @param <V> type of the {@link Map#containsValue(Object) values}.
- * @since 1.0.0
- */
+/// [io.github.mmm.value.observable.container.ChangeAwareContainer] that is a [Map].
+///
+/// @param <K> type of the [keys][Map#containsKey(Object)].
+/// @param <V> type of the [values][Map#containsValue(Object)].
+/// @since 1.0.0
 public interface ChangeAwareMap<K, V>
     extends ChangeAwareContainer<V, MapChange<K, V>, MapChangeListener<K, V>>, Map<K, V> {
 

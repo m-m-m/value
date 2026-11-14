@@ -4,20 +4,16 @@ package io.github.mmm.value.observable.number.integers;
 
 import io.github.mmm.value.observable.number.WritableNumberValue;
 
-/**
- * {@link WritableNumberValue} with {@link Integer} {@link #get() value}.
- *
- * @since 1.0.0
- */
+/// [WritableNumberValue] with [Integer] [value][#get()].
+///
+/// @since 1.0.0
 public interface WritableIntegerValue extends ReadableIntegerValue, WritableNumberValue<Integer> {
 
   @Override
   void set(Integer value);
 
-  /**
-   * @param value the new {@link #getValue() value} as primitive.
-   * @see #set(Integer)
-   */
+  /// @param value the new [value][#getValue()] as primitive.
+  /// @see #set(Integer)
   default void setValue(int value) {
 
     set(Integer.valueOf(value));

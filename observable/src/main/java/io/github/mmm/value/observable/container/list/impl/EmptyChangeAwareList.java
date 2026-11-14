@@ -17,15 +17,13 @@ import java.util.function.UnaryOperator;
 
 import io.github.mmm.value.observable.container.list.ChangeAwareList;
 
-/**
- * Empty singleton implementation of {@link io.github.mmm.value.observable.container.list.ChangeAwareList}.
- *
- * @param <E> the type of the elements in the container.
- * @since 1.0.0
- */
+/// Empty singleton implementation of [io.github.mmm.value.observable.container.list.ChangeAwareList].
+///
+/// @param <E> the type of the elements in the container.
+/// @since 1.0.0
 public class EmptyChangeAwareList<E> extends ReadOnlyChangeAwareList<E> {
 
-  /** The singleton instance. */
+  /// The singleton instance.
   @SuppressWarnings("rawtypes")
   public static final ChangeAwareList INSTANCE = new EmptyChangeAwareList<>();
 

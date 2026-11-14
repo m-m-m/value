@@ -5,10 +5,7 @@ import java.time.LocalDate;
 import io.github.mmm.value.observable.booleans.BooleanBinding;
 import io.github.mmm.value.observable.time.TemporalExpression;
 
-/**
- * {@link TemporalExpression} for {@link LocalDate} {@link #getValue() values}.
- *
- */
+/// [TemporalExpression] for [LocalDate] [values][#getValue()].
 public interface LocalDateExpression extends ObservableLocalDateValue, TemporalExpression<LocalDate> {
 
   @Override

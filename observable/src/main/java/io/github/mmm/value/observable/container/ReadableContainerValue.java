@@ -4,25 +4,19 @@ package io.github.mmm.value.observable.container;
 
 import io.github.mmm.value.observable.object.ReadableObjectValue;
 
-/**
- * {@link ReadableObjectValue} for container {@link #get() values} (e.g. {@link java.util.Collection} or
- * {@link java.util.Map}).
- *
- * @param <C> type of the container {@link #get() value}.
- * @param <E> type of the contained elements ({@link java.util.Collection#contains(Object) collection element} or
- *        {@link java.util.Map#containsValue(Object) map value}).
- * @since 1.0.0
- */
+/// [ReadableObjectValue] for container [values][#get()] (e.g. [java.util.Collection] or
+/// [java.util.Map]).
+///
+/// @param <C> type of the container [value][#get()].
+/// @param <E> type of the contained elements ([collection element][java.util.Collection#contains(Object)] or
+///        [map value][java.util.Map#containsValue(Object)]).
+/// @since 1.0.0
 public interface ReadableContainerValue<C, E> extends ReadableObjectValue<C> {
 
-  /**
-   * @return the {@link java.util.Collection#size() size} of the {@link #get() container}.
-   */
+  /// @return the [size][java.util.Collection#size()] of the [container][#get()].
   int size();
 
-  /**
-   * @return the {@link java.util.Collection#isEmpty() empty state} of the {@link #get() container}.
-   */
+  /// @return the [empty state][java.util.Collection#isEmpty()] of the [container][#get()].
   default boolean isEmpty() {
 
     return size() == 0;

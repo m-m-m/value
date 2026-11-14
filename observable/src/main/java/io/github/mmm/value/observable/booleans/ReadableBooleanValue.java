@@ -4,11 +4,9 @@ package io.github.mmm.value.observable.booleans;
 
 import io.github.mmm.value.observable.object.ReadableSimpleValue;
 
-/**
- * {@link ReadableSimpleValue} with {@link Boolean} {@link #get() value}.
- *
- * @since 1.0.0
- */
+/// [ReadableSimpleValue] with [Boolean] [value][#get()].
+///
+/// @since 1.0.0
 public interface ReadableBooleanValue extends ReadableSimpleValue<Boolean> {
 
   @Override
@@ -17,10 +15,8 @@ public interface ReadableBooleanValue extends ReadableSimpleValue<Boolean> {
     return Boolean.class;
   }
 
-  /**
-   * @return the current value as primitive {@code boolean}.
-   * @see #get()
-   */
+  /// @return the current value as primitive `boolean`.
+  /// @see #get()
   default boolean getValue() {
 
     Boolean value = get();

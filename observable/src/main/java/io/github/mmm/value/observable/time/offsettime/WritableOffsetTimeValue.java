@@ -6,11 +6,9 @@ import java.time.OffsetTime;
 
 import io.github.mmm.value.observable.time.WritableTemporalValue;
 
-/**
- * {@link io.github.mmm.value.WritableValue} containing a {@link OffsetTime} {@link #getValue() value}.
- *
- * @since 1.0.0
- */
+/// [io.github.mmm.value.WritableValue] containing a [OffsetTime] [value][#getValue()].
+///
+/// @since 1.0.0
 public interface WritableOffsetTimeValue extends ReadableOffsetTimeValue, WritableTemporalValue<OffsetTime> {
 
 }

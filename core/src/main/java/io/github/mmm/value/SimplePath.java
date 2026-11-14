@@ -2,26 +2,22 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.value;
 
-/**
- * Implementation of {@link PropertyPath} for a plain path without {@link #get() value}.
- *
- * @since 1.0.0
- */
+/// Implementation of [PropertyPath] for a plain path without [value][#get()].
+///
+/// @since 1.0.0
 public final class SimplePath implements PropertyPath<Object> {
 
-  /** Name of the {@link #path() path} property for marshalling. */
+  /// Name of the [path][#path()] property for marshalling.
   public static final String NAME_PATH = "path";
 
   private final ReadablePath parent;
 
   private final String name;
 
-  /**
-   * The constructor.
-   *
-   * @param parent the {@link #parentPath() parent path} or {@code null} for root.
-   * @param name the {@link #getName() name} and {@link #pathSegment() segment}.
-   */
+  /// The constructor.
+  ///
+  /// @param parent the [parent path][#parentPath()] or `null` for root.
+  /// @param name the [name][#getName()] and [segment][#pathSegment()].
   public SimplePath(ReadablePath parent, String name) {
 
     super();
@@ -65,10 +61,8 @@ public final class SimplePath implements PropertyPath<Object> {
     return path();
   }
 
-  /**
-   * @param path the entire {@link #path()}.
-   * @return the given {@code path} parsed as {@link SimplePath}.
-   */
+  /// @param path the entire [#path()].
+  /// @return the given `path` parsed as [SimplePath].
   public static SimplePath of(String path) {
 
     int start = 0;

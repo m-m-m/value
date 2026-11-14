@@ -4,11 +4,9 @@ package io.github.mmm.value.observable.number.floats;
 
 import io.github.mmm.value.observable.number.ReadableNumberValue;
 
-/**
- * {@link ReadableNumberValue} with {@link Float} {@link #get() value}.
- *
- * @since 1.0.0
- */
+/// [ReadableNumberValue] with [Float] [value][#get()].
+///
+/// @since 1.0.0
 public interface ReadableFloatValue extends ReadableNumberValue<Float> {
 
   @Override
@@ -17,9 +15,7 @@ public interface ReadableFloatValue extends ReadableNumberValue<Float> {
     return Float.class;
   }
 
-  /**
-   * @return the current value as primitive. Will be {@code 0} if undefined.
-   */
+  /// @return the current value as primitive. Will be `0` if undefined.
   default float getValue() {
 
     return floatValue();

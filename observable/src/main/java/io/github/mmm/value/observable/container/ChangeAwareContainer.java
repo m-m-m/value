@@ -6,17 +6,14 @@ import io.github.mmm.event.EventListener;
 import io.github.mmm.event.EventSource;
 import io.github.mmm.value.observable.ObservableEvent;
 
-/**
- * A container (e.g. {@link java.util.Collection} or {@link java.util.Map}) that can be
- * {@link #addListener(io.github.mmm.event.EventListener) observed}. It will send {@link ObservableEvent#getChange()
- * modification} {@link ObservableEvent event}s, whenever the container is modified (elements added, replaced or
- * removed).
- *
- * @param <E> type of the elements in the container.
- * @param <M> type of the {@link ContainerChange} (event).
- * @param <L> type of the {@link EventListener}.
- * @since 1.0.0
- */
+/// A container (e.g. [java.util.Collection] or [java.util.Map]) that can be
+/// [observed][#addListener(io.github.mmm.event.EventListener)]. It will send [modification][ObservableEvent#getChange()] [event][ObservableEvent]s, whenever the container is modified (elements added, replaced or
+/// removed).
+///
+/// @param <E> type of the elements in the container.
+/// @param <M> type of the [ContainerChange] (event).
+/// @param <L> type of the [EventListener].
+/// @since 1.0.0
 public interface ChangeAwareContainer<E, M extends ContainerChange<?, E>, L extends EventListener<M>>
     extends EventSource<M, L> {
 

@@ -5,56 +5,44 @@ package io.github.mmm.value.observable.booleans;
 import io.github.mmm.value.observable.Expression;
 import io.github.mmm.value.observable.ObservableValue;
 
-/**
- * {@link Expression} with {@link Boolean} {@link #get() value}.
- *
- * @since 1.0.0
- */
+/// [Expression] with [Boolean] [value][#get()].
+///
+/// @since 1.0.0
 public interface BooleanExpression extends ObservableBooleanValue, Expression<Boolean> {
 
-  /**
-   * @return a new {@code BooleanExpression} holding the negation of this {@link #get() value}.
-   */
+  /// @return a new `BooleanExpression` holding the negation of this [value][#get()].
   default BooleanExpression expNot() {
 
     return BooleanBinding.expNot(this);
   }
 
-  /**
-   * @param other the other {@code ObservableValue}.
-   * @return the new {@code BooleanExpression} holding the logical AND of the {@link #get() value}s from this
-   *         {@link BooleanExpression} and the given {@link ObservableValue}.
-   */
+  /// @param other the other `ObservableValue`.
+  /// @return the new `BooleanExpression` holding the logical AND of the [value][#get()]s from this
+  ///         [BooleanExpression] and the given [ObservableValue].
   default BooleanExpression expAnd(ObservableValue<Boolean> other) {
 
     return BooleanBinding.expAnd(this, other);
   }
 
-  /**
-   * @param constant the constant {@link Boolean} value.
-   * @return a new {@code BooleanExpression} holding the logical AND of this {@link #get() value} and the given
-   *         {@code constant} value.
-   */
+  /// @param constant the constant [Boolean] value.
+  /// @return a new `BooleanExpression` holding the logical AND of this [value][#get()] and the given
+  ///         `constant` value.
   default BooleanExpression expAnd(Boolean constant) {
 
     return BooleanBinding.expAnd(this, constant);
   }
 
-  /**
-   * @param other the other {@code ObservableValue}.
-   * @return the new {@code BooleanExpression} holding the logical OR of this {@link #get() value} and the given
-   *         {@code other}s value.
-   */
+  /// @param other the other `ObservableValue`.
+  /// @return the new `BooleanExpression` holding the logical OR of this [value][#get()] and the given
+  ///         `other`s value.
   default BooleanExpression expOr(ObservableValue<Boolean> other) {
 
     return BooleanBinding.expOr(this, other);
   }
 
-  /**
-   * @param constant the constant {@link Boolean} value.
-   * @return the new {@code BooleanExpression} holding the logical OR of the {@link #get() value}s from this
-   *         {@link BooleanExpression} and the given {@code constant} value.
-   */
+  /// @param constant the constant [Boolean] value.
+  /// @return the new `BooleanExpression` holding the logical OR of the [value][#get()]s from this
+  ///         [BooleanExpression] and the given `constant` value.
   default BooleanExpression expOr(Boolean constant) {
 
     return BooleanBinding.expOr(this, constant);

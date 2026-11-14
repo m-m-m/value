@@ -7,11 +7,9 @@ import java.util.Locale;
 
 import io.github.mmm.value.observable.object.ReadableSimpleValue;
 
-/**
- * {@link io.github.mmm.value.ReadableValue} containing a {@link Month} {@link #get() value}.
- *
- * @since 1.0.0
- */
+/// [io.github.mmm.value.ReadableValue] containing a [Month] [value][#get()].
+///
+/// @since 1.0.0
 public interface ReadableMonthValue extends ReadableSimpleValue<Month> {
 
   @Override
@@ -40,9 +38,7 @@ public interface ReadableMonthValue extends ReadableSimpleValue<Month> {
     }
   }
 
-  /**
-   * @return the {@link Month} {@link #get() value} as primitive {@code int} value. Will be {@code 0} if undefined.
-   */
+  /// @return the [Month] [value][#get()] as primitive `int` value. Will be `0` if undefined.
   default int getValue() {
 
     Month month = get();

@@ -4,11 +4,9 @@ package io.github.mmm.value.observable.number.bytes;
 
 import io.github.mmm.value.observable.number.ObservableNumberValue;
 
-/**
- * {@link ObservableNumberValue} with {@link Byte} {@link #getValue() value}.
- *
- * @since 1.0.0
- */
+/// [ObservableNumberValue] with [Byte] [value][#getValue()].
+///
+/// @since 1.0.0
 public interface ObservableByteValue extends ObservableNumberValue<Byte>, ReadableByteValue {
 
 }

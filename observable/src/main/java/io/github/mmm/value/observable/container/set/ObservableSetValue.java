@@ -6,12 +6,10 @@ import java.util.Set;
 
 import io.github.mmm.value.observable.container.collection.ObservableCollectionValue;
 
-/**
- * {@link io.github.mmm.value.observable.ObservableValue} with {@link Set} {@link #get() value}.
- *
- * @param <E> type of the {@link Set#contains(Object) elements}.
- * @since 1.0.0
- */
+/// [io.github.mmm.value.observable.ObservableValue] with [Set] [value][#get()].
+///
+/// @param <E> type of the [elements][Set#contains(Object)].
+/// @since 1.0.0
 public interface ObservableSetValue<E> extends ObservableCollectionValue<Set<E>, E>, ReadableSetValue<E> {
 
 }

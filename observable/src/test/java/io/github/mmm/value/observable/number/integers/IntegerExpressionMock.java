@@ -4,27 +4,21 @@ package io.github.mmm.value.observable.number.integers;
 
 import io.github.mmm.value.observable.AbstractWritableObservableValue;
 
-/**
- * Implementation of {@link IntegerExpression} for testing.
- */
+/// Implementation of [IntegerExpression] for testing.
 public class IntegerExpressionMock extends AbstractWritableObservableValue<Integer>
     implements IntegerExpression, WritableIntegerValue {
 
   private Integer value;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public IntegerExpressionMock() {
 
     super();
   }
 
-  /**
-   * The constructor.
-   *
-   * @param value the initial {@link #getValue() value}.
-   */
+  /// The constructor.
+  ///
+  /// @param value the initial [value][#getValue()].
   public IntegerExpressionMock(Integer value) {
 
     super();

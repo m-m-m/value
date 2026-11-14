@@ -9,21 +9,17 @@ import java.util.function.Supplier;
 
 import io.github.mmm.base.collection.ReadOnlyIterator;
 
-/**
- * Immutable implementation of {@link io.github.mmm.value.observable.container.list.ChangeAwareList}.
- *
- * @param <E> the type of the elements in the container.
- * @since 1.0.0
- */
+/// Immutable implementation of [io.github.mmm.value.observable.container.list.ChangeAwareList].
+///
+/// @param <E> the type of the elements in the container.
+/// @since 1.0.0
 public class ImmutableChangeAwareSetView<E> extends ReadOnlyChangeAwareSet<E> {
 
   private final Supplier<Set<E>> setSupplier;
 
-  /**
-   * The constructor.
-   *
-   * @param setSupplier the internal {@link Set} to adopt.
-   */
+  /// The constructor.
+  ///
+  /// @param setSupplier the internal [Set] to adopt.
   public ImmutableChangeAwareSetView(Supplier<Set<E>> setSupplier) {
 
     super();

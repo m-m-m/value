@@ -2,22 +2,18 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.value.observable;
 
-/**
- * Implementation of {@link ObservableEventListener} that {@link #getEventCount() counts} the
- * {@link #onEvent(ObservableEvent) received} events and allows to {@link #getEvent() get the last received event}.
- * Mainly useful for testing.
- *
- * @param <V> type of the value.
- */
+/// Implementation of [ObservableEventListener] that [counts][#getEventCount()] the
+/// [received][#onEvent(ObservableEvent)] events and allows to [get the last received event][#getEvent()].
+/// Mainly useful for testing.
+///
+/// @param <V> type of the value.
 public class ObservableEventReceiver<V> implements ObservableEventListener<V> {
 
   private ObservableEvent<V> event;
 
   private int eventCount;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public ObservableEventReceiver() {
 
     super();
@@ -30,18 +26,14 @@ public class ObservableEventReceiver<V> implements ObservableEventListener<V> {
     this.eventCount++;
   }
 
-  /**
-   * @return the last {@link ObservableEvent} that has been {@link #onEvent(ObservableEvent) received}. Will be
-   *         {@code null} if nothing received yet.
-   */
+  /// @return the last [ObservableEvent] that has been [received][#onEvent(ObservableEvent)]. Will be
+  ///         `null` if nothing received yet.
   public ObservableEvent<V> getEvent() {
 
     return this.event;
   }
 
-  /**
-   * @return the number of {@link ObservableEvent}s {@link #onEvent(ObservableEvent) received}.
-   */
+  /// @return the number of [ObservableEvent]s [received][#onEvent(ObservableEvent)].
   public int getEventCount() {
 
     return this.eventCount;

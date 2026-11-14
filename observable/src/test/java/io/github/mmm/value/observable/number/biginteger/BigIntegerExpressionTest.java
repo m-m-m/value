@@ -9,9 +9,7 @@ import org.junit.jupiter.api.Test;
 import io.github.mmm.value.observable.number.NumberExpression;
 import io.github.mmm.value.observable.number.NumberExpressionTest;
 
-/**
- * Test of {@link BigIntegerExpression}.
- */
+/// Test of [BigIntegerExpression].
 @SuppressWarnings("javadoc")
 class BigIntegerExpressionTest extends NumberExpressionTest<BigInteger> {
 

@@ -6,11 +6,9 @@ import java.time.Year;
 
 import io.github.mmm.value.observable.object.ReadableSimpleValue;
 
-/**
- * {@link io.github.mmm.value.ReadableValue} containing a {@link Year} {@link #getValue() value}.
- *
- * @since 1.0.0
- */
+/// [io.github.mmm.value.ReadableValue] containing a [Year] [value][#getValue()].
+///
+/// @since 1.0.0
 public interface ReadableYearValue extends ReadableSimpleValue<Year> {
 
   @Override
@@ -34,9 +32,7 @@ public interface ReadableYearValue extends ReadableSimpleValue<Year> {
     return Year.parse(value);
   }
 
-  /**
-   * @return the {@link Year} {@link #get() value} as primitive {@code int} value. Will be {@code 0} if undefined.
-   */
+  /// @return the [Year] [value][#get()] as primitive `int` value. Will be `0` if undefined.
   default int getValue() {
 
     return getSafe().getValue();

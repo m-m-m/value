@@ -6,27 +6,21 @@ import java.math.BigDecimal;
 
 import io.github.mmm.value.observable.AbstractWritableObservableValue;
 
-/**
- * Implementation of {@link BigDecimalExpression} for testing.
- */
+/// Implementation of [BigDecimalExpression] for testing.
 public class BigDecimalExpressionMock extends AbstractWritableObservableValue<BigDecimal>
     implements BigDecimalExpression, WritableBigDecimalValue {
 
   private BigDecimal value;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public BigDecimalExpressionMock() {
 
     super();
   }
 
-  /**
-   * The constructor.
-   *
-   * @param value the initial {@link #get() value}.
-   */
+  /// The constructor.
+  ///
+  /// @param value the initial [value][#get()].
   public BigDecimalExpressionMock(BigDecimal value) {
 
     super();

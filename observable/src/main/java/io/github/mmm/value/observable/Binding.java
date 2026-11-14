@@ -4,13 +4,11 @@ package io.github.mmm.value.observable;
 
 import java.util.function.Supplier;
 
-/**
- * {@link Expression} that calculates its {@link #get() value} dynamically from other {@link ObservableValue}s
- * (dependencies).
- *
- * @param <V> type of the observable {@link #get() value}.
- * @since 1.0.0
- */
+/// [Expression] that calculates its [value][#get()] dynamically from other [ObservableValue]s
+/// (dependencies).
+///
+/// @param <V> type of the observable [value][#get()].
+/// @since 1.0.0
 public abstract class Binding<V> extends AbstractObservableValue<V> implements Expression<V> {
 
   private boolean valid;
@@ -23,12 +21,10 @@ public abstract class Binding<V> extends AbstractObservableValue<V> implements E
 
   private ObservableValue<?>[] dependencies;
 
-  /**
-   * The constructor.
-   *
-   * @param expression the {@link Supplier} to compute the {@link #get() value}.
-   * @param dependencies the {@link ObservableValue}s the {@code expression} depends on.
-   */
+  /// The constructor.
+  ///
+  /// @param expression the [Supplier] to compute the [value][#get()].
+  /// @param dependencies the [ObservableValue]s the `expression` depends on.
   public Binding(Supplier<? extends V> expression, ObservableValue<?>... dependencies) {
 
     super();
@@ -38,12 +34,10 @@ public abstract class Binding<V> extends AbstractObservableValue<V> implements E
     bind(dependencies);
   }
 
-  /**
-   * Start observing the dependencies for changes. If the value of one of the dependencies changes, the binding is
-   * marked as invalid.
-   *
-   * @param observables the dependencies to observe
-   */
+  /// Start observing the dependencies for changes. If the value of one of the dependencies changes, the binding is
+  /// marked as invalid.
+  ///
+  /// @param observables the dependencies to observe
   @SuppressWarnings({ "rawtypes", "unchecked" })
   protected final void bind(ObservableValue<?>... observables) {
 
@@ -57,11 +51,9 @@ public abstract class Binding<V> extends AbstractObservableValue<V> implements E
     }
   }
 
-  /**
-   * Stop observing the dependencies for changes.
-   *
-   * @param observables the dependencies to stop observing
-   */
+  /// Stop observing the dependencies for changes.
+  ///
+  /// @param observables the dependencies to stop observing
   @SuppressWarnings({ "rawtypes", "unchecked" })
   protected final void unbind(ObservableValue<?>... observables) {
 
@@ -106,10 +98,8 @@ public abstract class Binding<V> extends AbstractObservableValue<V> implements E
     }
   }
 
-  /**
-   * @return {@code true} if the cached {@link #get() value} is still valid, {@code false} otherwise (re-calculation
-   *         required).
-   */
+  /// @return `true` if the cached [value][#get()] is still valid, `false` otherwise (re-calculation
+  ///         required).
   protected final boolean isValid() {
 
     return this.valid;

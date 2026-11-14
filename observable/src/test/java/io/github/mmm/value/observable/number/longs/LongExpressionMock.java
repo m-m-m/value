@@ -4,27 +4,21 @@ package io.github.mmm.value.observable.number.longs;
 
 import io.github.mmm.value.observable.AbstractWritableObservableValue;
 
-/**
- * Implementation of {@link LongExpression} for testing.
- */
+/// Implementation of [LongExpression] for testing.
 public class LongExpressionMock extends AbstractWritableObservableValue<Long>
     implements LongExpression, WritableLongValue {
 
   private Long value;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public LongExpressionMock() {
 
     super();
   }
 
-  /**
-   * The constructor.
-   *
-   * @param value the initial {@link #getValue() value}.
-   */
+  /// The constructor.
+  ///
+  /// @param value the initial [value][#getValue()].
   public LongExpressionMock(Long value) {
 
     super();

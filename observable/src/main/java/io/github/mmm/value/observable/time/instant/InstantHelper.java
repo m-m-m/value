@@ -4,9 +4,7 @@ package io.github.mmm.value.observable.time.instant;
 
 import java.time.Instant;
 
-/**
- * Internal helper for {@link Instant}.
- */
+/// Internal helper for [Instant].
 class InstantHelper {
 
   static boolean isInFuture(Instant value) {

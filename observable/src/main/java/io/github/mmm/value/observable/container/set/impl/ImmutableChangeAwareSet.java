@@ -8,21 +8,17 @@ import java.util.Set;
 
 import io.github.mmm.base.collection.ReadOnlyIterator;
 
-/**
- * Immutable implementation of {@link io.github.mmm.value.observable.container.list.ChangeAwareList}.
- *
- * @param <E> the type of the elements in the container.
- * @since 1.0.0
- */
+/// Immutable implementation of [io.github.mmm.value.observable.container.list.ChangeAwareList].
+///
+/// @param <E> the type of the elements in the container.
+/// @since 1.0.0
 public class ImmutableChangeAwareSet<E> extends ReadOnlyChangeAwareSet<E> {
 
   private final Set<E> set;
 
-  /**
-   * The constructor.
-   *
-   * @param set the internal {@link Set} to adopt.
-   */
+  /// The constructor.
+  ///
+  /// @param set the internal [Set] to adopt.
   public ImmutableChangeAwareSet(Set<E> set) {
 
     super();

@@ -6,11 +6,9 @@ import java.time.ZonedDateTime;
 
 import io.github.mmm.value.observable.time.ObservableTemporalValue;
 
-/**
- * {@link io.github.mmm.value.observable.ObservableValue} containing a {@link ZonedDateTime} {@link #getValue() value}.
- *
- * @since 1.0.0
- */
+/// [io.github.mmm.value.observable.ObservableValue] containing a [ZonedDateTime] [value][#getValue()].
+///
+/// @since 1.0.0
 public interface ObservableZonedDateTimeValue
     extends ObservableTemporalValue<ZonedDateTime>, ReadableZonedDateTimeValue {
 

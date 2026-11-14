@@ -4,20 +4,16 @@ package io.github.mmm.value.observable;
 
 import java.lang.ref.WeakReference;
 
-/**
- * This is an implementation of {@link ObservableEventListener} for an unidirectional binding.
- *
- * @since 1.0.0
- */
+/// This is an implementation of [ObservableEventListener] for an unidirectional binding.
+///
+/// @since 1.0.0
 public class BindingListener implements ObservableEventListener<Object> {
 
   private final WeakReference<AbstractObservableValue<?>> weakReference;
 
-  /**
-   * The constructor.
-   *
-   * @param value the property to {@link WritableObservableValue#bindOneWay(ObservableValue) bind}.
-   */
+  /// The constructor.
+  ///
+  /// @param value the property to [bind][WritableObservableValue#bindOneWay(ObservableValue)].
   public BindingListener(AbstractObservableValue<?> value) {
 
     this.weakReference = new WeakReference<>(value);

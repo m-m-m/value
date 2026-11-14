@@ -4,9 +4,7 @@ package io.github.mmm.value.observable.time.zoneddatetime;
 
 import java.time.ZonedDateTime;
 
-/**
- * Internal helper for {@link ZonedDateTime}.
- */
+/// Internal helper for [ZonedDateTime].
 class ZonedDateTimeHelper {
 
   static boolean isInFuture(ZonedDateTime value) {

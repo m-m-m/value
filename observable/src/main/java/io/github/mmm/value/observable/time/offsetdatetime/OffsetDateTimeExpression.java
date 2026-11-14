@@ -7,11 +7,9 @@ import java.time.OffsetDateTime;
 import io.github.mmm.value.observable.booleans.BooleanBinding;
 import io.github.mmm.value.observable.time.TemporalExpression;
 
-/**
- * {@link TemporalExpression} for {@link OffsetDateTime} {@link #getValue() values}.
- *
- * @since 1.0.0
- */
+/// [TemporalExpression] for [OffsetDateTime] [values][#getValue()].
+///
+/// @since 1.0.0
 public interface OffsetDateTimeExpression extends ObservableOffsetDateTimeValue, TemporalExpression<OffsetDateTime> {
 
   @Override

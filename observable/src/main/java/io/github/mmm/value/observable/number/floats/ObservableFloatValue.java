@@ -4,11 +4,9 @@ package io.github.mmm.value.observable.number.floats;
 
 import io.github.mmm.value.observable.number.ObservableNumberValue;
 
-/**
- * {@link ObservableNumberValue} with {@link Float} {@link #getValue() value}.
- *
- * @since 1.0.0
- */
+/// [ObservableNumberValue] with [Float] [value][#getValue()].
+///
+/// @since 1.0.0
 public interface ObservableFloatValue extends ObservableNumberValue<Float>, ReadableFloatValue {
 
 }

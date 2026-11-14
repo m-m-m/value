@@ -10,11 +10,9 @@ import io.github.mmm.value.observable.container.list.impl.EmptyChangeAwareList;
 import io.github.mmm.value.observable.container.list.impl.ImmutableChangeAwareList;
 import io.github.mmm.value.observable.container.list.impl.ImmutableChangeAwareListView;
 
-/**
- * Factory for {@link ChangeAwareList}.
- *
- * @since 1.0.0
- */
+/// Factory for [ChangeAwareList].
+///
+/// @since 1.0.0
 public final class ChangeAwareLists {
 
   private ChangeAwareLists() {
@@ -22,40 +20,32 @@ public final class ChangeAwareLists {
     super();
   }
 
-  /**
-   * @param <E> the type of the elements.
-   * @return an empty, immutable {@link ChangeAwareList}.
-   */
+  /// @param <E> the type of the elements.
+  /// @return an empty, immutable [ChangeAwareList].
   public static <E> ChangeAwareList<E> empty() {
 
     return EmptyChangeAwareList.INSTANCE;
   }
 
-  /**
-   * @param <E> the type of the elements.
-   * @return a new empty mutable {@link ChangeAwareList}.
-   */
+  /// @param <E> the type of the elements.
+  /// @return a new empty mutable [ChangeAwareList].
   public static <E> ChangeAwareList<E> of() {
 
     return new ChangeAwareListImpl<>();
   }
 
-  /**
-   * @param <E> the type of the elements.
-   * @param capacity the initial capacity of the list.
-   * @return a new empty mutable {@link ChangeAwareList}.
-   */
+  /// @param <E> the type of the elements.
+  /// @param capacity the initial capacity of the list.
+  /// @return a new empty mutable [ChangeAwareList].
   public static <E> ChangeAwareList<E> of(int capacity) {
 
     return new ChangeAwareListImpl<>(capacity);
   }
 
-  /**
-   * @param <E> the type of the elements.
-   * @param list the existing {@link List} implementation to wrap as {@link ChangeAwareList}. Please avoid to modify
-   *        this {@link List} afterwards, as this will not trigger modification events.
-   * @return a new empty mutable {@link ChangeAwareList}.
-   */
+  /// @param <E> the type of the elements.
+  /// @param list the existing [List] implementation to wrap as [ChangeAwareList]. Please avoid to modify
+  ///        this [List] afterwards, as this will not trigger modification events.
+  /// @return a new empty mutable [ChangeAwareList].
   public static <E> ChangeAwareList<E> of(List<E> list) {
 
     if (list instanceof ChangeAwareList) {
@@ -64,12 +54,10 @@ public final class ChangeAwareLists {
     return new ChangeAwareListImpl<>(list);
   }
 
-  /**
-   * @param <E> the type of the elements.
-   * @param list the existing {@link List} implementation to wrap as {@link ChangeAwareList}. Modifying such
-   *        {@link List} afterwards will not trigger modification events in the read-only view returned by this method.
-   * @return a unmodifiable {@link ChangeAwareList} that acts as a view on the given {@link List}.
-   */
+  /// @param <E> the type of the elements.
+  /// @param list the existing [List] implementation to wrap as [ChangeAwareList]. Modifying such
+  ///        [List] afterwards will not trigger modification events in the read-only view returned by this method.
+  /// @return a unmodifiable [ChangeAwareList] that acts as a view on the given [List].
   public static <E> ChangeAwareList<E> ofUnmodifiable(List<E> list) {
 
     if (list instanceof ImmutableChangeAwareList<E> result) {
@@ -78,14 +66,12 @@ public final class ChangeAwareLists {
     return new ImmutableChangeAwareList<>(list);
   }
 
-  /**
-   * @param <E> the type of the elements.
-   * @param listSupplier the {@link Supplier} to the (mutable) {@link List} implementation to wrap as
-   *        {@link ChangeAwareList}. Modifying such {@link List} afterwards will not trigger modification events in the
-   *        read-only view returned by this method.
-   * @return a unmodifiable {@link ChangeAwareList} that acts as a view on the {@link Supplier#get() supplied}
-   *         {@link List}.
-   */
+  /// @param <E> the type of the elements.
+  /// @param listSupplier the [Supplier] to the (mutable) [List] implementation to wrap as
+  ///        [ChangeAwareList]. Modifying such [List] afterwards will not trigger modification events in the
+  ///        read-only view returned by this method.
+  /// @return a unmodifiable [ChangeAwareList] that acts as a view on the [supplied][Supplier#get()]
+  ///         [List].
   public static <E> ChangeAwareList<E> ofUnmodifiable(Supplier<List<E>> listSupplier) {
 
     return new ImmutableChangeAwareListView<>(listSupplier);

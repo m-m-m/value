@@ -20,11 +20,9 @@ import io.github.mmm.value.observable.number.longs.LongBinding;
 import io.github.mmm.value.observable.number.longs.LongExpression;
 import io.github.mmm.value.observable.number.longs.ObservableLongValue;
 
-/**
- * {@link NumberExpression} with {@link Short} {@link #getValue() value}.
- *
- * @since 1.0.0
- */
+/// [NumberExpression] with [Short] [value][#getValue()].
+///
+/// @since 1.0.0
 public interface ShortExpression extends ObservableShortValue, NumberExpression<Short> {
 
   @Override

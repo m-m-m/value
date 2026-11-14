@@ -6,11 +6,9 @@ import java.math.BigInteger;
 
 import io.github.mmm.value.observable.number.ReadableNumberValue;
 
-/**
- * {@link io.github.mmm.value.ReadableValue} containing a {@link BigInteger} {@link #get() value}.
- *
- * @since 1.0.0
- */
+/// [io.github.mmm.value.ReadableValue] containing a [BigInteger] [value][#get()].
+///
+/// @since 1.0.0
 public interface ReadableBigIntegerValue extends ReadableNumberValue<BigInteger> {
 
   @Override

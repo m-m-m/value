@@ -8,39 +8,31 @@ import java.util.List;
 
 import io.github.mmm.value.observable.container.list.ListChange;
 
-/**
- * Regular implementation of {@link io.github.mmm.value.observable.container.list.ChangeAwareList}.
- *
- * @param <E> the type of the elements in the container.
- * @since 1.0.0
- */
+/// Regular implementation of [io.github.mmm.value.observable.container.list.ChangeAwareList].
+///
+/// @param <E> the type of the elements in the container.
+/// @since 1.0.0
 public class ChangeAwareListImpl<E> extends AbstractChangeAwareList<E> {
 
   private final List<E> list;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public ChangeAwareListImpl() {
 
     this(new ArrayList<>());
   }
 
-  /**
-   * The constructor.
-   *
-   * @param capacity the initial capacity.
-   */
+  /// The constructor.
+  ///
+  /// @param capacity the initial capacity.
   public ChangeAwareListImpl(int capacity) {
 
     this(new ArrayList<>(capacity));
   }
 
-  /**
-   * The constructor.
-   *
-   * @param list the internal {@link List} to adopt.
-   */
+  /// The constructor.
+  ///
+  /// @param list the internal [List] to adopt.
   public ChangeAwareListImpl(List<E> list) {
 
     super();

@@ -6,11 +6,9 @@ import java.time.LocalDateTime;
 
 import io.github.mmm.value.observable.time.WritableTemporalValue;
 
-/**
- * {@link io.github.mmm.value.WritableValue} containing a {@link LocalDateTime} {@link #getValue() value}.
- *
- * @since 1.0.0
- */
+/// [io.github.mmm.value.WritableValue] containing a [LocalDateTime] [value][#getValue()].
+///
+/// @since 1.0.0
 public interface WritableLocalDateTimeValue extends ReadableLocalDateTimeValue, WritableTemporalValue<LocalDateTime> {
 
 }

@@ -7,14 +7,12 @@ import java.util.List;
 import io.github.mmm.value.observable.ChangeAwareObservableEventListener;
 import io.github.mmm.value.observable.ObservableEvent;
 
-/**
- * {@link ChangeAwareObservableEventListener Listener} for {@link ObservableListValue} and its sub-types. This interface
- * only exists for your convenience to avoid casting or type guessing. You may still directly implement
- * {@link ChangeAwareObservableEventListener} if you prefer.
- *
- * @param <E> type of the {@link List#contains(Object) contained elements}.
- * @since 1.0.0
- */
+/// [Listener][ChangeAwareObservableEventListener] for [ObservableListValue] and its sub-types. This interface
+/// only exists for your convenience to avoid casting or type guessing. You may still directly implement
+/// [ChangeAwareObservableEventListener] if you prefer.
+///
+/// @param <E> type of the [contained elements][List#contains(Object)].
+/// @since 1.0.0
 public interface ChangeAwareListEventListener<E> extends ChangeAwareObservableEventListener<List<E>> {
 
   @Override
@@ -24,10 +22,8 @@ public interface ChangeAwareListEventListener<E> extends ChangeAwareObservableEv
     onChange(change, event);
   }
 
-  /**
-   * @param change the {@link ListChange}. May be {@code null} if the entire contained changed.
-   * @param event the original {@link ObservableEvent}. May be ignored if {{@code change} is not {@code null}.
-   */
+  /// @param change the [ListChange]. May be `null` if the entire contained changed.
+  /// @param event the original [ObservableEvent]. May be ignored if {`change` is not `null`.
   void onChange(ListChange<E> change, ObservableEvent<List<E>> event);
 
 }

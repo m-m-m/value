@@ -4,26 +4,20 @@ package io.github.mmm.value;
 
 import java.util.function.Supplier;
 
-/**
- * This interface gives read access to the {@link #get() value} of an object.
- *
- * @param <V> type of the {@link #get() value}.
- * @since 1.0.0
- */
+/// This interface gives read access to the [value][#get()] of an object.
+///
+/// @param <V> type of the [value][#get()].
+/// @since 1.0.0
 public abstract interface ReadableValue<V> extends Supplier<V> {
 
-  /**
-   * @return the current value of this object. May be {@code null} unless otherwise stated.
-   */
+  /// @return the current value of this object. May be `null` unless otherwise stated.
   @Override
   V get();
 
-  /**
-   * @return the value of {@link #get()} but in case this is {@code null} it will return
-   *         {@link #getFallbackSafeValue()}. So unless {@link #getFallbackSafeValue()} also returns {@code null} this
-   *         method a null-safe variant of {@link #get()}.
-   * @see #getFallbackSafeValue()
-   */
+  /// @return the value of [#get()] but in case this is `null` it will return
+  ///         [#getFallbackSafeValue()]. So unless [#getFallbackSafeValue()] also returns `null` this
+  ///         method a null-safe variant of [#get()].
+  /// @see #getFallbackSafeValue()
   default V getSafe() {
 
     V value = get();
@@ -33,31 +27,25 @@ public abstract interface ReadableValue<V> extends Supplier<V> {
     return value;
   }
 
-  /**
-   * @return a neutral element to be used instead of {@code null} if supported for this type of value (e.g. "" for
-   *         {@link String}, {@code 0} for any kind of {@link Number}, {@link Boolean#FALSE}, empty collection, etc.).
-   *         May still be {@code null} for types that have no such neutral element.
-   */
+  /// @return a neutral element to be used instead of `null` if supported for this type of value (e.g. "" for
+  ///         [String], `0` for any kind of [Number], [Boolean#FALSE], empty collection, etc.).
+  ///         May still be `null` for types that have no such neutral element.
   V getFallbackSafeValue();
 
-  /**
-   * @return {@code true} if the value is empty, {@code false} otherwise. The value {@code null} is always considered
-   *         empty. Further, depending on the type of the value, also a non-{@code null} value can be considered empty
-   *         such as {@link String#isEmpty() empty strings} or {@link java.util.Collection#isEmpty() empty collections}.
-   */
+  /// @return `true` if the value is empty, `false` otherwise. The value `null` is always considered
+  ///         empty. Further, depending on the type of the value, also a non-`null` value can be considered empty
+  ///         such as [empty strings][String#isEmpty()] or [empty collections][java.util.Collection#isEmpty()].
   default boolean isEmpty() {
 
     return (get() == null);
   }
 
-  /**
-   * Null-safe access to {@link #get()}.
-   *
-   * @param <T> type of the {@link #get() value}
-   * @param value the {@link ReadableValue} to unwrap.
-   * @return the {@link #get() value} of the {@link ReadableValue}. Will be {@code null} if the given
-   *         {@link ReadableValue} is {@code null} or its {@link #get() value} is {@code null}.
-   */
+  /// Null-safe access to [#get()].
+  ///
+  /// @param <T> type of the [value][#get()]
+  /// @param value the [ReadableValue] to unwrap.
+  /// @return the [value][#get()] of the [ReadableValue]. Will be `null` if the given
+  ///         [ReadableValue] is `null` or its [value][#get()] is `null`.
   static <T> T get(ReadableValue<T> value) {
 
     if (value == null) {
@@ -66,10 +54,8 @@ public abstract interface ReadableValue<V> extends Supplier<V> {
     return value.get();
   }
 
-  /**
-   * @return the {@link Class} reflecting the type of {@link #get() value}. Even if the {@link #get() value} is
-   *         {@code null} the property must support returning the value class.
-   */
+  /// @return the [Class] reflecting the type of [value][#get()]. Even if the [value][#get()] is
+  ///         `null` the property must support returning the value class.
   Class<V> getValueClass();
 
 }

@@ -7,11 +7,9 @@ import java.math.BigInteger;
 
 import io.github.mmm.value.observable.number.WritableNumberValue;
 
-/**
- * {@link io.github.mmm.value.WritableValue} containing a {@link BigInteger} {@link #get() value}.
- *
- * @since 1.0.0
- */
+/// [io.github.mmm.value.WritableValue] containing a [BigInteger] [value][#get()].
+///
+/// @since 1.0.0
 public interface WritableBigIntegerValue extends ReadableBigIntegerValue, WritableNumberValue<BigInteger> {
 
   @Override

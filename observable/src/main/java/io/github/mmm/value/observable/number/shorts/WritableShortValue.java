@@ -4,20 +4,16 @@ package io.github.mmm.value.observable.number.shorts;
 
 import io.github.mmm.value.observable.number.WritableNumberValue;
 
-/**
- * {@link WritableNumberValue} with {@link Short} {@link #get() value}.
- *
- * @since 1.0.0
- */
+/// [WritableNumberValue] with [Short] [value][#get()].
+///
+/// @since 1.0.0
 public interface WritableShortValue extends ReadableShortValue, WritableNumberValue<Short> {
 
   @Override
   void set(Short value);
 
-  /**
-   * @param value the new {@link #getValue() primitive value}.
-   * @see #set(Short)
-   */
+  /// @param value the new [primitive value][#getValue()].
+  /// @see #set(Short)
   default void setValue(short value) {
 
     set(Short.valueOf(value));

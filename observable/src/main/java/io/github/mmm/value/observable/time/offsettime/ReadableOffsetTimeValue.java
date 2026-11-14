@@ -6,11 +6,9 @@ import java.time.OffsetTime;
 
 import io.github.mmm.value.observable.time.ReadableTemporalValue;
 
-/**
- * {@link io.github.mmm.value.ReadableValue} containing a {@link OffsetTime} {@link #getValue() value}.
- *
- * @since 1.0.0
- */
+/// [io.github.mmm.value.ReadableValue] containing a [OffsetTime] [value][#getValue()].
+///
+/// @since 1.0.0
 public interface ReadableOffsetTimeValue extends ReadableTemporalValue<OffsetTime> {
 
   @Override

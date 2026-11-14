@@ -6,16 +6,12 @@ import java.time.DayOfWeek;
 
 import io.github.mmm.value.observable.object.WritableSimpleValue;
 
-/**
- * {@link io.github.mmm.value.WritableValue} containing a {@link DayOfWeek} {@link #getValue() value}.
- *
- * @since 1.0.0
- */
+/// [io.github.mmm.value.WritableValue] containing a [DayOfWeek] [value][#getValue()].
+///
+/// @since 1.0.0
 public interface WritableDayOfWeekValue extends ReadableDayOfWeekValue, WritableSimpleValue<DayOfWeek> {
 
-  /**
-   * @param dayOfWeek the {@link DayOfWeek} as primitive {@code int} value.
-   */
+  /// @param dayOfWeek the [DayOfWeek] as primitive `int` value.
   default void setValue(int dayOfWeek) {
 
     if (dayOfWeek == 0) {

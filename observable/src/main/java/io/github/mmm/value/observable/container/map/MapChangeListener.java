@@ -5,14 +5,12 @@ package io.github.mmm.value.observable.container.map;
 import io.github.mmm.event.EventListener;
 import io.github.mmm.value.observable.container.ContainerChangeListener;
 
-/**
- * {@link EventListener} for {@link MapChange}s.
- *
- * @param <K> type of the {@link MapChange#getKey(int) keys}.
- * @param <V> type of the {@link MapChange#getElement(int) elements}.
- * @since 1.0.0
- * @see io.github.mmm.value.observable.ObservableEvent#getChange()
- */
+/// [EventListener] for [MapChange]s.
+///
+/// @param <K> type of the [keys][MapChange#getKey(int)].
+/// @param <V> type of the [elements][MapChange#getElement(int)].
+/// @since 1.0.0
+/// @see io.github.mmm.value.observable.ObservableEvent#getChange()
 @FunctionalInterface
 public interface MapChangeListener<K, V> extends ContainerChangeListener<MapChange<K, V>> {
 

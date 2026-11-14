@@ -8,43 +8,35 @@ import io.github.mmm.value.ReadableValue;
 import io.github.mmm.value.observable.Binding;
 import io.github.mmm.value.observable.ObservableValue;
 
-/**
- * {@link Binding} for a {@link Boolean} {@link #get() value}.
- *
- * @see Binding
- * @see BooleanExpression
- *
- * @since 1.0.0
- */
+/// [Binding] for a [Boolean] [value][#get()].
+///
+/// @see Binding
+/// @see BooleanExpression
+///
+/// @since 1.0.0
 public class BooleanBinding extends Binding<Boolean> implements BooleanExpression {
 
-  /**
-   * The constructor.
-   *
-   * @param expression the {@link Supplier} to compute the {@link #get() value}.
-   * @param dependencies the {@link ObservableValue}s the {@code expression} depends on.
-   */
+  /// The constructor.
+  ///
+  /// @param expression the [Supplier] to compute the [value][#get()].
+  /// @param dependencies the [ObservableValue]s the `expression` depends on.
   public BooleanBinding(Supplier<? extends Boolean> expression, ObservableValue<?>... dependencies) {
 
     super(expression, dependencies);
   }
 
-  /**
-   * @param expression the {@link BooleanExpression}.
-   * @return a new {@code BooleanExpression} holding the negation of this {@link #get() value}.
-   */
+  /// @param expression the [BooleanExpression].
+  /// @return a new `BooleanExpression` holding the negation of this [value][#get()].
   public static BooleanExpression expNot(BooleanExpression expression) {
 
     return new BooleanBinding(() -> not(ReadableValue.get(expression)), expression);
   }
 
-  /**
-   * @param expression the {@link BooleanExpression}.
-   * @param other the {@code ObservableValue}.
-   * @return a new {@code BooleanExpression} holding the logical AND of the {@link #get() value}s from the given
-   *         {@link ObservableValue}s.
-   * @see #expAnd(ObservableValue)
-   */
+  /// @param expression the [BooleanExpression].
+  /// @param other the `ObservableValue`.
+  /// @return a new `BooleanExpression` holding the logical AND of the [value][#get()]s from the given
+  ///         [ObservableValue]s.
+  /// @see #expAnd(ObservableValue)
   public static BooleanExpression expAnd(BooleanExpression expression, ObservableValue<Boolean> other) {
 
     if (other == null) {
@@ -54,12 +46,10 @@ public class BooleanBinding extends Binding<Boolean> implements BooleanExpressio
         other);
   }
 
-  /**
-   * @param expression the {@link BooleanExpression}.
-   * @param constant the constant {@link Boolean} value.
-   * @return a new {@code BooleanExpression} holding the logical AND of the {@link #get() value} from the given
-   *         {@link BooleanExpression} and the given {@code constant} value.
-   */
+  /// @param expression the [BooleanExpression].
+  /// @param constant the constant [Boolean] value.
+  /// @return a new `BooleanExpression` holding the logical AND of the [value][#get()] from the given
+  ///         [BooleanExpression] and the given `constant` value.
   public static BooleanExpression expAnd(BooleanExpression expression, Boolean constant) {
 
     if (constant == null) {
@@ -68,12 +58,10 @@ public class BooleanBinding extends Binding<Boolean> implements BooleanExpressio
     return new BooleanBinding(() -> and(ReadableValue.get(expression), constant), expression);
   }
 
-  /**
-   * @param expression the {@link BooleanExpression}.
-   * @param other the other {@code ObservableValue}.
-   * @return a new {@code BooleanExpression} holding the logical OR of the {@link #get() value}s from the given
-   *         {@link ObservableValue}s.
-   */
+  /// @param expression the [BooleanExpression].
+  /// @param other the other `ObservableValue`.
+  /// @return a new `BooleanExpression` holding the logical OR of the [value][#get()]s from the given
+  ///         [ObservableValue]s.
   public static BooleanExpression expOr(BooleanExpression expression, ObservableValue<Boolean> other) {
 
     if (other == null) {
@@ -83,12 +71,10 @@ public class BooleanBinding extends Binding<Boolean> implements BooleanExpressio
         other);
   }
 
-  /**
-   * @param expression the {@link BooleanExpression}.
-   * @param other the constant {@link Boolean} value.
-   * @return a new {@code BooleanExpression} holding the logical OR of the {@link #get() value} from the given
-   *         {@link BooleanExpression} and the given {@code constant} value.
-   */
+  /// @param expression the [BooleanExpression].
+  /// @param other the constant [Boolean] value.
+  /// @return a new `BooleanExpression` holding the logical OR of the [value][#get()] from the given
+  ///         [BooleanExpression] and the given `constant` value.
   public static BooleanExpression expOr(BooleanExpression expression, Boolean other) {
 
     if (other == null) {

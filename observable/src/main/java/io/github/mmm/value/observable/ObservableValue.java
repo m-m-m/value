@@ -5,28 +5,24 @@ package io.github.mmm.value.observable;
 import io.github.mmm.event.EventSource;
 import io.github.mmm.value.ReadableValue;
 
-/**
- * An {@link ObservableValue} wraps a {@link #get() value} and allows to observe the value for changes. In general this
- * interface should not be implemented directly but one of its sub-interfaces.
- * <p>
- * The value of the {@link ObservableValue} can be requested with {@link #get()}.
- * <p>
- * An implementation of {@link ObservableValue} may support lazy evaluation, which means that the value is not
- * immediately recomputed after changes, but lazily the next time the value is requested. All bindings and properties in
- * this library support lazy evaluation.
- * <p>
- * An {@link ObservableValue} generates change events. A change event indicates that the value has changed.
- *
- * @param <V> type of the observable {@link #get() value}.
- * @since 1.0.0
- */
+/// An [ObservableValue] wraps a [value][#get()] and allows to observe the value for changes. In general this
+/// interface should not be implemented directly but one of its sub-interfaces.
+///
+/// The value of the [ObservableValue] can be requested with [#get()].
+///
+/// An implementation of [ObservableValue] may support lazy evaluation, which means that the value is not
+/// immediately recomputed after changes, but lazily the next time the value is requested. All bindings and properties in
+/// this library support lazy evaluation.
+///
+/// An [ObservableValue] generates change events. A change event indicates that the value has changed.
+///
+/// @param <V> type of the observable [value][#get()].
+/// @since 1.0.0
 public interface ObservableValue<V>
     extends ReadableValue<V>, EventSource<ObservableEvent<V>, ObservableEventListener<? super V>> {
 
-  /**
-   * @param sb the {@link StringBuilder} where to append the details of this property for
-   *        {@link Object#toString()}-Representation.
-   */
+  /// @param sb the [StringBuilder] where to append the details of this property for
+  ///        [Object#toString()]-Representation.
   void toString(StringBuilder sb);
 
 }

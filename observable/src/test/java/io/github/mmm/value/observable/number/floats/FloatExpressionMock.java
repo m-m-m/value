@@ -4,27 +4,21 @@ package io.github.mmm.value.observable.number.floats;
 
 import io.github.mmm.value.observable.AbstractWritableObservableValue;
 
-/**
- * Implementation of {@link FloatExpression} for testing.
- */
+/// Implementation of [FloatExpression] for testing.
 public class FloatExpressionMock extends AbstractWritableObservableValue<Float>
     implements FloatExpression, WritableFloatValue {
 
   private Float value;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public FloatExpressionMock() {
 
     super();
   }
 
-  /**
-   * The constructor.
-   *
-   * @param value the initial {@link #getValue() value}.
-   */
+  /// The constructor.
+  ///
+  /// @param value the initial [value][#getValue()].
   public FloatExpressionMock(Float value) {
 
     super();

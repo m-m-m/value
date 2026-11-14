@@ -6,11 +6,9 @@ import java.math.BigInteger;
 
 import io.github.mmm.value.observable.number.ObservableNumberValue;
 
-/**
- * {@link io.github.mmm.value.observable.ObservableValue} containing a {@link BigInteger} {@link #get() value}.
- *
- * @since 1.0.0
- */
+/// [io.github.mmm.value.observable.ObservableValue] containing a [BigInteger] [value][#get()].
+///
+/// @since 1.0.0
 public interface ObservableBigIntegerValue extends ObservableNumberValue<BigInteger>, ReadableBigIntegerValue {
 
 }

@@ -7,41 +7,33 @@ import io.github.mmm.value.observable.ObservableValue;
 import io.github.mmm.value.observable.number.NumberBinding;
 import io.github.mmm.value.observable.number.NumberExpression;
 
-/**
- * {@link NumberBinding} with {@link Short} {@link #get() value}.
- *
- * @since 1.0.0
- */
+/// [NumberBinding] with [Short] [value][#get()].
+///
+/// @since 1.0.0
 public class ShortBinding extends NumberBinding<Short> implements ShortExpression {
 
   private static final Short ZERO = Short.valueOf((short) 0);
 
-  /**
-   * The constructor.
-   *
-   * @param expression the {@link Supplier} to compute the {@link #get() value}.
-   * @param dependencies the {@link ObservableValue}s the {@code expression} depends on.
-   */
+  /// The constructor.
+  ///
+  /// @param expression the [Supplier] to compute the [value][#get()].
+  /// @param dependencies the [ObservableValue]s the `expression` depends on.
   public ShortBinding(Supplier<Short> expression, ObservableValue<?>... dependencies) {
 
     super(expression, dependencies);
   }
 
-  /**
-   * @param expression the {@link ShortExpression} to negate.
-   * @return a new {@link ShortExpression} holding the negation of the {@link #get() value} from the given
-   *         {@link ShortExpression}.
-   * @see #expNegate()
-   */
+  /// @param expression the [ShortExpression] to negate.
+  /// @return a new [ShortExpression] holding the negation of the [value][#get()] from the given
+  ///         [ShortExpression].
+  /// @see #expNegate()
   public static ShortExpression negate(ShortExpression expression) {
 
     return new ShortBinding(() -> negate(expression.get()), expression);
   }
 
-  /**
-   * @param expression the {@link NumberExpression} to convert.
-   * @return the given {@link NumberExpression} converted to a {@link ShortExpression}.
-   */
+  /// @param expression the [NumberExpression] to convert.
+  /// @return the given [NumberExpression] converted to a [ShortExpression].
   public static ShortExpression cast(NumberExpression<?> expression) {
 
     if (expression == null) {
@@ -53,13 +45,11 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
     }
   }
 
-  /**
-   * @param expression the {@link ShortExpression} to add.
-   * @param other the {@link ObservableValue} to add.
-   * @return a new {@link ShortExpression} holding the sum of the {@link #get() value}s of the first and the second
-   *         given {@link ObservableValue}s.
-   * @see #expAdd(ObservableShortValue)
-   */
+  /// @param expression the [ShortExpression] to add.
+  /// @param other the [ObservableValue] to add.
+  /// @return a new [ShortExpression] holding the sum of the [value][#get()]s of the first and the second
+  ///         given [ObservableValue]s.
+  /// @see #expAdd(ObservableShortValue)
   public static ShortExpression add(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
     if (other == null) {
@@ -68,13 +58,11 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
     return new ShortBinding(() -> plus(expression, other), expression, other);
   }
 
-  /**
-   * @param expression the {@link ShortExpression} to add.
-   * @param constant the constant {@link Number} to add.
-   * @return a new {@link ShortExpression} holding the sum of the {@link #get() value} from the given
-   *         {@link ShortExpression} with the given {@code constant}.
-   * @see #expAdd(ObservableShortValue)
-   */
+  /// @param expression the [ShortExpression] to add.
+  /// @param constant the constant [Number] to add.
+  /// @return a new [ShortExpression] holding the sum of the [value][#get()] from the given
+  ///         [ShortExpression] with the given `constant`.
+  /// @see #expAdd(ObservableShortValue)
   public static ShortExpression add(NumberExpression<?> expression, Number constant) {
 
     if (constant == null) {
@@ -83,36 +71,30 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
     return add(expression, constant.shortValue());
   }
 
-  /**
-   * @param expression the {@link ShortExpression} to add.
-   * @param constant the constant {@code short} to add.
-   * @return a new {@link ShortExpression} holding the sum of the {@link #get() value} from the given
-   *         {@link ShortExpression} with the given {@code constant}.
-   * @see #expAdd(ObservableShortValue)
-   */
+  /// @param expression the [ShortExpression] to add.
+  /// @param constant the constant `short` to add.
+  /// @return a new [ShortExpression] holding the sum of the [value][#get()] from the given
+  ///         [ShortExpression] with the given `constant`.
+  /// @see #expAdd(ObservableShortValue)
   public static ShortExpression add(NumberExpression<?> expression, short constant) {
 
     return new ShortBinding(() -> plus(expression.get(), constant), expression);
   }
 
-  /**
-   * @param observables the {@link ObservableValue}s to add.
-   * @return a new {@link ShortExpression} holding the sum of the {@link #get() value}s from the given
-   *         {@link ObservableValue}s.
-   */
+  /// @param observables the [ObservableValue]s to add.
+  /// @return a new [ShortExpression] holding the sum of the [value][#get()]s from the given
+  ///         [ObservableValue]s.
   @SafeVarargs
   public static ShortExpression addAll(ObservableValue<? extends Number>... observables) {
 
     return new ShortBinding(() -> plusAll(observables), observables);
   }
 
-  /**
-   * @param expression the {@link ShortExpression}.
-   * @param other the {@link ObservableValue} to subtract.
-   * @return a new {@link ShortExpression} holding the difference of the {@link #get() value}s of the first and the
-   *         second given {@link ObservableValue}s.
-   * @see #expSub(ObservableShortValue)
-   */
+  /// @param expression the [ShortExpression].
+  /// @param other the [ObservableValue] to subtract.
+  /// @return a new [ShortExpression] holding the difference of the [value][#get()]s of the first and the
+  ///         second given [ObservableValue]s.
+  /// @see #expSub(ObservableShortValue)
   public static ShortExpression subtract(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
     if (other == null) {
@@ -121,13 +103,11 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
     return new ShortBinding(() -> minus(expression, other), expression, other);
   }
 
-  /**
-   * @param expression the {@link ShortExpression}.
-   * @param constant the constant {@link Number} to subtract.
-   * @return a new {@link ShortExpression} holding the difference of the {@link #get() value} from the given
-   *         {@link ShortExpression} with the given {@code constant}.
-   * @see #expSub(ObservableShortValue)
-   */
+  /// @param expression the [ShortExpression].
+  /// @param constant the constant [Number] to subtract.
+  /// @return a new [ShortExpression] holding the difference of the [value][#get()] from the given
+  ///         [ShortExpression] with the given `constant`.
+  /// @see #expSub(ObservableShortValue)
   public static ShortExpression subtract(NumberExpression<?> expression, Number constant) {
 
     if (constant == null) {
@@ -136,36 +116,30 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
     return subtract(expression, constant.shortValue());
   }
 
-  /**
-   * @param expression the {@link ShortExpression}.
-   * @param constant the constant {@code short} to subtract.
-   * @return a new {@link ShortExpression} holding the difference of the {@link #get() value} from the given
-   *         {@link ShortExpression} with the given {@code constant}.
-   * @see #expSub(ObservableShortValue)
-   */
+  /// @param expression the [ShortExpression].
+  /// @param constant the constant `short` to subtract.
+  /// @return a new [ShortExpression] holding the difference of the [value][#get()] from the given
+  ///         [ShortExpression] with the given `constant`.
+  /// @see #expSub(ObservableShortValue)
   public static ShortExpression subtract(NumberExpression<?> expression, short constant) {
 
     return new ShortBinding(() -> minus(expression.get(), constant), expression);
   }
 
-  /**
-   * @param observables the {@link ObservableValue}s to subtract.
-   * @return a new {@link ShortExpression} holding the difference of the {@link #get() value}s from the given
-   *         {@link ObservableValue}s.
-   */
+  /// @param observables the [ObservableValue]s to subtract.
+  /// @return a new [ShortExpression] holding the difference of the [value][#get()]s from the given
+  ///         [ObservableValue]s.
   @SafeVarargs
   public static ShortExpression subtractAll(ObservableValue<? extends Number>... observables) {
 
     return new ShortBinding(() -> minusAll(observables), observables);
   }
 
-  /**
-   * @param expression the {@link ShortExpression}.
-   * @param other the {@link ObservableValue} to multiply.
-   * @return a new {@link ShortExpression} holding the product of the {@link #get() value}s of the first and the second
-   *         given {@link ObservableValue}s.
-   * @see #expMul(ObservableShortValue)
-   */
+  /// @param expression the [ShortExpression].
+  /// @param other the [ObservableValue] to multiply.
+  /// @return a new [ShortExpression] holding the product of the [value][#get()]s of the first and the second
+  ///         given [ObservableValue]s.
+  /// @see #expMul(ObservableShortValue)
   public static ShortExpression multiply(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
     if (other == null) {
@@ -174,13 +148,11 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
     return new ShortBinding(() -> mul(expression, other), expression, other);
   }
 
-  /**
-   * @param expression the {@link ShortExpression}.
-   * @param constant the constant {@link Number} to multiply.
-   * @return a new {@link ShortExpression} holding the product of the {@link #get() value} from the given
-   *         {@link ShortExpression} multiplied with the given {@code constant}.
-   * @see #expMul(ObservableShortValue)
-   */
+  /// @param expression the [ShortExpression].
+  /// @param constant the constant [Number] to multiply.
+  /// @return a new [ShortExpression] holding the product of the [value][#get()] from the given
+  ///         [ShortExpression] multiplied with the given `constant`.
+  /// @see #expMul(ObservableShortValue)
   public static ShortExpression multiply(NumberExpression<?> expression, Number constant) {
 
     if (constant == null) {
@@ -189,36 +161,30 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
     return multiply(expression, constant.shortValue());
   }
 
-  /**
-   * @param expression the {@link ShortExpression}.
-   * @param constant the constant {@code short} to multiply.
-   * @return a new {@link ShortExpression} holding the product of the {@link #get() value} from the given
-   *         {@link ShortExpression} multiplied with the given {@code constant}.
-   * @see #expMul(ObservableShortValue)
-   */
+  /// @param expression the [ShortExpression].
+  /// @param constant the constant `short` to multiply.
+  /// @return a new [ShortExpression] holding the product of the [value][#get()] from the given
+  ///         [ShortExpression] multiplied with the given `constant`.
+  /// @see #expMul(ObservableShortValue)
   public static ShortExpression multiply(NumberExpression<?> expression, short constant) {
 
     return new ShortBinding(() -> mul(expression.get(), constant), expression);
   }
 
-  /**
-   * @param observables the {@link ObservableValue}s to multiply.
-   * @return a new {@link ShortExpression} holding the product of the {@link #get() value}s from the given
-   *         {@link ObservableValue}s.
-   */
+  /// @param observables the [ObservableValue]s to multiply.
+  /// @return a new [ShortExpression] holding the product of the [value][#get()]s from the given
+  ///         [ObservableValue]s.
   @SafeVarargs
   public static ShortExpression multiplyAll(ObservableValue<? extends Number>... observables) {
 
     return new ShortBinding(() -> mulAll(observables), observables);
   }
 
-  /**
-   * @param expression the {@link ShortExpression}.
-   * @param other the {@link ObservableValue} to divide.
-   * @return a new {@link ShortExpression} holding the quotient of the {@link #get() value}s of the first and the second
-   *         given {@link ObservableValue}s.
-   * @see #expDiv(ObservableShortValue)
-   */
+  /// @param expression the [ShortExpression].
+  /// @param other the [ObservableValue] to divide.
+  /// @return a new [ShortExpression] holding the quotient of the [value][#get()]s of the first and the second
+  ///         given [ObservableValue]s.
+  /// @see #expDiv(ObservableShortValue)
   public static ShortExpression divide(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
     if (other == null) {
@@ -227,13 +193,11 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
     return new ShortBinding(() -> div(expression, other), expression, other);
   }
 
-  /**
-   * @param expression the {@link ShortExpression}.
-   * @param constant the constant {@link Number} to divide.
-   * @return a new {@link ShortExpression} holding the quotient of the {@link #get() value} from the given
-   *         {@link ShortExpression} divided by the given {@code constant}.
-   * @see #expDiv(ObservableShortValue)
-   */
+  /// @param expression the [ShortExpression].
+  /// @param constant the constant [Number] to divide.
+  /// @return a new [ShortExpression] holding the quotient of the [value][#get()] from the given
+  ///         [ShortExpression] divided by the given `constant`.
+  /// @see #expDiv(ObservableShortValue)
   public static ShortExpression divide(NumberExpression<?> expression, Number constant) {
 
     if (constant == null) {
@@ -242,23 +206,19 @@ public class ShortBinding extends NumberBinding<Short> implements ShortExpressio
     return divide(expression, constant.shortValue());
   }
 
-  /**
-   * @param expression the {@link ShortExpression}.
-   * @param constant the constant {@code short} to divide.
-   * @return a new {@link ShortExpression} holding the quotient of the {@link #get() value} from the given
-   *         {@link ShortExpression} divided by the given {@code constant}.
-   * @see #expDiv(ObservableShortValue)
-   */
+  /// @param expression the [ShortExpression].
+  /// @param constant the constant `short` to divide.
+  /// @return a new [ShortExpression] holding the quotient of the [value][#get()] from the given
+  ///         [ShortExpression] divided by the given `constant`.
+  /// @see #expDiv(ObservableShortValue)
   public static ShortExpression divide(NumberExpression<?> expression, short constant) {
 
     return new ShortBinding(() -> div(expression.get(), constant), expression);
   }
 
-  /**
-   * @param observables the {@link ObservableValue}s to divide.
-   * @return a new {@link ShortExpression} holding the quotient of the {@link #get() value}s from the given
-   *         {@link ObservableValue}s.
-   */
+  /// @param observables the [ObservableValue]s to divide.
+  /// @return a new [ShortExpression] holding the quotient of the [value][#get()]s from the given
+  ///         [ObservableValue]s.
   @SafeVarargs
   public static ShortExpression divideAll(ObservableValue<? extends Number>... observables) {
 

@@ -8,28 +8,22 @@ import java.util.regex.Pattern;
 import io.github.mmm.value.observable.ObservableValue;
 import io.github.mmm.value.observable.object.ObservableSimpleValue;
 
-/**
- * {@link ObservableValue} with {@link Pattern} {@link #getValue() value}.
- *
- * @since 1.0.0
- */
+/// [ObservableValue] with [Pattern] [value][#getValue()].
+///
+/// @since 1.0.0
 public interface ObservablePatternValue extends ObservableSimpleValue<Pattern>, ReadablePatternValue {
 
-  /**
-   * @param input the string to match.
-   * @return the {@link Matcher}.
-   * @see Pattern#matcher(CharSequence)
-   */
+  /// @param input the string to match.
+  /// @return the [Matcher].
+  /// @see Pattern#matcher(CharSequence)
   default Matcher matcher(CharSequence input) {
 
     return getSafe().matcher(input);
   }
 
-  /**
-   * @param input the string to match.
-   * @return {@code true} if the given {@code input} matches the {@link #get() regex pattern}, {@code false} otherwise.
-   * @see Pattern#matches(String, CharSequence)
-   */
+  /// @param input the string to match.
+  /// @return `true` if the given `input` matches the [regex pattern][#get()], `false` otherwise.
+  /// @see Pattern#matches(String, CharSequence)
   default boolean matches(CharSequence input) {
 
     return matcher(input).matches();

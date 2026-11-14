@@ -2,27 +2,22 @@ package io.github.mmm.value.converter;
 
 import io.github.mmm.base.lang.Builder;
 
-/**
- * Implementation of {@link TypeMapper} for a composite type mapping. It will decompose the {@link #getSourceType()
- * source type} into multiple segments and has to have at least one {@link #next()} {@link TypeMapper}.
- *
- * @param <S> the {@link #getSourceType() source type}.
- * @param <T> the {@link #getTargetType() target type}.
- * @since 1.0.0
- */
+/// Implementation of [TypeMapper] for a composite type mapping. It will decompose the [source type][#getSourceType()] into multiple segments and has to have at least one [#next()] [TypeMapper].
+///
+/// @param <S> the [source type][#getSourceType()].
+/// @param <T> the [target type][#getTargetType()].
+/// @since 1.0.0
 public abstract class CompositeTypeMapper<S, T> extends AbstractTypeMapper<S, T> {
 
-  /** @see #getSuffix() */
+  /// @see #getSuffix()
   protected final String suffix;
 
   private final CompositeTypeMapper<S, ?> next;
 
-  /**
-   * The constructor.
-   *
-   * @param suffix the {@link #getSuffix() suffix}.
-   * @param next the {@link #next()} mapper. May be {@code null} for last (but not for first) segment.
-   */
+  /// The constructor.
+  ///
+  /// @param suffix the [suffix][#getSuffix()].
+  /// @param next the [#next()] mapper. May be `null` for last (but not for first) segment.
   public CompositeTypeMapper(String suffix, CompositeTypeMapper<S, ?> next) {
 
     if ((suffix == null) || suffix.isEmpty()) {

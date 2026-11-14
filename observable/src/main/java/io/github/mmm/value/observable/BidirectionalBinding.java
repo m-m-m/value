@@ -5,11 +5,9 @@ package io.github.mmm.value.observable;
 import java.lang.ref.WeakReference;
 import java.util.Objects;
 
-/**
- * {@link ObservableEventListener} for a bidirectional binding.
- *
- * @param <V> type of observed {@link ObservableValue#get() value}.
- */
+/// [ObservableEventListener] for a bidirectional binding.
+///
+/// @param <V> type of observed [value][ObservableValue#get()].
 public class BidirectionalBinding<V> implements ObservableEventListener<V> {
 
   private final WeakReference<WritableObservableValue<V>> propertyRef1;
@@ -100,9 +98,7 @@ public class BidirectionalBinding<V> implements ObservableEventListener<V> {
     return this.hashCode;
   }
 
-  /**
-   * @see WritableObservableValue#unbindTwoWay(WritableObservableValue)
-   */
+  /// @see WritableObservableValue#unbindTwoWay(WritableObservableValue)
   public void unbind() {
 
     WritableObservableValue<V> property1 = this.propertyRef1.get();
@@ -124,14 +120,12 @@ public class BidirectionalBinding<V> implements ObservableEventListener<V> {
     }
   }
 
-  /**
-   * @param <V> type of observed {@link ObservableValue#get() value}.
-   * @param property1 the first {@link WritableObservableValue} to bind.
-   * @param property2 the second {@link WritableObservableValue} to bind.
-   *
-   * @return the {@link BidirectionalBinding}.
-   * @see WritableObservableValue#bindTwoWay(WritableObservableValue)
-   */
+  /// @param <V> type of observed [value][ObservableValue#get()].
+  /// @param property1 the first [WritableObservableValue] to bind.
+  /// @param property2 the second [WritableObservableValue] to bind.
+  ///
+  /// @return the [BidirectionalBinding].
+  /// @see WritableObservableValue#bindTwoWay(WritableObservableValue)
   public static <V> BidirectionalBinding<V> bind(WritableObservableValue<V> property1,
       WritableObservableValue<V> property2) {
 
@@ -143,12 +137,10 @@ public class BidirectionalBinding<V> implements ObservableEventListener<V> {
     return binding;
   }
 
-  /**
-   * @param <V> type of observed {@link ObservableValue#get() value}.
-   * @param property1 the first {@link WritableObservableValue} to unbind.
-   * @param property2 the second {@link WritableObservableValue} to unbind.
-   * @see WritableObservableValue#unbindTwoWay(WritableObservableValue)
-   */
+  /// @param <V> type of observed [value][ObservableValue#get()].
+  /// @param property1 the first [WritableObservableValue] to unbind.
+  /// @param property2 the second [WritableObservableValue] to unbind.
+  /// @see WritableObservableValue#unbindTwoWay(WritableObservableValue)
   public static <V> void unbind(WritableObservableValue<V> property1, WritableObservableValue<V> property2) {
 
     checkProperties(property1, property2);

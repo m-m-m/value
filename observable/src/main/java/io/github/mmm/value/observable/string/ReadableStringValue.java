@@ -4,11 +4,9 @@ package io.github.mmm.value.observable.string;
 
 import io.github.mmm.value.observable.object.ReadableSimpleObjectValue;
 
-/**
- * {@link ReadableSimpleObjectValue} with {@link String} {@link #get() value}.
- *
- * @since 1.0.0
- */
+/// [ReadableSimpleObjectValue] with [String] [value][#get()].
+///
+/// @since 1.0.0
 public interface ReadableStringValue extends ReadableSimpleObjectValue<String> {
 
   @Override

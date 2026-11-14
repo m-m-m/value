@@ -7,41 +7,33 @@ import io.github.mmm.value.observable.ObservableValue;
 import io.github.mmm.value.observable.number.NumberBinding;
 import io.github.mmm.value.observable.number.NumberExpression;
 
-/**
- * {@link io.github.mmm.value.observable.Binding} with {@link Byte} {@link #get() value}.
- *
- * @since 1.0.0
- */
+/// [io.github.mmm.value.observable.Binding] with [Byte] [value][#get()].
+///
+/// @since 1.0.0
 public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
 
   private static final Byte ZERO = Byte.valueOf((byte) 0);
 
-  /**
-   * The constructor.
-   *
-   * @param expression the {@link Supplier} to compute the {@link #get() value}.
-   * @param dependencies the {@link ObservableValue}s the {@code expression} depends on.
-   */
+  /// The constructor.
+  ///
+  /// @param expression the [Supplier] to compute the [value][#get()].
+  /// @param dependencies the [ObservableValue]s the `expression` depends on.
   public ByteBinding(Supplier<Byte> expression, ObservableValue<?>... dependencies) {
 
     super(expression, dependencies);
   }
 
-  /**
-   * @param expression the {@link ByteExpression} to negate.
-   * @return a new {@link ByteExpression} holding the negation of the {@link #get() value} from the given
-   *         {@link ByteExpression}.
-   * @see #expNegate()
-   */
+  /// @param expression the [ByteExpression] to negate.
+  /// @return a new [ByteExpression] holding the negation of the [value][#get()] from the given
+  ///         [ByteExpression].
+  /// @see #expNegate()
   public static ByteExpression negate(ByteExpression expression) {
 
     return new ByteBinding(() -> negate(expression.get()), expression);
   }
 
-  /**
-   * @param expression the {@link NumberExpression} to convert.
-   * @return the given {@link NumberExpression} converted to a {@link ByteExpression}.
-   */
+  /// @param expression the [NumberExpression] to convert.
+  /// @return the given [NumberExpression] converted to a [ByteExpression].
   public static ByteExpression cast(NumberExpression<?> expression) {
 
     if (expression == null) {
@@ -53,13 +45,11 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
     }
   }
 
-  /**
-   * @param expression the {@link ByteExpression} to add.
-   * @param other the {@link ObservableValue} to add.
-   * @return a new {@link ByteExpression} holding the sum of the {@link #get() value}s of the first and the second given
-   *         {@link ObservableValue}s.
-   * @see #expAdd(ObservableByteValue)
-   */
+  /// @param expression the [ByteExpression] to add.
+  /// @param other the [ObservableValue] to add.
+  /// @return a new [ByteExpression] holding the sum of the [value][#get()]s of the first and the second given
+  ///         [ObservableValue]s.
+  /// @see #expAdd(ObservableByteValue)
   public static ByteExpression add(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
     if (other == null) {
@@ -68,13 +58,11 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
     return new ByteBinding(() -> plus(expression, other), expression, other);
   }
 
-  /**
-   * @param expression the {@link ByteExpression} to add.
-   * @param constant the constant {@link Number} to add.
-   * @return a new {@link ByteExpression} holding the sum of the {@link #get() value} from the given
-   *         {@link ByteExpression} with the given {@code constant}.
-   * @see #expAdd(ObservableByteValue)
-   */
+  /// @param expression the [ByteExpression] to add.
+  /// @param constant the constant [Number] to add.
+  /// @return a new [ByteExpression] holding the sum of the [value][#get()] from the given
+  ///         [ByteExpression] with the given `constant`.
+  /// @see #expAdd(ObservableByteValue)
   public static ByteExpression add(NumberExpression<?> expression, Number constant) {
 
     if (constant == null) {
@@ -83,36 +71,30 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
     return add(expression, constant.byteValue());
   }
 
-  /**
-   * @param expression the {@link ByteExpression} to add.
-   * @param constant the constant {@code byte} to add.
-   * @return a new {@link ByteExpression} holding the sum of the {@link #get() value} from the given
-   *         {@link ByteExpression} with the given {@code constant}.
-   * @see #expAdd(ObservableByteValue)
-   */
+  /// @param expression the [ByteExpression] to add.
+  /// @param constant the constant `byte` to add.
+  /// @return a new [ByteExpression] holding the sum of the [value][#get()] from the given
+  ///         [ByteExpression] with the given `constant`.
+  /// @see #expAdd(ObservableByteValue)
   public static ByteExpression add(NumberExpression<?> expression, byte constant) {
 
     return new ByteBinding(() -> plus(expression.get(), constant), expression);
   }
 
-  /**
-   * @param observables the {@link ObservableValue}s to add.
-   * @return a new {@link ByteExpression} holding the sum of the {@link #get() value}s from the given
-   *         {@link ObservableValue}s.
-   */
+  /// @param observables the [ObservableValue]s to add.
+  /// @return a new [ByteExpression] holding the sum of the [value][#get()]s from the given
+  ///         [ObservableValue]s.
   @SafeVarargs
   public static ByteExpression addAll(ObservableValue<? extends Number>... observables) {
 
     return new ByteBinding(() -> plusAll(observables), observables);
   }
 
-  /**
-   * @param expression the {@link ByteExpression}.
-   * @param other the {@link ObservableValue} to subtract.
-   * @return a new {@link ByteExpression} holding the difference of the {@link #get() value}s of the first and the
-   *         second given {@link ObservableValue}s.
-   * @see #expSub(ObservableByteValue)
-   */
+  /// @param expression the [ByteExpression].
+  /// @param other the [ObservableValue] to subtract.
+  /// @return a new [ByteExpression] holding the difference of the [value][#get()]s of the first and the
+  ///         second given [ObservableValue]s.
+  /// @see #expSub(ObservableByteValue)
   public static ByteExpression subtract(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
     if (other == null) {
@@ -121,13 +103,11 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
     return new ByteBinding(() -> minus(expression, other), expression, other);
   }
 
-  /**
-   * @param expression the {@link ByteExpression}.
-   * @param constant the constant {@link Number} to subtract.
-   * @return a new {@link ByteExpression} holding the difference of the {@link #get() value} from the given
-   *         {@link ByteExpression} with the given {@code constant}.
-   * @see #expSub(ObservableByteValue)
-   */
+  /// @param expression the [ByteExpression].
+  /// @param constant the constant [Number] to subtract.
+  /// @return a new [ByteExpression] holding the difference of the [value][#get()] from the given
+  ///         [ByteExpression] with the given `constant`.
+  /// @see #expSub(ObservableByteValue)
   public static ByteExpression subtract(NumberExpression<?> expression, Number constant) {
 
     if (constant == null) {
@@ -136,36 +116,30 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
     return subtract(expression, constant.byteValue());
   }
 
-  /**
-   * @param expression the {@link ByteExpression}.
-   * @param constant the constant {@code byte} to subtract.
-   * @return a new {@link ByteExpression} holding the difference of the {@link #get() value} from the given
-   *         {@link ByteExpression} with the given {@code constant}.
-   * @see #expSub(ObservableByteValue)
-   */
+  /// @param expression the [ByteExpression].
+  /// @param constant the constant `byte` to subtract.
+  /// @return a new [ByteExpression] holding the difference of the [value][#get()] from the given
+  ///         [ByteExpression] with the given `constant`.
+  /// @see #expSub(ObservableByteValue)
   public static ByteExpression subtract(NumberExpression<?> expression, byte constant) {
 
     return new ByteBinding(() -> minus(expression.get(), constant), expression);
   }
 
-  /**
-   * @param observables the {@link ObservableValue}s to subtract.
-   * @return a new {@link ByteExpression} holding the difference of the {@link #get() value}s from the given
-   *         {@link ObservableValue}s.
-   */
+  /// @param observables the [ObservableValue]s to subtract.
+  /// @return a new [ByteExpression] holding the difference of the [value][#get()]s from the given
+  ///         [ObservableValue]s.
   @SafeVarargs
   public static ByteExpression subtractAll(ObservableValue<? extends Number>... observables) {
 
     return new ByteBinding(() -> minusAll(observables), observables);
   }
 
-  /**
-   * @param expression the {@link ByteExpression}.
-   * @param other the {@link ObservableValue} to multiply.
-   * @return a new {@link ByteExpression} holding the product of the {@link #get() value}s of the first and the second
-   *         given {@link ObservableValue}s.
-   * @see #expMul(ObservableByteValue)
-   */
+  /// @param expression the [ByteExpression].
+  /// @param other the [ObservableValue] to multiply.
+  /// @return a new [ByteExpression] holding the product of the [value][#get()]s of the first and the second
+  ///         given [ObservableValue]s.
+  /// @see #expMul(ObservableByteValue)
   public static ByteExpression multiply(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
     if (other == null) {
@@ -174,13 +148,11 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
     return new ByteBinding(() -> mul(expression, other), expression, other);
   }
 
-  /**
-   * @param expression the {@link ByteExpression}.
-   * @param constant the constant {@link Number} to multiply.
-   * @return a new {@link ByteExpression} holding the product of the {@link #get() value} from the given
-   *         {@link ByteExpression} multiplied with the given {@code constant}.
-   * @see #expMul(ObservableByteValue)
-   */
+  /// @param expression the [ByteExpression].
+  /// @param constant the constant [Number] to multiply.
+  /// @return a new [ByteExpression] holding the product of the [value][#get()] from the given
+  ///         [ByteExpression] multiplied with the given `constant`.
+  /// @see #expMul(ObservableByteValue)
   public static ByteExpression multiply(NumberExpression<?> expression, Number constant) {
 
     if (constant == null) {
@@ -189,36 +161,30 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
     return multiply(expression, constant.byteValue());
   }
 
-  /**
-   * @param expression the {@link ByteExpression}.
-   * @param constant the constant {@code byte} to multiply.
-   * @return a new {@link ByteExpression} holding the product of the {@link #get() value} from the given
-   *         {@link ByteExpression} multiplied with the given {@code constant}.
-   * @see #expMul(ObservableByteValue)
-   */
+  /// @param expression the [ByteExpression].
+  /// @param constant the constant `byte` to multiply.
+  /// @return a new [ByteExpression] holding the product of the [value][#get()] from the given
+  ///         [ByteExpression] multiplied with the given `constant`.
+  /// @see #expMul(ObservableByteValue)
   public static ByteExpression multiply(NumberExpression<?> expression, byte constant) {
 
     return new ByteBinding(() -> mul(expression.get(), constant), expression);
   }
 
-  /**
-   * @param observables the {@link ObservableValue}s to multiply.
-   * @return a new {@link ByteExpression} holding the product of the {@link #get() value}s from the given
-   *         {@link ObservableValue}s.
-   */
+  /// @param observables the [ObservableValue]s to multiply.
+  /// @return a new [ByteExpression] holding the product of the [value][#get()]s from the given
+  ///         [ObservableValue]s.
   @SafeVarargs
   public static ByteExpression multiplyAll(ObservableValue<? extends Number>... observables) {
 
     return new ByteBinding(() -> mulAll(observables), observables);
   }
 
-  /**
-   * @param expression the {@link ByteExpression}.
-   * @param other the {@link ObservableValue} to divide.
-   * @return a new {@link ByteExpression} holding the quotient of the {@link #get() value}s of the first and the second
-   *         given {@link ObservableValue}s.
-   * @see #expDiv(ObservableByteValue)
-   */
+  /// @param expression the [ByteExpression].
+  /// @param other the [ObservableValue] to divide.
+  /// @return a new [ByteExpression] holding the quotient of the [value][#get()]s of the first and the second
+  ///         given [ObservableValue]s.
+  /// @see #expDiv(ObservableByteValue)
   public static ByteExpression divide(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
     if (other == null) {
@@ -227,13 +193,11 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
     return new ByteBinding(() -> div(expression, other), expression, other);
   }
 
-  /**
-   * @param expression the {@link ByteExpression}.
-   * @param constant the constant {@link Number} to divide.
-   * @return a new {@link ByteExpression} holding the quotient of the {@link #get() value} from the given
-   *         {@link ByteExpression} divided by the given {@code constant}.
-   * @see #expDiv(ObservableByteValue)
-   */
+  /// @param expression the [ByteExpression].
+  /// @param constant the constant [Number] to divide.
+  /// @return a new [ByteExpression] holding the quotient of the [value][#get()] from the given
+  ///         [ByteExpression] divided by the given `constant`.
+  /// @see #expDiv(ObservableByteValue)
   public static ByteExpression divide(NumberExpression<?> expression, Number constant) {
 
     if (constant == null) {
@@ -242,23 +206,19 @@ public class ByteBinding extends NumberBinding<Byte> implements ByteExpression {
     return divide(expression, constant.byteValue());
   }
 
-  /**
-   * @param expression the {@link ByteExpression}.
-   * @param constant the constant {@code byte} to divide.
-   * @return a new {@link ByteExpression} holding the quotient of the {@link #get() value} from the given
-   *         {@link ByteExpression} divided by the given {@code constant}.
-   * @see #expDiv(ObservableByteValue)
-   */
+  /// @param expression the [ByteExpression].
+  /// @param constant the constant `byte` to divide.
+  /// @return a new [ByteExpression] holding the quotient of the [value][#get()] from the given
+  ///         [ByteExpression] divided by the given `constant`.
+  /// @see #expDiv(ObservableByteValue)
   public static ByteExpression divide(NumberExpression<?> expression, byte constant) {
 
     return new ByteBinding(() -> div(expression.get(), constant), expression);
   }
 
-  /**
-   * @param observables the {@link ObservableValue}s to divide.
-   * @return a new {@link ByteExpression} holding the quotient of the {@link #get() value}s from the given
-   *         {@link ObservableValue}s.
-   */
+  /// @param observables the [ObservableValue]s to divide.
+  /// @return a new [ByteExpression] holding the quotient of the [value][#get()]s from the given
+  ///         [ObservableValue]s.
   @SafeVarargs
   public static ByteExpression divideAll(ObservableValue<? extends Number>... observables) {
 

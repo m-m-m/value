@@ -5,30 +5,26 @@ package io.github.mmm.value.observable.container.impl;
 import io.github.mmm.event.ChangeType;
 import io.github.mmm.value.observable.container.ContainerChange;
 
-/**
- * Abstract base implementation of {@link ContainerChange}.
- *
- * @param <C> type of the {@link #getContainer() container}.
- * @param <E> type of {@link #getElement(int) elements}.
- * @since 1.0.0
- */
+/// Abstract base implementation of [ContainerChange].
+///
+/// @param <C> type of the [container][#getContainer()].
+/// @param <E> type of [elements][#getElement(int)].
+/// @since 1.0.0
 public abstract class AbstractContainerChange<C, E> implements ContainerChange<C, E> {
 
-  /** @see #getType() */
+  /// @see #getType()
   protected final ChangeType type;
 
-  /** @see #getElement(int) */
+  /// @see #getElement(int)
   protected final Object[] elements;
 
-  /** @see #getCount() */
+  /// @see #getCount()
   protected final int count;
 
-  /**
-   * The constructor.
-   *
-   * @param type the {@link ChangeType}.
-   * @param count the {@link #getCount() number of changed elements}.
-   */
+  /// The constructor.
+  ///
+  /// @param type the [ChangeType].
+  /// @param count the [number of changed elements][#getCount()].
   public AbstractContainerChange(ChangeType type, int count) {
 
     super();
@@ -37,12 +33,10 @@ public abstract class AbstractContainerChange<C, E> implements ContainerChange<C
     this.count = this.elements.length;
   }
 
-  /**
-   * The constructor.
-   *
-   * @param type the {@link ChangeType}.
-   * @param elements the {@link #getElement(int) changed elements}.
-   */
+  /// The constructor.
+  ///
+  /// @param type the [ChangeType].
+  /// @param elements the [changed elements][#getElement(int)].
   public AbstractContainerChange(ChangeType type, Object[] elements) {
 
     super();

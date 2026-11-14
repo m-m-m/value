@@ -7,41 +7,33 @@ import io.github.mmm.value.observable.ObservableValue;
 import io.github.mmm.value.observable.number.NumberBinding;
 import io.github.mmm.value.observable.number.NumberExpression;
 
-/**
- * {@link NumberBinding} with {@link Long} {@link #get() value}.
- *
- * @since 1.0.0
- */
+/// [NumberBinding] with [Long] [value][#get()].
+///
+/// @since 1.0.0
 public class LongBinding extends NumberBinding<Long> implements LongExpression {
 
   private static final Long ZERO = Long.valueOf(0);
 
-  /**
-   * The constructor.
-   *
-   * @param expression the {@link Supplier} to compute the {@link #get() value}.
-   * @param dependencies the {@link ObservableValue}s the {@code expression} depends on.
-   */
+  /// The constructor.
+  ///
+  /// @param expression the [Supplier] to compute the [value][#get()].
+  /// @param dependencies the [ObservableValue]s the `expression` depends on.
   public LongBinding(Supplier<Long> expression, ObservableValue<?>... dependencies) {
 
     super(expression, dependencies);
   }
 
-  /**
-   * @param expression the {@link LongExpression} to negate.
-   * @return a new {@link LongExpression} holding the negation of the {@link #get() value} from the given
-   *         {@link LongExpression}.
-   * @see #expNegate()
-   */
+  /// @param expression the [LongExpression] to negate.
+  /// @return a new [LongExpression] holding the negation of the [value][#get()] from the given
+  ///         [LongExpression].
+  /// @see #expNegate()
   public static LongExpression negate(LongExpression expression) {
 
     return new LongBinding(() -> negate(expression.get()), expression);
   }
 
-  /**
-   * @param expression the {@link NumberExpression} to convert.
-   * @return the given {@link NumberExpression} converted to a {@link LongExpression}.
-   */
+  /// @param expression the [NumberExpression] to convert.
+  /// @return the given [NumberExpression] converted to a [LongExpression].
   public static LongExpression cast(NumberExpression<?> expression) {
 
     if (expression == null) {
@@ -53,13 +45,11 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
     }
   }
 
-  /**
-   * @param expression the {@link LongExpression} to add.
-   * @param other the {@link ObservableValue} to add.
-   * @return a new {@link LongExpression} holding the sum of the {@link #get() value}s of the first and the second given
-   *         {@link ObservableValue}s.
-   * @see #expAdd(ObservableLongValue)
-   */
+  /// @param expression the [LongExpression] to add.
+  /// @param other the [ObservableValue] to add.
+  /// @return a new [LongExpression] holding the sum of the [value][#get()]s of the first and the second given
+  ///         [ObservableValue]s.
+  /// @see #expAdd(ObservableLongValue)
   public static LongExpression add(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
     if (other == null) {
@@ -68,13 +58,11 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
     return new LongBinding(() -> plus(expression, other), expression, other);
   }
 
-  /**
-   * @param expression the {@link LongExpression} to add.
-   * @param constant the constant {@link Number} to add.
-   * @return a new {@link LongExpression} holding the sum of the {@link #get() value} from the given
-   *         {@link LongExpression} with the given {@code constant}.
-   * @see #expAdd(ObservableLongValue)
-   */
+  /// @param expression the [LongExpression] to add.
+  /// @param constant the constant [Number] to add.
+  /// @return a new [LongExpression] holding the sum of the [value][#get()] from the given
+  ///         [LongExpression] with the given `constant`.
+  /// @see #expAdd(ObservableLongValue)
   public static LongExpression add(NumberExpression<?> expression, Number constant) {
 
     if (constant == null) {
@@ -83,36 +71,30 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
     return add(expression, constant.longValue());
   }
 
-  /**
-   * @param expression the {@link LongExpression} to add.
-   * @param constant the constant {@code long} to add.
-   * @return a new {@link LongExpression} holding the sum of the {@link #get() value} from the given
-   *         {@link LongExpression} with the given {@code constant}.
-   * @see #expAdd(ObservableLongValue)
-   */
+  /// @param expression the [LongExpression] to add.
+  /// @param constant the constant `long` to add.
+  /// @return a new [LongExpression] holding the sum of the [value][#get()] from the given
+  ///         [LongExpression] with the given `constant`.
+  /// @see #expAdd(ObservableLongValue)
   public static LongExpression add(NumberExpression<?> expression, long constant) {
 
     return new LongBinding(() -> plus(expression.get(), constant), expression);
   }
 
-  /**
-   * @param observables the {@link ObservableValue}s to add.
-   * @return a new {@link LongExpression} holding the sum of the {@link #get() value}s from the given
-   *         {@link ObservableValue}s.
-   */
+  /// @param observables the [ObservableValue]s to add.
+  /// @return a new [LongExpression] holding the sum of the [value][#get()]s from the given
+  ///         [ObservableValue]s.
   @SafeVarargs
   public static LongExpression addAll(ObservableValue<? extends Number>... observables) {
 
     return new LongBinding(() -> plusAll(observables), observables);
   }
 
-  /**
-   * @param expression the {@link LongExpression}.
-   * @param other the {@link ObservableValue} to subtract.
-   * @return a new {@link LongExpression} holding the difference of the {@link #get() value}s of the first and the
-   *         second given {@link ObservableValue}s.
-   * @see #expSub(ObservableLongValue)
-   */
+  /// @param expression the [LongExpression].
+  /// @param other the [ObservableValue] to subtract.
+  /// @return a new [LongExpression] holding the difference of the [value][#get()]s of the first and the
+  ///         second given [ObservableValue]s.
+  /// @see #expSub(ObservableLongValue)
   public static LongExpression subtract(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
     if (other == null) {
@@ -121,13 +103,11 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
     return new LongBinding(() -> minus(expression, other), expression, other);
   }
 
-  /**
-   * @param expression the {@link LongExpression}.
-   * @param constant the constant {@link Number} to subtract.
-   * @return a new {@link LongExpression} holding the difference of the {@link #get() value} from the given
-   *         {@link LongExpression} with the given {@code constant}.
-   * @see #expSub(ObservableLongValue)
-   */
+  /// @param expression the [LongExpression].
+  /// @param constant the constant [Number] to subtract.
+  /// @return a new [LongExpression] holding the difference of the [value][#get()] from the given
+  ///         [LongExpression] with the given `constant`.
+  /// @see #expSub(ObservableLongValue)
   public static LongExpression subtract(NumberExpression<?> expression, Number constant) {
 
     if (constant == null) {
@@ -136,36 +116,30 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
     return subtract(expression, constant.longValue());
   }
 
-  /**
-   * @param expression the {@link LongExpression}.
-   * @param constant the constant {@code long} to subtract.
-   * @return a new {@link LongExpression} holding the difference of the {@link #get() value} from the given
-   *         {@link LongExpression} with the given {@code constant}.
-   * @see #expSub(ObservableLongValue)
-   */
+  /// @param expression the [LongExpression].
+  /// @param constant the constant `long` to subtract.
+  /// @return a new [LongExpression] holding the difference of the [value][#get()] from the given
+  ///         [LongExpression] with the given `constant`.
+  /// @see #expSub(ObservableLongValue)
   public static LongExpression subtract(NumberExpression<?> expression, long constant) {
 
     return new LongBinding(() -> minus(expression.get(), constant), expression);
   }
 
-  /**
-   * @param observables the {@link ObservableValue}s to subtract.
-   * @return a new {@link LongExpression} holding the difference of the {@link #get() value}s from the given
-   *         {@link ObservableValue}s.
-   */
+  /// @param observables the [ObservableValue]s to subtract.
+  /// @return a new [LongExpression] holding the difference of the [value][#get()]s from the given
+  ///         [ObservableValue]s.
   @SafeVarargs
   public static LongExpression subtractAll(ObservableValue<? extends Number>... observables) {
 
     return new LongBinding(() -> minusAll(observables), observables);
   }
 
-  /**
-   * @param expression the {@link LongExpression}.
-   * @param other the {@link ObservableValue} to multiply.
-   * @return a new {@link LongExpression} holding the product of the {@link #get() value}s of the first and the second
-   *         given {@link ObservableValue}s.
-   * @see #expMul(ObservableLongValue)
-   */
+  /// @param expression the [LongExpression].
+  /// @param other the [ObservableValue] to multiply.
+  /// @return a new [LongExpression] holding the product of the [value][#get()]s of the first and the second
+  ///         given [ObservableValue]s.
+  /// @see #expMul(ObservableLongValue)
   public static LongExpression multiply(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
     if (other == null) {
@@ -174,13 +148,11 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
     return new LongBinding(() -> mul(expression, other), expression, other);
   }
 
-  /**
-   * @param expression the {@link LongExpression}.
-   * @param constant the constant {@link Number} to multiply.
-   * @return a new {@link LongExpression} holding the product of the {@link #get() value} from the given
-   *         {@link LongExpression} multiplied with the given {@code constant}.
-   * @see #expMul(ObservableLongValue)
-   */
+  /// @param expression the [LongExpression].
+  /// @param constant the constant [Number] to multiply.
+  /// @return a new [LongExpression] holding the product of the [value][#get()] from the given
+  ///         [LongExpression] multiplied with the given `constant`.
+  /// @see #expMul(ObservableLongValue)
   public static LongExpression multiply(NumberExpression<?> expression, Number constant) {
 
     if (constant == null) {
@@ -189,36 +161,30 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
     return multiply(expression, constant.longValue());
   }
 
-  /**
-   * @param expression the {@link LongExpression}.
-   * @param constant the constant {@code long} to multiply.
-   * @return a new {@link LongExpression} holding the product of the {@link #get() value} from the given
-   *         {@link LongExpression} multiplied with the given {@code constant}.
-   * @see #expMul(ObservableLongValue)
-   */
+  /// @param expression the [LongExpression].
+  /// @param constant the constant `long` to multiply.
+  /// @return a new [LongExpression] holding the product of the [value][#get()] from the given
+  ///         [LongExpression] multiplied with the given `constant`.
+  /// @see #expMul(ObservableLongValue)
   public static LongExpression multiply(NumberExpression<?> expression, long constant) {
 
     return new LongBinding(() -> mul(expression.get(), constant), expression);
   }
 
-  /**
-   * @param observables the {@link ObservableValue}s to multiply.
-   * @return a new {@link LongExpression} holding the product of the {@link #get() value}s from the given
-   *         {@link ObservableValue}s.
-   */
+  /// @param observables the [ObservableValue]s to multiply.
+  /// @return a new [LongExpression] holding the product of the [value][#get()]s from the given
+  ///         [ObservableValue]s.
   @SafeVarargs
   public static LongExpression multiplyAll(ObservableValue<? extends Number>... observables) {
 
     return new LongBinding(() -> mulAll(observables), observables);
   }
 
-  /**
-   * @param expression the {@link LongExpression}.
-   * @param other the {@link ObservableValue} to divide.
-   * @return a new {@link LongExpression} holding the quotient of the {@link #get() value}s of the first and the second
-   *         given {@link ObservableValue}s.
-   * @see #expDiv(ObservableLongValue)
-   */
+  /// @param expression the [LongExpression].
+  /// @param other the [ObservableValue] to divide.
+  /// @return a new [LongExpression] holding the quotient of the [value][#get()]s of the first and the second
+  ///         given [ObservableValue]s.
+  /// @see #expDiv(ObservableLongValue)
   public static LongExpression divide(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
     if (other == null) {
@@ -227,13 +193,11 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
     return new LongBinding(() -> div(expression, other), expression, other);
   }
 
-  /**
-   * @param expression the {@link LongExpression}.
-   * @param constant the constant {@link Number} to divide.
-   * @return a new {@link LongExpression} holding the quotient of the {@link #get() value} from the given
-   *         {@link LongExpression} divided by the given {@code constant}.
-   * @see #expDiv(ObservableLongValue)
-   */
+  /// @param expression the [LongExpression].
+  /// @param constant the constant [Number] to divide.
+  /// @return a new [LongExpression] holding the quotient of the [value][#get()] from the given
+  ///         [LongExpression] divided by the given `constant`.
+  /// @see #expDiv(ObservableLongValue)
   public static LongExpression divide(NumberExpression<?> expression, Number constant) {
 
     if (constant == null) {
@@ -242,23 +206,19 @@ public class LongBinding extends NumberBinding<Long> implements LongExpression {
     return divide(expression, constant.longValue());
   }
 
-  /**
-   * @param expression the {@link LongExpression}.
-   * @param constant the constant {@code long} to divide.
-   * @return a new {@link LongExpression} holding the quotient of the {@link #get() value} from the given
-   *         {@link LongExpression} divided by the given {@code constant}.
-   * @see #expDiv(ObservableLongValue)
-   */
+  /// @param expression the [LongExpression].
+  /// @param constant the constant `long` to divide.
+  /// @return a new [LongExpression] holding the quotient of the [value][#get()] from the given
+  ///         [LongExpression] divided by the given `constant`.
+  /// @see #expDiv(ObservableLongValue)
   public static LongExpression divide(NumberExpression<?> expression, long constant) {
 
     return new LongBinding(() -> div(expression.get(), constant), expression);
   }
 
-  /**
-   * @param observables the {@link ObservableValue}s to divide.
-   * @return a new {@link LongExpression} holding the quotient of the {@link #get() value}s from the given
-   *         {@link ObservableValue}s.
-   */
+  /// @param observables the [ObservableValue]s to divide.
+  /// @return a new [LongExpression] holding the quotient of the [value][#get()]s from the given
+  ///         [ObservableValue]s.
   @SafeVarargs
   public static LongExpression divideAll(ObservableValue<? extends Number>... observables) {
 

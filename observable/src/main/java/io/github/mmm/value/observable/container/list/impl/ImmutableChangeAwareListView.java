@@ -6,21 +6,17 @@ import java.util.Collection;
 import java.util.List;
 import java.util.function.Supplier;
 
-/**
- * Immutable implementation of {@link io.github.mmm.value.observable.container.list.ChangeAwareList}.
- *
- * @param <E> the type of the elements in the container.
- * @since 1.0.0
- */
+/// Immutable implementation of [io.github.mmm.value.observable.container.list.ChangeAwareList].
+///
+/// @param <E> the type of the elements in the container.
+/// @since 1.0.0
 public class ImmutableChangeAwareListView<E> extends ReadOnlyChangeAwareList<E> {
 
   private final Supplier<List<E>> listSupplier;
 
-  /**
-   * The constructor.
-   *
-   * @param listSupplied the {@link Supplier} of the internal (mutable) {@link List} to adopt.
-   */
+  /// The constructor.
+  ///
+  /// @param listSupplied the [Supplier] of the internal (mutable) [List] to adopt.
   public ImmutableChangeAwareListView(Supplier<List<E>> listSupplied) {
 
     super();

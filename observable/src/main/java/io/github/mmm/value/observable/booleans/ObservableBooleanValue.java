@@ -5,11 +5,9 @@ package io.github.mmm.value.observable.booleans;
 import io.github.mmm.value.observable.ObservableValue;
 import io.github.mmm.value.observable.object.ObservableSimpleValue;
 
-/**
- * {@link ObservableValue} with {@link Boolean} {@link #get() value}.
- *
- * @since 1.0.0
- */
+/// [ObservableValue] with [Boolean] [value][#get()].
+///
+/// @since 1.0.0
 public interface ObservableBooleanValue extends ObservableSimpleValue<Boolean>, ReadableBooleanValue {
 
 }

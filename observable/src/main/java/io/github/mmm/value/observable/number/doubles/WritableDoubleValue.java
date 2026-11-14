@@ -4,20 +4,16 @@ package io.github.mmm.value.observable.number.doubles;
 
 import io.github.mmm.value.observable.number.WritableNumberValue;
 
-/**
- * {@link WritableNumberValue} with {@link Double} {@link #get() value}.
- *
- * @since 1.0.0
- */
+/// [WritableNumberValue] with [Double] [value][#get()].
+///
+/// @since 1.0.0
 public interface WritableDoubleValue extends ReadableDoubleValue, WritableNumberValue<Double> {
 
   @Override
   void set(Double value);
 
-  /**
-   * @param value the new {@link #getValue() primitive value}.
-   * @see #set(Double)
-   */
+  /// @param value the new [primitive value][#getValue()].
+  /// @see #set(Double)
   default void setValue(double value) {
 
     set(Double.valueOf(value));

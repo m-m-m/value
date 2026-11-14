@@ -6,12 +6,10 @@ import io.github.mmm.value.observable.ObservableEvent;
 import io.github.mmm.value.observable.ObservableEventListener;
 import io.github.mmm.value.observable.ObservableValue;
 
-/**
- * Default implementation of {@link ObservableEvent}.
- *
- * @param <V> type of observed {@link ObservableValue#get() value}.
- * @since 1.0.0
- */
+/// Default implementation of [ObservableEvent].
+///
+/// @param <V> type of observed [value][ObservableValue#get()].
+/// @since 1.0.0
 public class ObservableEventImpl<V> implements ObservableEvent<V> {
 
   private final ObservableValue<V> observable;
@@ -28,11 +26,9 @@ public class ObservableEventImpl<V> implements ObservableEvent<V> {
 
   private boolean locked;
 
-  /**
-   * The constructor.
-   *
-   * @param observable the owning {@link ObservableValue}.
-   */
+  /// The constructor.
+  ///
+  /// @param observable the owning [ObservableValue].
   public ObservableEventImpl(ObservableValue<V> observable) {
 
     super();
@@ -76,46 +72,38 @@ public class ObservableEventImpl<V> implements ObservableEvent<V> {
     return (M) this.change;
   }
 
-  /**
-   * Needs to be called before this event is sent as a new event to the first {@link ObservableEventListener}.
-   *
-   * @param theOldValue the {@link #getOldValue() old value}.
-   * @return this event itself or a new instance if locked.
-   */
+  /// Needs to be called before this event is sent as a new event to the first [ObservableEventListener].
+  ///
+  /// @param theOldValue the [old value][#getOldValue()].
+  /// @return this event itself or a new instance if locked.
   public ObservableEventImpl<V> startWithOldValue(V theOldValue) {
 
     return start(theOldValue, true, null);
   }
 
-  /**
-   * Needs to be called before this event is sent as a new event to the first {@link ObservableEventListener}.
-   *
-   * @return this event itself or a new instance if locked.
-   */
+  /// Needs to be called before this event is sent as a new event to the first [ObservableEventListener].
+  ///
+  /// @return this event itself or a new instance if locked.
   public ObservableEventImpl<V> start() {
 
     return start(null, false, null);
   }
 
-  /**
-   * Needs to be called before this event is sent as a new event to the first {@link ObservableEventListener}.
-   *
-   * @param valueChange the {@link #getChange() change}.
-   * @return this event itself or a new instance if locked.
-   */
+  /// Needs to be called before this event is sent as a new event to the first [ObservableEventListener].
+  ///
+  /// @param valueChange the [change][#getChange()].
+  /// @return this event itself or a new instance if locked.
   public ObservableEventImpl<V> startWithChange(Object valueChange) {
 
     return start(null, false, valueChange);
   }
 
-  /**
-   * Needs to be called before this event is sent as a new event to the first {@link ObservableEventListener}.
-   *
-   * @param theOldValue the {@link #getOldValue() old value}.
-   * @param withOldValue - {@code true} if {@link #getOldValue() old value} is provided and known (even if it is
-   *        {@code null}), {@code false} otherwise.
-   * @param valueChange the {@link #getChange() change}.
-   */
+  /// Needs to be called before this event is sent as a new event to the first [ObservableEventListener].
+  ///
+  /// @param theOldValue the [old value][#getOldValue()].
+  /// @param withOldValue - `true` if [old value][#getOldValue()] is provided and known (even if it is
+  ///        `null`), `false` otherwise.
+  /// @param valueChange the [change][#getChange()].
   private ObservableEventImpl<V> start(V theOldValue, boolean withOldValue, Object valueChange) {
 
     ObservableEventImpl<V> event = this;
@@ -141,9 +129,7 @@ public class ObservableEventImpl<V> implements ObservableEvent<V> {
     return event;
   }
 
-  /**
-   * Ends the event.
-   */
+  /// Ends the event.
   public void end() {
 
     this.locked = true;

@@ -6,12 +6,10 @@ import java.util.List;
 
 import io.github.mmm.value.observable.container.collection.ObservableCollectionValue;
 
-/**
- * {@link io.github.mmm.value.observable.ObservableValue} with {@link List} {@link #get() value}.
- *
- * @param <E> type of the {@link List#contains(Object) elements}.
- * @since 1.0.0
- */
+/// [io.github.mmm.value.observable.ObservableValue] with [List] [value][#get()].
+///
+/// @param <E> type of the [elements][List#contains(Object)].
+/// @since 1.0.0
 public interface ObservableListValue<E> extends ObservableCollectionValue<List<E>, E>, ReadableListValue<E> {
 
 }

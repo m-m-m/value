@@ -5,12 +5,10 @@ import java.util.Locale;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-/**
- * Test of {@link ObservableLocaleValue} and {@link WritableLocaleValue}.
- */
+/// Test of [ObservableLocaleValue] and [WritableLocaleValue].
 class LocaleValueTest extends Assertions {
 
-  /** Test of basics */
+  /// Test of basics
   @Test
   void test() {
 

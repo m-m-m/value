@@ -15,11 +15,9 @@ import io.github.mmm.value.observable.number.integers.ObservableIntegerValue;
 import io.github.mmm.value.observable.number.longs.ObservableLongValue;
 import io.github.mmm.value.observable.number.shorts.ObservableShortValue;
 
-/**
- * {@link NumberExpression} for {@link BigInteger}.
- *
- * @since 1.0.0
- */
+/// [NumberExpression] for [BigInteger].
+///
+/// @since 1.0.0
 public interface BigIntegerExpression extends ObservableBigIntegerValue, NumberExpression<BigInteger> {
 
   @Override

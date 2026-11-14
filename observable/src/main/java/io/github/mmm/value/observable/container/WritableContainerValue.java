@@ -4,21 +4,17 @@ package io.github.mmm.value.observable.container;
 
 import io.github.mmm.value.observable.object.WritableObjectValue;
 
-/**
- * {@link WritableObjectValue} for container {@link #get() values} (e.g. {@link java.util.Collection} or
- * {@link java.util.Map}).
- *
- * @param <C> type of the container {@link #get() value}.
- * @param <E> type of the contained elements ({@link java.util.Collection#contains(Object) collection element} or
- *        {@link java.util.Map#containsValue(Object) map value}).
- * @since 1.0.0
- */
+/// [WritableObjectValue] for container [values][#get()] (e.g. [java.util.Collection] or
+/// [java.util.Map]).
+///
+/// @param <C> type of the container [value][#get()].
+/// @param <E> type of the contained elements ([collection element][java.util.Collection#contains(Object)] or
+///        [map value][java.util.Map#containsValue(Object)]).
+/// @since 1.0.0
 public interface WritableContainerValue<C, E> extends ReadableContainerValue<C, E>, WritableObjectValue<C> {
 
-  /**
-   * @return the current null-safe {@link #get() value}. Unlike {@link #getSafe()} this method will modify and
-   *         initialize the {@link #get() value} with an empty mutable container if it was {@code null}.
-   */
+  /// @return the current null-safe [value][#get()]. Unlike [#getSafe()] this method will modify and
+  ///         initialize the [value][#get()] with an empty mutable container if it was `null`.
   default C getOrCreate() {
 
     C value = get();
@@ -29,9 +25,7 @@ public interface WritableContainerValue<C, E> extends ReadableContainerValue<C, 
     return value;
   }
 
-  /**
-   * @return a new mutable container instance of {@link #getValueClass() value class}.
-   */
+  /// @return a new mutable container instance of [value class][#getValueClass()].
   C create();
 
 }

@@ -7,13 +7,11 @@ import java.util.Collection;
 import io.github.mmm.value.observable.ObservableValue;
 import io.github.mmm.value.observable.container.ObservableContainerValue;
 
-/**
- * {@link ObservableValue} with {@link Collection} {@link #get() value}.
- *
- * @param <C> type of the {@link Collection} {@link #get() value}.
- * @param <E> type of the {@link Collection#contains(Object) elements}.
- * @since 1.0.0
- */
+/// [ObservableValue] with [Collection] [value][#get()].
+///
+/// @param <C> type of the [Collection] [value][#get()].
+/// @param <E> type of the [elements][Collection#contains(Object)].
+/// @since 1.0.0
 public interface ObservableCollectionValue<C extends Collection<E>, E>
     extends ObservableContainerValue<C, E>, ReadableCollectionValue<C, E> {
 

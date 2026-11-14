@@ -10,40 +10,32 @@ import java.util.Set;
 
 import io.github.mmm.value.observable.container.map.MapChange;
 
-/**
- * Regular mutable implementation of {@link io.github.mmm.value.observable.container.map.ChangeAwareMap}.
- *
- * @param <K> type of the {@link Map#containsKey(Object) keys}.
- * @param <V> type of the {@link Map#containsValue(Object) values}.
- * @since 1.0.0
- */
+/// Regular mutable implementation of [io.github.mmm.value.observable.container.map.ChangeAwareMap].
+///
+/// @param <K> type of the [keys][Map#containsKey(Object)].
+/// @param <V> type of the [values][Map#containsValue(Object)].
+/// @since 1.0.0
 public class ChangeAwareMapImpl<K, V> extends AbstractChangeAwareMap<K, V> {
 
   private final Map<K, V> map;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public ChangeAwareMapImpl() {
 
     this(new HashMap<>());
   }
 
-  /**
-   * The constructor.
-   *
-   * @param capacity the initial capacity.
-   */
+  /// The constructor.
+  ///
+  /// @param capacity the initial capacity.
   public ChangeAwareMapImpl(int capacity) {
 
     this(new HashMap<>(capacity));
   }
 
-  /**
-   * The constructor.
-   *
-   * @param map the adapted {@link Map}.
-   */
+  /// The constructor.
+  ///
+  /// @param map the adapted [Map].
   public ChangeAwareMapImpl(Map<K, V> map) {
 
     super();

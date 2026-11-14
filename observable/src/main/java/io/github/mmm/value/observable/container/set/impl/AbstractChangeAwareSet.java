@@ -11,19 +11,15 @@ import io.github.mmm.value.observable.container.set.ChangeAwareSet;
 import io.github.mmm.value.observable.container.set.SetChange;
 import io.github.mmm.value.observable.container.set.SetChangeListener;
 
-/**
- * Abstract base implementation of {@link ChangeAwareSet}.
- *
- * @param <E> the type of the elements in the container.
- * @since 1.0.0
- */
+/// Abstract base implementation of [ChangeAwareSet].
+///
+/// @param <E> the type of the elements in the container.
+/// @since 1.0.0
 public abstract class AbstractChangeAwareSet<E> extends AbstractSet<E> implements ChangeAwareSet<E> {
 
   private EventSourceAdapter<SetChange<E>, EventListener<SetChange<E>>> eventAdapter;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public AbstractChangeAwareSet() {
 
     super();
@@ -51,19 +47,14 @@ public abstract class AbstractChangeAwareSet<E> extends AbstractSet<E> implement
     return true;
   }
 
-  /**
-   * @return {@code true} if at least one {@link SetChangeListener} is {@link #addListener(SetChangeListener, boolean)
-   *         registered}, {@code false} otherwise.
-   */
+  /// @return `true` if at least one [SetChangeListener] is [registered][#addListener(SetChangeListener, boolean)], `false` otherwise.
   protected boolean hasListeners() {
 
     return this.eventAdapter.hasListeners();
   }
 
-  /**
-   * @param modification the {@link SetChange} to {@link SetChangeListener#onEvent(Object) send} to all
-   *        {@link #addListener(SetChangeListener, boolean) registered} {@link SetChangeListener}s.
-   */
+  /// @param modification the [SetChange] to [send][SetChangeListener#onEvent(Object)] to all
+  ///        [registered][#addListener(SetChangeListener, boolean)] [SetChangeListener]s.
   protected void fireEvent(SetChange<E> modification) {
 
     if (modification == null) {
@@ -72,9 +63,7 @@ public abstract class AbstractChangeAwareSet<E> extends AbstractSet<E> implement
     this.eventAdapter.fireEvent(modification);
   }
 
-  /**
-   * @param elements the added elements.
-   */
+  /// @param elements the added elements.
   protected void fireAdd(Object... elements) {
 
     if (hasListeners()) {
@@ -84,9 +73,7 @@ public abstract class AbstractChangeAwareSet<E> extends AbstractSet<E> implement
     this.eventAdapter.fireEvent(modification);
   }
 
-  /**
-   * @param elements the removed elements.
-   */
+  /// @param elements the removed elements.
   protected void fireRemove(Object... elements) {
 
     if (hasListeners()) {

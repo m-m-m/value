@@ -7,12 +7,10 @@ import java.util.List;
 
 import io.github.mmm.value.observable.container.collection.ReadableCollectionValue;
 
-/**
- * {@link ReadableCollectionValue} for {@link List} {@link #get() value}s.
- *
- * @param <E> type of the {@link List#contains(Object) elements}.
- * @since 1.0.0
- */
+/// [ReadableCollectionValue] for [List] [value][#get()]s.
+///
+/// @param <E> type of the [elements][List#contains(Object)].
+/// @since 1.0.0
 public interface ReadableListValue<E> extends ReadableCollectionValue<List<E>, E> {
 
   @SuppressWarnings({ "unchecked", "rawtypes" })

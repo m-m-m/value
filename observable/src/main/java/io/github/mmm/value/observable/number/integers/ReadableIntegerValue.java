@@ -4,11 +4,9 @@ package io.github.mmm.value.observable.number.integers;
 
 import io.github.mmm.value.observable.number.ReadableNumberValue;
 
-/**
- * {@link ReadableNumberValue} with {@link Integer} {@link #get() value}.
- *
- * @since 1.0.0
- */
+/// [ReadableNumberValue] with [Integer] [value][#get()].
+///
+/// @since 1.0.0
 public interface ReadableIntegerValue extends ReadableNumberValue<Integer> {
 
   @Override
@@ -17,9 +15,7 @@ public interface ReadableIntegerValue extends ReadableNumberValue<Integer> {
     return Integer.class;
   }
 
-  /**
-   * @return the current value as primitive. Will be {@code 0} if undefined.
-   */
+  /// @return the current value as primitive. Will be `0` if undefined.
   default int getValue() {
 
     return intValue();

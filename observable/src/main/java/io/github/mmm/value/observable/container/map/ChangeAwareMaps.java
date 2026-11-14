@@ -11,11 +11,9 @@ import io.github.mmm.value.observable.container.map.impl.EmptyChangeAwareMap;
 import io.github.mmm.value.observable.container.map.impl.ImmutableChangeAwareMap;
 import io.github.mmm.value.observable.container.map.impl.ImmutableChangeAwareMapView;
 
-/**
- * Factory for {@link ChangeAwareMap}.
- *
- * @since 1.0.0
- */
+/// Factory for [ChangeAwareMap].
+///
+/// @since 1.0.0
 public final class ChangeAwareMaps {
 
   private ChangeAwareMaps() {
@@ -23,44 +21,36 @@ public final class ChangeAwareMaps {
     super();
   }
 
-  /**
-   * @param <K> type of the {@link Map#containsKey(Object) keys}.
-   * @param <V> type of the {@link Map#containsValue(Object) values}.
-   * @return an empty, immutable {@link ChangeAwareMap}.
-   */
+  /// @param <K> type of the [keys][Map#containsKey(Object)].
+  /// @param <V> type of the [values][Map#containsValue(Object)].
+  /// @return an empty, immutable [ChangeAwareMap].
   public static <K, V> ChangeAwareMap<K, V> empty() {
 
     return EmptyChangeAwareMap.INSTANCE;
   }
 
-  /**
-   * @param <K> type of the {@link Map#containsKey(Object) keys}.
-   * @param <V> type of the {@link Map#containsValue(Object) values}.
-   * @return a new empty mutable {@link ChangeAwareMap}.
-   */
+  /// @param <K> type of the [keys][Map#containsKey(Object)].
+  /// @param <V> type of the [values][Map#containsValue(Object)].
+  /// @return a new empty mutable [ChangeAwareMap].
   public static <K, V> ChangeAwareMap<K, V> of() {
 
     return new ChangeAwareMapImpl<>();
   }
 
-  /**
-   * @param <K> type of the {@link Map#containsKey(Object) keys}.
-   * @param <V> type of the {@link Map#containsValue(Object) values}.
-   * @param capacity the initial capacity of the map.
-   * @return a new empty mutable {@link ChangeAwareMap}.
-   */
+  /// @param <K> type of the [keys][Map#containsKey(Object)].
+  /// @param <V> type of the [values][Map#containsValue(Object)].
+  /// @param capacity the initial capacity of the map.
+  /// @return a new empty mutable [ChangeAwareMap].
   public static <K, V> ChangeAwareMap<K, V> of(int capacity) {
 
     return new ChangeAwareMapImpl<>(capacity);
   }
 
-  /**
-   * @param <K> type of the {@link Map#containsKey(Object) keys}.
-   * @param <V> type of the {@link Map#containsValue(Object) values}.
-   * @param map the existing {@link Set} implementation to wrap as {@link ChangeAwareMap}. Please avoid to modify this
-   *        {@link Map} afterwards, as this will not trigger modification events.
-   * @return a new empty mutable {@link ChangeAwareMap}.
-   */
+  /// @param <K> type of the [keys][Map#containsKey(Object)].
+  /// @param <V> type of the [values][Map#containsValue(Object)].
+  /// @param map the existing [Set] implementation to wrap as [ChangeAwareMap]. Please avoid to modify this
+  ///        [Map] afterwards, as this will not trigger modification events.
+  /// @return a new empty mutable [ChangeAwareMap].
   public static <K, V> ChangeAwareMap<K, V> of(Map<K, V> map) {
 
     if (map instanceof ChangeAwareMap) {
@@ -69,13 +59,11 @@ public final class ChangeAwareMaps {
     return new ChangeAwareMapImpl<>(map);
   }
 
-  /**
-   * @param <K> type of the {@link Map#containsKey(Object) keys}.
-   * @param <V> type of the {@link Map#containsValue(Object) values}.
-   * @param map the existing {@link Map} implementation to wrap as {@link ChangeAwareMap}. Modifying such {@link Map}
-   *        afterwards will not trigger modification events in the read-only view returned by this method.
-   * @return a unmodifiable {@link ChangeAwareMap} that acts as a view on the given {@link Map}.
-   */
+  /// @param <K> type of the [keys][Map#containsKey(Object)].
+  /// @param <V> type of the [values][Map#containsValue(Object)].
+  /// @param map the existing [Map] implementation to wrap as [ChangeAwareMap]. Modifying such [Map]
+  ///        afterwards will not trigger modification events in the read-only view returned by this method.
+  /// @return a unmodifiable [ChangeAwareMap] that acts as a view on the given [Map].
   public static <K, V> ChangeAwareMap<K, V> ofUnmodifiable(Map<K, V> map) {
 
     if (map instanceof ImmutableChangeAwareMap) {
@@ -84,15 +72,13 @@ public final class ChangeAwareMaps {
     return new ImmutableChangeAwareMap<>(map);
   }
 
-  /**
-   * @param <K> type of the {@link Map#containsKey(Object) keys}.
-   * @param <V> type of the {@link Map#containsValue(Object) values}.
-   * @param mapSupplier the {@link Supplier} to the (mutable) {@link Map} implementation to wrap as
-   *        {@link ChangeAwareMap}. Modifying such {@link Map} afterwards will not trigger modification events in the
-   *        read-only view returned by this method.
-   * @return a unmodifiable {@link ChangeAwareMap} that acts as a view on the {@link Supplier#get() supplied}
-   *         {@link Map}.
-   */
+  /// @param <K> type of the [keys][Map#containsKey(Object)].
+  /// @param <V> type of the [values][Map#containsValue(Object)].
+  /// @param mapSupplier the [Supplier] to the (mutable) [Map] implementation to wrap as
+  ///        [ChangeAwareMap]. Modifying such [Map] afterwards will not trigger modification events in the
+  ///        read-only view returned by this method.
+  /// @return a unmodifiable [ChangeAwareMap] that acts as a view on the [supplied][Supplier#get()]
+  ///         [Map].
   public static <K, V> ChangeAwareMap<K, V> ofUnmodifiable(Supplier<Map<K, V>> mapSupplier) {
 
     return new ImmutableChangeAwareMapView<>(mapSupplier);

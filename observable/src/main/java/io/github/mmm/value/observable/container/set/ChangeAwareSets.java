@@ -12,11 +12,9 @@ import io.github.mmm.value.observable.container.set.impl.EmptyChangeAwareSet;
 import io.github.mmm.value.observable.container.set.impl.ImmutableChangeAwareSet;
 import io.github.mmm.value.observable.container.set.impl.ImmutableChangeAwareSetView;
 
-/**
- * Factory for {@link ChangeAwareSet}.
- *
- * @since 1.0.0
- */
+/// Factory for [ChangeAwareSet].
+///
+/// @since 1.0.0
 public final class ChangeAwareSets {
 
   private ChangeAwareSets() {
@@ -24,40 +22,32 @@ public final class ChangeAwareSets {
     super();
   }
 
-  /**
-   * @param <E> the type of the elements.
-   * @return an empty, immutable {@link ChangeAwareSet}.
-   */
+  /// @param <E> the type of the elements.
+  /// @return an empty, immutable [ChangeAwareSet].
   public static <E> ChangeAwareSet<E> empty() {
 
     return EmptyChangeAwareSet.INSTANCE;
   }
 
-  /**
-   * @param <E> the type of the elements.
-   * @return a new empty mutable {@link ChangeAwareSet}.
-   */
+  /// @param <E> the type of the elements.
+  /// @return a new empty mutable [ChangeAwareSet].
   public static <E> ChangeAwareSet<E> of() {
 
     return new ChangeAwareSetImpl<>();
   }
 
-  /**
-   * @param <E> the type of the elements.
-   * @param capacity the initial capacity of the set.
-   * @return a new empty mutable {@link ChangeAwareSet}.
-   */
+  /// @param <E> the type of the elements.
+  /// @param capacity the initial capacity of the set.
+  /// @return a new empty mutable [ChangeAwareSet].
   public static <E> ChangeAwareSet<E> of(int capacity) {
 
     return new ChangeAwareSetImpl<>(capacity);
   }
 
-  /**
-   * @param <E> the type of the elements.
-   * @param set the existing {@link Set} implementation to wrap as {@link ChangeAwareSet}. Please avoid to modify this
-   *        {@link Set} afterwards, as this will not trigger modification events.
-   * @return a new empty mutable {@link ChangeAwareSet}.
-   */
+  /// @param <E> the type of the elements.
+  /// @param set the existing [Set] implementation to wrap as [ChangeAwareSet]. Please avoid to modify this
+  ///        [Set] afterwards, as this will not trigger modification events.
+  /// @return a new empty mutable [ChangeAwareSet].
   public static <E> ChangeAwareSet<E> of(Set<E> set) {
 
     if (set instanceof ChangeAwareSet) {
@@ -66,12 +56,10 @@ public final class ChangeAwareSets {
     return new ChangeAwareSetImpl<>(set);
   }
 
-  /**
-   * @param <E> the type of the elements.
-   * @param set the existing {@link List} implementation to wrap as {@link ChangeAwareList}. Modifying such {@link List}
-   *        afterwards will not trigger modification events in the read-only view returned by this method.
-   * @return an unmodifiable {@link ChangeAwareList} that acts as a view on the given {@link Set}.
-   */
+  /// @param <E> the type of the elements.
+  /// @param set the existing [List] implementation to wrap as [ChangeAwareList]. Modifying such [List]
+  ///        afterwards will not trigger modification events in the read-only view returned by this method.
+  /// @return an unmodifiable [ChangeAwareList] that acts as a view on the given [Set].
   public static <E> ChangeAwareSet<E> ofUnmodifiable(Set<E> set) {
 
     if (set instanceof ImmutableChangeAwareSet) {
@@ -80,13 +68,11 @@ public final class ChangeAwareSets {
     return new ImmutableChangeAwareSet<>(set);
   }
 
-  /**
-   * @param <E> the type of the elements.
-   * @param setSupplier the existing {@link List} implementation to wrap as {@link ChangeAwareList}. Modifying such
-   *        {@link List} afterwards will not trigger modification events in the read-only view returned by this method.
-   * @return an unmodifiable {@link ChangeAwareList} that acts as a view on the {@link Supplier#get() supplied}
-   *         {@link Set}.
-   */
+  /// @param <E> the type of the elements.
+  /// @param setSupplier the existing [List] implementation to wrap as [ChangeAwareList]. Modifying such
+  ///        [List] afterwards will not trigger modification events in the read-only view returned by this method.
+  /// @return an unmodifiable [ChangeAwareList] that acts as a view on the [supplied][Supplier#get()]
+  ///         [Set].
   public static <E> ChangeAwareSet<E> ofUnmodifiable(Supplier<Set<E>> setSupplier) {
 
     return new ImmutableChangeAwareSetView<>(setSupplier);

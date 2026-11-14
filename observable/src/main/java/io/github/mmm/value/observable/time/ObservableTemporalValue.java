@@ -6,12 +6,10 @@ import java.time.temporal.Temporal;
 
 import io.github.mmm.value.observable.object.ObservableObjectValue;
 
-/**
- * {@link io.github.mmm.value.observable.ObservableValue} containing a {@link Temporal} {@link #getValue() value}.
- *
- * @param <V> type of the {@link #getValue() value}.
- * @since 1.0.0
- */
+/// [io.github.mmm.value.observable.ObservableValue] containing a [Temporal] [value][#getValue()].
+///
+/// @param <V> type of the [value][#getValue()].
+/// @since 1.0.0
 public interface ObservableTemporalValue<V extends Temporal>
     extends ObservableObjectValue<V>, ReadableTemporalValue<V> {
 

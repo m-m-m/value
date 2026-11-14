@@ -7,41 +7,33 @@ import io.github.mmm.value.observable.ObservableValue;
 import io.github.mmm.value.observable.number.NumberBinding;
 import io.github.mmm.value.observable.number.NumberExpression;
 
-/**
- * {@link NumberBinding} with {@link Double} {@link #getValue() value}.
- *
- * @since 1.0.0
- */
+/// [NumberBinding] with [Double] [value][#getValue()].
+///
+/// @since 1.0.0
 public class DoubleBinding extends NumberBinding<Double> implements DoubleExpression {
 
   private static final Double ZERO = Double.valueOf(0);
 
-  /**
-   * The constructor.
-   *
-   * @param expression the {@link Supplier} to compute the {@link #get() value}.
-   * @param dependencies the {@link ObservableValue}s the {@code expression} depends on.
-   */
+  /// The constructor.
+  ///
+  /// @param expression the [Supplier] to compute the [value][#get()].
+  /// @param dependencies the [ObservableValue]s the `expression` depends on.
   public DoubleBinding(Supplier<Double> expression, ObservableValue<?>... dependencies) {
 
     super(expression, dependencies);
   }
 
-  /**
-   * @param expression the {@link DoubleExpression} to negate.
-   * @return a new {@link DoubleExpression} holding the negation of the {@link #get() value} from the given
-   *         {@link DoubleExpression}.
-   * @see #expNegate()
-   */
+  /// @param expression the [DoubleExpression] to negate.
+  /// @return a new [DoubleExpression] holding the negation of the [value][#get()] from the given
+  ///         [DoubleExpression].
+  /// @see #expNegate()
   public static DoubleExpression negate(DoubleExpression expression) {
 
     return new DoubleBinding(() -> negate(expression.get()), expression);
   }
 
-  /**
-   * @param expression the {@link NumberExpression} to convert.
-   * @return the given {@link NumberExpression} converted to a {@link DoubleExpression}.
-   */
+  /// @param expression the [NumberExpression] to convert.
+  /// @return the given [NumberExpression] converted to a [DoubleExpression].
   public static DoubleExpression cast(NumberExpression<?> expression) {
 
     if (expression == null) {
@@ -53,13 +45,11 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
     }
   }
 
-  /**
-   * @param expression the {@link DoubleExpression} to add.
-   * @param other the {@link ObservableValue} to add.
-   * @return a new {@link DoubleExpression} holding the sum of the {@link #get() value}s of the first and the second
-   *         given {@link ObservableValue}s.
-   * @see #expAdd(ObservableDoubleValue)
-   */
+  /// @param expression the [DoubleExpression] to add.
+  /// @param other the [ObservableValue] to add.
+  /// @return a new [DoubleExpression] holding the sum of the [value][#get()]s of the first and the second
+  ///         given [ObservableValue]s.
+  /// @see #expAdd(ObservableDoubleValue)
   public static DoubleExpression expAdd(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
     if (other == null) {
@@ -68,13 +58,11 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
     return new DoubleBinding(() -> plus(expression, other), expression, other);
   }
 
-  /**
-   * @param expression the {@link DoubleExpression} to add.
-   * @param constant the constant {@link Number} to add.
-   * @return a new {@link DoubleExpression} holding the sum of the {@link #get() value} from the given
-   *         {@link DoubleExpression} with the given {@code constant}.
-   * @see #expAdd(ObservableDoubleValue)
-   */
+  /// @param expression the [DoubleExpression] to add.
+  /// @param constant the constant [Number] to add.
+  /// @return a new [DoubleExpression] holding the sum of the [value][#get()] from the given
+  ///         [DoubleExpression] with the given `constant`.
+  /// @see #expAdd(ObservableDoubleValue)
   public static DoubleExpression add(NumberExpression<?> expression, Number constant) {
 
     if (constant == null) {
@@ -83,36 +71,30 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
     return add(expression, constant.doubleValue());
   }
 
-  /**
-   * @param expression the {@link DoubleExpression} to add.
-   * @param constant the constant {@code double} to add.
-   * @return a new {@link DoubleExpression} holding the sum of the {@link #get() value} from the given
-   *         {@link DoubleExpression} with the given {@code constant}.
-   * @see #expAdd(ObservableDoubleValue)
-   */
+  /// @param expression the [DoubleExpression] to add.
+  /// @param constant the constant `double` to add.
+  /// @return a new [DoubleExpression] holding the sum of the [value][#get()] from the given
+  ///         [DoubleExpression] with the given `constant`.
+  /// @see #expAdd(ObservableDoubleValue)
   public static DoubleExpression add(NumberExpression<?> expression, double constant) {
 
     return new DoubleBinding(() -> plus(expression.get(), constant), expression);
   }
 
-  /**
-   * @param observables the {@link ObservableValue}s to add.
-   * @return a new {@link DoubleExpression} holding the sum of the {@link #get() value}s from the given
-   *         {@link ObservableValue}s.
-   */
+  /// @param observables the [ObservableValue]s to add.
+  /// @return a new [DoubleExpression] holding the sum of the [value][#get()]s from the given
+  ///         [ObservableValue]s.
   @SafeVarargs
   public static DoubleExpression addAll(ObservableValue<? extends Number>... observables) {
 
     return new DoubleBinding(() -> plusAll(observables), observables);
   }
 
-  /**
-   * @param expression the {@link DoubleExpression}.
-   * @param other the {@link ObservableValue} to subtract.
-   * @return a new {@link DoubleExpression} holding the difference of the {@link #get() value}s of the first and the
-   *         second given {@link ObservableValue}s.
-   * @see #expSub(ObservableDoubleValue)
-   */
+  /// @param expression the [DoubleExpression].
+  /// @param other the [ObservableValue] to subtract.
+  /// @return a new [DoubleExpression] holding the difference of the [value][#get()]s of the first and the
+  ///         second given [ObservableValue]s.
+  /// @see #expSub(ObservableDoubleValue)
   public static DoubleExpression expSub(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
     if (other == null) {
@@ -121,13 +103,11 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
     return new DoubleBinding(() -> minus(expression, other), expression, other);
   }
 
-  /**
-   * @param expression the {@link DoubleExpression}.
-   * @param constant the constant {@link Number} to subtract.
-   * @return a new {@link DoubleExpression} holding the difference of the {@link #get() value} from the given
-   *         {@link DoubleExpression} with the given {@code constant}.
-   * @see #expSub(ObservableDoubleValue)
-   */
+  /// @param expression the [DoubleExpression].
+  /// @param constant the constant [Number] to subtract.
+  /// @return a new [DoubleExpression] holding the difference of the [value][#get()] from the given
+  ///         [DoubleExpression] with the given `constant`.
+  /// @see #expSub(ObservableDoubleValue)
   public static DoubleExpression subtract(NumberExpression<?> expression, Number constant) {
 
     if (constant == null) {
@@ -136,36 +116,30 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
     return subtract(expression, constant.doubleValue());
   }
 
-  /**
-   * @param expression the {@link DoubleExpression}.
-   * @param constant the constant {@code double} to subtract.
-   * @return a new {@link DoubleExpression} holding the difference of the {@link #get() value} from the given
-   *         {@link DoubleExpression} with the given {@code constant}.
-   * @see #expSub(ObservableDoubleValue)
-   */
+  /// @param expression the [DoubleExpression].
+  /// @param constant the constant `double` to subtract.
+  /// @return a new [DoubleExpression] holding the difference of the [value][#get()] from the given
+  ///         [DoubleExpression] with the given `constant`.
+  /// @see #expSub(ObservableDoubleValue)
   public static DoubleExpression subtract(NumberExpression<?> expression, double constant) {
 
     return new DoubleBinding(() -> minus(expression.get(), constant), expression);
   }
 
-  /**
-   * @param observables the {@link ObservableValue}s to subtract.
-   * @return a new {@link DoubleExpression} holding the difference of the {@link #get() value}s from the given
-   *         {@link ObservableValue}s.
-   */
+  /// @param observables the [ObservableValue]s to subtract.
+  /// @return a new [DoubleExpression] holding the difference of the [value][#get()]s from the given
+  ///         [ObservableValue]s.
   @SafeVarargs
   public static DoubleExpression subtractAll(ObservableValue<? extends Number>... observables) {
 
     return new DoubleBinding(() -> minusAll(observables), observables);
   }
 
-  /**
-   * @param expression the {@link DoubleExpression}.
-   * @param other the {@link ObservableValue} to multiply.
-   * @return a new {@link DoubleExpression} holding the product of the {@link #get() value}s of the first and the second
-   *         given {@link ObservableValue}s.
-   * @see #expMul(ObservableDoubleValue)
-   */
+  /// @param expression the [DoubleExpression].
+  /// @param other the [ObservableValue] to multiply.
+  /// @return a new [DoubleExpression] holding the product of the [value][#get()]s of the first and the second
+  ///         given [ObservableValue]s.
+  /// @see #expMul(ObservableDoubleValue)
   public static DoubleExpression expMul(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
     if (other == null) {
@@ -174,13 +148,11 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
     return new DoubleBinding(() -> mul(expression, other), expression, other);
   }
 
-  /**
-   * @param expression the {@link DoubleExpression}.
-   * @param constant the constant {@link Number} to multiply.
-   * @return a new {@link DoubleExpression} holding the product of the {@link #get() value} from the given
-   *         {@link DoubleExpression} multiplied with the given {@code constant}.
-   * @see #expMul(ObservableDoubleValue)
-   */
+  /// @param expression the [DoubleExpression].
+  /// @param constant the constant [Number] to multiply.
+  /// @return a new [DoubleExpression] holding the product of the [value][#get()] from the given
+  ///         [DoubleExpression] multiplied with the given `constant`.
+  /// @see #expMul(ObservableDoubleValue)
   public static DoubleExpression multiply(NumberExpression<?> expression, Number constant) {
 
     if (constant == null) {
@@ -189,36 +161,30 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
     return multiply(expression, constant.doubleValue());
   }
 
-  /**
-   * @param expression the {@link DoubleExpression}.
-   * @param constant the constant {@code double} to multiply.
-   * @return a new {@link DoubleExpression} holding the product of the {@link #get() value} from the given
-   *         {@link DoubleExpression} multiplied with the given {@code constant}.
-   * @see #expMul(ObservableDoubleValue)
-   */
+  /// @param expression the [DoubleExpression].
+  /// @param constant the constant `double` to multiply.
+  /// @return a new [DoubleExpression] holding the product of the [value][#get()] from the given
+  ///         [DoubleExpression] multiplied with the given `constant`.
+  /// @see #expMul(ObservableDoubleValue)
   public static DoubleExpression multiply(NumberExpression<?> expression, double constant) {
 
     return new DoubleBinding(() -> mul(expression.get(), constant), expression);
   }
 
-  /**
-   * @param observables the {@link ObservableValue}s to multiply.
-   * @return a new {@link DoubleExpression} holding the product of the {@link #get() value}s from the given
-   *         {@link ObservableValue}s.
-   */
+  /// @param observables the [ObservableValue]s to multiply.
+  /// @return a new [DoubleExpression] holding the product of the [value][#get()]s from the given
+  ///         [ObservableValue]s.
   @SafeVarargs
   public static DoubleExpression multiplyAll(ObservableValue<? extends Number>... observables) {
 
     return new DoubleBinding(() -> mulAll(observables), observables);
   }
 
-  /**
-   * @param expression the {@link DoubleExpression}.
-   * @param other the {@link ObservableValue} to divide.
-   * @return a new {@link DoubleExpression} holding the quotient of the {@link #get() value}s of the first and the
-   *         second given {@link ObservableValue}s.
-   * @see #expDiv(ObservableDoubleValue)
-   */
+  /// @param expression the [DoubleExpression].
+  /// @param other the [ObservableValue] to divide.
+  /// @return a new [DoubleExpression] holding the quotient of the [value][#get()]s of the first and the
+  ///         second given [ObservableValue]s.
+  /// @see #expDiv(ObservableDoubleValue)
   public static DoubleExpression expDiv(NumberExpression<?> expression, ObservableValue<? extends Number> other) {
 
     if (other == null) {
@@ -227,13 +193,11 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
     return new DoubleBinding(() -> div(expression, other), expression, other);
   }
 
-  /**
-   * @param expression the {@link DoubleExpression}.
-   * @param constant the constant {@link Number} to divide.
-   * @return a new {@link DoubleExpression} holding the quotient of the {@link #get() value} from the given
-   *         {@link DoubleExpression} divided by the given {@code constant}.
-   * @see #expDiv(ObservableDoubleValue)
-   */
+  /// @param expression the [DoubleExpression].
+  /// @param constant the constant [Number] to divide.
+  /// @return a new [DoubleExpression] holding the quotient of the [value][#get()] from the given
+  ///         [DoubleExpression] divided by the given `constant`.
+  /// @see #expDiv(ObservableDoubleValue)
   public static DoubleExpression divide(NumberExpression<?> expression, Number constant) {
 
     if (constant == null) {
@@ -242,23 +206,19 @@ public class DoubleBinding extends NumberBinding<Double> implements DoubleExpres
     return divide(expression, constant.doubleValue());
   }
 
-  /**
-   * @param expression the {@link DoubleExpression}.
-   * @param constant the constant {@code double} to divide.
-   * @return a new {@link DoubleExpression} holding the quotient of the {@link #get() value} from the given
-   *         {@link DoubleExpression} divided by the given {@code constant}.
-   * @see #expDiv(ObservableDoubleValue)
-   */
+  /// @param expression the [DoubleExpression].
+  /// @param constant the constant `double` to divide.
+  /// @return a new [DoubleExpression] holding the quotient of the [value][#get()] from the given
+  ///         [DoubleExpression] divided by the given `constant`.
+  /// @see #expDiv(ObservableDoubleValue)
   public static DoubleExpression divide(NumberExpression<?> expression, double constant) {
 
     return new DoubleBinding(() -> div(expression.get(), constant), expression);
   }
 
-  /**
-   * @param observables the {@link ObservableValue}s to divide.
-   * @return a new {@link DoubleExpression} holding the quotient of the {@link #get() value}s from the given
-   *         {@link ObservableValue}s.
-   */
+  /// @param observables the [ObservableValue]s to divide.
+  /// @return a new [DoubleExpression] holding the quotient of the [value][#get()]s from the given
+  ///         [ObservableValue]s.
   @SafeVarargs
   public static DoubleExpression divideAll(ObservableValue<? extends Number>... observables) {
 

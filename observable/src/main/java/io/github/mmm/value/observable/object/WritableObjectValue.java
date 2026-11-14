@@ -4,19 +4,15 @@ package io.github.mmm.value.observable.object;
 
 import io.github.mmm.value.WritableValue;
 
-/**
- * {@link WritableValue} for {@link Object} {@link #getValue() value} that has no primitive type.
- *
- * @param <V> type of the {@link #getValue() value}.
- * @since 1.0.0
- */
+/// [WritableValue] for [Object] [value][#getValue()] that has no primitive type.
+///
+/// @param <V> type of the [value][#getValue()].
+/// @since 1.0.0
 public interface WritableObjectValue<V> extends ReadableObjectValue<V>, WritableValue<V> {
 
-  /**
-   * Same as {@link #set(Object)}.
-   *
-   * @param value the new value.
-   */
+  /// Same as [#set(Object)].
+  ///
+  /// @param value the new value.
   default void setValue(V value) {
 
     set(value);

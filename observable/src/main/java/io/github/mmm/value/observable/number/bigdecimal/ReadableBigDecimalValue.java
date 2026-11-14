@@ -6,11 +6,9 @@ import java.math.BigDecimal;
 
 import io.github.mmm.value.observable.number.ReadableNumberValue;
 
-/**
- * {@link ReadableNumberValue} with {@link BigDecimal} {@link #get() value}.
- *
- * @since 1.0.0
- */
+/// [ReadableNumberValue] with [BigDecimal] [value][#get()].
+///
+/// @since 1.0.0
 public interface ReadableBigDecimalValue extends ReadableNumberValue<BigDecimal> {
 
   @Override

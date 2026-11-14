@@ -7,11 +7,9 @@ import java.time.LocalTime;
 import io.github.mmm.value.observable.booleans.BooleanBinding;
 import io.github.mmm.value.observable.time.TemporalExpression;
 
-/**
- * {@link TemporalExpression} for {@link LocalTime} {@link #getValue() values}.
- *
- * @since 1.0.0
- */
+/// [TemporalExpression] for [LocalTime] [values][#getValue()].
+///
+/// @since 1.0.0
 public interface LocalTimeExpression extends ObservableLocalTimeValue, TemporalExpression<LocalTime> {
 
   @Override

@@ -7,9 +7,7 @@ import org.junit.jupiter.api.Test;
 import io.github.mmm.value.observable.number.NumberExpression;
 import io.github.mmm.value.observable.number.NumberExpressionTest;
 
-/**
- * Test of {@link DoubleExpression}.
- */
+/// Test of [DoubleExpression].
 @SuppressWarnings("javadoc")
 class DoubleExpressionTest extends NumberExpressionTest<Double> {
 

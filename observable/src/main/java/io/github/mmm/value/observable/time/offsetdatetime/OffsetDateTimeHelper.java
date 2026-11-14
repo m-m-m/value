@@ -4,9 +4,7 @@ package io.github.mmm.value.observable.time.offsetdatetime;
 
 import java.time.OffsetDateTime;
 
-/**
- * Internal helper for {@link OffsetDateTime}.
- */
+/// Internal helper for [OffsetDateTime].
 class OffsetDateTimeHelper {
 
   static boolean isInFuture(OffsetDateTime value) {

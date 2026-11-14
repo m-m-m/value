@@ -1,21 +1,17 @@
 package io.github.mmm.value.converter;
 
-/**
- * {@link AtomicTypeMapper} for conversion {@link Object#toString() to} {@link String}. <b>ATTENTION:</b> By default it
- * can not convert back from {@link String} {@link #toSource(String) to source}.
- *
- * @param <S> the {@link #getSourceType() source type}.
- * @since 1.0.0
- */
+/// [AtomicTypeMapper] for conversion [to][Object#toString()] [String]. **ATTENTION:** By default it
+/// can not convert back from [String] [to source][#toSource(String)].
+///
+/// @param <S> the [source type][#getSourceType()].
+/// @since 1.0.0
 public class ToStringTypeMapper<S> extends AtomicTypeMapper<S, String> {
 
   private final Class<? extends S> sourceType;
 
-  /**
-   * The constructor.
-   *
-   * @param sourceType the {@link #getSourceType() source type}.
-   */
+  /// The constructor.
+  ///
+  /// @param sourceType the [source type][#getSourceType()].
   public ToStringTypeMapper(Class<? extends S> sourceType) {
 
     super();

@@ -6,22 +6,18 @@ import java.util.List;
 
 import io.github.mmm.value.observable.container.collection.ChangeAwareCollection;
 
-/**
- * {@link io.github.mmm.value.observable.container.ChangeAwareContainer} that is a {@link List}.
- *
- * @param <E> type of the {@link List#contains(Object) contained elements}.
- * @since 1.0.0
- */
+/// [io.github.mmm.value.observable.container.ChangeAwareContainer] that is a [List].
+///
+/// @param <E> type of the [contained elements][List#contains(Object)].
+/// @since 1.0.0
 public interface ChangeAwareList<E> extends ChangeAwareCollection<E, ListChange<E>, ListChangeListener<E>>, List<E> {
 
-  /**
-   * {@link #remove(int) Removes} the elements within the given range. Behaves like {@code sublist(from, to).clear()}
-   * but can be implemented more efficient.
-   *
-   * @param from the start {@link #indexOf(Object) index} of the range to remove (inclusive).
-   * @param to the end {@link #indexOf(Object) index} of the range to remove (exclusive).
-   * @throws IndexOutOfBoundsException if an illegal range is provided.
-   */
+  /// [Removes][#remove(int)] the elements within the given range. Behaves like `sublist(from, to).clear()`
+  /// but can be implemented more efficient.
+  ///
+  /// @param from the start [index][#indexOf(Object)] of the range to remove (inclusive).
+  /// @param to the end [index][#indexOf(Object)] of the range to remove (exclusive).
+  /// @throws IndexOutOfBoundsException if an illegal range is provided.
   void remove(int from, int to);
 
 }
