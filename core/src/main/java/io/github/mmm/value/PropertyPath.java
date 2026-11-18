@@ -4,16 +4,14 @@ package io.github.mmm.value;
 
 import java.util.Collection;
 
-/// Interface for a valued path. May be a property itself, a reference on a property or a query criteria to match a
-/// property.
+/// Interface for a valued path. May be a property itself, a reference on a property or a query criteria to match a property.
 ///
 /// @param <V> type of the [value][#get()].
 ///
 /// @since 1.0.0
 public interface PropertyPath<V> extends ReadableValue<V>, ReadablePath, CriteriaObject<V> {
 
-  /// @return the name of this path. May be a single property (e.g. "MyProperty") or a dot-separated path (e.g.
-  ///         "MyEntity.MyProperty").
+  /// @return the name of this path. May be a single property (e.g. "MyProperty") or a dot-separated path (e.g. "MyEntity.MyProperty").
   String getName();
 
   @Override
@@ -26,6 +24,12 @@ public interface PropertyPath<V> extends ReadableValue<V>, ReadablePath, Criteri
   default void collectProperties(Collection<PropertyPath<?>> properties) {
 
     properties.add(this);
+  }
+
+  @Override
+  default PropertyPath<?> findFirstProperty() {
+
+    return this;
   }
 
 }
